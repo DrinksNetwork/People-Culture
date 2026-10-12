@@ -39,3 +39,16 @@ test('a Mailchimp outage never loses the lead', async () => {
   const r = await handleEnquiry(lead, { env, fetchImpl: f, saveContact: async () => (saved = true), log: { error() {} } });
   assert.ok(saved && r.ok && !r.mailchimp);
 });
+
+test('tasting brief: reply carries the brief links and up to 3 shares go out', async () => {
+  const f = mockFetch();
+  const brief = { form: 'tasting-brief', tags: ['Buyer'], firstName: 'Ana', lastName: 'Lee', email: 'ana@bar.com', mobile: '0400', company: 'Bar', sendCopy: true,
+    shareWith: ['boss@bar.com', 'ANA@bar.com', 'bad', 'a@x.com', 'b@x.com', 'c@x.com'], pageUrl: 'https://evil.example/x' };
+  const r = await handleEnquiry(brief, { env, fetchImpl: f });
+  assert.deepEqual(r.shared, ['boss@bar.com', 'a@x.com', 'b@x.com']);
+  const mails = f.calls.filter((c) => c.url.includes('mandrillapp'));
+  assert.equal(mails.length, 5);                                     // admins, reply, 3 shares
+  assert.match(mails[1].body.message.html, /site\.drinksnetwork\.com\.au\/whisky-adventure\/tasting-series\?brief=open/);
+  assert.doesNotMatch(mails[2].body.message.html, /evil\.example/);
+  assert.match(mails[2].body.message.subject, /Ana Lee shared the Drinks Network Tasting Series partnership brief/);
+});

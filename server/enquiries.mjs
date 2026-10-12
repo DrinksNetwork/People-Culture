@@ -20,6 +20,11 @@
 //   MAILCHIMP_TRANSACTIONAL_KEY  Optional: Mailchimp Transactional (Mandrill) key for instant emails
 //   ENQUIRY_FROM_EMAIL           e.g. hello@drinksnetwork.com.au (a verified sending domain)
 //   ENQUIRY_ADMIN_EMAILS         Comma list; defaults to the four admins below
+//   SITE_URL                     Public site, used for links in emails (default https://site.drinksnetwork.com.au)
+//
+// Gated briefs (form "tasting-brief"): the reply carries the brief links when sendCopy is true, and each
+// address in shareWith (max 3, never the enquirer's own) gets one short email with the same links.
+// Links are built here from SITE_URL, never taken from the browser.
 
 import crypto from 'node:crypto';
 
@@ -37,9 +42,39 @@ const FORM_LABELS = {
   'securicode': 'SecuriCode enquiry',
   'bar-takeover': 'Bar Takeover registration',
   'san-junipero-giveaway': 'San Junipero 5+1 draw entry',
+  'tasting-brief': 'Tasting Series partnership brief request',
+  'tasting-agreement': 'Tasting Series partner agreement',
 };
 
-const SKIP_FIELDS = new Set(['website', 'consent', 'pageUrl', 'utmSource', 'utmMedium', 'utmCampaign', 'sessionId', 'tags', 'form', 'campaign']);
+const SKIP_FIELDS = new Set(['website', 'consent', 'pageUrl', 'utmSource', 'utmMedium', 'utmCampaign', 'sessionId', 'tags', 'form', 'campaign', 'sendCopy']);
+const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+const BRIEFS = {
+  'tasting-brief': { title: 'Tasting Series partnership brief', page: '/whisky-adventure/tasting-series?brief=open', pdf: '/media/brief/tasting-partnership-brief.pdf' },
+};
+
+export function shareList(p) {
+  const own = String(p.email || '').trim().toLowerCase();
+  const raw = Array.isArray(p.shareWith) ? p.shareWith : String(p.shareWith || '').split(/[\s,;]+/);
+  return [...new Set(raw.map((e) => String(e).trim().toLowerCase()).filter((e) => EMAIL_RE.test(e) && e !== own))].slice(0, 3);
+}
+
+export function briefLinks(p, env = {}) {
+  const b = BRIEFS[p.form]; if (!b) return null;
+  const site = (env.SITE_URL || 'https://site.drinksnetwork.com.au').replace(/\/$/, '');
+  return { title: b.title, page: site + b.page, pdf: site + b.pdf };
+}
+
+export function shareEmail(p, links) {
+  const who = [p.firstName, p.lastName].filter(Boolean).join(' ') || p.email;
+  return {
+    subject: `${who} shared the Drinks Network ${links.title} with you`,
+    html: `<div style="font-family:Arial,sans-serif;font-size:15px;color:#111;max-width:560px"><div style="background:#E42E2E;color:#fff;padding:18px;font-size:22px;font-weight:bold">${esc(links.title)}</div>
+<p>${esc(who)}${p.company ? ' from ' + esc(p.company) : ''} thought you should see how a Drinks Network ticketed tasting works: the venue and brand roles, the 50/50 ticket split, fees and what one night can make.</p>
+<p><a href="${esc(links.page)}" style="display:inline-block;background:#E42E2E;color:#fff;padding:12px 18px;text-decoration:none;font-weight:bold">Read the brief</a> &nbsp; <a href="${esc(links.pdf)}">Download the A4 PDF</a></p>
+<p style="color:#5A554D;font-size:13px">You're getting this one email because ${esc(who)} entered your address. We won't add you to any list.</p>
+<p>Drinks Network<br>Sydney · Melbourne · Brisbane</p></div>`,
+  };
+}
 
 const esc = (s) => String(s ?? '').replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
 const label = (k) => k.replace(/([a-z])([A-Z])/g, '$1 $2').replace(/^./, (c) => c.toUpperCase());
@@ -104,6 +139,7 @@ export function replyEmail(p, formLabel) {
     subject: p.form === 'newsletter' ? 'Welcome to Drinks Network' : `We've got your ${formLabel.toLowerCase()}`,
     html: `<div style="font-family:Arial,sans-serif;font-size:15px;color:#111;max-width:560px"><div style="background:#E42E2E;color:#fff;padding:18px;font-size:22px;font-weight:bold">Thanks, ${esc(name)}.</div>
 <p>Your ${esc(formLabel.toLowerCase())} has reached the Drinks Network team. Someone will be in touch within one business day.</p>
+${p.links ? `<p><a href="${esc(p.links.page)}" style="display:inline-block;background:#E42E2E;color:#fff;padding:12px 18px;text-decoration:none;font-weight:bold">Read the ${esc(p.links.title)}</a> &nbsp; <a href="${esc(p.links.pdf)}">Download the A4 PDF</a></p>` : ''}
 ${p.form === 'newsletter' ? '' : `<p>Here's what you sent us:</p><ul>${rows}</ul>`}
 <p>Good times,<br>Drinks Network<br>Sydney · Melbourne · Brisbane</p></div>`,
   };
@@ -147,11 +183,22 @@ export async function handleEnquiry(payload, { env = process.env, fetchImpl = fe
       await transactional(env, fetchImpl, { from_email: from, from_name: 'Drinks Network website', to: admins.map((email) => ({ email, type: 'to' })), subject: a.subject, html: a.html, headers: { 'Reply-To': p.email }, tags: ['admin-new-lead'] });
       result.adminNotified = true;
     } catch (e) { log.error('[enquiries] admin email:', e.message); }
+    const links = briefLinks(p, env);
     try {
-      const r = replyEmail(p, formLabel);
+      const r = replyEmail({ ...p, links: links && p.sendCopy !== false ? links : null }, formLabel);
       await transactional(env, fetchImpl, { from_email: from, from_name: 'Drinks Network', to: [{ email: p.email, name: p.firstName || '' }], subject: r.subject, html: r.html, tags: ['enquiry-reply', `form-${p.form}`] });
       result.replySent = true;
     } catch (e) { log.error('[enquiries] reply email:', e.message); }
+    if (links) {
+      result.shared = [];
+      for (const email of shareList(p)) {
+        try {
+          const m = shareEmail(p, links);
+          await transactional(env, fetchImpl, { from_email: from, from_name: 'Drinks Network', to: [{ email, type: 'to' }], subject: m.subject, html: m.html, headers: { 'Reply-To': p.email }, tags: ['brief-share', `form-${p.form}`] });
+          result.shared.push(email);
+        } catch (e) { log.error('[enquiries] share email:', e.message); }
+      }
+    }
   }
   return result;
 }

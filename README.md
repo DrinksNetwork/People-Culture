@@ -126,3 +126,9 @@ npm run preview   # -> http://localhost:3000 (PORT env var respected); campaign 
 - Fonts: Anton for uppercase display headlines, Source Serif 4 for body text and italic standfirsts, Archivo Narrow for letter-spaced kickers, nav and captions.
 - Never lay an image or the logo over another image or over text. Images sit alone or side by side, each with a caption under it.
 - Must work at phone width.
+
+## Tasting Series partnership brief (gated)
+
+`/whisky-adventure/tasting-series` is the web version of the Tasting Series brief. The hero and "Three partners" are open; the rest (tickets, venue, vendor, Drinks Network fees, what one night can make, partner agreement) opens after the visitor gives first name, last name, email, mobile and venue or brand. They can tick "Email me a copy" and add up to 3 more emails. The form posts `form: "tasting-brief"` to `/api/enquiries` (tag Buyer for venues, Vendor for brands, campaign `tasting-series`); the handler emails the requester the brief links and sends each shared address one email with the links (`shareList`, `briefLinks`, `shareEmail` in `server/enquiries.mjs`, links built from `SITE_URL`). The partner agreement at the bottom also posts `form: "tasting-agreement"` with the agreement text.
+
+The A4 brochure (5 pages) is `public/media/brief/tasting-partnership-brief.pdf`, offered after the gate and linked in the emails. The whisky venue and brand pages show page 1 and link to the brief. The gate is a soft gate: content ships in the page and unlocks in the browser; `?brief=open` opens it (used in the email links).
