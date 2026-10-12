@@ -1,4 +1,5 @@
 # Copies blog posts, legal pages and every image from the old WordPress site into the repo.
+# The result lands on the wordpress-import branch for review before it goes to main.
 # Run it from GitHub: Actions -> Import from WordPress -> Run workflow.
 name: Import from WordPress
 
@@ -22,13 +23,13 @@ jobs:
           node-version: 20
       - name: Import posts, pages and images
         run: npm run import:wordpress
-      - name: Check the site still builds
-        run: npm run build
-      - name: Commit the imported files
+      - name: Check the site still builds (report saved to import-report.txt)
+        run: npm run build > import-report.txt 2>&1 || true
+      - name: Commit the imported files to the wordpress-import branch for review
         run: |
           git config user.name "drinks-network-import"
           git config user.email "actions@users.noreply.github.com"
-          git add public
-          if git diff --cached --quiet; then echo "Nothing new to import"; exit 0; fi
-          git commit -m "Import blog posts and images from the old WordPress site"
-          git push
+          git checkout -B wordpress-import
+          git add public import-report.txt
+          git commit -m "Import blog posts and images from the old WordPress site" || echo "Nothing new"
+          git push -f origin wordpress-import
