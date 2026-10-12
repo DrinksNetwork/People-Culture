@@ -376,7 +376,7 @@
       // sign-off, sitting on the tan to the left of the crew
       var sy = H - 450;
       // pen-scribble signature in navy ink
-      scribble(c, X + 36, sy - 6, 0.82, '#4A4744');
+      scribble(c, X + 40, sy - 6, 0.98, '#4A4744');
       c.fillStyle = INK; c.fillRect(X, sy + 24, 560, 2);
       c.fillStyle = MUTED; c.font = '700 22px ' + NARROW; spaced(c, 'HAYDEN WOOD  ·  FOUNDER, DRINKS NETWORK', X, sy + 64, 4, 'left');
       stamp(c, X + 920, sy + 10, 158, { RED: '#C21F27', ANTON: ANTON, NARROW: NARROW, date: d.date.toLocaleDateString('en-AU', { day: '2-digit', month: '2-digit', year: 'numeric' }).replace(/\//g, '.') });
@@ -389,54 +389,40 @@
   }
   window.DNCertificate = { draw: function (cv, d) { return drawCertificate(cv, d); } };
   function scribble(c, x, y, k, col) {
-    // "HG Wood" as a quick signature: tall H, looped G, then Wood with a flicked d and an underline
-    var strokes = [], cur;
-    function start() { cur = []; strokes.push(cur); }
-    function bz(sg, step) { for (var t = 0; t <= 1.0001; t += step || 0.04) cur.push(bez(sg, t)); }
-    function loop(cx, cy, rx, ry, a0, turns) { for (var t = 0; t <= turns * Math.PI * 2; t += 0.14) cur.push([cx + Math.cos(a0 - t) * rx, cy + Math.sin(a0 - t) * ry]); }
-    // H
-    start();
-    bz([[0, 16], [4, -40], [10, -96], [16, -112]]);
-    bz([[16, -112], [18, -70], [10, -20], [8, 14]]);
-    bz([[8, 14], [2, -24], [10, -50], [30, -54]]);
-    bz([[30, -54], [44, -56], [56, -56], [64, -60]]);
-    bz([[64, -60], [62, -90], [64, -110], [68, -114]]);
-    bz([[68, -114], [64, -70], [54, -20], [52, 14]]);
-    // G
-    bz([[52, 14], [70, -30], [104, -96], [122, -88]]);
-    bz([[122, -88], [126, -70], [118, -104], [100, -100]]);
-    bz([[100, -100], [74, -94], [70, -30], [86, 4]]);
-    bz([[86, 4], [100, 22], [128, 4], [130, -26]]);
-    bz([[130, -26], [120, -36], [108, -34], [102, -30]]);
-    // Wood
-    start();
-    bz([[148, -66], [150, -40], [154, -6], [160, 8]]);
-    bz([[160, 8], [166, -12], [170, -32], [176, -44]]);
-    bz([[176, -44], [180, -26], [184, -6], [190, 8]]);
-    bz([[190, 8], [196, -16], [202, -44], [210, -68]]);
-    bz([[210, -68], [214, -54], [222, -42], [232, -40]]);
-    loop(236, -20, 15, 21, -Math.PI / 2, 1.05);
-    bz([cur[cur.length - 1], [250, -38], [262, -42], [272, -40]]);
-    loop(276, -20, 15, 21, -Math.PI / 2, 1.05);
-    bz([cur[cur.length - 1], [290, -36], [300, -40], [312, -38]]);
-    loop(318, -18, 16, 22, -Math.PI / 4, 0.95);
-    bz([cur[cur.length - 1], [330, -50], [336, -90], [340, -104]]);
-    bz([[340, -104], [338, -70], [330, -20], [334, 10]]);
-    // flick and underline back under the name
-    bz([[334, 10], [360, -10], [400, -40], [420, -30]]);
-    bz([[420, -30], [430, 0], [330, 34], [180, 40]], 0.02);
-    bz([[180, 40], [80, 44], [20, 40], [-24, 58]], 0.02);
-    c.save(); c.translate(x, y); c.rotate(-0.05); c.transform(1, 0, -0.2, 1, 0, 0); c.scale(k, k);
-    c.strokeStyle = col; c.globalAlpha = 0.85; c.lineCap = 'round'; c.lineJoin = 'round';
-    strokes.forEach(function (pts) {
-      for (var j = 1; j < pts.length; j++) {
-        var p0 = pts[j - 1], p1 = pts[j], dx = p1[0] - p0[0], dy = p1[1] - p0[1], sp = Math.sqrt(dx * dx + dy * dy);
-        var taper = Math.min(1, j / 8, (pts.length - j) / 30);
-        var press = 3.1 + (dy > 0 ? 0.9 : -0.6) - Math.min(sp, 14) * 0.1;
-        c.lineWidth = Math.max(0.9, press * taper);
-        c.beginPath(); c.moveTo(p0[0], p0[1]); c.lineTo(p1[0], p1[1]); c.stroke();
+    // "HG Wood" in joined-up running writing: one continuous pen line through key points (Catmull-Rom)
+    var K = [
+      [-14, 8], [0, -10], [9, -58], [15, -96],
+      [12, -60], [8, -20], [6, 4],
+      [14, -24], [30, -62], [44, -96],
+      [42, -60], [39, -20], [38, 4],
+      [30, -14], [22, -38], [32, -48], [56, -46],
+      [80, -70], [98, -88], [86, -95], [68, -82], [60, -50], [62, -16], [76, 2], [96, -4], [106, -24], [104, -40],
+      [106, -10], [104, 20], [94, 42], [84, 40], [88, 22], [104, 4], [118, -10],
+      [124, -34], [128, -40], [130, -20], [134, -2], [140, -24], [144, -38], [148, -20], [152, -2], [160, -26], [166, -42], [171, -36],
+      [184, -36], [175, -29], [172, -13], [180, 0], [192, -6], [194, -22], [188, -34], [186, -29], [198, -27],
+      [210, -36], [201, -28], [199, -12], [207, 0], [219, -6], [221, -22], [214, -34], [211, -29], [226, -26],
+      [240, -34], [231, -26], [229, -10], [237, 0], [250, -6], [256, -24], [260, -60], [264, -94], [267, -99], [263, -70], [259, -30], [259, -2], [267, 3], [282, -5],
+      [310, -26], [330, -36], [324, -12], [284, 12], [190, 24], [90, 28], [16, 30], [-30, 42]
+    ];
+    var pts = [];
+    for (var i = 0; i < K.length - 1; i++) {
+      var p0 = K[i - 1] || K[i], p1 = K[i], p2 = K[i + 1], p3 = K[i + 2] || p2;
+      for (var t = 0; t < 1; t += 0.1) {
+        var t2 = t * t, t3 = t2 * t;
+        pts.push([0.5 * (2 * p1[0] + (-p0[0] + p2[0]) * t + (2 * p0[0] - 5 * p1[0] + 4 * p2[0] - p3[0]) * t2 + (-p0[0] + 3 * p1[0] - 3 * p2[0] + p3[0]) * t3),
+                  0.5 * (2 * p1[1] + (-p0[1] + p2[1]) * t + (2 * p0[1] - 5 * p1[1] + 4 * p2[1] - p3[1]) * t2 + (-p0[1] + 3 * p1[1] - 3 * p2[1] + p3[1]) * t3)]);
       }
-    });
+    }
+    pts.push(K[K.length - 1]);
+    c.save(); c.translate(x, y); c.rotate(-0.05); c.transform(1, 0, -0.28, 1, 0, 0); c.scale(k, k);
+    c.strokeStyle = col; c.globalAlpha = 0.85; c.lineCap = 'round'; c.lineJoin = 'round';
+    for (var j = 1; j < pts.length; j++) {
+      var a0 = pts[j - 1], a1 = pts[j], dx = a1[0] - a0[0], dy = a1[1] - a0[1], sp = Math.sqrt(dx * dx + dy * dy);
+      var taper = Math.min(1, j / 10, (pts.length - j) / 60);
+      var press = 3.2 + (dy > 0 ? 1 : -0.6) - Math.min(sp, 14) * 0.1;
+      c.lineWidth = Math.max(0.9, press * taper);
+      c.beginPath(); c.moveTo(a0[0], a0[1]); c.lineTo(a1[0], a1[1]); c.stroke();
+    }
     c.restore();
   }
   function bez(p, t) {
