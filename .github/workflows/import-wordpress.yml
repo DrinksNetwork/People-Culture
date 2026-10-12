@@ -1,0 +1,34 @@
+# Copies blog posts, legal pages and every image from the old WordPress site into the repo.
+# Run it from GitHub: Actions -> Import from WordPress -> Run workflow.
+name: Import from WordPress
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: import-wordpress
+  cancel-in-progress: false
+
+jobs:
+  import:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Import posts, pages and images
+        run: npm run import:wordpress
+      - name: Check the site still builds
+        run: npm run build
+      - name: Commit the imported files
+        run: |
+          git config user.name "drinks-network-import"
+          git config user.email "actions@users.noreply.github.com"
+          git add public
+          if git diff --cached --quiet; then echo "Nothing new to import"; exit 0; fi
+          git commit -m "Import blog posts and images from the old WordPress site"
+          git push
