@@ -350,12 +350,17 @@
       var maxW = W - 170 - 520 - X;
       c.fillStyle = RED; c.font = '700 34px ' + NARROW; spaced(c, 'CERTIFICATE OF COMPLETION', X, 400, 11, 'left');
       c.fillStyle = INK; c.font = 'italic 400 52px ' + SERIF; c.fillText('This certifies that', X, 490);
-      var name = d.name.toUpperCase(), size = 196;
+      // name: 140px at most, shrinking to 76px; very long names wrap onto two lines
+      var name = d.name.toUpperCase(), size = 140;
       c.font = '400 ' + size + 'px ' + ANTON;
-      while (c.measureText(name).width > maxW && size > 84) { size -= 6; c.font = '400 ' + size + 'px ' + ANTON; }
+      while (c.measureText(name).width > maxW && size > 76) { size -= 4; c.font = '400 ' + size + 'px ' + ANTON; }
+      var nameLines = [name];
+      if (c.measureText(name).width > maxW) { size = 76; c.font = '400 ' + size + 'px ' + ANTON; nameLines = lineWrap(c, name, maxW).slice(0, 2); }
       var ny = 490 + size * 0.92 + 26;
-      c.fillStyle = NAVY; c.fillText(name, X, ny);
-      var rw = Math.max(520, Math.min(maxW, c.measureText(name).width));
+      c.fillStyle = NAVY;
+      nameLines.forEach(function (ln, k) { c.fillText(ln, X, ny + k * size * 1.04); });
+      var rw = Math.max(520, Math.min(maxW, Math.max.apply(null, nameLines.map(function (ln) { return c.measureText(ln).width; }))));
+      ny += (nameLines.length - 1) * size * 1.04;
       c.fillStyle = RED; c.fillRect(X, ny + 34, rw, 8);
       c.fillStyle = TAN2; c.fillRect(X + rw + 18, ny + 34, 8, 8); c.fillRect(X + rw + 38, ny + 34, 8, 8);
       c.fillStyle = INK; c.font = 'italic 400 44px ' + SERIF; c.fillText('has successfully completed the Drinks Network course', X, ny + 126);
