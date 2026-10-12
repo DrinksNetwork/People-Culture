@@ -82,6 +82,16 @@ Create the application password in WordPress: Users -> Profile -> Application Pa
                  "questions": [ { "q", "options": ["a","b","c"], "answer": 1, "explain" } ] } ] }
 ```
 
+## Enquiries: RepShare, Mailchimp and emails (server/enquiries.mjs)
+
+`server/enquiries.mjs` is the drop-in handler for `POST /api/enquiries` in the RepShare app (Express example at the bottom of the file; `npm test` runs its checks with Mailchimp mocked). For every form it:
+1. saves the contact in RepShare (pass your `saveContact`),
+2. adds or updates them in the Mailchimp audience: merge fields FNAME, LNAME, PHONE, COMPANY; tags Vendor / Rep / Partner / Buyer / Trade, `campaign:<slug>`, `form:<name>` and `enquiry`; a note with every answer; status `subscribed` with consent, otherwise `transactional`,
+3. emails hayden@, manuel@, joe@ and emma@ with every answer (reply-to is the enquirer),
+4. sends the enquirer a "We've got your enquiry" email.
+
+Replit Secrets: `MAILCHIMP_API_KEY` (e.g. `xxxx-us21`), `MAILCHIMP_AUDIENCE_ID`, `MAILCHIMP_TRANSACTIONAL_KEY` (Mailchimp Transactional, for steps 3 and 4), `ENQUIRY_FROM_EMAIL` (a verified sending domain), optional `ENQUIRY_ADMIN_EMAILS`. In Mailchimp, a Customer Journey that starts on the tag `enquiry` can send the enquirer's email instead of step 4, so marketing can edit it there. A Mailchimp outage is logged and never loses the lead.
+
 ## Build and preview
 
 Requires Node 18 or later. There are no npm dependencies, so `npm install` isn't needed.
