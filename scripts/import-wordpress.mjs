@@ -15,9 +15,7 @@ const API = `${OLD}/wp-json/wp/v2`;
 const HEADER = readFileSync(join(ROOT, 'scripts/partials/header.html'), 'utf8');
 const FOOTER = readFileSync(join(ROOT, 'scripts/partials/footer.html'), 'utf8');
 const LEGAL = [
-  { wp: 'privacy-policy', out: 'privacy-policy', title: 'Privacy policy' },
   { wp: 'cookie-policy', out: 'cookie-policy', title: 'Cookie policy' },
-  { wp: 'user-terms-2', out: 'user-terms', title: 'User terms' },
 ];
 
 const esc = s => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
@@ -32,7 +30,7 @@ async function getJSON(url) {
 // Strip page-builder clutter but keep the words, headings, lists, links, images and embeds.
 // Old WordPress page addresses -> new site paths
 const PAGE_MAP = {
-  'privacy-policy': '/privacy-policy', 'cookie-policy': '/cookie-policy', 'user-terms-2': '/user-terms',
+  'privacy-policy': '/legal/privacy-policy', 'cookie-policy': '/cookie-policy', 'user-terms-2': '/legal/terms-of-use',
   'repshare': '/brands', 'repshare-producer': '/reps', 'securicode': '/securicode', 'about-us': '/about',
   'contact-drinks-network': '/contact', 'contact': '/contact', 'frequently-asked-questions': '/faqs',
   'learn-spirits-wine-hospitality-skills': '/courses', 'blog': '/blog', 'liquor-industry-people-and-culture': '/blog',

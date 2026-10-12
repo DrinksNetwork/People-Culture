@@ -92,6 +92,10 @@ Create the application password in WordPress: Users -> Profile -> Application Pa
 
 Replit Secrets: `MAILCHIMP_API_KEY` (e.g. `xxxx-us21`), `MAILCHIMP_AUDIENCE_ID`, `MAILCHIMP_TRANSACTIONAL_KEY` (Mailchimp Transactional, for steps 3 and 4), `ENQUIRY_FROM_EMAIL` (a verified sending domain), optional `ENQUIRY_ADMIN_EMAILS`. In Mailchimp, a Customer Journey that starts on the tag `enquiry` can send the enquirer's email instead of step 4, so marketing can edit it there. A Mailchimp outage is logged and never loses the lead.
 
+## Legal pages (content/legal -> public/legal)
+
+The RepShare Terms of Use, Service Terms, Payment Terms and Privacy Policy (written in Claude Docs) live as markdown in `content/legal/`. `npm run legal` turns them into `/legal/terms-of-use`, `/legal/service-terms`, `/legal/payment-terms`, `/legal/privacy-policy` and the `/legal` hub, with anchors for each party (`#4-vendors`, `#5-representatives`, `#6-orders`, `#part-a-vendors`, `#part-b-representatives`, `#part-c-buyers`). To update one, replace its markdown with the latest export and run `npm run legal`. Every page footer links all of them; brand forms link the Vendor parts, rep pages the Representative parts, venue forms the Buyer parts, and every form links the Privacy Policy. The old `/privacy-policy` and `/user-terms` addresses forward to the new pages. The Subcontractor Agreement is not published: it is issued to reps inside RepShare.
+
 ## Build and preview
 
 Requires Node 18 or later. There are no npm dependencies, so `npm install` isn't needed.

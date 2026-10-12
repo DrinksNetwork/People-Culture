@@ -12,6 +12,7 @@
     "preview": "node scripts/serve.mjs",
     "import:wordpress": "node scripts/import-wordpress.mjs",
     "import:courses": "node scripts/import-courses.mjs",
-    "test": "node --test server/test/enquiries.test.mjs"
+    "test": "node --test server/test/enquiries.test.mjs",
+    "legal": "node scripts/legal.mjs"
   }
 }
