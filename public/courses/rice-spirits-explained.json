@@ -11,5 +11,301 @@
     "Rice spirits in modern bars and restaurants"
   ],
   "legacyUrl": "https://www.drinksnetwork.com.au/courses/welcome-to-rice-spirits-explained/",
-  "lessons": []
+  "lessons": [
+    {
+      "id": "l1",
+      "title": "Welcome to Rice Spirits Explained",
+      "thumb": "/media/courses/yt/JQAWKqL7mxY.jpg",
+      "review": "<p>Rice spirits are distilled across Asia: Chinese <strong>baijiu</strong> and <strong>shaojiu</strong>, Japanese <strong>shochu</strong>, Okinawan <strong>awamori</strong>, Korean <strong>soju</strong>, and now rice whisky.</p><p>Baijiu, China's national spirit, is the most consumed spirit in the world by volume, though much of it is made from sorghum rather than rice.</p><p>This course covers their history, how they are made, the main styles, and how bartenders are mixing them today.</p>",
+      "listen": {
+        "type": "youtube",
+        "id": "JQAWKqL7mxY"
+      },
+      "questions": [
+        {
+          "q": "Which spirit is China's national spirit?",
+          "options": [
+            "Sake",
+            "Baijiu",
+            "Soju"
+          ],
+          "answer": 1,
+          "explain": "Baijiu is China's national spirit."
+        },
+        {
+          "q": "Awamori comes from?",
+          "options": [
+            "Taiwan",
+            "Okinawa",
+            "Korea"
+          ],
+          "answer": 1,
+          "explain": "Awamori is Okinawa's rice spirit."
+        },
+        {
+          "q": "Shochu is from?",
+          "options": [
+            "Vietnam",
+            "China",
+            "Japan"
+          ],
+          "answer": 2,
+          "explain": "Shochu is Japanese."
+        }
+      ]
+    },
+    {
+      "id": "l2",
+      "title": "A history of rice spirits",
+      "thumb": "/media/courses/yt/eJGskec2ilU.jpg",
+      "review": "<p>Rice has been fermented in China for thousands of years. Distillation became widespread there later, and distilled rice spirits spread through East and Southeast Asia along trade routes.</p><p>Okinawa's awamori is believed to trace back to distilling techniques that arrived through trade with Siam (Thailand) in the 1400s, and it is still made with long-grain Thai rice.</p><p>Each culture shaped its own style, from Japan's single-distilled honkaku shochu to China's powerful, aromatic baijiu.</p>",
+      "listen": {
+        "type": "youtube",
+        "id": "eJGskec2ilU"
+      },
+      "questions": [
+        {
+          "q": "Awamori is traditionally made with?",
+          "options": [
+            "Thai long-grain rice",
+            "Sorghum",
+            "Barley"
+          ],
+          "answer": 0,
+          "explain": "Awamori uses Thai indica rice."
+        },
+        {
+          "q": "Awamori's techniques are believed to have come through trade with?",
+          "options": [
+            "Portugal",
+            "India",
+            "Siam (Thailand)"
+          ],
+          "answer": 2,
+          "explain": "Trade with Siam brought distilling to Okinawa."
+        },
+        {
+          "q": "Rice fermentation in China is?",
+          "options": [
+            "Unknown",
+            "Very recent",
+            "Thousands of years old"
+          ],
+          "answer": 2,
+          "explain": "It goes back thousands of years."
+        }
+      ]
+    },
+    {
+      "id": "l3",
+      "title": "Types and styles of rice spirits",
+      "thumb": "/media/courses/yt/IsrSq42mk7o.jpg",
+      "review": "<p>Baijiu is grouped by aroma: <strong>strong aroma</strong>, <strong>light aroma</strong>, <strong>sauce aroma</strong> (the style of Moutai) and <strong>rice aroma</strong>, which is light, floral and clean.</p><p>Japanese <strong>kome shochu</strong> is made from rice and usually distilled once, keeping the character of its raw ingredient. <strong>Soju</strong> is Korea's everyday spirit.</p><p>New-wave producers are ageing rice spirits in oak to create <strong>rice whisky</strong>.</p>",
+      "listen": {
+        "type": "youtube",
+        "id": "IsrSq42mk7o"
+      },
+      "questions": [
+        {
+          "q": "\"Rice aroma\" baijiu is usually?",
+          "options": [
+            "Light, floral and clean",
+            "Heavy and smoky",
+            "Sweet and syrupy"
+          ],
+          "answer": 0,
+          "explain": "Rice aroma is the lightest style."
+        },
+        {
+          "q": "Kome shochu is made from?",
+          "options": [
+            "Sweet potato",
+            "Barley",
+            "Rice"
+          ],
+          "answer": 2,
+          "explain": "\"Kome\" means rice."
+        },
+        {
+          "q": "Moutai is an example of which aroma?",
+          "options": [
+            "Light aroma",
+            "Rice aroma",
+            "Sauce aroma"
+          ],
+          "answer": 2,
+          "explain": "Moutai defines sauce aroma."
+        }
+      ]
+    },
+    {
+      "id": "l4",
+      "title": "How baijiu is made",
+      "thumb": "/media/courses/yt/pO_mH_7YSuY.jpg",
+      "review": "<p>Baijiu uses <strong>qu</strong>, a starter of moulds and yeasts grown on grain, which breaks down starch and ferments it at the same time.</p><p>Much baijiu is fermented in solid state: damp grain packed into pits or jars rather than a liquid mash.</p><p>It is then distilled, often steamed through the fermented grain, aged in clay jars, and blended to a house style.</p>",
+      "listen": {
+        "type": "youtube",
+        "id": "pO_mH_7YSuY"
+      },
+      "questions": [
+        {
+          "q": "What is qu?",
+          "options": [
+            "A starter of moulds and yeasts",
+            "A glass",
+            "A type of still"
+          ],
+          "answer": 0,
+          "explain": "Qu converts starch and ferments at once."
+        },
+        {
+          "q": "Baijiu is often fermented?",
+          "options": [
+            "Only in steel tanks",
+            "In oak barrels",
+            "In solid state, in pits or jars"
+          ],
+          "answer": 2,
+          "explain": "Solid-state fermentation is typical."
+        },
+        {
+          "q": "Baijiu is commonly aged in?",
+          "options": [
+            "New charred oak only",
+            "Clay jars",
+            "Plastic"
+          ],
+          "answer": 1,
+          "explain": "Clay jars are traditional."
+        }
+      ]
+    },
+    {
+      "id": "l5",
+      "title": "Turning baijiu into rice whisky",
+      "thumb": "/media/courses/yt/4vjYc4dIN7g.jpg",
+      "review": "<p>Rice whisky takes a clean, rice-based spirit and matures it in oak casks, the way whisky makers mature malt.</p><p>The oak adds colour, vanilla and spice while the rice keeps a light, floral base.</p><p>Brands such as Grand Talon are introducing whisky drinkers to rice spirits through familiar serves like the highball.</p>",
+      "listen": {
+        "type": "youtube",
+        "id": "4vjYc4dIN7g"
+      },
+      "questions": [
+        {
+          "q": "What turns a rice spirit into rice whisky?",
+          "options": [
+            "Maturing in oak casks",
+            "Adding malt",
+            "Filtering"
+          ],
+          "answer": 0,
+          "explain": "Oak maturation creates rice whisky."
+        },
+        {
+          "q": "Oak adds?",
+          "options": [
+            "Sugar",
+            "Colour, vanilla and spice",
+            "Smoke only"
+          ],
+          "answer": 1,
+          "explain": "Oak brings colour and sweet spice."
+        },
+        {
+          "q": "A good introductory serve?",
+          "options": [
+            "A hot toddy only",
+            "A highball",
+            "A shot"
+          ],
+          "answer": 1,
+          "explain": "The highball is a great entry point."
+        }
+      ]
+    },
+    {
+      "id": "l6",
+      "title": "The future of rice spirits",
+      "thumb": "/media/courses/yt/0db-nOsabhU.jpg",
+      "review": "<p>Bartenders worldwide are discovering rice spirits for their clean, aromatic profiles.</p><p>Lighter styles, lower-ABV bottlings and cocktail-friendly releases are helping them reach new drinkers outside Asia.</p><p>For venues, rice spirits are a point of difference on the back bar and a story to tell guests.</p>",
+      "listen": {
+        "type": "youtube",
+        "id": "0db-nOsabhU"
+      },
+      "questions": [
+        {
+          "q": "Why are bartenders interested?",
+          "options": [
+            "They are sweet",
+            "They are cheap",
+            "Clean, aromatic profiles"
+          ],
+          "answer": 2,
+          "explain": "Their aromatics suit cocktails."
+        },
+        {
+          "q": "What helps rice spirits reach new drinkers?",
+          "options": [
+            "Lighter, cocktail-friendly styles",
+            "Smaller bottles only",
+            "Higher prices"
+          ],
+          "answer": 0,
+          "explain": "Approachable styles and cocktails."
+        },
+        {
+          "q": "For venues, rice spirits offer?",
+          "options": [
+            "Lower margins",
+            "A point of difference and a story",
+            "Nothing new"
+          ],
+          "answer": 1,
+          "explain": "A talking point on the back bar."
+        }
+      ]
+    },
+    {
+      "id": "l7",
+      "title": "Mixing it: the rice whisky highball",
+      "thumb": "/media/courses/yt/2puThhqo_Gk.jpg",
+      "review": "<p>The highball is the easiest way to introduce rice whisky: a tall glass packed with ice, a measure of spirit and chilled soda water.</p><p>Stir gently to keep the bubbles. A twist of citrus peel lifts the floral notes.</p><p>Other easy serves include baijiu and tonic, a Negroni twist with shaojiu and rice wine, and a baijiu Margarita.</p>",
+      "listen": {
+        "type": "youtube",
+        "id": "2puThhqo_Gk"
+      },
+      "questions": [
+        {
+          "q": "A highball is?",
+          "options": [
+            "A shot with beer",
+            "Spirit, lots of ice and chilled soda",
+            "A hot drink"
+          ],
+          "answer": 1,
+          "explain": "Tall, cold and sparkling."
+        },
+        {
+          "q": "How should you stir a highball?",
+          "options": [
+            "Gently, to keep the bubbles",
+            "Not at all, shake it",
+            "Vigorously"
+          ],
+          "answer": 0,
+          "explain": "Gentle stirring keeps carbonation."
+        },
+        {
+          "q": "Which is another easy rice spirit serve?",
+          "options": [
+            "Baijiu eggnog",
+            "Baijiu and tonic",
+            "Hot buttered baijiu"
+          ],
+          "answer": 1,
+          "explain": "Baijiu and tonic is simple and refreshing."
+        }
+      ]
+    }
+  ],
+  "videoSeries": "Drinks Network Explained (YouTube)"
 }

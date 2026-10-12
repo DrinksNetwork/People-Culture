@@ -12,5 +12,385 @@
     "Classic and modern tequila cocktails"
   ],
   "legacyUrl": "https://www.drinksnetwork.com.au/courses/tequila-explained-the-ultimate-course-on-tequila-tequila-cocktails/",
-  "lessons": []
+  "lessons": [
+    {
+      "id": "l1",
+      "title": "Welcome to Tequila Explained",
+      "thumb": "/media/courses/yt/0Qwrncg4zng.jpg",
+      "review": "<p>Tequila is a Mexican spirit made from the blue Weber agave plant (<em>Agave tequilana</em>). It has a protected designation of origin, much like Champagne or Scotch.</p><p>It can only be made in the state of Jalisco and in parts of Guanajuato, Michoacán, Nayarit and Tamaulipas.</p><p>This course covers tequila's history, how it is made, the rules, and every style from blanco to añejo.</p>",
+      "listen": {
+        "type": "youtube",
+        "id": "0Qwrncg4zng"
+      },
+      "questions": [
+        {
+          "q": "Tequila is made from?",
+          "options": [
+            "Blue Weber agave",
+            "Sugar cane",
+            "Any agave"
+          ],
+          "answer": 0,
+          "explain": "Only blue Weber agave can be used."
+        },
+        {
+          "q": "Which state produces most tequila?",
+          "options": [
+            "Sonora",
+            "Jalisco",
+            "Oaxaca"
+          ],
+          "answer": 1,
+          "explain": "Jalisco is the heartland of tequila."
+        },
+        {
+          "q": "Tequila is protected by?",
+          "options": [
+            "A designation of origin",
+            "Nothing",
+            "A trademark held by one company"
+          ],
+          "answer": 0,
+          "explain": "Tequila has a protected denomination of origin."
+        }
+      ]
+    },
+    {
+      "id": "l2",
+      "title": "The history of tequila",
+      "thumb": "/media/courses/yt/88z0fZBvftw.jpg",
+      "review": "<p>Long before tequila, the Aztecs drank <em>pulque</em>, a fermented (not distilled) agave drink.</p><p>Spanish settlers brought distillation in the 1500s and began distilling agave around the town of Tequila in Jalisco.</p><p>Jose Cuervo received one of the first licences to produce in 1795, and Mexico protected the name \"tequila\" in 1974.</p>",
+      "listen": {
+        "type": "youtube",
+        "id": "88z0fZBvftw"
+      },
+      "questions": [
+        {
+          "q": "What did the Aztecs drink from agave?",
+          "options": [
+            "Mezcal",
+            "Pulque",
+            "Tequila"
+          ],
+          "answer": 1,
+          "explain": "Pulque is fermented agave sap."
+        },
+        {
+          "q": "Who brought distillation to Mexico?",
+          "options": [
+            "The French",
+            "The Spanish",
+            "The Aztecs"
+          ],
+          "answer": 1,
+          "explain": "Spanish settlers introduced distilling."
+        },
+        {
+          "q": "Tequila is named after?",
+          "options": [
+            "A town in Jalisco",
+            "A grape",
+            "A volcano"
+          ],
+          "answer": 0,
+          "explain": "The town of Tequila in Jalisco."
+        }
+      ]
+    },
+    {
+      "id": "l3",
+      "title": "How tequila is made",
+      "thumb": "/media/courses/yt/NZgk3CHlxls.jpg",
+      "review": "<p>Agave takes around six to eight years to mature. <em>Jimadores</em> harvest it by hand, trimming the leaves to reveal the heart, or <em>piña</em>.</p><p>The piñas are cooked, traditionally in stone or brick ovens (<em>hornos</em>), or in steel autoclaves, to turn their starches into fermentable sugars. They are then crushed, sometimes with a stone wheel called a <em>tahona</em>.</p><p>The juice is fermented and usually distilled twice. It may then be bottled straight away or rested in oak.</p>",
+      "listen": {
+        "type": "youtube",
+        "id": "NZgk3CHlxls"
+      },
+      "questions": [
+        {
+          "q": "Who harvests agave?",
+          "options": [
+            "Bartenders",
+            "Jimadores",
+            "Sommeliers"
+          ],
+          "answer": 1,
+          "explain": "Jimadores harvest agave by hand."
+        },
+        {
+          "q": "The heart of the agave is called?",
+          "options": [
+            "The tahona",
+            "The piña",
+            "The horno"
+          ],
+          "answer": 1,
+          "explain": "The piña is cooked and crushed."
+        },
+        {
+          "q": "How long does agave take to mature?",
+          "options": [
+            "About 6–8 years",
+            "About 30 years",
+            "About one year"
+          ],
+          "answer": 0,
+          "explain": "Blue agave takes many years to mature."
+        }
+      ]
+    },
+    {
+      "id": "l4",
+      "title": "Tequila rules and regulations",
+      "thumb": "/media/courses/yt/f90jJPeuvfU.jpg",
+      "review": "<p>Tequila is regulated by Mexico's official standard (the NOM) and certified by the Tequila Regulatory Council (CRT).</p><p>There are two categories. <strong>100% agave</strong> tequila is made only from blue agave sugars. <strong>Tequila</strong> (often called <em>mixto</em>) must contain at least 51% agave sugars, with other sugars making up the rest.</p><p>Every bottle carries a NOM number that identifies the distillery that made it.</p>",
+      "listen": {
+        "type": "youtube",
+        "id": "f90jJPeuvfU"
+      },
+      "questions": [
+        {
+          "q": "Minimum agave sugars in a mixto tequila?",
+          "options": [
+            "51%",
+            "100%",
+            "10%"
+          ],
+          "answer": 0,
+          "explain": "Mixto needs at least 51% agave sugars."
+        },
+        {
+          "q": "The NOM number tells you?",
+          "options": [
+            "The price",
+            "The age",
+            "Which distillery made it"
+          ],
+          "answer": 2,
+          "explain": "NOM identifies the producing distillery."
+        },
+        {
+          "q": "Which tequila uses only agave sugars?",
+          "options": [
+            "Gold",
+            "100% agave",
+            "Mixto"
+          ],
+          "answer": 1,
+          "explain": "100% agave tequila uses only agave."
+        }
+      ]
+    },
+    {
+      "id": "l5",
+      "title": "Types and styles of tequila",
+      "thumb": "/media/courses/yt/DwrIVfpxw8c.jpg",
+      "review": "<p><strong>Blanco</strong> (silver): unaged or rested up to two months. <strong>Joven</strong> (gold): usually a blend or a softened blanco.</p><p><strong>Reposado</strong>: rested two to twelve months in oak. <strong>Añejo</strong>: aged one to three years in oak barrels of up to 600 litres.</p><p><strong>Extra Añejo</strong>: aged more than three years, a category added in 2006. Older is not \"better\", just different.</p>",
+      "listen": {
+        "type": "youtube",
+        "id": "DwrIVfpxw8c"
+      },
+      "questions": [
+        {
+          "q": "Reposado tequila is rested for?",
+          "options": [
+            "Over 3 years",
+            "2–12 months",
+            "Under 2 months"
+          ],
+          "answer": 1,
+          "explain": "Reposado means \"rested\", 2 to 12 months."
+        },
+        {
+          "q": "Extra Añejo is aged for?",
+          "options": [
+            "Not at all",
+            "More than 3 years",
+            "1–3 years"
+          ],
+          "answer": 1,
+          "explain": "More than three years in oak."
+        },
+        {
+          "q": "Blanco tequila is?",
+          "options": [
+            "Always mixto",
+            "Unaged or very briefly rested",
+            "Aged five years"
+          ],
+          "answer": 1,
+          "explain": "Blanco is the pure agave expression."
+        }
+      ]
+    },
+    {
+      "id": "l6",
+      "title": "What is blanco or silver tequila?",
+      "thumb": "/media/courses/yt/lhEAiGfChT0.jpg",
+      "review": "<p>Blanco is tequila at its purest: clear, bright and full of cooked agave, citrus and pepper.</p><p>It is bottled straight after distillation or rested in steel or oak for under two months.</p><p>Blanco is the bartender's choice for Margaritas, Palomas and other fresh, citrusy cocktails.</p>",
+      "listen": {
+        "type": "youtube",
+        "id": "lhEAiGfChT0"
+      },
+      "questions": [
+        {
+          "q": "Blanco is best known for tasting of?",
+          "options": [
+            "Vanilla and oak",
+            "Fresh agave, citrus and pepper",
+            "Smoke"
+          ],
+          "answer": 1,
+          "explain": "Unaged tequila shows the agave."
+        },
+        {
+          "q": "Blanco may be rested for up to?",
+          "options": [
+            "3 years",
+            "2 months",
+            "1 year"
+          ],
+          "answer": 1,
+          "explain": "Under two months."
+        },
+        {
+          "q": "A classic blanco cocktail?",
+          "options": [
+            "Old Fashioned",
+            "Negroni",
+            "Margarita"
+          ],
+          "answer": 2,
+          "explain": "Blanco shines in a Margarita."
+        }
+      ]
+    },
+    {
+      "id": "l7",
+      "title": "Reposado tequila: how long and why",
+      "thumb": "/media/courses/yt/lvQpcl6uaYw.jpg",
+      "review": "<p>\"Reposado\" means rested. It spends two to twelve months in oak, often ex-bourbon barrels.</p><p>That short rest softens the spirit and adds light vanilla and caramel while keeping the agave character.</p><p>It is a great bridge for whisky drinkers and works neat or in richer cocktails.</p>",
+      "listen": {
+        "type": "youtube",
+        "id": "lvQpcl6uaYw"
+      },
+      "questions": [
+        {
+          "q": "\"Reposado\" means?",
+          "options": [
+            "Silver",
+            "Rested",
+            "Old"
+          ],
+          "answer": 1,
+          "explain": "Reposado means rested."
+        },
+        {
+          "q": "Reposado is aged for?",
+          "options": [
+            "No time",
+            "2–12 months",
+            "3+ years"
+          ],
+          "answer": 1,
+          "explain": "Two to twelve months in oak."
+        },
+        {
+          "q": "What does oak add?",
+          "options": [
+            "Peat smoke",
+            "Bitterness only",
+            "Vanilla and caramel softness"
+          ],
+          "answer": 2,
+          "explain": "Oak softens and sweetens."
+        }
+      ]
+    },
+    {
+      "id": "l8",
+      "title": "What makes gold tequila different?",
+      "thumb": "/media/courses/yt/aDkdezNBGpc.jpg",
+      "review": "<p>Gold (joven or oro) tequila is often a mixto with permitted colouring and flavouring to look and taste aged.</p><p>A higher-quality joven can also be a blend of blanco with reposado or añejo.</p><p>Read the label: \"100% agave\" tells you it is made only from agave, whatever its colour.</p>",
+      "listen": {
+        "type": "youtube",
+        "id": "aDkdezNBGpc"
+      },
+      "questions": [
+        {
+          "q": "Gold tequila is often?",
+          "options": [
+            "Always aged 5 years",
+            "Made from grapes",
+            "A mixto with added colouring"
+          ],
+          "answer": 2,
+          "explain": "Many gold tequilas are coloured mixtos."
+        },
+        {
+          "q": "A quality joven can be?",
+          "options": [
+            "Vodka with agave",
+            "Pure pulque",
+            "A blend of blanco and aged tequila"
+          ],
+          "answer": 2,
+          "explain": "Joven can blend blanco with aged tequila."
+        },
+        {
+          "q": "How do you know it is only agave?",
+          "options": [
+            "The bottle shape",
+            "The colour",
+            "The words \"100% agave\" on the label"
+          ],
+          "answer": 2,
+          "explain": "Look for 100% agave."
+        }
+      ]
+    },
+    {
+      "id": "l9",
+      "title": "What gives añejo tequila its colour?",
+      "thumb": "/media/courses/yt/njqVUQLncEc.jpg",
+      "review": "<p>Añejo spends one to three years in oak barrels of up to 600 litres, and most of its amber colour comes from that wood.</p><p>Expect richer notes of vanilla, toffee, dried fruit and spice, with the agave still underneath.</p><p>Serve it like a fine whisky: neat or with a single large ice cube.</p>",
+      "listen": {
+        "type": "youtube",
+        "id": "njqVUQLncEc"
+      },
+      "questions": [
+        {
+          "q": "Añejo is aged for?",
+          "options": [
+            "2 months",
+            "1–3 years",
+            "10 years minimum"
+          ],
+          "answer": 1,
+          "explain": "One to three years in oak."
+        },
+        {
+          "q": "Most of añejo's colour comes from?",
+          "options": [
+            "The agave",
+            "The oak barrel",
+            "Food dye always"
+          ],
+          "answer": 1,
+          "explain": "Barrel ageing gives the colour."
+        },
+        {
+          "q": "How is añejo usually enjoyed?",
+          "options": [
+            "Neat or on a large cube",
+            "With cola only",
+            "Only as a shot"
+          ],
+          "answer": 0,
+          "explain": "Sip it like a fine whisky."
+        }
+      ]
+    }
+  ],
+  "videoSeries": "Drinks Network Explained (YouTube)"
 }

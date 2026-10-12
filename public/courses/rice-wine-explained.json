@@ -11,5 +11,259 @@
     "How to drink and enjoy rice wine"
   ],
   "legacyUrl": "https://www.drinksnetwork.com.au/courses/welcome-to-rice-wine-explained/",
-  "lessons": []
+  "lessons": [
+    {
+      "id": "l1",
+      "title": "Welcome to Rice Wine Explained",
+      "thumb": "/media/courses/yt/FCR-3xrrmPw.jpg",
+      "review": "<p>Rice wine is fermented, not distilled. The big families are Chinese <strong>huangjiu</strong> (yellow wine, such as Shaoxing), Japanese <strong>sake</strong>, and Korean <strong>makgeolli</strong> and <strong>cheongju</strong>.</p><p>Strength usually sits around 6% ABV for makgeolli and around 15–16% for sake.</p><p>This course covers rice wine's history, how it is made, its styles, how to drink it, and the Hakka rice wine tradition.</p>",
+      "listen": {
+        "type": "youtube",
+        "id": "FCR-3xrrmPw"
+      },
+      "questions": [
+        {
+          "q": "Is rice wine distilled?",
+          "options": [
+            "Only sake",
+            "No, it is fermented",
+            "Yes"
+          ],
+          "answer": 1,
+          "explain": "Rice wine is fermented, not distilled."
+        },
+        {
+          "q": "Shaoxing wine is a type of?",
+          "options": [
+            "Sake",
+            "Huangjiu",
+            "Makgeolli"
+          ],
+          "answer": 1,
+          "explain": "Shaoxing is a famous huangjiu."
+        },
+        {
+          "q": "Typical strength of sake?",
+          "options": [
+            "About 15–16%",
+            "About 40%",
+            "About 5%"
+          ],
+          "answer": 0,
+          "explain": "Sake is usually around 15–16% ABV."
+        }
+      ]
+    },
+    {
+      "id": "l2",
+      "title": "A history of rice wine",
+      "thumb": "/media/courses/yt/Ocik3yamZf4.jpg",
+      "review": "<p>Archaeologists found residue of a fermented drink made with rice, honey and fruit at Jiahu in China dating to around 7000 BCE, among the oldest evidence of alcohol anywhere.</p><p>Rice wine became central to ceremony, medicine and cooking across China, then Korea and Japan.</p><p>Sake brewing was refined over centuries in Japan's temples and breweries into the precise craft it is today.</p>",
+      "listen": {
+        "type": "youtube",
+        "id": "Ocik3yamZf4"
+      },
+      "questions": [
+        {
+          "q": "Early evidence of rice-based alcohol at Jiahu dates to around?",
+          "options": [
+            "1500 CE",
+            "7000 BCE",
+            "1900 CE"
+          ],
+          "answer": 1,
+          "explain": "Jiahu residue dates to about 7000 BCE."
+        },
+        {
+          "q": "Rice wine was used for?",
+          "options": [
+            "Only fuel",
+            "Ceremony, medicine and cooking",
+            "Nothing"
+          ],
+          "answer": 1,
+          "explain": "It has many traditional uses."
+        },
+        {
+          "q": "Sake comes from?",
+          "options": [
+            "Scotland",
+            "Mexico",
+            "Japan"
+          ],
+          "answer": 2,
+          "explain": "Sake is Japanese."
+        }
+      ]
+    },
+    {
+      "id": "l3",
+      "title": "How rice wine is made",
+      "thumb": "/media/courses/yt/0cejAzDtxVk.jpg",
+      "review": "<p>Rice is polished, washed, soaked and steamed. A mould (koji in Japan, qu in China) turns its starch into sugar.</p><p>Yeast ferments that sugar into alcohol at the same time. In sake this is called multiple parallel fermentation.</p><p>The mash is pressed, filtered or left cloudy, sometimes pasteurised, and rested before bottling.</p>",
+      "listen": {
+        "type": "youtube",
+        "id": "0cejAzDtxVk"
+      },
+      "questions": [
+        {
+          "q": "What turns rice starch into sugar?",
+          "options": [
+            "Oak barrels",
+            "Koji or qu mould",
+            "Distillation"
+          ],
+          "answer": 1,
+          "explain": "Mould enzymes convert the starch."
+        },
+        {
+          "q": "In sake, starch conversion and fermentation happen?",
+          "options": [
+            "Months apart",
+            "At the same time",
+            "Never"
+          ],
+          "answer": 1,
+          "explain": "This is multiple parallel fermentation."
+        },
+        {
+          "q": "Cloudy rice wine is?",
+          "options": [
+            "Left unfiltered or coarsely filtered",
+            "Distilled",
+            "Spoiled"
+          ],
+          "answer": 0,
+          "explain": "Cloudy styles keep rice solids."
+        }
+      ]
+    },
+    {
+      "id": "l4",
+      "title": "Types and styles of rice wine",
+      "thumb": "/media/courses/yt/NKB1wbSJFCU.jpg",
+      "review": "<p><strong>Sake</strong> grades follow how much the rice is polished: ginjo uses rice polished to 60% or less, daiginjo to 50% or less, and junmai means no added alcohol.</p><p><strong>Huangjiu</strong> ranges from dry to sweet and is often aged. <strong>Makgeolli</strong> is milky, lightly sparkling and low in alcohol.</p><p><strong>Mijiu</strong> is a clear Chinese rice wine, and Hakka families make a sweet glutinous rice wine at home.</p>",
+      "listen": {
+        "type": "youtube",
+        "id": "NKB1wbSJFCU"
+      },
+      "questions": [
+        {
+          "q": "Daiginjo sake is polished to?",
+          "options": [
+            "90%",
+            "100%",
+            "50% or less"
+          ],
+          "answer": 2,
+          "explain": "Daiginjo rice is polished to 50% or less."
+        },
+        {
+          "q": "\"Junmai\" means?",
+          "options": [
+            "Sparkling",
+            "No added alcohol",
+            "Aged ten years"
+          ],
+          "answer": 1,
+          "explain": "Junmai is pure rice sake."
+        },
+        {
+          "q": "Makgeolli is?",
+          "options": [
+            "Clear and 40%",
+            "A spirit",
+            "Milky, lightly sparkling and low in alcohol"
+          ],
+          "answer": 2,
+          "explain": "Korea's cloudy rice wine."
+        }
+      ]
+    },
+    {
+      "id": "l5",
+      "title": "How to drink rice wine",
+      "thumb": "/media/courses/yt/tYORLjPzyyk.jpg",
+      "review": "<p>Premium sake is best lightly chilled to show its fragrance; richer styles can be served at room temperature or gently warmed.</p><p>Huangjiu is often warmed, sometimes with dried plum or ginger. Makgeolli is shaken gently and served cold.</p><p>Rice wine loves food: try it with dumplings, seafood, grilled meats and cheese.</p>",
+      "listen": {
+        "type": "youtube",
+        "id": "tYORLjPzyyk"
+      },
+      "questions": [
+        {
+          "q": "Premium aromatic sake is best served?",
+          "options": [
+            "Frozen",
+            "Boiling hot",
+            "Lightly chilled"
+          ],
+          "answer": 2,
+          "explain": "Chilling keeps the aromas."
+        },
+        {
+          "q": "Huangjiu is often served?",
+          "options": [
+            "With cola",
+            "Warmed",
+            "Over crushed ice only"
+          ],
+          "answer": 1,
+          "explain": "Warming is traditional."
+        },
+        {
+          "q": "Before pouring makgeolli you should?",
+          "options": [
+            "Boil it",
+            "Gently shake it",
+            "Strain it"
+          ],
+          "answer": 1,
+          "explain": "Shake gently to mix the sediment."
+        }
+      ]
+    },
+    {
+      "id": "l6",
+      "title": "Hakka culture: food and wine",
+      "thumb": "/media/courses/yt/aVVaIcAl400.jpg",
+      "review": "<p>The Hakka people of southern China have a long tradition of brewing sweet glutinous rice wine at home.</p><p>It is part of family life and celebrations, and is used generously in cooking, from rice wine chicken to braises.</p><p>Hakka rice wine shows how closely food, family and drink are tied together in rice wine culture.</p>",
+      "listen": {
+        "type": "youtube",
+        "id": "aVVaIcAl400"
+      },
+      "questions": [
+        {
+          "q": "Hakka rice wine is made from?",
+          "options": [
+            "Barley",
+            "Grapes",
+            "Glutinous rice"
+          ],
+          "answer": 2,
+          "explain": "Sweet glutinous rice wine."
+        },
+        {
+          "q": "It is commonly used in?",
+          "options": [
+            "Cooking and celebrations",
+            "Only exports",
+            "Only medicine"
+          ],
+          "answer": 0,
+          "explain": "Central to Hakka cooking and family life."
+        },
+        {
+          "q": "Hakka rice wine is usually?",
+          "options": [
+            "Bitter",
+            "Smoky",
+            "Sweet"
+          ],
+          "answer": 2,
+          "explain": "Hakka rice wine is sweet."
+        }
+      ]
+    }
+  ],
+  "videoSeries": "Drinks Network Explained (YouTube)"
 }

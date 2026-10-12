@@ -10,5 +10,301 @@
     "Fun facts and insider knowledge for hospitality"
   ],
   "legacyUrl": "https://www.drinksnetwork.com.au/courses/bourbon-masterclass-drinks-network/",
-  "lessons": []
+  "lessons": [
+    {
+      "id": "l1",
+      "title": "Welcome to Bourbon Explained",
+      "thumb": "/media/courses/yt/kP-15rrHxjI.jpg",
+      "review": "<p>Bourbon is America's native spirit, a whiskey made mostly from corn and aged in new charred oak. In 1964 the US Congress recognised it as a distinctive product of the United States.</p><p>It is sweeter and rounder than most Scotch, with vanilla, caramel and toasted oak from those new barrels.</p><p>This course covers where bourbon came from, how it differs from other whiskies, the mash bill, the legal definition, ageing, and what proof really means.</p>",
+      "listen": {
+        "type": "youtube",
+        "id": "kP-15rrHxjI"
+      },
+      "questions": [
+        {
+          "q": "Bourbon is mostly made from?",
+          "options": [
+            "Barley",
+            "Rye",
+            "Corn"
+          ],
+          "answer": 2,
+          "explain": "Corn makes up the majority of the mash."
+        },
+        {
+          "q": "Bourbon must be made in?",
+          "options": [
+            "Kentucky only",
+            "The United States",
+            "Anywhere in North America"
+          ],
+          "answer": 1,
+          "explain": "Bourbon can be made anywhere in the USA."
+        },
+        {
+          "q": "Typical bourbon flavours from new charred oak?",
+          "options": [
+            "Peat and smoke",
+            "Vanilla and caramel",
+            "Salt and seaweed"
+          ],
+          "answer": 1,
+          "explain": "New charred oak gives vanilla, caramel and toast."
+        }
+      ]
+    },
+    {
+      "id": "l2",
+      "title": "The history of bourbon and American whiskey",
+      "thumb": "/media/courses/yt/J4yd0ZRUHOY.jpg",
+      "review": "<p>Settlers in Kentucky and Pennsylvania distilled their surplus grain in the late 1700s. A federal tax on whiskey sparked the Whiskey Rebellion of 1794, pushing many distillers further west.</p><p>The name is linked to Bourbon County in Kentucky and to Bourbon Street in New Orleans, where the spirit was shipped and sold.</p><p>Prohibition (1920–1933) shut most distilleries. The Bottled-in-Bond Act of 1897 had earlier set the first quality guarantee for American whiskey.</p>",
+      "listen": {
+        "type": "youtube",
+        "id": "J4yd0ZRUHOY"
+      },
+      "questions": [
+        {
+          "q": "What sparked the Whiskey Rebellion of 1794?",
+          "options": [
+            "A shortage of barrels",
+            "A ban on corn",
+            "A federal tax on whiskey"
+          ],
+          "answer": 2,
+          "explain": "Farmer-distillers rebelled against the whiskey tax."
+        },
+        {
+          "q": "US Prohibition ran from?",
+          "options": [
+            "1945–1950",
+            "1920–1933",
+            "1900–1910"
+          ],
+          "answer": 1,
+          "explain": "Prohibition lasted from 1920 to 1933."
+        },
+        {
+          "q": "The 1897 Bottled-in-Bond Act was?",
+          "options": [
+            "A new tax",
+            "An early quality guarantee",
+            "A ban on bourbon exports"
+          ],
+          "answer": 1,
+          "explain": "It set rules guaranteeing authentic, aged whiskey."
+        }
+      ]
+    },
+    {
+      "id": "l3",
+      "title": "How bourbon is made differently to whisky",
+      "thumb": "/media/courses/yt/sVsCBSJjpPU.jpg",
+      "review": "<p>Most bourbon starts in a column still, often followed by a \"doubler\" or \"thumper\", rather than the pot stills of single malt.</p><p>Many distillers use the <strong>sour mash</strong> process: some spent mash from the last run is added to the new fermentation to keep it consistent.</p><p>Bourbon must go into <strong>new</strong> charred oak containers. Scotch, by contrast, often matures in casks that held bourbon, sherry or wine before.</p>",
+      "listen": {
+        "type": "youtube",
+        "id": "sVsCBSJjpPU"
+      },
+      "questions": [
+        {
+          "q": "What does the sour mash process do?",
+          "options": [
+            "Reuses some spent mash to keep fermentation consistent",
+            "Adds lemon juice",
+            "Shortens ageing"
+          ],
+          "answer": 0,
+          "explain": "Backset from the last run keeps conditions steady."
+        },
+        {
+          "q": "Bourbon barrels must be?",
+          "options": [
+            "Any wood",
+            "New charred oak",
+            "Used sherry casks"
+          ],
+          "answer": 1,
+          "explain": "New, charred oak is required by law."
+        },
+        {
+          "q": "Where do many used bourbon barrels go?",
+          "options": [
+            "Back to the forest",
+            "To landfill only",
+            "To Scotch and other whisky makers"
+          ],
+          "answer": 2,
+          "explain": "Used bourbon barrels are widely reused for Scotch and more."
+        }
+      ]
+    },
+    {
+      "id": "l4",
+      "title": "What is a mash bill?",
+      "thumb": "/media/courses/yt/Qjg12GYa490.jpg",
+      "review": "<p>The <strong>mash bill</strong> is the grain recipe. By law, bourbon must be at least 51% corn, and most use around 60–80%.</p><p>The rest is usually malted barley (for its enzymes) plus a flavouring grain: <strong>rye</strong> for spice, or <strong>wheat</strong> for a softer, rounder \"wheated\" bourbon.</p><p>High-rye bourbons taste peppery and bold; wheated bourbons are gentler and sweeter. The mash bill is the first clue to a bourbon's style.</p>",
+      "listen": {
+        "type": "youtube",
+        "id": "Qjg12GYa490"
+      },
+      "questions": [
+        {
+          "q": "Minimum corn in bourbon?",
+          "options": [
+            "80%",
+            "25%",
+            "51%"
+          ],
+          "answer": 2,
+          "explain": "At least 51% corn is required."
+        },
+        {
+          "q": "What does rye usually add?",
+          "options": [
+            "Spice",
+            "Saltiness",
+            "Smoke"
+          ],
+          "answer": 0,
+          "explain": "Rye brings a peppery spice."
+        },
+        {
+          "q": "A \"wheated\" bourbon tends to be?",
+          "options": [
+            "Softer and rounder",
+            "Smokier",
+            "Harsher"
+          ],
+          "answer": 0,
+          "explain": "Wheat gives a gentler profile."
+        }
+      ]
+    },
+    {
+      "id": "l5",
+      "title": "How bourbon is defined",
+      "thumb": "/media/courses/yt/4LAzTXYU6wA.jpg",
+      "review": "<p>To be called bourbon it must be made in the USA from at least 51% corn and aged in new charred oak containers.</p><p>It must be distilled to no more than 80% ABV (160 proof), go into the barrel at no more than 62.5% ABV (125 proof), and be bottled at 40% ABV (80 proof) or more.</p><p>Nothing can be added except water. <strong>Straight bourbon</strong> is aged at least two years, and if it is under four years old the label must state its age.</p>",
+      "listen": {
+        "type": "youtube",
+        "id": "4LAzTXYU6wA"
+      },
+      "questions": [
+        {
+          "q": "Can colouring or flavouring be added to bourbon?",
+          "options": [
+            "Yes, caramel only",
+            "Yes, any flavour",
+            "No, only water"
+          ],
+          "answer": 2,
+          "explain": "Only water may be added."
+        },
+        {
+          "q": "Minimum bottling strength?",
+          "options": [
+            "37.5% ABV",
+            "40% ABV (80 proof)",
+            "50% ABV"
+          ],
+          "answer": 1,
+          "explain": "At least 80 proof."
+        },
+        {
+          "q": "Straight bourbon is aged at least?",
+          "options": [
+            "Ten years",
+            "Two years",
+            "Six months"
+          ],
+          "answer": 1,
+          "explain": "Straight bourbon needs two years or more."
+        }
+      ]
+    },
+    {
+      "id": "l6",
+      "title": "How bourbon is aged and why",
+      "thumb": "/media/courses/yt/0k79S2lQjk0.jpg",
+      "review": "<p>Barrels are charred inside; the heaviest level is known as \"alligator char\" for its cracked look. The char filters the spirit and unlocks caramelised sugars in the wood.</p><p>In Kentucky's hot summers and cold winters the spirit pushes into the wood and is drawn back out, picking up colour and flavour. All of bourbon's colour comes from the barrel.</p><p>Barrels sit in warehouses called rickhouses, and where a barrel sits (top floors are hotter) changes how fast it matures.</p>",
+      "listen": {
+        "type": "youtube",
+        "id": "0k79S2lQjk0"
+      },
+      "questions": [
+        {
+          "q": "Where does bourbon get its colour?",
+          "options": [
+            "The charred barrel",
+            "Caramel colouring",
+            "The corn"
+          ],
+          "answer": 0,
+          "explain": "All colour comes from the barrel."
+        },
+        {
+          "q": "Why does climate matter?",
+          "options": [
+            "Temperature swings move spirit in and out of the wood",
+            "It doesn't",
+            "It changes the corn"
+          ],
+          "answer": 0,
+          "explain": "Heat and cold drive spirit into the wood and back."
+        },
+        {
+          "q": "What is a rickhouse?",
+          "options": [
+            "A barrel warehouse",
+            "A bar",
+            "A type of still"
+          ],
+          "answer": 0,
+          "explain": "Rickhouses store maturing barrels."
+        }
+      ]
+    },
+    {
+      "id": "l7",
+      "title": "What do proof and ABV mean?",
+      "thumb": "/media/courses/yt/VMAfMrVl9ho.jpg",
+      "review": "<p><strong>ABV</strong>, alcohol by volume, is the percentage of the liquid that is alcohol. It is the measure used on Australian labels.</p><p>In the US, <strong>proof</strong> is simply double the ABV: 40% ABV is 80 proof, 50% ABV is 100 proof.</p><p>\"Bottled in Bond\" whiskey is bottled at exactly 100 proof, while \"barrel proof\" or \"cask strength\" is bottled at the strength it came out of the barrel.</p>",
+      "listen": {
+        "type": "youtube",
+        "id": "VMAfMrVl9ho"
+      },
+      "questions": [
+        {
+          "q": "A bourbon at 45% ABV is how many US proof?",
+          "options": [
+            "45",
+            "90",
+            "22.5"
+          ],
+          "answer": 1,
+          "explain": "Proof is double the ABV."
+        },
+        {
+          "q": "Bottled-in-Bond whiskey is bottled at?",
+          "options": [
+            "100 proof",
+            "Barrel proof",
+            "80 proof"
+          ],
+          "answer": 0,
+          "explain": "Bonded whiskey is exactly 100 proof."
+        },
+        {
+          "q": "\"Cask strength\" means?",
+          "options": [
+            "Aged in a cask",
+            "Diluted to 40%",
+            "Bottled at the strength from the barrel"
+          ],
+          "answer": 2,
+          "explain": "No dilution before bottling."
+        }
+      ]
+    }
+  ],
+  "videoSeries": "Drinks Network Explained (YouTube)"
 }

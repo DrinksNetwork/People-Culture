@@ -30,7 +30,23 @@
       return;
     }
     state.done = state.done || {};
+    outline();
     if (state.learner) startPlayer(); else showStart();
+  }
+
+  function thumb(l, cls) {
+    return l.thumb ? '<img class="' + cls + '" src="' + esc(/^\//.test(l.thumb) ? new URL('..' + l.thumb, location.href).href : l.thumb) + '" alt="" loading="lazy" onerror="this.remove()">' : '';
+  }
+
+  // Lesson outline with video thumbnails, shown under the start form and the player
+  function outline() {
+    var box = document.createElement('div');
+    box.className = 'course-outline';
+    box.innerHTML = '<div class="kick" style="color:var(--red)">' + course.lessons.length + ' lessons' + (course.videoSeries ? ' · ' + esc(course.videoSeries) : '') + '</div>' +
+      '<ol>' + course.lessons.map(function (l, i) {
+        return '<li>' + thumb(l, 'course-outline-thumb') + '<span class="course-outline-n">' + (i + 1) + '</span><span class="course-outline-t">' + esc(l.title) + '</span></li>';
+      }).join('') + '</ol>';
+    root.appendChild(box);
   }
 
   function showStart() {
@@ -88,7 +104,7 @@
       '<div class="kick" style="color:var(--red)">Lesson ' + (i + 1) + ' of ' + course.lessons.length + '</div>' +
       '<h2 class="display" style="font-size:clamp(36px,4.5vw,64px);margin:8px 0 16px">' + esc(l.title) + '</h2>' + stages(stage) + '<div class="course-stage">';
     if (stage === 'review') {
-      html += '<div class="prose">' + (l.review || '') + '</div>' +
+      html += thumb(l, 'course-lesson-thumb') + '<div class="prose">' + (l.review || '') + '</div>' +
         '<button type="button" class="btn btn-red" data-next="listen">I\'ve read this — listen →</button>';
     } else if (stage === 'listen') {
       html += listenBlock(l) + '<div style="display:flex;gap:12px;flex-wrap:wrap;margin-top:20px">' +

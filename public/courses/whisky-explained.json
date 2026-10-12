@@ -11,5 +11,301 @@
     "How to drink it: nosing, tasting and serving"
   ],
   "legacyUrl": "https://www.drinksnetwork.com.au/courses/whisky-explained-master-the-art-of-whisky-from-grain-to-glass/",
-  "lessons": []
+  "lessons": [
+    {
+      "id": "l1",
+      "title": "Welcome to Whisky Explained",
+      "thumb": "/media/courses/yt/aMP2yOmHols.jpg",
+      "review": "<p>Whisky is a spirit distilled from a fermented mash of grain, then aged in wooden casks. Barley, corn, rye and wheat are the usual grains, and the wood is almost always oak.</p><p>You will see two spellings. <strong>Whisky</strong> is used in Scotland, Canada, Japan and Australia; <strong>whiskey</strong> is used in Ireland and most of the United States. Same family, different traditions.</p><p>This course walks from history to production, the categories of Scotch, the rules that protect them, and how to taste like a pro.</p>",
+      "listen": {
+        "type": "youtube",
+        "id": "aMP2yOmHols"
+      },
+      "questions": [
+        {
+          "q": "What is whisky distilled from?",
+          "options": [
+            "Fermented agave",
+            "Fermented grain",
+            "Fermented grapes"
+          ],
+          "answer": 1,
+          "explain": "Whisky starts as a fermented grain mash."
+        },
+        {
+          "q": "Which spelling is used in Scotland?",
+          "options": [
+            "Whisky",
+            "Whiskey",
+            "Wisky"
+          ],
+          "answer": 0,
+          "explain": "Scotland, Canada, Japan and Australia use \"whisky\"."
+        },
+        {
+          "q": "What is whisky usually aged in?",
+          "options": [
+            "Clay pots",
+            "Oak casks",
+            "Stainless steel"
+          ],
+          "answer": 1,
+          "explain": "Oak casks give whisky its colour and much of its flavour."
+        }
+      ]
+    },
+    {
+      "id": "l2",
+      "title": "The history of Scotch whisky",
+      "thumb": "/media/courses/yt/ohs3m2FuEis.jpg",
+      "review": "<p>The Gaelic <em>uisge beatha</em>, \"water of life\", gave us the word whisky. Distilling is thought to have reached Scotland with monks, and the first written record comes from the Exchequer Rolls of 1494: malt sent to Friar John Cor \"wherewith to make aquavitae\".</p><p>For centuries much of Scotland's whisky was made illegally to avoid tax. The Excise Act of 1823 made licensed distilling worthwhile, and many famous distilleries date from that era.</p><p>The column still, patented by Aeneas Coffey in 1830, made light grain whisky quick to produce. Blending it with malt created the smooth blended Scotch that conquered the world, helped when phylloxera devastated Europe's vineyards and brandy ran short in the late 1800s.</p>",
+      "listen": {
+        "type": "youtube",
+        "id": "ohs3m2FuEis"
+      },
+      "questions": [
+        {
+          "q": "What does \"uisge beatha\" mean?",
+          "options": [
+            "Fire water",
+            "Spirit of the glen",
+            "Water of life"
+          ],
+          "answer": 2,
+          "explain": "Uisge beatha is Gaelic for \"water of life\"."
+        },
+        {
+          "q": "The first written record of Scotch distilling dates from?",
+          "options": [
+            "1494",
+            "1066",
+            "1823"
+          ],
+          "answer": 0,
+          "explain": "The 1494 Exchequer Rolls mention malt for Friar John Cor."
+        },
+        {
+          "q": "Which invention made blended Scotch possible at scale?",
+          "options": [
+            "The pot still",
+            "The column (Coffey) still",
+            "The bottling line"
+          ],
+          "answer": 1,
+          "explain": "Coffey's column still made grain whisky for blending."
+        }
+      ]
+    },
+    {
+      "id": "l3",
+      "title": "How whisky is produced",
+      "thumb": "/media/courses/yt/6RrdyN2dzIs.jpg",
+      "review": "<p><strong>Malting:</strong> barley is soaked, allowed to germinate so its starches can become sugars, then dried in a kiln. Burning peat in the kiln gives smoky, peated whisky.</p><p><strong>Mashing and fermenting:</strong> the ground malt is mixed with hot water to release sugary <em>wort</em>. Yeast turns it into a beer-like <em>wash</em> of around 7–9% ABV.</p><p><strong>Distilling and maturing:</strong> malt whisky is usually distilled twice in copper pot stills; grain whisky is made in column stills. The new spirit then matures in oak casks, where a little evaporates each year: the \"angels' share\".</p>",
+      "listen": {
+        "type": "youtube",
+        "id": "6RrdyN2dzIs"
+      },
+      "questions": [
+        {
+          "q": "Why is barley malted?",
+          "options": [
+            "To remove the husk",
+            "So its starches can be turned into sugars",
+            "To add colour"
+          ],
+          "answer": 1,
+          "explain": "Malting lets enzymes convert starch to fermentable sugar."
+        },
+        {
+          "q": "What gives some whiskies a smoky character?",
+          "options": [
+            "Charcoal filtering",
+            "Peat smoke during kilning",
+            "Smoked casks only"
+          ],
+          "answer": 1,
+          "explain": "Peat burnt in the kiln flavours the malt."
+        },
+        {
+          "q": "What is the \"angels' share\"?",
+          "options": [
+            "The first pour of the bottle",
+            "The distiller's bonus",
+            "Spirit lost to evaporation from the cask"
+          ],
+          "answer": 2,
+          "explain": "Some spirit evaporates through the wood each year."
+        }
+      ]
+    },
+    {
+      "id": "l4",
+      "title": "The categories of Scotch whisky",
+      "thumb": "/media/courses/yt/O6zf0kLkyOc.jpg",
+      "review": "<p>Scotch has five legal categories. <strong>Single Malt</strong>: 100% malted barley, distilled in pot stills at one distillery. <strong>Single Grain</strong>: made at one distillery, which can use other cereals.</p><p><strong>Blended Malt</strong> mixes single malts from several distilleries. <strong>Blended Grain</strong> mixes single grains. <strong>Blended Scotch Whisky</strong> combines malt and grain whiskies and is the biggest seller of all.</p><p>\"Single\" means one distillery, not one cask. Knowing the category tells your customer a lot about the style before they taste.</p>",
+      "listen": {
+        "type": "youtube",
+        "id": "O6zf0kLkyOc"
+      },
+      "questions": [
+        {
+          "q": "How many legal categories of Scotch are there?",
+          "options": [
+            "Seven",
+            "Five",
+            "Three"
+          ],
+          "answer": 1,
+          "explain": "Single Malt, Single Grain, Blended Malt, Blended Grain and Blended Scotch."
+        },
+        {
+          "q": "What does \"single\" mean in Single Malt?",
+          "options": [
+            "From a single cask",
+            "From a single distillery",
+            "Distilled once"
+          ],
+          "answer": 1,
+          "explain": "Single refers to one distillery."
+        },
+        {
+          "q": "Which category sells the most?",
+          "options": [
+            "Blended Grain",
+            "Single Grain",
+            "Blended Scotch Whisky"
+          ],
+          "answer": 2,
+          "explain": "Blends make up most Scotch sold worldwide."
+        }
+      ]
+    },
+    {
+      "id": "l5",
+      "title": "Rules and regulations of Scotch",
+      "thumb": "/media/courses/yt/Q7YvvsFyOV8.jpg",
+      "review": "<p>Scotch is protected by law (the Scotch Whisky Regulations 2009). It must be distilled and matured in Scotland, in oak casks, for at least three years.</p><p>It must be bottled at no less than 40% ABV, and nothing may be added except water and plain caramel colouring.</p><p>An age statement on the label always refers to the youngest whisky in the bottle. A 12-year-old blend can contain much older whisky, but nothing younger than 12.</p>",
+      "listen": {
+        "type": "youtube",
+        "id": "Q7YvvsFyOV8"
+      },
+      "questions": [
+        {
+          "q": "Minimum maturation for Scotch?",
+          "options": [
+            "One year",
+            "Three years",
+            "Ten years"
+          ],
+          "answer": 1,
+          "explain": "At least three years in oak casks in Scotland."
+        },
+        {
+          "q": "Minimum bottling strength for Scotch?",
+          "options": [
+            "37.5% ABV",
+            "43% ABV",
+            "40% ABV"
+          ],
+          "answer": 2,
+          "explain": "Scotch must be bottled at 40% ABV or more."
+        },
+        {
+          "q": "An age statement refers to?",
+          "options": [
+            "The youngest whisky in the bottle",
+            "The oldest whisky in the bottle",
+            "The average age"
+          ],
+          "answer": 0,
+          "explain": "Age statements always state the youngest component."
+        }
+      ]
+    },
+    {
+      "id": "l6",
+      "title": "How to drink whisky like a pro",
+      "thumb": "/media/courses/yt/_-pyds77icY.jpg",
+      "review": "<p>Start with the right glass: a tulip-shaped glass such as a Glencairn gathers the aromas. <strong>Look</strong> at the colour and the \"legs\" running down the glass.</p><p><strong>Nose</strong> gently with your mouth slightly open, then <strong>taste</strong>: let the whisky coat your palate, and notice the <strong>finish</strong> after you swallow.</p><p>A few drops of water can open up aromas, especially in stronger whiskies. Neat, on the rocks or in a highball are all correct; the best way is the one the drinker enjoys.</p>",
+      "listen": {
+        "type": "youtube",
+        "id": "_-pyds77icY"
+      },
+      "questions": [
+        {
+          "q": "Why use a tulip-shaped glass?",
+          "options": [
+            "It holds more",
+            "It keeps whisky cold",
+            "It concentrates the aromas"
+          ],
+          "answer": 2,
+          "explain": "The shape gathers aromas toward the nose."
+        },
+        {
+          "q": "What can a few drops of water do?",
+          "options": [
+            "Increase the ABV",
+            "Open up the aromas",
+            "Ruin the whisky"
+          ],
+          "answer": 1,
+          "explain": "Water can release aromatic compounds."
+        },
+        {
+          "q": "The \"finish\" describes?",
+          "options": [
+            "The flavours after swallowing",
+            "The bottle label",
+            "The last drop in the bottle"
+          ],
+          "answer": 0,
+          "explain": "Finish is how the flavour lingers."
+        }
+      ]
+    },
+    {
+      "id": "l7",
+      "title": "Whisky summary",
+      "thumb": "/media/courses/yt/rWxvLJCXDRU.jpg",
+      "review": "<p>Whisky is fermented grain, distilled and aged in oak. Scotland gave us the name and the rules, and the Coffey still gave us blends.</p><p>Malting, mashing, fermenting, distilling and maturing shape every bottle. Scotch has five categories, a three-year minimum and a 40% ABV minimum.</p><p>Taste with a good glass, look, nose, taste and finish, and recommend whisky the way your customer likes to drink it.</p>",
+      "listen": {
+        "type": "youtube",
+        "id": "rWxvLJCXDRU"
+      },
+      "questions": [
+        {
+          "q": "Which step turns sugary wort into wash?",
+          "options": [
+            "Malting",
+            "Fermentation",
+            "Maturation"
+          ],
+          "answer": 1,
+          "explain": "Yeast ferments the wort into wash."
+        },
+        {
+          "q": "Where must Scotch be matured?",
+          "options": [
+            "Anywhere in oak",
+            "Anywhere in the UK",
+            "In Scotland"
+          ],
+          "answer": 2,
+          "explain": "Distilled and matured in Scotland."
+        },
+        {
+          "q": "A Blended Scotch Whisky combines?",
+          "options": [
+            "Two casks of the same malt",
+            "Whisky and brandy",
+            "Malt and grain whiskies"
+          ],
+          "answer": 2,
+          "explain": "Blended Scotch mixes malt and grain whiskies."
+        }
+      ]
+    }
+  ],
+  "videoSeries": "Drinks Network Explained (YouTube)"
 }

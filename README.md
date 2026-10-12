@@ -64,7 +64,7 @@ After it runs, `npm run build` should report no images left on the old site. Unt
 
 The course player is built and working (try `/courses/how-drinks-network-courses-work`). Each lesson runs **Review** (read), **Listen** (recording, video, or the lesson read aloud), then **Answer** (questions; 80% unlocks the next lesson). Progress is kept in the learner's browser; starting a course and finishing it post to `/api/enquiries` (form `course-start` / `course-complete`, tag Trade, campaign `course:<slug>`).
 
-The five WordPress courses show "Lessons are on their way" until their content is imported. The lessons are behind the paid course pages, so the import needs a login:
+The five courses (Whisky, Bourbon, Tequila, Rice Spirits, Rice Wine Explained) now run on the Drinks Network "Explained" YouTube series: 36 lessons, each with lesson notes, the video (thumbnails in public/media/courses/yt) and three questions. The Tutor LMS import below can still replace the notes with the original lesson text. The lessons are behind the paid course pages, so the import needs a login:
 
 ```
 WP_USER=<admin username> WP_APP_PASSWORD="<application password>" npm run import:courses
