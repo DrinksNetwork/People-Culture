@@ -104,7 +104,7 @@ npm run preview   # -> http://localhost:3000 (PORT env var respected); campaign 
 
 ## Style rules
 
-- Colours: paper #FBF7F0 and white backgrounds; Drinks Network red #D3221B leads, often as white-on-red bands; duotone navy #1E2552 and magenta #C2185B as secondary colours; very little black.
+- Colours: paper #FBF7F0 and white backgrounds; Drinks Network red #E42E2E (matches the script logo) leads, often as white-on-red bands; duotone navy #1E2552 and magenta #C2185B as secondary colours; very little black.
 - Fonts: Anton for uppercase display headlines, Source Serif 4 for body text and italic standfirsts, Archivo Narrow for letter-spaced kickers, nav and captions.
 - Never lay an image or the logo over another image or over text. Images sit alone or side by side, each with a caption under it.
 - Must work at phone width.
