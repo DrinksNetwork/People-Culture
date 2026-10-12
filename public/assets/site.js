@@ -15,6 +15,10 @@
       if (data[k] === undefined) data[k] = v;
       else data[k] = [].concat(data[k], v);
     });
+    // chip groups (several checkboxes with one name) always come through as lists
+    form.querySelectorAll('.chip input[type=checkbox]').forEach(function (el) {
+      if (!el.disabled) data[el.name] = data[el.name] === undefined ? [] : [].concat(data[el.name]);
+    });
     return data;
   }
 
@@ -28,11 +32,76 @@
     return c ? c.closest('label').textContent.replace(/\s+/g, ' ').trim() : null;
   }
 
+  /* ---- Step log: anonymous event per step, joined to the submission by sessionId ---- */
+  var FUNNEL = window.DN_FUNNEL_ENDPOINT || '/api/funnel-events';
+  function newSession(key) {
+    var id;
+    try { id = sessionStorage.getItem(key); } catch (e) {}
+    if (!id) {
+      id = Date.now().toString(36) + Math.random().toString(36).slice(2, 10);
+      try { sessionStorage.setItem(key, id); } catch (e) {}
+    }
+    return id;
+  }
+  function beacon(obj) {
+    var ev = JSON.stringify(Object.assign(obj, { pageUrl: location.href, at: new Date().toISOString() }, utm()));
+    try {
+      if (navigator.sendBeacon) navigator.sendBeacon(FUNNEL, new Blob([ev], { type: 'application/json' }));
+      else fetch(FUNNEL, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: ev, keepalive: true }).catch(function () {});
+    } catch (e) {}
+  }
+
+  /* ---- Question-by-question forms: <form data-steps> with <fieldset data-qstep="name"> ---- */
+  function makeStepper(form) {
+    var steps = Array.prototype.slice.call(form.querySelectorAll('[data-qstep]'));
+    var rail = form.querySelectorAll('[data-qrail]');
+    var back = form.querySelector('[data-qgo="-1"]'), next = form.querySelector('[data-qgo="1"]'), submit = form.querySelector('[data-qsubmit]');
+    var sid = newSession('dn-' + form.dataset.dnForm + '-session');
+    var i = 0, logged = {};
+    function pkg() { var el = form.querySelector('input[name=package]'); return el ? el.value : null; }
+    function show(scroll) {
+      steps.forEach(function (f, n) { f.hidden = n !== i; });
+      rail.forEach(function (li, n) { li.setAttribute('aria-current', n === i ? 'step' : 'false'); li.classList.toggle('done', n < i); });
+      back.hidden = i === 0; next.hidden = i === steps.length - 1; submit.hidden = i !== steps.length - 1;
+      var name = steps[i].dataset.qstep;
+      if (scroll && !logged[name]) { logged[name] = 1; beacon({ flow: form.dataset.dnForm, sessionId: sid, step: name, package: pkg() }); }
+      if (scroll) form.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+    function valid() {
+      var bad = Array.prototype.find.call(steps[i].querySelectorAll('input,select,textarea'), function (el) { return !el.checkValidity(); });
+      if (bad) { bad.reportValidity(); return false; }
+      return true;
+    }
+    function go(dir) {
+      if (dir > 0 && !valid()) return;
+      i = Math.max(0, Math.min(steps.length - 1, i + dir)); show(true);
+    }
+    form.querySelectorAll('[data-qgo]').forEach(function (b) { b.addEventListener('click', function () { go(Number(b.dataset.qgo)); }); });
+    show(false);
+    return {
+      sessionId: sid,
+      atEnd: function () { return i === steps.length - 1; },
+      go: go,
+      restart: function () { form.querySelector('[data-qnav]').hidden = false; form.querySelector('[data-qdone]').hidden = true; i = 0; show(true); },
+      done: function () {
+        steps.forEach(function (f) { f.hidden = true; });
+        form.querySelector('[data-qnav]').hidden = true;
+        rail.forEach(function (li) { li.classList.add('done'); li.removeAttribute('aria-current'); });
+        form.querySelector('[data-qdone]').hidden = false;
+        beacon({ flow: form.dataset.dnForm, sessionId: sid, step: 'done', package: pkg() });
+        form.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    };
+  }
+
   /* ---- Generic forms: <form data-dn-form="name" data-tags="Vendor,Trade" data-campaign="slug"> ---- */
   document.querySelectorAll('form[data-dn-form]').forEach(function (form) {
     var status = form.querySelector('.form-status');
+    var stepper = form.hasAttribute('data-steps') ? makeStepper(form) : null;
+    if (stepper) form.dnStepper = stepper;
     form.addEventListener('submit', function (e) {
       e.preventDefault();
+      if (stepper && !stepper.atEnd()) { stepper.go(1); return; }
       if (!form.checkValidity()) { form.reportValidity(); return; }
       var d = collect(form);
       var tags = (form.dataset.tags || '').split(',').filter(Boolean);
@@ -45,8 +114,10 @@
         pageUrl: location.href,
         consent: d.consent ? { status: 'subscribed', wording: consentWording(form) } : null
       });
+      if (stepper) payload.sessionId = stepper.sessionId;
       if (status) status.textContent = 'Sending…';
       send(payload).then(function () {
+        if (stepper) { if (status) status.textContent = ''; stepper.done(); return; }
         form.reset();
         if (status) status.textContent = form.dataset.thanks || "Thanks. The Drinks Network team will be in touch within one business day.";
       }).catch(function () {
@@ -67,7 +138,13 @@
       document.querySelectorAll('[data-selected-package]').forEach(function (el) { el.textContent = name; });
       document.querySelectorAll('input[name=package]').forEach(function (el) { el.value = name; });
     }
-    btns.forEach(function (b) { b.addEventListener('click', function () { pick(b.dataset.package); }); });
+    btns.forEach(function (b) {
+      b.addEventListener('click', function () {
+        pick(b.dataset.package);
+        var qa = document.querySelector('form[data-steps]');
+        if (qa && qa.dnStepper) qa.dnStepper.restart();   // straight on to the questions
+      });
+    });
     pick(box.dataset.packages || btns[0].dataset.package);
   });
 
@@ -100,22 +177,12 @@
     var rail = funnel.querySelectorAll('[data-rail]');
 
     // Funnel log: one anonymous event per step reached, linked to the final submission by sessionId.
-    var FUNNEL = window.DN_FUNNEL_ENDPOINT || '/api/funnel-events';
-    var sessionId;
-    try { sessionId = sessionStorage.getItem('dn-start-session'); } catch (e) {}
-    if (!sessionId) {
-      sessionId = Date.now().toString(36) + Math.random().toString(36).slice(2, 10);
-      try { sessionStorage.setItem('dn-start-session', sessionId); } catch (e) {}
-    }
+    var sessionId = newSession('dn-start-session');
     var lastLogged = null;
     function logStep(name) {
       if (name === lastLogged) return;
       lastLogged = name;
-      var ev = JSON.stringify(Object.assign({ sessionId: sessionId, step: name, roles: Object.keys(roles).filter(function (k) { return roles[k]; }), pageUrl: location.href, at: new Date().toISOString() }, utm()));
-      try {
-        if (navigator.sendBeacon) navigator.sendBeacon(FUNNEL, new Blob([ev], { type: 'application/json' }));
-        else fetch(FUNNEL, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: ev, keepalive: true }).catch(function () {});
-      } catch (e) {}
+      beacon({ flow: 'start-here', sessionId: sessionId, step: name, roles: Object.keys(roles).filter(function (k) { return roles[k]; }) });
     }
 
     function show() {
