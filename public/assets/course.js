@@ -366,13 +366,13 @@
       while (c.measureText(title).width > maxW && ts > 64) { ts -= 4; c.font = '400 ' + ts + 'px ' + ANTON; }
       var lines = [title];
       if (c.measureText(title).width > maxW) { ts = 70; c.font = '400 ' + ts + 'px ' + ANTON; lines = lineWrap(c, title, maxW).slice(0, 2); }
-      var cy = ny + 140 + ts * 0.92;
+      var cy = ny + 196 + ts * 0.92;
       c.fillStyle = RED; lines.forEach(function (ln, k) { c.fillText(ln, X, cy + k * ts * 1.04); });
       cy += (lines.length - 1) * ts * 1.04;
       c.fillStyle = MUTED; c.font = '700 26px ' + NARROW;
-      spaced(c, d.lessons + ' VIDEO LESSONS   ·   EVERY KNOWLEDGE CHECK PASSED AT 80% OR MORE', X, cy + 72, 4, 'left');
+      spaced(c, d.lessons + ' VIDEO LESSONS   ·   EVERY KNOWLEDGE CHECK PASSED AT 80% OR MORE', X, cy + 50, 4, 'left');
       c.fillStyle = INK; c.font = 'italic 400 34px ' + SERIF;
-      lineWrap(c, 'Drinks Network courses are written and developed by drinks industry leaders to build awareness and confidence in the fundamentals of each category and subject.', maxW - 120).forEach(function (ln, k) { c.fillText(ln, X, cy + 140 + k * 46); });
+      lineWrap(c, 'Drinks Network courses are written and developed by drinks industry leaders to build awareness and confidence in the fundamentals of each category and subject.', maxW - 120).forEach(function (ln, k) { c.fillText(ln, X, cy + 108 + k * 46); });
       // sign-off, sitting on the tan to the left of the crew
       var sy = H - 450;
       // pen-scribble signature in navy ink
