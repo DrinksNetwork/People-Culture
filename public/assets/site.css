@@ -56,3 +56,6 @@ a{color:var(--red)}a:hover{color:var(--red-dark)}
 [data-role][aria-pressed="true"] .tick{background:#fff!important;color:var(--red)!important;border-color:#fff!important}
 [data-role][aria-pressed="true"] .kick{color:var(--pink-ink)!important}
 [hidden]{display:none!important}
+/* testimonial headshots: initials show if the photo can't load */
+.avatar{flex:none;display:inline-flex;align-items:center;justify-content:center;border-radius:50%;overflow:hidden;background:var(--red);color:#fff;font-family:Anton,Impact,sans-serif;font-size:22px}
+.avatar.noimg::before{content:attr(data-initials)}
