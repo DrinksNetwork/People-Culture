@@ -1,0 +1,45 @@
+# Downloads campaign assets from a given list of https URLs into public/media/<folder>/.
+# Run it from GitHub: Actions -> Fetch campaign assets -> Run workflow.
+name: Fetch campaign assets
+
+on:
+  workflow_dispatch:
+    inputs:
+      urls:
+        description: "Space-separated https URLs"
+        required: true
+      folder:
+        description: "Folder under public/media/ (letters, numbers and dashes)"
+        required: true
+
+permissions:
+  contents: write
+
+jobs:
+  fetch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Download
+        env:
+          URLS: ${{ inputs.urls }}
+          FOLDER: ${{ inputs.folder }}
+        run: |
+          case "$FOLDER" in *[!a-z0-9-]*|"") echo "bad folder"; exit 1;; esac
+          mkdir -p "public/media/$FOLDER"
+          for u in $URLS; do
+            case "$u" in https://*) ;; *) echo "skip $u"; continue;; esac
+            name=$(basename "${u%%\?*}")
+            case "$name" in *[!A-Za-z0-9._-]*|"") echo "skip name $name"; continue;; esac
+            curl -fsSL "$u" -o "public/media/$FOLDER/$name" && echo "got $name" || echo "failed $u"
+          done
+      - name: Commit
+        run: |
+          git config user.name "drinks-network-import"
+          git config user.email "actions@users.noreply.github.com"
+          git add public/media
+          git diff --cached --quiet && exit 0
+          git commit -m "Campaign assets: $FOLDER"
+          git pull --rebase origin main && git push
+        env:
+          FOLDER: ${{ inputs.folder }}
