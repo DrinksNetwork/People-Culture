@@ -16,6 +16,8 @@ The public site has no Admin pages or links. Admin stays inside the logged-in Re
 public/
   index.html            Home                                  -> site.drinksnetwork.com.au/
   start.html            Start here funnel (working, 4 steps)  -> /start   (?role=rep | vendor | partner pre-selects)
+  retail.html           Retail Activation: national retail account service program (tastings, store servicing, plans, Q&A sign-up) -> /retail
+  whisky-adventure/     Australian Whisky Adventure offer pages: venues.html, brands.html (Q&A sign-ups) -> /whisky-adventure/venues, /whisky-adventure/brands
   brands.html           RepShare for Brands: 4 subscription plans (Kickstart, Roll Out, Take Over, Campaigner) -> /brands
   reps.html             Become a Rep (earnings calculator)    -> /reps
   securicode.html       SecuriCode                            -> /securicode
@@ -97,7 +99,9 @@ npm run preview   # -> http://localhost:3000 (PORT env var respected); campaign 
 - Brands subscription Q&A: choosing a plan on /brands jumps straight into four questions (Plan, Brand, Market, You) and submits once to `/api/enquiries` as form `brands-subscription`, tag Vendor, with `package`, `startWhen`, `cities[]`, `company`, `category`, `skus`, `companyWebsite`, `soldIn[]`, `goals[]`, `targets`, `notes`, `firstName`, `jobTitle`, `email`, `mobile`, consent and `sessionId`. Each step also posts to `/api/funnel-events` with `flow: brands-subscription`, so you can see where brands drop off. The new-lead email should include the plan and every answer.
 - New-lead emails: every Start, Brands, contact, SecuriCode and campaign submission should notify hayden@, manuel@, joe@ and emma@drinksnetwork.com.au.
 - Still to add in the app: AI product import for brands after Start here (draft, unpublished listings for approval).
-- Subscriptions on /brands: hourly rates carried over from the old WordPress /repshare page (Kickstart $95–$115/hr at 5+ hrs/wk, Roll Out $85–$105/hr at 10+, Take Over $75–$95/hr at 15+). Monthly figures are hours × rate × 4.33. Campaigner is quoted per campaign.
+- Subscriptions on /brands and /retail: Kick Starter $2,695/month inc GST (5 hrs/wk, $95–$115/hr), Roll Out $4,180 (10 hrs, $85–$105/hr), Take Over $5,610 (15 hrs, $75–$95/hr), from the National Retail Service Pitch and the old WordPress /repshare page. Campaigner is quoted per campaign.
+- Other forms: `retail-program` (Vendor), `whisky-adventure-venue` (Buyer, Trade), `whisky-adventure-brand` (Vendor), all with the same step log and sessionId as the Brands Q&A.
+- GitHub Actions: "Import from WordPress" re-runs the full import to a review branch; "Fetch media from WordPress" downloads named upload URLs into public/media/legacy.
 - `campaign/bar-takeover.html` has a working form. It posts JSON to `window.DN_ENQUIRY_ENDPOINT` (default `/api/enquiries`) with: firstName, lastName, email, mobile, city, venue, instagram, a honeypot field `website`, tags (`Trade`, or `Buyer` when "I buy drinks for this venue" is ticked), campaign `bar-takeover`, pageUrl, UTM source/medium/campaign, and consent status plus wording. Point it at the secure enquiry endpoint.
 - Every form saves the contact in RepShare first, then syncs it to Mailchimp with tags Vendor, Rep, Partner, Buyer or Trade, plus `campaign:<slug>`.
 - Bar Takeover: this round is closed; the page collects registrations for the next round.
