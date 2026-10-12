@@ -1,0 +1,49 @@
+# Gathers what the course player needs from the old site and YouTube, on a review branch (course-import):
+#  - every video on the Drinks Network YouTube channel (the "Explained" series), with titles
+#  - the public WordPress course records (descriptions, images)
+#  - the full lessons and quizzes, if the repository has WP_USER and WP_APP_PASSWORD secrets
+#    (Settings -> Secrets and variables -> Actions; the password is a WordPress Application Password)
+# Run it from GitHub: Actions -> Course data -> Run workflow.
+name: Course data
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  gather:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: YouTube channel video list
+        run: |
+          pipx install yt-dlp >/dev/null 2>&1 || pip install yt-dlp
+          mkdir -p data
+          yt-dlp --flat-playlist --dump-single-json "https://www.youtube.com/@DrinksnetworkAu/videos" > data/youtube-videos.json || \
+          yt-dlp --flat-playlist --dump-single-json "https://www.youtube.com/DrinksnetworkAu/videos" > data/youtube-videos.json || true
+          yt-dlp --flat-playlist --dump-single-json "https://www.youtube.com/@DrinksnetworkAu/playlists" > data/youtube-playlists.json || true
+      - name: Public WordPress course records
+        run: |
+          B=https://www.drinksnetwork.com.au/wp-json/wp/v2
+          curl -fsSL "$B/courses?per_page=50" -o data/wp-courses.json || echo '[]' > data/wp-courses.json
+          for t in lesson lessons tutor_quiz topics; do curl -fsSL "$B/$t?per_page=100" -o "data/wp-$t.json" || rm -f "data/wp-$t.json"; done
+          curl -fsSL "$B/media?per_page=100&search=explained" -o data/wp-media-explained.json || true
+      - name: Lessons and quizzes (needs WP_USER and WP_APP_PASSWORD secrets)
+        env:
+          WP_USER: ${{ secrets.WP_USER }}
+          WP_APP_PASSWORD: ${{ secrets.WP_APP_PASSWORD }}
+        run: |
+          if [ -n "$WP_USER" ]; then npm run import:courses 2>&1 | tee data/course-import-log.txt || true; else echo "No WordPress login secrets; skipped" > data/course-import-log.txt; fi
+      - name: Commit to the course-import branch
+        run: |
+          git config user.name "drinks-network-import"
+          git config user.email "actions@users.noreply.github.com"
+          git checkout -B course-import
+          git add data public/courses
+          git commit -m "Course data from YouTube and WordPress" || echo "Nothing new"
+          git push -f origin course-import
