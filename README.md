@@ -16,10 +16,12 @@ The public site has no Admin pages or links. Admin stays inside the logged-in Re
 public/
   index.html            Home                                  -> site.drinksnetwork.com.au/
   start.html            Start here funnel (working, 4 steps)  -> /start   (?role=rep | vendor | partner pre-selects)
-  brands.html           RepShare for Brands (package picker)  -> /brands
+  brands.html           RepShare for Brands: 4 subscription plans (Kickstart, Roll Out, Take Over, Campaigner) -> /brands
   reps.html             Become a Rep (earnings calculator)    -> /reps
   securicode.html       SecuriCode                            -> /securicode
-  courses.html          Courses (enrol links go to the current course pages) -> /courses
+  courses.html          Courses index                         -> /courses
+  courses/<slug>.html   Course page + player                  -> /courses/<slug>
+  courses/<slug>.json   Course data: lessons, media, questions (see Course data)
   about.html            About                                 -> /about
   contact.html          Contact                               -> /contact
   faqs.html             FAQs                                  -> /faqs
@@ -28,11 +30,13 @@ public/
   privacy-policy.html, cookie-policy.html, user-terms.html    -> legal pages
   campaign/
     bar-takeover.html   Bar Takeover campaign                 -> campaign.drinksnetwork.com.au/bar-takeover
-  assets/site.css, assets/site.js   shared styles; forms, package picker, calculator and funnel
+  assets/site.css, assets/site.js   shared styles; forms, plan picker, calculator and funnel
+  assets/course.js      course player (review -> listen -> answer, gated)
   media/
     photos/           real trade photos: bar, back-bar, retail and tasting events
     products/         product cutouts (Lady Trieu, Nhau, Corowa, Headlands, Imbue, Diablo Co, San Junipero, Panda, BLVD)
     logos/            Drinks Network script logo: white (on red or dark) and red (on white or paper)
+    subscriptions/    plan tiles and photos from the Vendor Subscription prototype
 scripts/
   build.mjs             builds dist/site and dist/campaign; fails on any broken link, missing image, placeholder link or disallowed host
   serve.mjs             local preview server (clean URLs: /brands -> brands.html, /blog -> blog/index.html)
@@ -54,6 +58,28 @@ This uses the public WordPress REST API, so no login is needed:
 
 After it runs, `npm run build` should report no images left on the old site. Until then, those pages show the summary and a link to the full version on the old site.
 
+## Courses (run once, on Replit, with a WordPress login)
+
+The course player is built and working (try `/courses/how-drinks-network-courses-work`). Each lesson runs **Review** (read), **Listen** (recording, video, or the lesson read aloud), then **Answer** (questions; 80% unlocks the next lesson). Progress is kept in the learner's browser; starting a course and finishing it post to `/api/enquiries` (form `course-start` / `course-complete`, tag Trade, campaign `course:<slug>`).
+
+The five WordPress courses show "Lessons are on their way" until their content is imported. The lessons are behind the paid course pages, so the import needs a login:
+
+```
+WP_USER=<admin username> WP_APP_PASSWORD="<application password>" npm run import:courses
+npm run import:wordpress   # then copy course and lesson images into the project
+```
+
+Create the application password in WordPress: Users -> Profile -> Application Passwords. Tutor LMS endpoints vary by version; the script tries the known ones and reports what it found. Lessons without a quiz show "Complete lesson"; add questions to the JSON to gate them.
+
+### Course data (`public/courses/<slug>.json`)
+
+```
+{ "slug", "title", "description", "image", "legacyUrl",
+  "lessons": [ { "id": "l1", "title", "review": "<p>html</p>",
+                 "listen": { "type": "tts" } | { "type": "youtube", "id" } | { "type": "audio" | "video", "src" },
+                 "questions": [ { "q", "options": ["a","b","c"], "answer": 1, "explain" } ] } ] }
+```
+
 ## Build and preview
 
 Requires Node 18 or later. There are no npm dependencies, so `npm install` isn't needed.
@@ -68,7 +94,7 @@ npm run preview   # -> http://localhost:3000 (PORT env var respected); campaign 
 - All internal links are clean root paths (`/brands`, `/blog/<slug>`). Serve `x.html` at `/x` and `x/index.html` at `/x`.
 - Everything is wired: the package picker, earnings calculator, Start here funnel and every form (newsletter, brands enquiry, contact, SecuriCode, Start here, Bar Takeover). Forms in `assets/site.js` and the campaign page post JSON to `window.DN_ENQUIRY_ENDPOINT` (default `/api/enquiries`). Fields include tags (Vendor, Rep, Partner, Buyer, Trade), form name, campaign, package, pageUrl, UTMs, the honeypot field `website` and consent status plus wording.
 - Still to add in the app: AI product import for brands after Start here (draft, unpublished listings for approval).
-- Courses: the enrol buttons go to the current course pages on www.drinksnetwork.com.au (the WordPress course plugin). Keep that running, or move the courses to a new platform, before www moves to Replit.
+- Subscriptions on /brands: plan prices and field rates come from the Vendor Subscription prototype, where they were marked as placeholders. Confirm them before going live.
 - `campaign/bar-takeover.html` has a working form. It posts JSON to `window.DN_ENQUIRY_ENDPOINT` (default `/api/enquiries`) with: firstName, lastName, email, mobile, city, venue, instagram, a honeypot field `website`, tags (`Trade`, or `Buyer` when "I buy drinks for this venue" is ticked), campaign `bar-takeover`, pageUrl, UTM source/medium/campaign, and consent status plus wording. Point it at the secure enquiry endpoint.
 - Every form saves the contact in RepShare first, then syncs it to Mailchimp with tags Vendor, Rep, Partner, Buyer or Trade, plus `campaign:<slug>`.
 - Bar Takeover: this round is closed; the page collects registrations for the next round.

@@ -4,10 +4,13 @@
   "private": true,
   "description": "Drinks Network brand website (site.drinksnetwork.com.au) and campaign pages (campaign.drinksnetwork.com.au)",
   "type": "module",
-  "engines": { "node": ">=18" },
+  "engines": {
+    "node": ">=18"
+  },
   "scripts": {
     "build": "node scripts/build.mjs",
     "preview": "node scripts/serve.mjs",
-    "import:wordpress": "node scripts/import-wordpress.mjs"
+    "import:wordpress": "node scripts/import-wordpress.mjs",
+    "import:courses": "node scripts/import-courses.mjs"
   }
 }

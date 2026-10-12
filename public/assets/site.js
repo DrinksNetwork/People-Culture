@@ -62,7 +62,7 @@
       btns.forEach(function (b) {
         var on = b.dataset.package === name;
         b.setAttribute('aria-pressed', on ? 'true' : 'false');
-        b.textContent = on ? 'Selected' : 'Choose ' + b.dataset.package;
+        b.textContent = on ? 'Selected: ' + b.dataset.package : (b.dataset.label || 'Choose ' + b.dataset.package);
       });
       document.querySelectorAll('[data-selected-package]').forEach(function (el) { el.textContent = name; });
       document.querySelectorAll('input[name=package]').forEach(function (el) { el.value = name; });

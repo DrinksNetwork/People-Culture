@@ -164,7 +164,7 @@ function htmlFiles(dir) {
   return readdirSync(dir).flatMap(f => {
     const p = join(dir, f);
     if (statSync(p).isDirectory()) return f === 'media' ? [] : htmlFiles(p);
-    return f.endsWith('.html') ? [p] : [];
+    return f.endsWith('.html') || f.endsWith('.json') ? [p] : []; // course data files carry images too
   });
 }
 
