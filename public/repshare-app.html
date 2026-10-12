@@ -343,6 +343,17 @@ a{color:#E42E2E}a:hover{color:#B81F24}
 <div class="bmap" data-bmap>
 <svg viewBox="0 0 400 400" preserveAspectRatio="none" aria-hidden="true" data-bmap-svg></svg>
 <div class="bmap-pins" data-bmap-pins></div>
+<ul hidden data-venue-list>
+<li data-lat="-27.4700" data-lon="153.0215" data-client="1"><img src="/media/app/venues/annamese.jpg" alt="" loading="lazy" width="538" height="212"><b>Annamese Vietnamese</b><small>Brisbane CBD</small></li>
+<li data-lat="-27.4935" data-lon="153.0310" data-client="0"><img src="/media/app/venues/bens.jpg" alt="" loading="lazy" width="538" height="212"><b>Ben's Vietnamese &amp; Chinese</b><small>Woolloongabba</small></li>
+<li data-lat="-27.4950" data-lon="153.0590" data-client="0"><img src="/media/app/venues/mission.jpg" alt="" loading="lazy" width="538" height="212"><b>Mission Vietnamese</b><small>Coorparoo</small></li>
+<li data-lat="-27.5125" data-lon="153.0325" data-client="1"><img src="/media/app/venues/red-lotus.jpg" alt="" loading="lazy" width="538" height="212"><b>Red Lotus Vietnamese Chargrill</b><small>Annerley</small></li>
+<li data-lat="-27.4840" data-lon="153.0420" data-client="0"><img src="/media/app/venues/sen-legend.jpg" alt="" loading="lazy" width="538" height="212"><b>SEN Legend</b><small>East Brisbane</small></li>
+<li data-lat="-27.4805" data-lon="153.0145" data-client="1"><img src="/media/app/venues/sum-sum.jpg" alt="" loading="lazy" width="538" height="212"><b>Sum Sum</b><small>South Brisbane</small></li>
+<li data-lat="-27.4570" data-lon="153.0352" data-client="0"><img src="/media/app/venues/the-vietnamese.jpg" alt="" loading="lazy" width="538" height="212"><b>The Vietnamese Restaurant</b><small>Fortitude Valley</small></li>
+<li data-lat="-27.4510" data-lon="153.0145" data-client="0"><img src="/media/app/venues/vietnam-corner.jpg" alt="" loading="lazy" width="538" height="212"><b>Vietnam Corner QUT</b><small>Kelvin Grove</small></li>
+<li data-lat="-27.4602" data-lon="153.0318" data-client="0"><img src="/media/app/venues/vietnam-house.jpg" alt="" loading="lazy" width="538" height="212"><b>Vietnam House</b><small>Fortitude Valley</small></li>
+</ul>
 <span class="bmap-note">Stylised map · hover a pin</span>
 </div>
 </figure>
@@ -588,17 +599,9 @@ a{color:#E42E2E}a:hover{color:#B81F24}
     var B = { w: 152.985, e: 153.080, n: -27.437, s: -27.521 };
     function px(lon) { return (lon - B.w) / (B.e - B.w) * 100; }
     function py(lat) { return (B.n - lat) / (B.n - B.s) * 100; }
-    var venues = [
-      ['Annamese Vietnamese', 'Brisbane CBD', 'annamese', -27.4700, 153.0215, 1],
-      ["Ben's Vietnamese & Chinese", 'Woolloongabba', 'bens', -27.4935, 153.0310, 0],
-      ['Mission Vietnamese', 'Coorparoo', 'mission', -27.4950, 153.0590, 0],
-      ['Red Lotus Vietnamese Chargrill', 'Annerley', 'red-lotus', -27.5125, 153.0325, 1],
-      ['SEN Legend', 'East Brisbane', 'sen-legend', -27.4840, 153.0420, 0],
-      ['Sum Sum', 'South Brisbane', 'sum-sum', -27.4805, 153.0145, 1],
-      ['The Vietnamese Restaurant', 'Fortitude Valley', 'the-vietnamese', -27.4570, 153.0352, 0],
-      ['Vietnam Corner QUT', 'Kelvin Grove', 'vietnam-corner', -27.4510, 153.0145, 0],
-      ['Vietnam House', 'Fortitude Valley', 'vietnam-house', -27.4602, 153.0318, 0]
-    ];
+    var venues = Array.prototype.map.call(cb.querySelectorAll('[data-venue-list] li'), function (li) {
+      return [li.querySelector('b').textContent, li.querySelector('small').textContent, li.querySelector('img').getAttribute('src'), Number(li.dataset.lat), Number(li.dataset.lon), Number(li.dataset.client)];
+    });
     var svgm = cb.querySelector('[data-bmap-svg]'), pinsEl = cb.querySelector('[data-bmap-pins]');
     function smooth(list) {
       var P = list.map(function (p) { return [px(p[1]) * 4, py(p[0]) * 4]; });
@@ -634,7 +637,8 @@ a{color:#E42E2E}a:hover{color:#B81F24}
       b.setAttribute('aria-label', v[0] + ', ' + v[1] + (v[5] ? ', client' : ', cold call'));
       var f = document.createElement('div'); f.className = 'flag' + (y < 34 ? ' below' : '') + (x < 22 ? ' l' : x > 78 ? ' r' : '');
       f.style.setProperty('--x', x + '%'); f.style.setProperty('--y', y + '%');
-      f.innerHTML = '<img src="/media/app/venues/' + v[2] + '.jpg" alt="" loading="lazy"><div><b>' + v[0] + '</b><small>' + v[1] + '</small><em style="' + (v[5] ? 'background:#E5F5EA;color:#1F6F3A">Client' : 'background:#FFF1D6;color:#8A5A00">Cold call') + '</em></div>';
+      f.innerHTML = '<img alt="" loading="lazy"><div><b>' + v[0] + '</b><small>' + v[1] + '</small><em style="' + (v[5] ? 'background:#E5F5EA;color:#1F6F3A">Client' : 'background:#FFF1D6;color:#8A5A00">Cold call') + '</em></div>';
+      f.querySelector('img').src = v[2];
       function on() { flags.forEach(function (o) { o.classList.remove('show'); }); f.classList.add('show'); }
       b.addEventListener('mouseenter', function () { hold = true; on(); });
       b.addEventListener('focus', function () { hold = true; on(); });
