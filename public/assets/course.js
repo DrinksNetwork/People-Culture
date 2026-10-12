@@ -312,70 +312,162 @@
   function img(src) { return new Promise(function (res) { var i = new Image(); i.onload = function () { res(i); }; i.onerror = function () { res(null); }; i.src = src; }); }
 
   function drawCertificate(cv, d) {
-    var fonts = ['400 120px Anton', '700 40px "Archivo Narrow"', 'italic 400 60px "Source Serif 4"', '600 40px "Source Serif 4"'];
+    if (!document.querySelector('link[data-sig-font]')) {
+      var lk = document.createElement('link'); lk.rel = 'stylesheet'; lk.setAttribute('data-sig-font', '');
+      lk.href = 'https://fonts.googleapis.com/css2?family=Mrs+Saint+Delafield&display=swap'; document.head.appendChild(lk);
+    }
+    var fonts = ['400 120px Anton', '700 40px "Archivo Narrow"', 'italic 400 60px "Source Serif 4"', '600 40px "Source Serif 4"', 'italic 600 60px "Source Serif 4"', '400 120px "Mrs Saint Delafield"'];
     var ready = document.fonts && document.fonts.load ? Promise.all(fonts.map(function (f) { return document.fonts.load(f).catch(function () {}); })) : Promise.resolve();
-    return Promise.all([ready, img(asset('/media/logos/drinks-network-script-white.png')), img(asset('/media/people/ice-divider.png')), img(asset('/media/people/wave-full.png')), img(asset('/media/logos/drinks-network-script-red.png'))]).then(function (r) {
-      var logoW = r[1], ice = r[2], wave = r[3], logoR = r[4];
+    return Promise.all([ready, img(asset('/media/logos/drinks-network-script-red.png')), img(asset('/media/courses/cert-band.png'))]).then(function (r) {
+      var logo = r[1], band = r[2];
       var c = cv.getContext('2d'), W = cv.width, H = cv.height;
-      var RED = '#E42E2E', NAVY = '#1E2552', PAPER = '#FBF7F0', INK = '#111', PINK = '#FF7AA2';
+      var TAN = '#EEE1CB', TAN2 = '#E0CDAE', LINE = '#CDB592', RED = '#D3221B', NAVY = '#1E2552', INK = '#2A2320', MUTED = '#7A6A55';
+      var ANTON = 'Anton, Impact, sans-serif', NARROW = '"Archivo Narrow", "Arial Narrow", sans-serif', SERIF = '"Source Serif 4", Georgia, serif';
       c.clearRect(0, 0, W, H);
-      c.fillStyle = PAPER; c.fillRect(0, 0, W, H);
-      // left red panel
-      var P = 720;
-      c.fillStyle = RED; c.fillRect(0, 0, P, H);
-      if (logoW) { var lw = 520, lh = lw * logoW.height / logoW.width; c.drawImage(logoW, (P - lw) / 2, 150, lw, lh); }
-      c.fillStyle = '#fff'; c.textAlign = 'center';
-      c.font = '700 30px "Archivo Narrow", sans-serif'; spaced(c, 'DRINKS NETWORK EDUCATION', P / 2, 470, 7);
-      c.fillStyle = 'rgba(255,255,255,.6)'; c.fillRect(P / 2 - 60, 510, 120, 4);
-      c.fillStyle = '#fff'; c.font = '400 92px Anton, Impact, sans-serif';
-      wrap(c, d.course.toUpperCase(), P / 2, 640, P - 140, 96);
-      c.font = '700 28px "Archivo Narrow", sans-serif'; c.fillStyle = '#FFE3E0';
-      spaced(c, d.lessons + ' VIDEO LESSONS', P / 2, 960, 4);
-      spaced(c, 'KNOWLEDGE CHECKS PASSED', P / 2, 1004, 4);
-      // seal
-      var sx = P / 2, sy = 1200;
-      c.beginPath(); c.arc(sx, sy, 120, 0, Math.PI * 2); c.fillStyle = NAVY; c.fill();
-      c.lineWidth = 6; c.strokeStyle = '#fff'; c.beginPath(); c.arc(sx, sy, 104, 0, Math.PI * 2); c.stroke();
-      star(c, sx, sy, 62, 26, '#fff');
-      c.fillStyle = '#fff'; c.font = '700 24px "Archivo Narrow", sans-serif'; spaced(c, 'CERTIFIED · ' + d.date.getFullYear(), sx, sy + 168, 5);
-      if (ice) { var ih = 120; c.save(); c.beginPath(); c.rect(0, H - ih, P, ih); c.clip(); c.drawImage(ice, 0, H - ih, ice.width * ih / ice.height, ih); c.restore(); }
-      // right panel
-      var X = P + 140, R = W - 140;
+      // paper: light tan with a soft warm glow
+      c.fillStyle = TAN; c.fillRect(0, 0, W, H);
+      var g = c.createRadialGradient(W * 0.35, H * 0.3, 100, W * 0.35, H * 0.3, W * 0.8);
+      g.addColorStop(0, 'rgba(255,250,240,.6)'); g.addColorStop(1, 'rgba(255,252,246,0)');
+      c.fillStyle = g; c.fillRect(0, 0, W, H);
+      // base: crew on ice, finishing in the style-guide wave
+      if (band) c.drawImage(band, 0, H - band.height * (W / band.width), W, band.height * (W / band.width));
+      // frame
+      c.strokeStyle = LINE; c.lineWidth = 3; c.strokeRect(48, 48, W - 96, H - 96);
+      c.lineWidth = 1; c.strokeRect(64, 64, W - 128, H - 128);
+      // masthead
+      var X = 170;
+      if (logo) { var lw = 430, lh = lw * logo.height / logo.width; c.drawImage(logo, X - 10, 120, lw, lh); }
+      c.fillStyle = LINE; c.fillRect(X + 450, 150, 3, 96);
+      c.fillStyle = NAVY; c.font = '700 30px ' + NARROW; spaced(c, 'EDUCATION', X + 485, 192, 9, 'left');
+      c.fillStyle = MUTED; c.font = '700 22px ' + NARROW; spaced(c, 'FREE COURSES FOR THE DRINKS TRADE', X + 485, 232, 5, 'left');
+      c.textAlign = 'right';
+      c.fillStyle = MUTED; c.font = '700 22px ' + NARROW; spaced(c, 'CERTIFICATE NO.', W - 170, 172, 5, 'right');
+      c.fillStyle = NAVY; c.font = '700 34px ' + NARROW; spaced(c, d.id || '', W - 170, 216, 4, 'right');
       c.textAlign = 'left';
-      c.strokeStyle = INK; c.lineWidth = 4; c.strokeRect(P + 60, 60, W - P - 120, H - 120);
-      c.fillStyle = RED; c.font = '700 34px "Archivo Narrow", sans-serif'; spaced(c, 'CERTIFICATE OF COMPLETION', X, 230, 9, 'left');
-      c.fillStyle = INK; c.font = 'italic 400 52px "Source Serif 4", Georgia, serif'; c.fillText('This certifies that', X, 340);
-      var name = d.name, size = 190;
-      c.font = '400 ' + size + 'px Anton, Impact, sans-serif';
-      while (c.measureText(name.toUpperCase()).width > R - X && size > 80) { size -= 6; c.font = '400 ' + size + 'px Anton, Impact, sans-serif'; }
-      c.fillStyle = NAVY; c.fillText(name.toUpperCase(), X, 340 + size * 0.95 + 20);
-      var ly = 340 + size + 70;
-      c.fillStyle = RED; c.fillRect(X, ly, R - X, 8);
-      c.fillStyle = INK; c.font = 'italic 400 46px "Source Serif 4", Georgia, serif';
-      c.fillText('has completed the Drinks Network course', X, ly + 100);
-      c.font = '400 96px Anton, Impact, sans-serif'; c.fillStyle = RED; c.fillText(d.course.toUpperCase(), X, ly + 215);
-      c.fillStyle = '#3A3631'; c.font = '400 36px "Source Serif 4", Georgia, serif';
-      c.fillText('Every lesson watched, reviewed and passed with at least 80% on the knowledge checks.', X, ly + 290);
-      // signature + details
-      var by = H - 270;
-      c.strokeStyle = INK; c.lineWidth = 2;
-      c.beginPath(); c.moveTo(X, by); c.lineTo(X + 560, by); c.stroke();
-      c.beginPath(); c.moveTo(X + 700, by); c.lineTo(X + 1120, by); c.stroke();
-      c.fillStyle = INK; c.font = 'italic 600 54px "Source Serif 4", Georgia, serif'; c.fillText('Hayden Wood', X + 10, by - 22);
-      c.font = '600 44px "Source Serif 4", Georgia, serif';
-      c.fillText(d.date.toLocaleDateString('en-AU', { day: 'numeric', month: 'long', year: 'numeric' }), X + 710, by - 22);
-      c.fillStyle = '#5A554D'; c.font = '700 24px "Archivo Narrow", sans-serif';
-      spaced(c, 'HAYDEN WOOD · FOUNDER, DRINKS NETWORK', X, by + 44, 3, 'left');
-      spaced(c, 'DATE OF COMPLETION', X + 700, by + 44, 3, 'left');
-      c.fillStyle = '#8A8378'; c.font = '700 22px "Archivo Narrow", sans-serif';
-      spaced(c, 'CERTIFICATE NO. ' + d.id + '  ·  SITE.DRINKSNETWORK.COM.AU/COURSES', X, H - 120, 3, 'left');
-      if (logoR) { var rw = 260, rh = rw * logoR.height / logoR.width; c.drawImage(logoR, R - rw, H - 120 - rh + 10, rw, rh); }
-      if (wave) { var ww = 560, wh = ww * wave.height / wave.width; c.globalAlpha = .9; c.drawImage(wave, W - ww - 64, 64, ww, wh); c.globalAlpha = 1; }
+      // seal
+      seal(c, W - 420, 560, 196, d.date.getFullYear(), { NAVY: NAVY, RED: RED, TAN: TAN, ANTON: ANTON, NARROW: NARROW });
+      // body
+      var maxW = W - 170 - 520 - X;
+      c.fillStyle = RED; c.font = '700 34px ' + NARROW; spaced(c, 'CERTIFICATE OF COMPLETION', X, 400, 11, 'left');
+      c.fillStyle = INK; c.font = 'italic 400 52px ' + SERIF; c.fillText('This certifies that', X, 490);
+      var name = d.name.toUpperCase(), size = 196;
+      c.font = '400 ' + size + 'px ' + ANTON;
+      while (c.measureText(name).width > maxW && size > 84) { size -= 6; c.font = '400 ' + size + 'px ' + ANTON; }
+      var ny = 490 + size * 0.92 + 26;
+      c.fillStyle = NAVY; c.fillText(name, X, ny);
+      var rw = Math.max(520, Math.min(maxW, c.measureText(name).width));
+      c.fillStyle = RED; c.fillRect(X, ny + 34, rw, 8);
+      c.fillStyle = TAN2; c.fillRect(X + rw + 18, ny + 34, 8, 8); c.fillRect(X + rw + 38, ny + 34, 8, 8);
+      c.fillStyle = INK; c.font = 'italic 400 44px ' + SERIF; c.fillText('has successfully completed the Drinks Network course', X, ny + 126);
+      // course title: one line if it fits (shrinking down to 64px), otherwise two lines
+      var title = d.course.toUpperCase(), ts = 100;
+      c.font = '400 ' + ts + 'px ' + ANTON;
+      while (c.measureText(title).width > maxW && ts > 64) { ts -= 4; c.font = '400 ' + ts + 'px ' + ANTON; }
+      var lines = [title];
+      if (c.measureText(title).width > maxW) { ts = 70; c.font = '400 ' + ts + 'px ' + ANTON; lines = lineWrap(c, title, maxW).slice(0, 2); }
+      var cy = ny + 140 + ts * 0.92;
+      c.fillStyle = RED; lines.forEach(function (ln, k) { c.fillText(ln, X, cy + k * ts * 1.04); });
+      cy += (lines.length - 1) * ts * 1.04;
+      c.fillStyle = MUTED; c.font = '700 26px ' + NARROW;
+      spaced(c, d.lessons + ' VIDEO LESSONS   ·   EVERY KNOWLEDGE CHECK PASSED AT 80% OR MORE', X, cy + 72, 4, 'left');
+      c.fillStyle = INK; c.font = 'italic 400 34px ' + SERIF;
+      lineWrap(c, 'Drinks Network courses are written and developed by drinks industry leaders to build awareness and confidence in the fundamentals of each category and subject.', maxW - 120).forEach(function (ln, k) { c.fillText(ln, X, cy + 140 + k * 46); });
+      // sign-off, sitting on the tan to the left of the crew
+      var sy = H - 450;
+      // handwritten signature in navy ink
+      c.save(); c.translate(X + 10, sy + 6); c.rotate(-0.05);
+      c.fillStyle = NAVY; c.font = '400 132px "Mrs Saint Delafield", "Brush Script MT", cursive'; c.fillText('Hayden Wood', 0, 0);
+      c.strokeStyle = NAVY; c.lineWidth = 3; c.lineCap = 'round';
+      c.beginPath(); c.moveTo(-6, 22); c.bezierCurveTo(140, 4, 320, 40, 520, 8); c.stroke();
+      c.restore();
+      c.fillStyle = INK; c.fillRect(X, sy + 24, 560, 2);
+      c.fillStyle = MUTED; c.font = '700 22px ' + NARROW; spaced(c, 'HAYDEN WOOD  ·  FOUNDER, DRINKS NETWORK', X, sy + 64, 4, 'left');
+      stamp(c, X + 920, sy + 10, 158, { RED: '#C21F27', ANTON: ANTON, NARROW: NARROW, date: d.date.toLocaleDateString('en-AU', { day: '2-digit', month: '2-digit', year: 'numeric' }).replace(/\//g, '.') });
+      var dy = sy + 170;
+      c.fillStyle = INK; c.font = '600 44px ' + SERIF;
+      c.fillText(d.date.toLocaleDateString('en-AU', { day: 'numeric', month: 'long', year: 'numeric' }), X + 6, dy);
+      c.fillRect(X, dy + 24, 560, 2);
+      c.fillStyle = MUTED; c.font = '700 22px ' + NARROW; spaced(c, 'DATE OF COMPLETION  ·  SITE.DRINKSNETWORK.COM.AU/COURSES', X, dy + 64, 4, 'left');
     });
+  }
+  window.DNCertificate = { draw: function (cv, d) { return drawCertificate(cv, d); } };
+  function lineWrap(c, t, max) {
+    var words = t.split(' '), line = '', out = [];
+    words.forEach(function (w) { var test = line ? line + ' ' + w : w; if (c.measureText(test).width > max && line) { out.push(line); line = w; } else line = test; });
+    out.push(line); return out;
+  }
+  function seal(c, x, y, R, year, k) {
+    c.save();
+    // ribbon tails
+    c.fillStyle = k.RED;
+    [[-1, -0.32], [1, 0.32]].forEach(function (s) {
+      c.save(); c.translate(x + s[0] * R * 0.38, y + R * 0.62); c.rotate(s[1]);
+      c.beginPath(); c.moveTo(-58, 0); c.lineTo(58, 0); c.lineTo(58, 250); c.lineTo(0, 205); c.lineTo(-58, 250); c.closePath(); c.fill();
+      c.restore();
+    });
+    // scalloped rim
+    c.beginPath();
+    for (var i = 0; i <= 72; i++) { var a = i / 72 * Math.PI * 2, rr = R + (i % 2 ? 0 : 12); c.lineTo(x + Math.cos(a) * rr, y + Math.sin(a) * rr); }
+    c.closePath(); c.fillStyle = k.NAVY; c.fill();
+    c.lineWidth = 4; c.strokeStyle = k.TAN; c.beginPath(); c.arc(x, y, R - 26, 0, Math.PI * 2); c.stroke();
+    c.lineWidth = 2; c.beginPath(); c.arc(x, y, R - 92, 0, Math.PI * 2); c.stroke();
+    // ring text
+    c.fillStyle = k.TAN; c.font = '700 30px ' + k.NARROW;
+    ringText(c, '★  DRINKS NETWORK EDUCATION  ★  COURSE COMPLETE  ', x, y, R - 60);
+    // centre
+    c.textAlign = 'center'; c.fillStyle = '#fff';
+    c.font = '400 92px ' + k.ANTON; c.fillText(String(year), x, y + 30);
+    c.font = '700 22px ' + k.NARROW; c.fillStyle = k.TAN;
+    spaced(c, 'CERTIFIED', x, y + 72, 6);
+    star5(c, x, y - 74, 22, 9, k.RED);
+    c.restore();
+  }
+  function stamp(c, x, y, R, k) {
+    // official rubber stamp, drawn off-screen then roughed up so the ink looks pressed
+    var S = R * 2 + 60, o = document.createElement('canvas'); o.width = S; o.height = S;
+    var s = o.getContext('2d'), m = S / 2, inner = R - 50;
+    s.strokeStyle = k.RED; s.fillStyle = k.RED;
+    s.lineWidth = 10; s.beginPath(); s.arc(m, m, R, 0, Math.PI * 2); s.stroke();
+    s.lineWidth = 3; s.beginPath(); s.arc(m, m, R - 14, 0, Math.PI * 2); s.stroke();
+    s.lineWidth = 4; s.beginPath(); s.arc(m, m, inner, 0, Math.PI * 2); s.stroke();
+    s.font = '700 25px ' + k.NARROW; ringText(s, '★ DRINKS NETWORK ★ OFFICIAL EDUCATION ', m, m, R - 32);
+    s.textAlign = 'center';
+    s.font = '400 44px ' + k.ANTON; s.fillText('100%', m, m - 50);
+    // PASSED band, knocked out of solid ink
+    s.fillRect(m - R - 18, m - 40, 2 * R + 36, 80);
+    s.globalCompositeOperation = 'destination-out';
+    s.font = '400 68px ' + k.ANTON; s.fillText('PASSED', m, m + 25);
+    s.globalCompositeOperation = 'source-over';
+    s.font = '700 22px ' + k.NARROW; spaced(s, k.date, m, m + 70, 3);
+    // wear
+    s.globalCompositeOperation = 'destination-out';
+    var seed = 11; function rnd() { seed = (seed * 9301 + 49297) % 233280; return seed / 233280; }
+    for (var i = 0; i < 520; i++) { s.globalAlpha = 0.2 + rnd() * 0.55; s.beginPath(); s.arc(rnd() * S, rnd() * S, 0.6 + rnd() * 2.2, 0, Math.PI * 2); s.fill(); }
+    var gr = s.createLinearGradient(0, 0, S, S); gr.addColorStop(0, 'rgba(0,0,0,0)'); gr.addColorStop(0.72, 'rgba(0,0,0,0)'); gr.addColorStop(1, 'rgba(0,0,0,.55)');
+    s.globalAlpha = 1; s.fillStyle = gr; s.fillRect(0, 0, S, S);
+    s.globalCompositeOperation = 'source-over';
+    c.save(); c.translate(x, y); c.rotate(-0.2); c.globalAlpha = 0.9; c.globalCompositeOperation = 'multiply'; c.drawImage(o, -m, -m); c.restore();
+  }
+  function ringText(c, t, x, y, r) {
+    var total = 0, i, ws = [];
+    for (i = 0; i < t.length; i++) { ws.push(c.measureText(t[i]).width + 3); total += ws[i]; }
+    var scale = (Math.PI * 2 * r) / total, a = -Math.PI / 2;
+    c.textAlign = 'center';
+    for (i = 0; i < t.length; i++) {
+      var step = ws[i] * scale / r, mid = a + step / 2;
+      c.save(); c.translate(x + Math.cos(mid) * r, y + Math.sin(mid) * r); c.rotate(mid + Math.PI / 2);
+      c.fillText(t[i], 0, 10); c.restore(); a += step;
+    }
+    c.textAlign = 'left';
+  }
+  function star5(c, x, y, R, r, col) {
+    c.beginPath();
+    for (var k = 0; k < 10; k++) { var a = -Math.PI / 2 + k * Math.PI / 5, rad = k % 2 ? r : R; c.lineTo(x + Math.cos(a) * rad, y + Math.sin(a) * rad); }
+    c.closePath(); c.fillStyle = col; c.fill();
   }
   function spaced(c, t, x, y, sp, align) {
     var w = 0, i; for (i = 0; i < t.length; i++) w += c.measureText(t[i]).width + sp; w -= sp;
-    var sx = align === 'left' ? x : x - w / 2, keep = c.textAlign; c.textAlign = 'left';
+    var sx = align === 'left' ? x : align === 'right' ? x - w : x - w / 2, keep = c.textAlign; c.textAlign = 'left';
     for (i = 0; i < t.length; i++) { c.fillText(t[i], sx, y); sx += c.measureText(t[i]).width + sp; }
     c.textAlign = keep;
   }
