@@ -1,0 +1,538 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>RepShare App | Field Service Management for Liquor | Drinks Network</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Anton&amp;family=Archivo+Narrow:wght@500;700&amp;family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400;1,8..60,600&amp;display=swap" rel="stylesheet"/>
+<meta name="description" content="RepShare is the field service management app built for liquor: 31K+ licensed venues down the eastern seaboard, circuits and offers, rep management, and orders serviced through ALM, Paramount, ILG or direct.">
+<link rel="canonical" href="https://site.drinksnetwork.com.au/repshare-app">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Drinks Network">
+<meta property="og:title" content="The RepShare App | Field Service Management for Liquor">
+<meta property="og:description" content="31K+ licensed venues as distribution points down the eastern seaboard. Circuits, offers, reps and orders in one app.">
+<meta property="og:image" content="https://site.drinksnetwork.com.au/media/photos/repshare-vendor-dashboard.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="stylesheet" href="/assets/site.css">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"SoftwareApplication","name":"RepShare","applicationCategory":"BusinessApplication","applicationSubCategory":"Field service management","operatingSystem":"iOS, Android, Web","url":"https://site.drinksnetwork.com.au/repshare-app","description":"Field service management for liquor brands and reps: jobs, bookings, charges, circuits, offers and orders across ALM, Paramount, ILG or direct.","publisher":{"@type":"Organization","name":"Drinks Network","url":"https://site.drinksnetwork.com.au/"}}</script>
+<style>
+body{margin:0;background:#FBF7F0}
+a{color:#E42E2E}a:hover{color:#B81F24}
+.kick{font-family:'Archivo Narrow',sans-serif;font-weight:700;font-size:13px;letter-spacing:.22em;text-transform:uppercase}
+.nav a{color:#fff;text-decoration:none}.nav a:hover{color:#FFD9D6}
+.cap{font-family:'Archivo Narrow',sans-serif;font-size:13px;letter-spacing:.06em;color:#5A554D;margin-top:8px}
+
+/* ---------- RepShare App page ---------- */
+.ap{--ui:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+.ap-wrap{max-width:1320px;margin:0 auto;padding:0 24px}
+.ap-h2{font-family:Anton,Impact,sans-serif;font-weight:400;font-size:clamp(44px,6vw,84px);line-height:.9;text-transform:uppercase;margin:10px 0 14px}
+.ap-lede{font-size:clamp(18px,2vw,21px);font-style:italic;line-height:1.45;margin:0 0 28px;max-width:760px}
+
+/* phone frame */
+.ph{position:relative;width:100%;max-width:280px;aspect-ratio:9/18.6;background:#0d0d10;border-radius:40px;padding:10px;box-sizing:border-box;box-shadow:0 30px 60px rgba(0,0,0,.35),inset 0 0 0 2px #2b2b30}
+.ph::before{content:"";position:absolute;top:16px;left:50%;transform:translateX(-50%);width:34%;height:18px;background:#0d0d10;border-radius:0 0 12px 12px;z-index:3}
+.ph-screen{position:relative;width:100%;height:100%;border-radius:31px;overflow:hidden;background:#F4F5F8}
+.ph-shot{position:relative}
+.ph-shot img{width:100%;height:auto;display:block}
+.ph.short{aspect-ratio:9/13.6}
+
+/* hero */
+.ap-hero{background:#1E2552;color:#fff;position:relative;overflow:hidden}
+.ap-hero-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,500px),1fr));gap:32px;align-items:center;padding-top:56px}
+.ap-hero h1{font-family:Anton,Impact,sans-serif;font-weight:400;font-size:clamp(46px,7.4vw,118px);line-height:.86;text-transform:uppercase;margin:14px 0 20px}
+.ap-stage{position:relative;min-height:clamp(420px,52vw,640px)}
+.ap-browser{position:absolute;right:0;top:6%;width:min(100%,640px);background:#fff;border-radius:14px;overflow:hidden;box-shadow:0 30px 70px rgba(0,0,0,.45);transform:rotate(-2deg);animation:apFloat 9s ease-in-out infinite}
+.ap-bar{display:flex;align-items:center;gap:6px;padding:9px 12px;background:#ECEDF2;border-bottom:1px solid #dcdde3;font-family:var(--ui);font-size:11px;color:#5c5b57}
+.ap-bar i{width:9px;height:9px;border-radius:50%;background:#d0d1d8;display:inline-block}
+.ap-bar i:nth-child(1){background:#ff5f57}.ap-bar i:nth-child(2){background:#febc2e}.ap-bar i:nth-child(3){background:#28c840}
+.ap-bar span{margin-left:10px;background:#fff;border-radius:6px;padding:3px 10px;flex:1;max-width:280px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.ap-browser img{width:100%;height:auto;display:block}
+.ap-hero .ph{position:absolute;left:0;bottom:0;width:42%;max-width:250px;animation:apFloat 7s ease-in-out infinite reverse;z-index:2}
+.ap-cycle .ph-shot{position:absolute;inset:0;opacity:0;transition:opacity .7s ease}
+.ap-cycle .ph-shot.on{opacity:1}
+.ap-cycle-label{position:absolute;left:0;bottom:-46px;z-index:2;font-family:var(--ui);font-size:13px;font-weight:700;color:#fff;display:flex;align-items:center;gap:10px}
+.ap-cycle-label b{background:#E42E2E;border-radius:999px;width:26px;height:26px;display:grid;place-items:center;font-size:12px}
+.ap-dots{display:flex;gap:5px}
+.ap-dots i{width:7px;height:7px;border-radius:50%;background:rgba(255,255,255,.35);display:block;transition:background .3s,width .3s}
+.ap-dots i.on{background:#fff;width:18px;border-radius:4px}
+
+/* tap ripple */
+.tap{position:absolute;left:var(--x);top:var(--y);width:34px;height:34px;margin:-17px 0 0 -17px;border-radius:50%;pointer-events:none;z-index:2}
+.tap::before,.tap::after{content:"";position:absolute;inset:0;border-radius:50%;background:rgba(228,46,46,.35);animation:apTap 2.4s ease-out infinite}
+.tap::after{background:none;border:2px solid rgba(228,46,46,.8);animation-delay:.3s}
+
+/* stats */
+.ap-stats{background:#D3221B;color:#fff}
+.ap-stats-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:2px;background:rgba(255,255,255,.25)}
+.ap-stats-grid>div{background:#D3221B;padding:26px 22px;display:flex;flex-direction:column;gap:6px}
+.ap-stats-grid b{font-family:Anton,Impact,sans-serif;font-weight:400;font-size:clamp(40px,4.6vw,64px);line-height:1}
+.ap-stats-grid span{font-size:16px;line-height:1.35}
+
+/* step strip */
+.ap-steps{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:28px 22px}
+.ap-step{display:flex;flex-direction:column;gap:10px;align-items:flex-start}
+.ap-step-h{display:flex;gap:12px;align-items:center}
+.ap-step-h b{flex:none;width:44px;height:44px;border-radius:50%;background:#E42E2E;color:#fff;font-family:Anton,Impact,sans-serif;font-weight:400;font-size:24px;display:grid;place-items:center}
+.ap-step-h span{font-family:Anton,Impact,sans-serif;font-size:26px;line-height:1;text-transform:uppercase}
+.ap-step p{margin:0;font-size:16px;line-height:1.45;color:#3A3631;min-height:46px}
+.ap-step .ph{max-width:236px;animation:apFloat 6s ease-in-out infinite;animation-delay:calc(var(--i) * -.7s)}
+.ap-step em{font-family:'Archivo Narrow',sans-serif;font-style:normal;font-size:14px;letter-spacing:.04em;color:#5A554D}
+
+/* feature rows */
+.ap-feat{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,480px),1fr));gap:48px;align-items:center}
+.ap-feat ul{list-style:none;margin:0 0 8px;padding:0;display:flex;flex-direction:column;gap:10px;font-size:18px;line-height:1.45}
+.ap-feat li{display:flex;gap:12px}
+.ap-feat li::before{content:"";flex:none;width:10px;height:10px;margin-top:9px;background:#E42E2E;transform:rotate(45deg)}
+.ap-dark .ap-feat li::before{background:#FF7AA2}
+
+/* desktop mock */
+.mk{background:#fff;color:#111;border-radius:14px;overflow:hidden;box-shadow:0 24px 60px rgba(20,20,40,.22);font-family:var(--ui)}
+.mk-body{padding:18px 20px 20px;display:flex;flex-direction:column;gap:14px}
+.mk-top{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap}
+.mk-top h4{margin:0;font-size:17px;font-weight:800}
+.mk-tag{font-size:10.5px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:#5c5b57;background:#eeeeeb;border-radius:999px;padding:4px 9px}
+.mk-pills{display:flex;flex-wrap:wrap;gap:6px}
+.mk-pill{font-size:12px;font-weight:700;border-radius:999px;padding:6px 12px;border:1px solid #d6d5d0;background:#fff;color:#111}
+.mk-pill.on{background:#111;color:#fff;border-color:#111}
+.mk table{width:100%;border-collapse:collapse;font-size:13px}
+.mk th{text-align:left;font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:#5c5b57;font-weight:800;padding:8px 8px;border-bottom:2px solid #111}
+.mk td{padding:10px 8px;border-bottom:1px solid #ecebe7;vertical-align:middle}
+.mk tr.new{animation:apRowIn .6s ease both}
+.ch{display:inline-block;font-size:11px;font-weight:800;border-radius:6px;padding:3px 7px;color:#fff}
+.ch-alm{background:#1E2552}.ch-par{background:#7A1E3A}.ch-ilg{background:#1F6F3A}.ch-dir{background:#E42E2E}
+.st{display:inline-block;font-size:11px;font-weight:700;border-radius:999px;padding:3px 9px;transition:background .4s,color .4s}
+.st-sub{background:#FFF1D6;color:#8A5A00}.st-con{background:#EAF0FC;color:#1a5ad7}.st-del{background:#E5F5EA;color:#1F6F3A}
+
+/* circuit map */
+.cmap{position:relative;background:#F1F2F6;border-radius:10px;overflow:hidden;aspect-ratio:16/10}
+.cmap svg{position:absolute;inset:0;width:100%;height:100%}
+.cmap .route{stroke:#E42E2E;stroke-width:2.5;fill:none;stroke-dasharray:6 5;stroke-dashoffset:600;animation:apDraw 6s ease-in-out infinite}
+.cmap .v{fill:#b9bccb}
+.cmap .v.in{fill:#E42E2E;animation:apPop 6s ease-in-out infinite;transform-box:fill-box;transform-origin:center}
+.cmap .v.offer{fill:#ec0c84}
+.c-legend{display:flex;gap:14px;flex-wrap:wrap;font-size:12px;color:#5c5b57}
+.c-legend i{width:10px;height:10px;border-radius:50%;display:inline-block;margin-right:6px;vertical-align:-1px}
+
+/* rep mgmt */
+.reps{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+.rep{border:1px solid #e4e3df;border-radius:12px;padding:12px;display:flex;flex-direction:column;gap:8px}
+.rep-h{display:flex;gap:9px;align-items:center}
+.rep-h i{width:34px;height:34px;border-radius:50%;display:grid;place-items:center;font-style:normal;font-weight:800;font-size:12px;color:#fff;flex:none}
+.rep-h b{font-size:13px;display:block}.rep-h small{font-size:11px;color:#5c5b57}
+.meter{height:7px;border-radius:4px;background:#eeeeeb;overflow:hidden}
+.meter span{display:block;height:100%;border-radius:4px;background:#E42E2E;width:var(--w);animation:apGrow 2.2s ease both}
+.rep-row{display:flex;justify-content:space-between;font-size:11.5px;color:#5c5b57}
+.feed{display:flex;flex-direction:column;gap:0;border-top:1px solid #ecebe7;max-height:188px;overflow:hidden}
+.feed div{display:grid;grid-template-columns:auto 1fr auto;gap:10px;align-items:center;padding:9px 2px;border-bottom:1px solid #ecebe7;font-size:12.5px}
+.feed div.new{animation:apRowIn .6s ease both}
+.feed i{width:8px;height:8px;border-radius:50%;display:block}
+.feed small{color:#5c5b57;font-size:11px}
+
+/* standard */
+.pipe{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:10px}
+.pipe div{border-radius:14px;padding:16px;display:flex;flex-direction:column;gap:6px;color:#fff;font-family:var(--ui)}
+.pipe b{font-size:16px;font-weight:800;text-transform:uppercase;letter-spacing:.02em}
+.pipe span{font-size:13.5px;line-height:1.4;opacity:.92}
+.pipe em{font-style:normal;font-size:11.5px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;background:rgba(255,255,255,.2);border-radius:6px;padding:3px 7px;align-self:flex-start}
+.rules{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:2px;background:#111;border:2px solid #111;margin-top:26px}
+.rules div{background:#FBF7F0;padding:22px;display:flex;flex-direction:column;gap:6px}
+.rules b{font-family:Anton,Impact,sans-serif;font-weight:400;font-size:40px;line-height:1;color:#E42E2E}
+.rules span{font-size:16px;line-height:1.45}
+
+/* benefits */
+.ben{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:22px}
+.ben>div{background:#fff;border-top:5px solid var(--c);padding:24px;display:flex;flex-direction:column;gap:12px}
+.ben h3{margin:0;font-family:Anton,Impact,sans-serif;font-weight:400;font-size:34px;text-transform:uppercase;line-height:1}
+.ben ul{margin:0;padding-left:20px;font-size:16.5px;line-height:1.5;display:flex;flex-direction:column;gap:6px}
+
+@keyframes apFloat{0%,100%{transform:translateY(0) rotate(var(--r,0deg))}50%{transform:translateY(-10px) rotate(var(--r,0deg))}}
+.ap-browser{--r:-2deg}
+@keyframes apTap{0%{transform:scale(.4);opacity:0}15%{opacity:1}70%,100%{transform:scale(1.6);opacity:0}}
+@keyframes apRowIn{from{opacity:0;transform:translateY(-8px);background:#FFF6E0}to{opacity:1;transform:none;background:transparent}}
+@keyframes apDraw{0%{stroke-dashoffset:600}55%,85%{stroke-dashoffset:0}100%{stroke-dashoffset:-600}}
+@keyframes apPop{0%,10%{transform:scale(.6)}25%,90%{transform:scale(1)}100%{transform:scale(.6)}}
+@keyframes apGrow{from{width:0}}
+
+@media (max-width:1000px){.ap-steps{grid-template-columns:repeat(2,minmax(0,1fr))}.pipe{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:640px){
+  .ap-steps{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;gap:18px;padding-bottom:12px;margin:0 -24px;padding-left:24px;padding-right:24px}
+  .ap-step{flex:0 0 78%;scroll-snap-align:start}
+  .ap-hero .ph{width:52%}
+  .ap-browser{width:92%;top:0}
+  .reps{grid-template-columns:1fr}
+  .pipe{grid-template-columns:1fr}
+  .mk table th:nth-child(3),.mk table td:nth-child(3){display:none}
+}
+@media (prefers-reduced-motion:reduce){.ap *,.ap *::before,.ap *::after{animation:none!important;transition:none!important}.cmap .route{stroke-dashoffset:0}}
+</style>
+</head>
+<body>
+
+<div class="ap" style="font-family:'Source Serif 4',Georgia,serif;color:#111;background:#FBF7F0">
+<header class="site-header">
+<div class="wrap nav" style="display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;padding-top:10px;padding-bottom:10px;border-bottom:1px solid rgba(255,255,255,.35)">
+<span class="kick" style="font-size:11px">Sydney · Melbourne · Brisbane</span>
+<span class="kick" style="display:flex;gap:20px;font-size:11px"><a href="/#subscribe">Subscribe</a><a href="https://repshare.drinksnetwork.com.au/">Log in</a></span>
+</div>
+<div class="wrap bar">
+<a aria-label="Drinks Network home" href="/"><img alt="Drinks Network" src="/media/logos/drinks-network-script-white.png" width="172" height="56" style="height:56px;width:auto;display:block"></a>
+<nav aria-label="Main" class="nav kick"><a href="/">Home</a><a href="/start">Start here</a><a href="/brands">Brands</a><a href="/reps">Reps</a><a href="/repshare-app" aria-current="page">The App</a><a href="/courses">Courses</a><a href="/blog">People &amp; Culture</a></nav>
+</div>
+</header>
+
+<!-- HERO -->
+<section class="ap-hero">
+<div class="ap-wrap ap-hero-grid">
+<div style="min-width:0;padding-bottom:24px">
+<div class="kick" style="color:#FF7AA2">The RepShare App</div>
+<h1>The No.1 field service app for <span style="color:#FF7AA2">liquor.</span></h1>
+<p style="font-size:clamp(19px,2.2vw,24px);font-style:italic;line-height:1.4;margin:0 0 26px;max-width:600px;color:#E6E7F2">Over 31,000 licensed venues as distribution points down the eastern seaboard. Build circuits, put offers in front of the right accounts, manage your reps and service orders through ALM, Paramount, ILG or direct, all from one app.</p>
+<div style="display:flex;flex-wrap:wrap;gap:14px">
+<a class="kick" href="/brands#start" style="background:#E42E2E;color:#fff;text-decoration:none;padding:18px 26px">Book a demo</a>
+<a class="kick" href="https://repshare.drinksnetwork.com.au/" style="border:2px solid #fff;color:#fff;text-decoration:none;padding:16px 24px">Log in to RepShare</a>
+</div>
+</div>
+<div class="ap-stage" aria-label="The RepShare app on desktop and mobile">
+<div class="ap-browser">
+<div class="ap-bar" aria-hidden="true"><i></i><i></i><i></i><span>repshare.drinksnetwork.com.au · Vendor dashboard</span></div>
+<img src="/media/photos/repshare-vendor-dashboard.jpg" alt="RepShare vendor dashboard showing orders, circuits, products, payments and account status across the pipeline" width="1600" height="977">
+</div>
+<div class="ph ap-cycle" data-cycle>
+<div class="ph-screen">
+<div class="ph-shot on"><img src="/media/app/step1.jpg" alt="RepShare Jobs screen with assigned jobs" width="600" height="1180"></div>
+<div class="ph-shot"><img src="/media/app/step2.jpg" alt="Job details for a venue and brand" width="600" height="1153" loading="lazy"></div>
+<div class="ph-shot"><img src="/media/app/step3.jpg" alt="Charges tab with booking and on-job timer" width="600" height="1142" loading="lazy"></div>
+<div class="ph-shot"><img src="/media/app/step4.jpg" alt="Choosing Field, Desk, Service or Custom" width="600" height="1142" loading="lazy"></div>
+<div class="ph-shot"><img src="/media/app/step5.jpg" alt="Selecting a charge template" width="600" height="821" loading="lazy"></div>
+<div class="ph-shot"><img src="/media/app/step6.jpg" alt="Entering time and quantity" width="600" height="785" loading="lazy"></div>
+<div class="ph-shot"><img src="/media/app/step7.jpg" alt="Visit outcome quick chips and notes" width="600" height="771" loading="lazy"></div>
+<div class="ph-shot"><img src="/media/app/step8.jpg" alt="Reviewing the total and saving the charge" width="600" height="771" loading="lazy"></div>
+</div>
+</div>
+<div class="ap-cycle-label" aria-live="polite"><b data-cycle-n>1</b><span data-cycle-t>Open Jobs</span><span class="ap-dots" data-cycle-dots aria-hidden="true"></span></div>
+</div>
+</div>
+<img src="/media/people/hero-ice-wave.png" alt="" aria-hidden="true" width="1920" height="271" style="position:relative;display:block;width:100%;height:auto;min-height:110px;object-fit:cover;object-position:center top;margin-top:40px">
+</section>
+
+<!-- STATS -->
+<section class="ap-stats">
+<div class="ap-wrap" style="padding-top:8px;padding-bottom:48px">
+<div class="ap-stats-grid">
+<div><b>31K+</b><span>Licensed venues loaded as distribution points</span></div>
+<div><b>3 states</b><span>QLD, NSW and VIC, down the eastern seaboard</span></div>
+<div><b>4 ways</b><span>To service an order: ALM, Paramount, ILG or direct</span></div>
+<div><b>24/7</b><span>Live reporting for brands, from every job in the field</span></div>
+</div>
+</div>
+</section>
+
+<!-- STEP BY STEP (Manuel's guide) -->
+<section style="padding:80px 0 72px">
+<div class="ap-wrap">
+<div class="kick" style="color:#E42E2E">In your pocket · Logging a job charge</div>
+<h2 class="ap-h2">Eight taps from <span style="color:#E42E2E">visit to charge.</span></h2>
+<p class="ap-lede">Straight from our rep guide. Reps open the job, time the visit, tag the outcome and save. Brands see it in their dashboard as it happens.</p>
+<div class="ap-steps">
+<div class="ap-step" style="--i:0"><div class="ap-step-h"><b>1</b><span>Open Jobs</span></div><p>Open the Jobs tab and select the correct job.</p><div class="ph"><div class="ph-screen"><div class="ph-shot"><img src="/media/app/step1.jpg" alt="Jobs list with search, brand and status filters" width="600" height="1180" loading="lazy"><i class="tap" style="--x:40%;--y:54%"></i></div></div></div><em>Find the right job.</em></div>
+<div class="ap-step" style="--i:1"><div class="ap-step-h"><b>2</b><span>Open the Job</span></div><p>Tap the job to open it and check the venue and brand.</p><div class="ph"><div class="ph-screen"><div class="ph-shot"><img src="/media/app/step2.jpg" alt="Job details: venue, brand, stage, priority and schedule" width="600" height="1153" loading="lazy"><i class="tap" style="--x:62%;--y:44%"></i></div></div></div><em>Check job details.</em></div>
+<div class="ap-step" style="--i:2"><div class="ap-step-h"><b>3</b><span>Tap Charges</span></div><p>Open the Charges tab and select your booking.</p><div class="ph"><div class="ph-screen"><div class="ph-shot"><img src="/media/app/step3.jpg" alt="Charges tab with a booking and an on-job timer" width="600" height="1142" loading="lazy"><i class="tap" style="--x:41%;--y:30%"></i></div></div></div><em>Open Charges and choose the booking.</em></div>
+<div class="ap-step" style="--i:3"><div class="ap-step-h"><b>4</b><span>Choose the Type</span></div><p>Pick Field, Desk, Service or Custom.</p><div class="ph"><div class="ph-screen"><div class="ph-shot"><img src="/media/app/step4.jpg" alt="Charge type: Field, Desk, Service or Custom, Actual or Quote, Billable" width="600" height="1142" loading="lazy"><i class="tap" style="--x:13%;--y:40%"></i></div></div></div><em>Pick the work type.</em></div>
+<div class="ap-step" style="--i:4"><div class="ap-step-h"><b>5</b><span>Charge Template</span></div><p>Choose the template that matches the activity.</p><div class="ph short"><div class="ph-screen"><div class="ph-shot"><img src="/media/app/step5.jpg" alt="Selecting a field sales charge template" width="600" height="821" loading="lazy"><i class="tap" style="--x:46%;--y:84%"></i></div></div></div><em>Choose the correct template.</em></div>
+<div class="ap-step" style="--i:5"><div class="ap-step-h"><b>6</b><span>Enter Time</span></div><p>Add start and end time, quantity, and check the rate.</p><div class="ph short"><div class="ph-screen"><div class="ph-shot"><img src="/media/app/step6.jpg" alt="Time start, time end, quantity in hours and discount" width="600" height="785" loading="lazy"><i class="tap" style="--x:24%;--y:49%"></i></div></div></div><em>Standard venue visit = 0.5 hours (30 mins).</em></div>
+<div class="ap-step" style="--i:6"><div class="ap-step-h"><b>7</b><span>Notes + Quick chips</span></div><p>Select quick chips or write your own notes.</p><div class="ph short"><div class="ph-screen"><div class="ph-shot"><img src="/media/app/step7.jpg" alt="Visit outcome quick chips and a written note" width="600" height="771" loading="lazy"><i class="tap" style="--x:40%;--y:52%"></i></div></div></div><em>Quick chips help, but don't replace real notes.</em></div>
+<div class="ap-step" style="--i:7"><div class="ap-step-h"><b>8</b><span>Save Charge</span></div><p>Review the total, then tap Save.</p><div class="ph short"><div class="ph-screen"><div class="ph-shot"><img src="/media/app/step8.jpg" alt="Charge total with GST and the Save button" width="600" height="771" loading="lazy"><i class="tap" style="--x:27%;--y:80%"></i></div></div></div><em>Review details and tap Save.</em></div>
+</div>
+</div>
+</section>
+
+<!-- ORDERS: ALM, Paramount, ILG, Direct -->
+<section class="ap-dark" style="background:#1E2552;color:#fff;position:relative">
+<img src="/media/people/wave-cap-cream.png" alt="" aria-hidden="true" width="1920" height="220" style="display:block;width:100%;height:auto;min-height:70px;object-fit:cover">
+<div class="ap-wrap" style="padding-top:24px;padding-bottom:84px">
+<div class="ap-feat">
+<div>
+<div class="kick" style="color:#FF7AA2">Order servicing</div>
+<h2 class="ap-h2">Every order, <span style="color:#FF7AA2">every channel.</span></h2>
+<p class="ap-lede" style="color:#E6E7F2">Venues order the way they already buy. Reps raise the order on the spot and RepShare tracks it through to delivery, whichever way it ships.</p>
+<ul>
+<li>Service orders through ALM, Paramount, ILG or direct from the brand</li>
+<li>Live status from submitted to confirmed to delivered</li>
+<li>Reorders logged as service, so new-business time stays on new business</li>
+<li>Every order tied back to the venue, the brand, the rep and the job</li>
+</ul>
+</div>
+<div class="mk" data-orders>
+<div class="ap-bar" aria-hidden="true"><i></i><i></i><i></i><span>RepShare · Orders</span></div>
+<div class="mk-body">
+<div class="mk-top"><h4>Orders this week</h4><span class="mk-tag">Sample data</span></div>
+<div class="mk-pills" role="group" aria-label="Channel">
+<button type="button" class="mk-pill on" data-ch="all">All</button><button type="button" class="mk-pill" data-ch="alm">ALM</button><button type="button" class="mk-pill" data-ch="par">Paramount</button><button type="button" class="mk-pill" data-ch="ilg">ILG</button><button type="button" class="mk-pill" data-ch="dir">Direct</button>
+</div>
+<table>
+<thead><tr><th>Venue</th><th>Channel</th><th>Brand</th><th>Status</th></tr></thead>
+<tbody data-order-rows></tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- CIRCUITS -->
+<section style="padding:84px 0">
+<div class="ap-wrap">
+<div class="ap-feat">
+<div class="mk" style="order:0">
+<div class="ap-bar" aria-hidden="true"><i></i><i></i><i></i><span>RepShare · Circuit builder</span></div>
+<div class="mk-body">
+<div class="mk-top"><h4>Valley &amp; New Farm whisky circuit</h4><span class="mk-tag">Sample data</span></div>
+<div class="mk-pills"><span class="mk-pill on">Brisbane</span><span class="mk-pill">Bars</span><span class="mk-pill">Hotels</span><span class="mk-pill">Bottle shops</span><span class="mk-pill on">Offer: 10+5 opening deal</span></div>
+<div class="cmap" aria-hidden="true">
+<svg viewBox="0 0 400 250" preserveAspectRatio="none" data-cmap></svg>
+</div>
+<div class="c-legend"><span><i style="background:#E42E2E"></i>On the circuit</span><span><i style="background:#ec0c84"></i>Offer sent</span><span><i style="background:#b9bccb"></i>Licensed venue</span></div>
+<div style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;font-size:12px;color:#5c5b57">
+<div><b style="display:block;font-size:22px;color:#111">24</b>Accounts on circuit</div>
+<div><b style="display:block;font-size:22px;color:#111">9</b>Offers sent</div>
+<div><b style="display:block;font-size:22px;color:#111">2 days</b>To walk it</div>
+</div>
+</div>
+</div>
+<div>
+<div class="kick" style="color:#E42E2E">Circuit building</div>
+<h2 class="ap-h2">Target the right accounts <span style="color:#E42E2E">with the right offer.</span></h2>
+<p class="ap-lede">Start from 31K+ licensed venues, narrow by suburb and venue type, and build a circuit your reps can actually walk. Attach an offer and every account on the circuit gets it.</p>
+<ul>
+<li>Filter by city, suburb, venue type and buying status</li>
+<li>One venue record per site, so circuits never double count</li>
+<li>Contacts follow the person when they change venues</li>
+<li>Attach intro deals and high value offers to the accounts that matter</li>
+</ul>
+</div>
+</div>
+</div>
+</section>
+
+<img src="/media/people/ice-wave-divider.png" alt="" aria-hidden="true" width="1920" height="226" style="display:block;width:100%;height:auto;min-height:70px;object-fit:cover">
+
+<!-- REP MANAGEMENT -->
+<section style="padding:64px 0 84px">
+<div class="ap-wrap">
+<div class="ap-feat">
+<div>
+<div class="kick" style="color:#E42E2E">Rep management &amp; order updates</div>
+<h2 class="ap-h2">Know what every rep <span style="color:#E42E2E">is doing.</span></h2>
+<p class="ap-lede">Jobs are allocated to reps by brand. Their hours, visits, notes and orders flow back in real time, and anything unusual is held for review before it's charged.</p>
+<ul>
+<li>Allocate jobs, set bookings and reassign stalled ones</li>
+<li>On-job timer and quick chips for clean, consistent notes</li>
+<li>Order updates pushed to the brand the moment they change</li>
+<li>Approvals for anything over the standard booking</li>
+</ul>
+</div>
+<div class="mk" data-reps>
+<div class="ap-bar" aria-hidden="true"><i></i><i></i><i></i><span>RepShare · Reps</span></div>
+<div class="mk-body">
+<div class="mk-top"><h4>Your reps this week</h4><span class="mk-tag">Sample data</span></div>
+<div class="reps">
+<div class="rep"><div class="rep-h"><i style="background:#E42E2E">JP</i><div><b>Jordan P.</b><small>Brisbane · CBD, New Farm</small></div></div><div class="meter"><span style="--w:72%"></span></div><div class="rep-row"><span>7.2 of 10 hrs</span><span>3 first orders</span></div></div>
+<div class="rep"><div class="rep-h"><i style="background:#1E2552">MC</i><div><b>Mia C.</b><small>Melbourne · Fitzroy</small></div></div><div class="meter"><span style="--w:90%"></span></div><div class="rep-row"><span>13.5 of 15 hrs</span><span>5 first orders</span></div></div>
+<div class="rep"><div class="rep-h"><i style="background:#ec0c84">TR</i><div><b>Tom R.</b><small>Sydney · Newtown</small></div></div><div class="meter"><span style="--w:40%"></span></div><div class="rep-row"><span>2 of 5 hrs</span><span>1 first order</span></div></div>
+</div>
+<div style="font-size:12px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:#5c5b57">Live updates</div>
+<div class="feed" data-feed aria-live="off"></div>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- OPERATING STANDARD (SOP) -->
+<section style="background:#fff;border-top:3px solid #111;border-bottom:3px solid #111">
+<div class="ap-wrap" style="padding-top:72px;padding-bottom:72px">
+<div class="kick" style="color:#E42E2E">Built on the RepShare operating standard</div>
+<h2 class="ap-h2">Quality over quantity, <span style="color:#E42E2E">built in.</span></h2>
+<p class="ap-lede">Every job moves through clear stages with time limits, and every charge follows the same rules, so brands pay for productive work, not activity for its own sake.</p>
+<div class="pipe">
+<div style="background:#6B6F7E"><b>New Job</b><span>Just allocated. Action and contact the customer.</span><em>Max 2 weeks</em></div>
+<div style="background:#E8A317"><b>In Progress</b><span>Tastings, proposals, pricing, follow-ups.</span><em>Max 1 month</em></div>
+<div style="background:#1F6F3A"><b>First Order</b><span>First order achieved, moving into servicing.</span><em>Max 1 month</em></div>
+<div style="background:#1a5ad7"><b>Cold</b><span>Interested, but not likely to move soon.</span><em>Archived after 1 month</em></div>
+<div style="background:#D3221B"><b>Dead</b><span>No realistic opportunity right now.</span><em>Archived after 2 weeks</em></div>
+</div>
+<div class="rules">
+<div><b>30 min</b><span>Standard field booking, per brand, per customer.</span></div>
+<div><b>1 hour</b><span>Possible for tastings, training or negotiations, with notes that support it.</span></div>
+<div><b>2 charges</b><span>Maximum sales bookings before a first order. A third is held for review.</span></div>
+<div><b>30 days</b><span>To action an allocated job, or it can be reassigned.</span></div>
+</div>
+</div>
+</section>
+
+<!-- FEATURES & BENEFITS -->
+<section style="padding:84px 0">
+<div class="ap-wrap">
+<div class="kick" style="color:#E42E2E">Features &amp; benefits</div>
+<h2 class="ap-h2">One app, <span style="color:#E42E2E">three sides of the sale.</span></h2>
+<div class="ben" style="margin-top:28px">
+<div style="--c:#E42E2E"><h3>For brands</h3><ul><li>A fractional sales team without salaries</li><li>Live dashboard of orders, circuits, products and payments</li><li>Pay for productive time, checked against the standard</li><li>Orders serviced through your wholesalers or direct</li></ul></div>
+<div style="--c:#1E2552"><h3>For reps</h3><ul><li>Every job, booking and brief on your phone</li><li>On-job timer and quick chips for fast, clean notes</li><li>Earnings tab, so you always know what you've made</li><li>Several brands in one visit, charged fairly to each</li></ul></div>
+<div style="--c:#ec0c84"><h3>For venues</h3><ul><li>One rep visit, several great brands</li><li>Intro deals and offers matched to your venue</li><li>Order through ALM, Paramount, ILG or direct</li><li>Tastings and staff training on site</li></ul></div>
+</div>
+</div>
+</section>
+
+<!-- CTA -->
+<section id="demo" style="background:#E42E2E;color:#fff;position:relative;overflow:hidden">
+<div class="ap-wrap" style="padding-top:72px;padding-bottom:80px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,460px),1fr));gap:40px;align-items:center">
+<div>
+<img src="/media/logos/drinks-network-repshare-white.png" alt="Drinks Network RepShare" width="1829" height="649" style="width:100%;max-width:420px;height:auto;display:block;margin-bottom:22px">
+<h2 class="ap-h2" style="margin-top:0">See it working <span style="color:#1E2552">on your brand.</span></h2>
+<p class="ap-lede" style="color:#FFE3E0">We'll walk you through the app with your products, your markets and a circuit built for you.</p>
+<div style="display:flex;flex-wrap:wrap;gap:14px">
+<a class="kick" href="/brands#start" style="background:#fff;color:#E42E2E;text-decoration:none;padding:18px 26px">Book a demo</a>
+<a class="kick" href="/start?role=rep" style="border:2px solid #fff;color:#fff;text-decoration:none;padding:16px 24px">Join as a Rep</a>
+</div>
+<a href="https://repshare.drinksnetwork.com.au/" style="display:inline-block;margin-top:20px;color:#fff;font-size:18px;font-weight:700">repshare.drinksnetwork.com.au →</a>
+</div>
+<div style="display:flex;justify-content:center">
+<img src="/media/people/repshare-phone-wave.png" alt="The RepShare app on a phone" width="883" height="677" style="width:100%;max-width:520px;height:auto;display:block">
+</div>
+</div>
+</section>
+
+<footer class="site-footer">
+<div class="wrap cols">
+<div><h2>RepShare</h2><ul><li><a href="/brands">Brands</a></li><li><a href="/reps">Reps</a></li><li><a href="/repshare-app">The App</a></li><li><a href="/start">Start here</a></li><li><a href="/retail">Retail Activation</a></li><li><a href="/whisky-adventure/venues">Whisky Adventure</a></li></ul></div>
+<div><h2>Company</h2><ul><li><a href="/about">About us</a></li><li><a href="/contact">Contact</a></li><li><a href="/faqs">FAQs</a></li><li><a href="https://www.careers-page.com/drinks-network">Careers</a></li></ul></div>
+<div><h2>Learn</h2><ul><li><a href="/courses">Courses</a></li><li><a href="/blog">People &amp; Culture</a></li><li><a href="/securicode">SecuriCode</a></li></ul></div>
+<div><h2>Legal</h2><ul><li><a href="/legal">Terms &amp; policies</a></li><li><a href="/legal/terms-of-use">Terms of Use</a></li><li><a href="/legal/service-terms">Service Terms</a></li><li><a href="/legal/payment-terms">Payment Terms</a></li><li><a href="/legal/privacy-policy">Privacy Policy</a></li><li><a href="/cookie-policy">Cookie Policy</a></li></ul></div>
+<div><h2>Be social</h2><div class="social">
+<a href="https://www.facebook.com/DrinksNetwork" target="_blank" rel="noopener" aria-label="Drinks Network on Facebook"><svg width="18" height="18" viewBox="0 0 24 24" fill="#fff" aria-hidden="true"><path d="M14 8h3V4h-3c-2.8 0-4 1.8-4 4.3V10H7v4h3v8h4v-8h3l1-4h-4V8.6c0-.4.3-.6.7-.6z"/></svg></a>
+<a href="https://www.youtube.com/DrinksnetworkAu" target="_blank" rel="noopener" aria-label="Drinks Network on YouTube"><svg width="18" height="18" viewBox="0 0 24 24" fill="#fff" aria-hidden="true"><path d="M23 7.2a3 3 0 0 0-2.1-2.1C19 4.6 12 4.6 12 4.6s-7 0-8.9.5A3 3 0 0 0 1 7.2 31 31 0 0 0 .5 12 31 31 0 0 0 1 16.8a3 3 0 0 0 2.1 2.1c1.9.5 8.9.5 8.9.5s7 0 8.9-.5a3 3 0 0 0 2.1-2.1c.4-1.6.5-4.8.5-4.8s0-3.2-.5-4.8zM9.7 15V9l5.8 3-5.8 3z"/></svg></a>
+<a href="https://www.linkedin.com/company/drinks-network/" target="_blank" rel="noopener" aria-label="Drinks Network on LinkedIn"><svg width="18" height="18" viewBox="0 0 24 24" fill="#fff" aria-hidden="true"><path d="M4.5 3.5a2 2 0 1 1 0 4 2 2 0 0 1 0-4zM3 9h3v12H3zM9 9h2.9v1.7h.1c.4-.8 1.4-1.7 3-1.7 3.2 0 3.8 2.1 3.8 4.8V21h-3v-6.3c0-1.5 0-3.4-2.1-3.4s-2.4 1.6-2.4 3.3V21H9z"/></svg></a>
+<a href="https://www.instagram.com/drinks_network" target="_blank" rel="noopener" aria-label="Drinks Network on Instagram"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="#fff"/></svg></a>
+</div></div>
+</div>
+<div class="wrap legal">
+<a href="/" aria-label="Drinks Network home"><img alt="Drinks Network" src="/media/logos/drinks-network-script-white.png" width="148" height="48" style="height:48px;width:auto;display:block"></a>
+<span>Sydney · Melbourne · Brisbane</span>
+<span>© 2026 Drinks Network Pty Ltd · ABN 89 680 725 802</span>
+</div>
+</footer>
+</div>
+
+<script src="/assets/site.js" defer></script>
+<script>
+(function () {
+  'use strict';
+  var still = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* hero phone: cycle through Manuel's eight steps */
+  var cyc = document.querySelector('[data-cycle]');
+  if (cyc) {
+    var shots = cyc.querySelectorAll('.ph-shot');
+    var names = ['Open Jobs', 'Open the Job', 'Tap Charges', 'Choose the Type', 'Charge Template', 'Enter Time', 'Notes + Quick chips', 'Save Charge'];
+    var n = document.querySelector('[data-cycle-n]'), t = document.querySelector('[data-cycle-t]'), dots = document.querySelector('[data-cycle-dots]');
+    shots.forEach(function () { dots.appendChild(document.createElement('i')); });
+    var k = 0;
+    function show(i) {
+      shots.forEach(function (s, j) { s.classList.toggle('on', j === i); });
+      dots.querySelectorAll('i').forEach(function (d, j) { d.classList.toggle('on', j === i); });
+      n.textContent = i + 1; t.textContent = names[i];
+    }
+    show(0);
+    if (!still) setInterval(function () { k = (k + 1) % shots.length; show(k); }, 2800);
+  }
+
+  /* orders board (sample data) */
+  var ob = document.querySelector('[data-orders]');
+  if (ob) {
+    var CH = { alm: ['ch-alm', 'ALM'], par: ['ch-par', 'Paramount'], ilg: ['ch-ilg', 'ILG'], dir: ['ch-dir', 'Direct'] };
+    var ST = [['st-sub', 'Submitted'], ['st-con', 'Confirmed'], ['st-del', 'Delivered']];
+    var orders = [
+      { v: 'The Larder Bar · Fortitude Valley', c: 'alm', b: 'Corowa Distilling', s: 2 },
+      { v: 'Harbour St Hotel · Pyrmont', c: 'par', b: 'Lady Trieu Gin', s: 1 },
+      { v: 'Cellar on Brunswick · Fitzroy', c: 'ilg', b: 'Headlands Distilling', s: 2 },
+      { v: 'Little Lantern · Newtown', c: 'dir', b: 'Diablo Co', s: 0 },
+      { v: 'Riverbend Bottle Co · West End', c: 'alm', b: 'Nhau Vodka', s: 1 }
+    ];
+    var queue = [
+      { v: 'Ivy Lane Hotel · New Farm', c: 'ilg', b: 'Corowa Distilling', s: 0 },
+      { v: 'Paddo Cellars · Paddington', c: 'dir', b: 'San Junipero', s: 0 },
+      { v: 'Saltwater Pub · West End', c: 'par', b: 'Headlands Distilling', s: 0 }
+    ];
+    var filter = 'all', body = ob.querySelector('[data-order-rows]');
+    function draw(fresh) {
+      body.innerHTML = '';
+      orders.filter(function (o) { return filter === 'all' || o.c === filter; }).slice(0, 5).forEach(function (o, i) {
+        var tr = document.createElement('tr'); if (fresh && i === 0) tr.className = 'new';
+        tr.innerHTML = '<td><b style="font-size:13px">' + o.v.split(' · ')[0] + '</b><br><small style="color:#5c5b57">' + o.v.split(' · ')[1] + '</small></td>' +
+          '<td><span class="ch ' + CH[o.c][0] + '">' + CH[o.c][1] + '</span></td><td>' + o.b + '</td>' +
+          '<td><span class="st ' + ST[o.s][0] + '">' + ST[o.s][1] + '</span></td>';
+        body.appendChild(tr);
+      });
+    }
+    ob.querySelectorAll('[data-ch]').forEach(function (b) {
+      b.addEventListener('click', function () {
+        filter = b.dataset.ch;
+        ob.querySelectorAll('[data-ch]').forEach(function (x) { x.classList.toggle('on', x === b); });
+        draw(false);
+      });
+    });
+    draw(false);
+    if (!still) setInterval(function () {
+      var open = orders.filter(function (o) { return o.s < 2; });
+      if (open.length && Math.random() < .6) { open[Math.floor(Math.random() * open.length)].s++; draw(false); }
+      else { var nx = queue.shift(); if (nx) { orders.unshift(nx); orders.pop(); queue.push({ v: nx.v, c: nx.c, b: nx.b, s: 0 }); draw(true); } }
+    }, 2600);
+  }
+
+  /* circuit map: scattered licensed venues, a circuit and a route */
+  var svg = document.querySelector('[data-cmap]');
+  if (svg) {
+    var NS = 'http://www.w3.org/2000/svg', seed = 7;
+    function rnd() { seed = (seed * 9301 + 49297) % 233280; return seed / 233280; }
+    var g = '', pts = [];
+    for (var i = 0; i < 150; i++) { var x = 10 + rnd() * 380, y = 10 + rnd() * 230; g += '<circle class="v" cx="' + x.toFixed(1) + '" cy="' + y.toFixed(1) + '" r="2.6"/>'; }
+    var route = [[60, 70], [95, 55], [130, 80], [150, 120], [190, 105], [225, 130], [250, 95], [290, 110], [310, 150], [280, 185], [235, 175], [195, 200], [150, 180], [110, 160], [85, 125]];
+    var d = 'M' + route.map(function (p) { return p[0] + ' ' + p[1]; }).join(' L');
+    g += '<path class="route" d="' + d + '"/>';
+    route.forEach(function (p, j) {
+      var cls = 'v in' + (j % 3 === 1 ? ' offer' : '');
+      g += '<circle class="' + cls + '" cx="' + p[0] + '" cy="' + p[1] + '" r="5.5" style="animation-delay:' + (j * .25).toFixed(2) + 's"/>';
+    });
+    svg.innerHTML = '<rect width="400" height="250" fill="#F1F2F6"/>' +
+      '<path d="M0 205 C80 190 120 230 200 215 S330 200 400 225 L400 250 L0 250Z" fill="#DDE6F3"/>' + g;
+  }
+
+  /* live feed (sample data) */
+  var feed = document.querySelector('[data-feed]');
+  if (feed) {
+    var items = [
+      ['#1F6F3A', 'First order · Corowa at The Larder Bar', 'via ALM'],
+      ['#1a5ad7', 'Visit logged · Lady Trieu Gin, 30 min', 'Mia C.'],
+      ['#E8A317', 'Third charge held for review', 'Admin'],
+      ['#1F6F3A', 'Order delivered · Headlands, 2 cases', 'via ILG'],
+      ['#ec0c84', 'Offer sent · 10+5 opening deal to 6 venues', 'Circuit'],
+      ['#1a5ad7', 'Tasting · awaiting decision', 'Jordan P.'],
+      ['#1F6F3A', 'Order confirmed · Diablo Co', 'Direct'],
+      ['#6B6F7E', 'Job reassigned after 30 days', 'Admin']
+    ];
+    var p = 0;
+    function add(fresh) {
+      var it = items[p++ % items.length], row = document.createElement('div');
+      if (fresh) row.className = 'new';
+      row.innerHTML = '<i style="background:' + it[0] + '"></i><span>' + it[1] + '</span><small>' + it[2] + '</small>';
+      feed.insertBefore(row, feed.firstChild);
+      while (feed.children.length > 5) feed.removeChild(feed.lastChild);
+    }
+    for (var q = 0; q < 4; q++) add(false);
+    if (!still) setInterval(function () { add(true); }, 3200);
+  }
+})();
+</script>
+</body>
+</html>
