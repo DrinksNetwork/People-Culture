@@ -135,3 +135,8 @@ a{color:var(--red)}a:hover{color:var(--red-dark)}
 .qa-next{background:#fff;color:var(--red);flex:1}
 .qa-done{border-top:4px solid #fff;padding-top:18px;font-size:18px;line-height:1.45}
 .qa-done p{margin:10px 0 0}
+
+/* Home: four RepShare characters on red, with the script logo large behind them */
+.four-band{position:relative;background:#E42E2E;overflow:hidden;display:flex;justify-content:center;align-items:flex-end;padding-top:clamp(70px,17vw,230px)}
+.four-band .four-logo{position:absolute;left:50%;top:clamp(10px,2.5vw,32px);transform:translateX(-50%);width:min(94%,1240px);height:auto;opacity:1}
+.four-band .four-people{position:relative;display:block;width:min(100%,1400px);height:auto}
