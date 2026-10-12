@@ -32,10 +32,12 @@ a{color:#E42E2E}a:hover{color:#B81F24}
 /* phone frame */
 .ph{position:relative;width:100%;max-width:280px;aspect-ratio:9/18.6;background:#0d0d10;border-radius:40px;padding:10px;box-sizing:border-box;box-shadow:0 30px 60px rgba(0,0,0,.35),inset 0 0 0 2px #2b2b30}
 .ph::before{content:"";position:absolute;top:16px;left:50%;transform:translateX(-50%);width:34%;height:18px;background:#0d0d10;border-radius:0 0 12px 12px;z-index:3}
-.ph-screen{position:relative;width:100%;height:100%;border-radius:31px;overflow:hidden;background:#F4F5F8}
-.ph-shot{position:relative}
-.ph-shot img{width:100%;height:auto;display:block}
-.ph.short{aspect-ratio:9/13.6}
+.ph-screen{position:relative;width:100%;height:100%;border-radius:31px;overflow:hidden;background:#FAFBFD;display:flex;flex-direction:column}
+.ph-shot{position:relative;flex:1;min-height:0;overflow:hidden;background:#FAFBFD}
+.ph-img{position:relative}
+.ph-img img{width:100%;height:auto;display:block}
+.ph-bar{flex:none;display:block;width:100%;height:auto;position:relative;z-index:2}
+.ph-stack{position:relative;flex:1;min-height:0}
 
 /* hero */
 .ap-hero{background:#1E2552;color:#fff;position:relative;overflow:hidden}
@@ -213,14 +215,13 @@ a{color:#E42E2E}a:hover{color:#B81F24}
 </div>
 <div class="ph ap-cycle" data-cycle>
 <div class="ph-screen">
-<div class="ph-shot on"><img src="/media/app/step1.jpg" alt="RepShare Jobs screen with assigned jobs" width="600" height="1180"></div>
-<div class="ph-shot"><img src="/media/app/step2.jpg" alt="Job details for a venue and brand" width="600" height="1153" loading="lazy"></div>
-<div class="ph-shot"><img src="/media/app/step3.jpg" alt="Charges tab with booking and on-job timer" width="600" height="1142" loading="lazy"></div>
-<div class="ph-shot"><img src="/media/app/step4.jpg" alt="Choosing Field, Desk, Service or Custom" width="600" height="1142" loading="lazy"></div>
-<div class="ph-shot"><img src="/media/app/step5.jpg" alt="Selecting a charge template" width="600" height="821" loading="lazy"></div>
-<div class="ph-shot"><img src="/media/app/step6.jpg" alt="Entering time and quantity" width="600" height="785" loading="lazy"></div>
-<div class="ph-shot"><img src="/media/app/step7.jpg" alt="Visit outcome quick chips and notes" width="600" height="771" loading="lazy"></div>
-<div class="ph-shot"><img src="/media/app/step8.jpg" alt="Reviewing the total and saving the charge" width="600" height="771" loading="lazy"></div>
+<div class="ph-stack">
+<div class="ph-shot on"><div class="ph-img"><img src="/media/app/step1.jpg" alt="RepShare Jobs screen with assigned jobs" width="600" height="1052"></div></div>
+<div class="ph-shot"><div class="ph-img"><img src="/media/app/step3.jpg" alt="Charges tab with booking and on-job timer" width="600" height="1142" loading="lazy"></div></div>
+<div class="ph-shot"><div class="ph-img"><img src="/media/app/step5.jpg" alt="Selecting the work type and charge template" width="600" height="865" loading="lazy"></div></div>
+<div class="ph-shot"><div class="ph-img"><img src="/media/app/step7.jpg" alt="Visit outcome quick chips and notes" width="600" height="771" loading="lazy"></div></div>
+</div>
+<img class="ph-bar" src="/media/app/tabbar.jpg" alt="" aria-hidden="true" width="600" height="153">
 </div>
 </div>
 <div class="ap-cycle-label" aria-live="polite"><b data-cycle-n>1</b><span data-cycle-t>Open Jobs</span><span class="ap-dots" data-cycle-dots aria-hidden="true"></span></div>
@@ -245,17 +246,13 @@ a{color:#E42E2E}a:hover{color:#B81F24}
 <section style="padding:80px 0 72px">
 <div class="ap-wrap">
 <div class="kick" style="color:#E42E2E">In your pocket · Logging a job charge</div>
-<h2 class="ap-h2">Eight taps from <span style="color:#E42E2E">visit to charge.</span></h2>
+<h2 class="ap-h2">Four taps from <span style="color:#E42E2E">visit to charge.</span></h2>
 <p class="ap-lede">Straight from our rep guide. Reps open the job, time the visit, tag the outcome and save. Brands see it in their dashboard as it happens.</p>
 <div class="ap-steps">
-<div class="ap-step" style="--i:0"><div class="ap-step-h"><b>1</b><span>Open Jobs</span></div><p>Open the Jobs tab and select the correct job.</p><div class="ph"><div class="ph-screen"><div class="ph-shot"><img src="/media/app/step1.jpg" alt="Jobs list with search, brand and status filters" width="600" height="1180" loading="lazy"><i class="tap" style="--x:40%;--y:54%"></i></div></div></div><em>Find the right job.</em></div>
-<div class="ap-step" style="--i:1"><div class="ap-step-h"><b>2</b><span>Open the Job</span></div><p>Tap the job to open it and check the venue and brand.</p><div class="ph"><div class="ph-screen"><div class="ph-shot"><img src="/media/app/step2.jpg" alt="Job details: venue, brand, stage, priority and schedule" width="600" height="1153" loading="lazy"><i class="tap" style="--x:62%;--y:44%"></i></div></div></div><em>Check job details.</em></div>
-<div class="ap-step" style="--i:2"><div class="ap-step-h"><b>3</b><span>Tap Charges</span></div><p>Open the Charges tab and select your booking.</p><div class="ph"><div class="ph-screen"><div class="ph-shot"><img src="/media/app/step3.jpg" alt="Charges tab with a booking and an on-job timer" width="600" height="1142" loading="lazy"><i class="tap" style="--x:41%;--y:30%"></i></div></div></div><em>Open Charges and choose the booking.</em></div>
-<div class="ap-step" style="--i:3"><div class="ap-step-h"><b>4</b><span>Choose the Type</span></div><p>Pick Field, Desk, Service or Custom.</p><div class="ph"><div class="ph-screen"><div class="ph-shot"><img src="/media/app/step4.jpg" alt="Charge type: Field, Desk, Service or Custom, Actual or Quote, Billable" width="600" height="1142" loading="lazy"><i class="tap" style="--x:13%;--y:40%"></i></div></div></div><em>Pick the work type.</em></div>
-<div class="ap-step" style="--i:4"><div class="ap-step-h"><b>5</b><span>Charge Template</span></div><p>Choose the template that matches the activity.</p><div class="ph short"><div class="ph-screen"><div class="ph-shot"><img src="/media/app/step5.jpg" alt="Selecting a field sales charge template" width="600" height="821" loading="lazy"><i class="tap" style="--x:46%;--y:84%"></i></div></div></div><em>Choose the correct template.</em></div>
-<div class="ap-step" style="--i:5"><div class="ap-step-h"><b>6</b><span>Enter Time</span></div><p>Add start and end time, quantity, and check the rate.</p><div class="ph short"><div class="ph-screen"><div class="ph-shot"><img src="/media/app/step6.jpg" alt="Time start, time end, quantity in hours and discount" width="600" height="785" loading="lazy"><i class="tap" style="--x:24%;--y:49%"></i></div></div></div><em>Standard venue visit = 0.5 hours (30 mins).</em></div>
-<div class="ap-step" style="--i:6"><div class="ap-step-h"><b>7</b><span>Notes + Quick chips</span></div><p>Select quick chips or write your own notes.</p><div class="ph short"><div class="ph-screen"><div class="ph-shot"><img src="/media/app/step7.jpg" alt="Visit outcome quick chips and a written note" width="600" height="771" loading="lazy"><i class="tap" style="--x:40%;--y:52%"></i></div></div></div><em>Quick chips help, but don't replace real notes.</em></div>
-<div class="ap-step" style="--i:7"><div class="ap-step-h"><b>8</b><span>Save Charge</span></div><p>Review the total, then tap Save.</p><div class="ph short"><div class="ph-screen"><div class="ph-shot"><img src="/media/app/step8.jpg" alt="Charge total with GST and the Save button" width="600" height="771" loading="lazy"><i class="tap" style="--x:27%;--y:80%"></i></div></div></div><em>Review details and tap Save.</em></div>
+<div class="ap-step" style="--i:0"><div class="ap-step-h"><b>1</b><span>Open Jobs</span></div><p>Open the Jobs tab and select the job.</p><div class="ph"><div class="ph-screen"><div class="ph-shot"><div class="ph-img"><img src="/media/app/step1.jpg" alt="Jobs list with search, brand and status filters" width="600" height="1052" loading="lazy"><i class="tap" style="--x:40%;--y:61%"></i></div></div><img class="ph-bar" src="/media/app/tabbar.jpg" alt="" aria-hidden="true" width="600" height="153" loading="lazy"></div></div><em>Find the right job.</em></div>
+<div class="ap-step" style="--i:1"><div class="ap-step-h"><b>2</b><span>Tap Charges</span></div><p>Open the job, tap Charges and select your booking.</p><div class="ph"><div class="ph-screen"><div class="ph-shot"><div class="ph-img"><img src="/media/app/step3.jpg" alt="Charges tab with a booking and an on-job timer" width="600" height="1142" loading="lazy"><i class="tap" style="--x:41%;--y:30%"></i></div></div><img class="ph-bar" src="/media/app/tabbar.jpg" alt="" aria-hidden="true" width="600" height="153" loading="lazy"></div></div><em>Start the on-job timer at the venue.</em></div>
+<div class="ap-step" style="--i:2"><div class="ap-step-h"><b>3</b><span>Charge Template</span></div><p>Pick Field, Desk, Service or Custom, then the template that matches the activity.</p><div class="ph"><div class="ph-screen"><div class="ph-shot"><div class="ph-img"><img src="/media/app/step5.jpg" alt="Choosing Field and a field sales charge template" width="600" height="865" loading="lazy"><i class="tap" style="--x:46%;--y:78%"></i></div></div><img class="ph-bar" src="/media/app/tabbar.jpg" alt="" aria-hidden="true" width="600" height="153" loading="lazy"></div></div><em>A standard venue visit is 30 minutes.</em></div>
+<div class="ap-step" style="--i:3"><div class="ap-step-h"><b>4</b><span>Notes + Save</span></div><p>Tag the visit outcome with quick chips, add your notes and save.</p><div class="ph"><div class="ph-screen"><div class="ph-shot"><div class="ph-img"><img src="/media/app/step7.jpg" alt="Visit outcome quick chips and a written note" width="600" height="771" loading="lazy"><i class="tap" style="--x:40%;--y:52%"></i></div></div><img class="ph-bar" src="/media/app/tabbar.jpg" alt="" aria-hidden="true" width="600" height="153" loading="lazy"></div></div><em>Quick chips help, but don't replace real notes.</em></div>
 </div>
 </div>
 </section>
@@ -447,7 +444,7 @@ a{color:#E42E2E}a:hover{color:#B81F24}
   var cyc = document.querySelector('[data-cycle]');
   if (cyc) {
     var shots = cyc.querySelectorAll('.ph-shot');
-    var names = ['Open Jobs', 'Open the Job', 'Tap Charges', 'Choose the Type', 'Charge Template', 'Enter Time', 'Notes + Quick chips', 'Save Charge'];
+    var names = ['Open Jobs', 'Tap Charges', 'Charge Template', 'Notes + Save'];
     var n = document.querySelector('[data-cycle-n]'), t = document.querySelector('[data-cycle-t]'), dots = document.querySelector('[data-cycle-dots]');
     shots.forEach(function () { dots.appendChild(document.createElement('i')); });
     var k = 0;
