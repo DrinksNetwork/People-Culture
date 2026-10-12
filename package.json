@@ -7,6 +7,7 @@
   "engines": { "node": ">=18" },
   "scripts": {
     "build": "node scripts/build.mjs",
-    "preview": "node scripts/serve.mjs"
+    "preview": "node scripts/serve.mjs",
+    "import:wordpress": "node scripts/import-wordpress.mjs"
   }
 }

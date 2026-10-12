@@ -8,12 +8,14 @@ const types = { '.html': 'text/html; charset=utf-8', '.png': 'image/png', '.jpg'
 const port = Number(process.env.PORT) || 3000;
 
 createServer(async (req, res) => {
-  let path = decodeURIComponent(new URL(req.url, 'http://x').pathname);
-  if (path.endsWith('/')) path += 'index.html';
-  let file = join(pub, path);
-  if (!file.startsWith(pub)) { res.writeHead(403).end(); return; }
-  try { if (!extname(file)) file += '.html'; await stat(file); }
-  catch { res.writeHead(404, { 'Content-Type': 'text/plain' }).end('Not found'); return; }
+  const path = decodeURIComponent(new URL(req.url, 'http://x').pathname);
+  const base = join(pub, path);
+  if (!base.startsWith(pub)) { res.writeHead(403).end(); return; }
+  let file = null;
+  for (const c of [base, base + '.html', join(base, 'index.html')]) {
+    try { if ((await stat(c)).isFile()) { file = c; break; } } catch {}
+  }
+  if (!file) { res.writeHead(404, { 'Content-Type': 'text/plain' }).end('Not found'); return; }
   res.writeHead(200, { 'Content-Type': types[extname(file)] || 'application/octet-stream' });
   res.end(await readFile(file));
 }).listen(port, () => console.log(`Preview: http://localhost:${port}  (campaign page: /campaign/bar-takeover)`));
