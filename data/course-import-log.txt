@@ -1,0 +1,1 @@
+No WordPress login secrets; skipped
