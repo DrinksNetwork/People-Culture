@@ -99,7 +99,27 @@
     var step = 0;
     var rail = funnel.querySelectorAll('[data-rail]');
 
+    // Funnel log: one anonymous event per step reached, linked to the final submission by sessionId.
+    var FUNNEL = window.DN_FUNNEL_ENDPOINT || '/api/funnel-events';
+    var sessionId;
+    try { sessionId = sessionStorage.getItem('dn-start-session'); } catch (e) {}
+    if (!sessionId) {
+      sessionId = Date.now().toString(36) + Math.random().toString(36).slice(2, 10);
+      try { sessionStorage.setItem('dn-start-session', sessionId); } catch (e) {}
+    }
+    var lastLogged = null;
+    function logStep(name) {
+      if (name === lastLogged) return;
+      lastLogged = name;
+      var ev = JSON.stringify(Object.assign({ sessionId: sessionId, step: name, roles: Object.keys(roles).filter(function (k) { return roles[k]; }), pageUrl: location.href, at: new Date().toISOString() }, utm()));
+      try {
+        if (navigator.sendBeacon) navigator.sendBeacon(FUNNEL, new Blob([ev], { type: 'application/json' }));
+        else fetch(FUNNEL, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: ev, keepalive: true }).catch(function () {});
+      } catch (e) {}
+    }
+
     function show() {
+      logStep(order[step]);
       funnel.querySelectorAll('[data-step]').forEach(function (s) { s.hidden = s.dataset.step !== order[step]; });
       rail.forEach(function (li, i) {
         li.style.borderBottomColor = i === step ? 'var(--red)' : 'transparent';
@@ -145,6 +165,7 @@
       };
       var payload = Object.assign({}, d, utm(), {
         form: 'start-here',
+        sessionId: sessionId,
         tags: Object.keys(roles).filter(function (k) { return roles[k]; }),
         circuit: { city: (funnel.querySelector('[name=circuitCity]') || {}).value, venueTypes: chips('venue'), suburbs: (funnel.querySelector('[name=suburbs]') || {}).value },
         pageUrl: location.href,
