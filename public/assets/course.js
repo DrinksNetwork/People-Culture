@@ -376,7 +376,7 @@
       // sign-off, sitting on the tan to the left of the crew
       var sy = H - 450;
       // pen-scribble signature in navy ink
-      scribble(c, X + 24, sy - 28, 1.18, NAVY);
+      scribble(c, X + 40, sy - 14, 1.08, NAVY);
       c.fillStyle = INK; c.fillRect(X, sy + 24, 560, 2);
       c.fillStyle = MUTED; c.font = '700 22px ' + NARROW; spaced(c, 'HAYDEN WOOD  ·  FOUNDER, DRINKS NETWORK', X, sy + 64, 4, 'left');
       stamp(c, X + 920, sy + 10, 158, { RED: '#C21F27', ANTON: ANTON, NARROW: NARROW, date: d.date.toLocaleDateString('en-AU', { day: '2-digit', month: '2-digit', year: 'numeric' }).replace(/\//g, '.') });
@@ -389,37 +389,54 @@
   }
   window.DNCertificate = { draw: function (cv, d) { return drawCertificate(cv, d); } };
   function scribble(c, x, y, k, col) {
-    // a quick looping signature: tall initial strokes, a run of uneven loops, an underline flourish
-    var pts = [], seed = 7;
-    function rnd() { seed = (seed * 9301 + 49297) % 233280; return seed / 233280; }
-    function add(sg, step) { for (var t = 0; t <= 1.0001; t += step || 0.03) pts.push(bez(sg, t)); }
-    add([[0, 26], [6, -40], [18, -112], [26, -104]]);
-    add([[26, -104], [34, -96], [12, 10], [10, 46]]);
-    add([[10, 46], [14, 4], [44, -30], [66, -34]]);
-    add([[66, -34], [74, -80], [92, -118], [98, -98]]);
-    add([[98, -98], [104, -78], [80, 0], [84, 30]]);
-    add([[84, 30], [92, 10], [104, -6], [118, -4]]);
-    // uneven cursive loops, getting smaller and quicker
-    var xs = 118, base = 0;
-    for (var i = 0; i < 7; i++) {
-      var w = 34 + rnd() * 14, h = (58 - i * 5) * (0.8 + rnd() * 0.45), d = 9 + rnd() * 6;
-      for (var t = 0; t <= Math.PI * 2; t += 0.12) pts.push([xs + w * t / (Math.PI * 2) - d * Math.sin(t), base - h * (1 - Math.cos(t)) / 2 + t * 0.4]);
-      xs += w; base += 1.5;
-    }
-    // flick up, then the long underline sweeping back under the name
-    add([[xs, base], [xs + 30, base - 20], [xs + 70, base - 60], [xs + 64, base - 40]]);
-    add([[xs + 64, base - 40], [xs + 40, base + 20], [xs - 60, base + 40], [xs - 180, base + 44]], 0.02);
-    add([[xs - 180, base + 44], [xs - 300, base + 48], [60, base + 36], [-20, base + 58]], 0.02);
-    c.save(); c.translate(x, y); c.rotate(-0.07); c.scale(k, k);
+    // "HG Wood" as a quick signature: tall H, looped G, then Wood with a flicked d and an underline
+    var strokes = [], cur;
+    function start() { cur = []; strokes.push(cur); }
+    function bz(sg, step) { for (var t = 0; t <= 1.0001; t += step || 0.04) cur.push(bez(sg, t)); }
+    function loop(cx, cy, rx, ry, a0, turns) { for (var t = 0; t <= turns * Math.PI * 2; t += 0.14) cur.push([cx + Math.cos(a0 - t) * rx, cy + Math.sin(a0 - t) * ry]); }
+    // H
+    start();
+    bz([[0, 16], [4, -40], [10, -96], [16, -112]]);
+    bz([[16, -112], [18, -70], [10, -20], [8, 14]]);
+    bz([[8, 14], [2, -24], [10, -50], [30, -54]]);
+    bz([[30, -54], [44, -56], [56, -56], [64, -60]]);
+    bz([[64, -60], [62, -90], [64, -110], [68, -114]]);
+    bz([[68, -114], [64, -70], [54, -20], [52, 14]]);
+    // G
+    bz([[52, 14], [70, -30], [104, -96], [122, -88]]);
+    bz([[122, -88], [126, -70], [118, -104], [100, -100]]);
+    bz([[100, -100], [74, -94], [70, -30], [86, 4]]);
+    bz([[86, 4], [100, 22], [128, 4], [130, -26]]);
+    bz([[130, -26], [120, -36], [108, -34], [102, -30]]);
+    // Wood
+    start();
+    bz([[148, -66], [150, -40], [154, -6], [160, 8]]);
+    bz([[160, 8], [166, -12], [170, -32], [176, -44]]);
+    bz([[176, -44], [180, -26], [184, -6], [190, 8]]);
+    bz([[190, 8], [196, -16], [202, -44], [210, -68]]);
+    bz([[210, -68], [214, -54], [222, -42], [232, -40]]);
+    loop(236, -20, 15, 21, -Math.PI / 2, 1.05);
+    bz([cur[cur.length - 1], [250, -38], [262, -42], [272, -40]]);
+    loop(276, -20, 15, 21, -Math.PI / 2, 1.05);
+    bz([cur[cur.length - 1], [290, -36], [300, -40], [312, -38]]);
+    loop(318, -18, 16, 22, -Math.PI / 4, 0.95);
+    bz([cur[cur.length - 1], [330, -50], [336, -90], [340, -104]]);
+    bz([[340, -104], [338, -70], [330, -20], [334, 10]]);
+    // flick and underline back under the name
+    bz([[334, 10], [360, -10], [400, -40], [420, -30]]);
+    bz([[420, -30], [430, 0], [330, 34], [180, 40]], 0.02);
+    bz([[180, 40], [80, 44], [20, 40], [-24, 58]], 0.02);
+    c.save(); c.translate(x, y); c.rotate(-0.05); c.transform(1, 0, -0.2, 1, 0, 0); c.scale(k, k);
     c.strokeStyle = col; c.lineCap = 'round'; c.lineJoin = 'round';
-    for (var j = 1; j < pts.length; j++) {
-      var p0 = pts[j - 1], p1 = pts[j], dx = p1[0] - p0[0], dy = p1[1] - p0[1], sp = Math.sqrt(dx * dx + dy * dy);
-      var taper = Math.min(1, j / 12, (pts.length - j) / 40);
-      // pressure: heavier on down-strokes, lighter on fast or rising strokes
-      var press = 5.2 + (dy > 0 ? 1.6 : -0.8) - Math.min(sp, 14) * 0.18;
-      c.lineWidth = Math.max(1.2, press * taper);
-      c.beginPath(); c.moveTo(p0[0], p0[1]); c.lineTo(p1[0], p1[1]); c.stroke();
-    }
+    strokes.forEach(function (pts) {
+      for (var j = 1; j < pts.length; j++) {
+        var p0 = pts[j - 1], p1 = pts[j], dx = p1[0] - p0[0], dy = p1[1] - p0[1], sp = Math.sqrt(dx * dx + dy * dy);
+        var taper = Math.min(1, j / 8, (pts.length - j) / 30);
+        var press = 5 + (dy > 0 ? 1.5 : -0.9) - Math.min(sp, 14) * 0.16;
+        c.lineWidth = Math.max(1.2, press * taper);
+        c.beginPath(); c.moveTo(p0[0], p0[1]); c.lineTo(p1[0], p1[1]); c.stroke();
+      }
+    });
     c.restore();
   }
   function bez(p, t) {
