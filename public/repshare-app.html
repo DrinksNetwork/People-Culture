@@ -120,6 +120,39 @@ a{color:#E42E2E}a:hover{color:#B81F24}
 .cmap .v{fill:#b9bccb}
 .cmap .v.in{fill:#E42E2E;animation:apPop 6s ease-in-out infinite;transform-box:fill-box;transform-origin:center}
 .cmap .v.offer{fill:#ec0c84}
+.cv-tabs{display:flex;gap:6px;flex-wrap:wrap}
+.cv-tabs button{font:700 12px var(--ui);border-radius:999px;padding:7px 12px;border:1px solid #d6d5d0;background:#fff;color:#111;cursor:pointer}
+.cv-tabs button.on{background:#D3221B;border-color:#D3221B;color:#fff}
+.cv-stage{position:relative;aspect-ratio:1/1;border-radius:10px;overflow:hidden;background:#F1F2F6}
+.cv{position:absolute;inset:0;margin:0;opacity:0;visibility:hidden;transform:translateX(3%);transition:opacity .8s ease,transform 1s cubic-bezier(.2,.7,.2,1),visibility 0s .8s}
+.cv.on{opacity:1;visibility:visible;transform:none;transition:opacity .8s ease,transform 1s cubic-bezier(.2,.7,.2,1)}
+.cv>img{width:100%;height:100%;object-fit:contain;object-position:top center;display:block;background:#fff}
+.cv .cmap{aspect-ratio:auto;height:calc(100% - 34px)}
+.bmap{position:absolute;inset:0;background:#EEF1F5}
+.bmap svg{position:absolute;inset:0;width:100%;height:100%}
+.bmap .river{fill:none;stroke:#1E2552;stroke-width:9;stroke-linecap:round;stroke-linejoin:round;opacity:.85}
+.bmap .river2{fill:none;stroke:#6E8BC4;stroke-width:3;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:2 10;animation:apFlow 3s linear infinite}
+.bmap .road{fill:none;stroke:#fff;stroke-width:4}
+.bmap .park{fill:#DCEBD9}
+.bmap text{font:700 9px var(--ui);fill:#7B8193;letter-spacing:.06em;text-transform:uppercase}
+.bmap-note{position:absolute;left:10px;bottom:8px;font:700 10px var(--ui);color:#7B8193;background:rgba(255,255,255,.8);border-radius:6px;padding:3px 7px}
+.pin{position:absolute;left:var(--x);top:var(--y);width:22px;height:22px;margin:-22px 0 0 -11px;border:0;padding:0;background:none;cursor:pointer;z-index:2}
+.pin::before{content:"";position:absolute;left:0;top:0;width:22px;height:22px;border-radius:50% 50% 50% 0;transform:rotate(-45deg);background:var(--c);box-shadow:0 3px 8px rgba(0,0,0,.3)}
+.pin::after{content:"";position:absolute;left:7px;top:7px;width:8px;height:8px;border-radius:50%;background:#fff}
+.pin.drop{animation:apDrop .6s cubic-bezier(.3,1.4,.5,1) both}
+.flag{position:absolute;left:var(--x);top:var(--y);width:168px;transform:translate(-50%,calc(-100% - 30px));background:#fff;border-radius:10px;box-shadow:0 10px 26px rgba(0,0,0,.28);overflow:hidden;opacity:0;pointer-events:none;transition:opacity .25s,transform .25s;z-index:4;font-family:var(--ui)}
+.flag::after{content:"";position:absolute;left:50%;bottom:-6px;width:12px;height:12px;background:#fff;transform:translateX(-50%) rotate(45deg)}
+.flag.below{transform:translate(-50%,8px)}
+.flag.below::after{top:-6px;bottom:auto}
+.flag.l{transform:translate(-14%,calc(-100% - 30px))}.flag.l::after{left:14%}
+.flag.r{transform:translate(-86%,calc(-100% - 30px))}.flag.r::after{left:86%}
+.flag.below.l{transform:translate(-14%,8px)}.flag.below.r{transform:translate(-86%,8px)}
+.flag.show{opacity:1}
+.flag img{width:100%;height:74px;object-fit:cover;display:block}
+.flag div{padding:8px 10px 9px;display:flex;flex-direction:column;gap:3px;position:relative;z-index:1;background:#fff}
+.flag b{font-size:12.5px;line-height:1.2}
+.flag small{font-size:10.5px;color:#5c5b57}
+.flag em{font-style:normal;font-size:10px;font-weight:800;border-radius:999px;padding:2px 7px;align-self:flex-start}
 .c-legend{display:flex;gap:14px;flex-wrap:wrap;font-size:12px;color:#5c5b57}
 .c-legend i{width:10px;height:10px;border-radius:50%;display:inline-block;margin-right:6px;vertical-align:-1px}
 
@@ -162,6 +195,8 @@ a{color:#E42E2E}a:hover{color:#B81F24}
 @keyframes apDraw{0%{stroke-dashoffset:600}55%,85%{stroke-dashoffset:0}100%{stroke-dashoffset:-600}}
 @keyframes apPop{0%,10%{transform:scale(.6)}25%,90%{transform:scale(1)}100%{transform:scale(.6)}}
 @keyframes apGrow{from{width:0}}
+@keyframes apFlow{to{stroke-dashoffset:-24}}
+@keyframes apDrop{from{opacity:0;transform:translateY(-16px)}to{opacity:1;transform:none}}
 
 @media (min-width:1001px){.ap-hero-grid{grid-template-columns:minmax(0,1fr) minmax(0,1.3fr)}}
 @media (max-width:1000px){.ap-steps{grid-template-columns:repeat(2,minmax(0,1fr))}.pipe{grid-template-columns:repeat(2,minmax(0,1fr))}}
@@ -294,26 +329,40 @@ a{color:#E42E2E}a:hover{color:#B81F24}
 <section style="padding:84px 0">
 <div class="ap-wrap">
 <div class="ap-feat">
-<div class="mk" style="order:0">
-<div class="ap-bar" aria-hidden="true"><i></i><i></i><i></i><span>RepShare · Circuit builder</span></div>
+<div class="mk" style="order:0" data-circuit>
+<div class="ap-bar" aria-hidden="true"><i></i><i></i><i></i><span>RepShare · <b data-cv-t>Add venues</b></span></div>
 <div class="mk-body">
-<div class="mk-top"><h4>Valley &amp; New Farm whisky circuit</h4><span class="mk-tag">Sample data</span></div>
-<div class="mk-pills"><span class="mk-pill on">Brisbane</span><span class="mk-pill">Bars</span><span class="mk-pill">Hotels</span><span class="mk-pill">Bottle shops</span><span class="mk-pill on">Offer: 10+5 opening deal</span></div>
-<div class="cmap" aria-hidden="true">
-<svg viewBox="0 0 400 250" preserveAspectRatio="none" data-cmap></svg>
+<div class="mk-top"><h4>Alchemy | Viet Restaurants — Brisbane</h4><span class="mk-tag">From the app</span></div>
+<div class="cv-tabs" role="tablist" aria-label="Circuit builder steps">
+<button type="button" role="tab" class="on" data-cv="0">1 · Search</button><button type="button" role="tab" data-cv="1">2 · Select</button><button type="button" role="tab" data-cv="2">3 · Map</button><button type="button" role="tab" data-cv="3">4 · Circuit</button>
 </div>
-<div class="c-legend"><span><i style="background:#E42E2E"></i>On the circuit</span><span><i style="background:#ec0c84"></i>Offer sent</span><span><i style="background:#b9bccb"></i>Licensed venue</span></div>
+<div class="cv-stage">
+<figure class="cv on" data-t="Add venues"><img src="/media/app/circuit-search.jpg" alt="Add Venues search for Vietnamese restaurants within 5 km of Brisbane, showing 9 venues found with client and cold call status" width="898" height="950" loading="lazy"></figure>
+<figure class="cv" data-t="Select venues"><img src="/media/app/circuit-select.jpg" alt="Selecting venues for the circuit, with photos, ratings, contacts and Google Maps links" width="899" height="950" loading="lazy"></figure>
+<figure class="cv" data-t="Circuit map · Brisbane">
+<div class="bmap" data-bmap>
+<svg viewBox="0 0 400 400" preserveAspectRatio="none" aria-hidden="true" data-bmap-svg></svg>
+<div class="bmap-pins" data-bmap-pins></div>
+<span class="bmap-note">Stylised map · hover a pin</span>
+</div>
+</figure>
+<figure class="cv" data-t="Circuit builder">
+<div class="cmap" aria-hidden="true"><svg viewBox="0 0 400 250" preserveAspectRatio="none" data-cmap></svg></div>
+<div class="c-legend" style="margin-top:10px"><span><i style="background:#E42E2E"></i>On the circuit</span><span><i style="background:#ec0c84"></i>Offer sent</span><span><i style="background:#b9bccb"></i>Licensed venue</span></div>
+</figure>
+</div>
+<div class="c-legend"><span><i style="background:#1F9D55"></i>Client</span><span><i style="background:#E8A317"></i>Cold call</span><span><i style="background:#1E2552"></i>Brisbane River</span></div>
 <div style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;font-size:12px;color:#5c5b57">
-<div><b style="display:block;font-size:22px;color:#111">24</b>Accounts on circuit</div>
-<div><b style="display:block;font-size:22px;color:#111">9</b>Offers sent</div>
-<div><b style="display:block;font-size:22px;color:#111">2 days</b>To walk it</div>
+<div><b style="display:block;font-size:22px;color:#111">9</b>Venues found</div>
+<div><b style="display:block;font-size:22px;color:#111">3</b>Already clients</div>
+<div><b style="display:block;font-size:22px;color:#111">6</b>Cold calls to add</div>
 </div>
 </div>
 </div>
 <div>
 <div class="kick" style="color:#E42E2E">Circuit building</div>
 <h2 class="ap-h2">Target the right accounts <span style="color:#E42E2E">with the right offer.</span></h2>
-<p class="ap-lede">Start from 31K+ licensed venues, narrow by suburb and venue type, and build a circuit your reps can actually walk. Attach an offer and every account on the circuit gets it.</p>
+<p class="ap-lede">Start from 31K+ licensed venues, narrow by name, suburb and distance, and build a circuit your reps can actually walk. Here, Vietnamese restaurants around Brisbane: 9 found, 3 already clients, 6 to add. Attach an offer and every account on the circuit gets it.</p>
 <ul>
 <li>Filter by city, suburb, venue type and buying status</li>
 <li>One venue record per site, so circuits never double count</li>
@@ -529,6 +578,91 @@ a{color:#E42E2E}a:hover{color:#B81F24}
     });
     svg.innerHTML = '<rect width="400" height="250" fill="#F1F2F6"/>' +
       '<path d="M0 205 C80 190 120 230 200 215 S330 200 400 225 L400 250 L0 250Z" fill="#DDE6F3"/>' + g;
+  }
+
+  /* circuit builder: search -> select -> Brisbane map -> circuit */
+  var cb = document.querySelector('[data-circuit]');
+  if (cb) {
+    var views = cb.querySelectorAll('.cv'), tabs = cb.querySelectorAll('[data-cv]'), title = cb.querySelector('[data-cv-t]');
+    var cvi = 0, hold = false, flagTimer = null;
+    var B = { w: 152.985, e: 153.080, n: -27.437, s: -27.521 };
+    function px(lon) { return (lon - B.w) / (B.e - B.w) * 100; }
+    function py(lat) { return (B.n - lat) / (B.n - B.s) * 100; }
+    var venues = [
+      ['Annamese Vietnamese', 'Brisbane CBD', 'annamese', -27.4700, 153.0215, 1],
+      ["Ben's Vietnamese & Chinese", 'Woolloongabba', 'bens', -27.4935, 153.0310, 0],
+      ['Mission Vietnamese', 'Coorparoo', 'mission', -27.4950, 153.0590, 0],
+      ['Red Lotus Vietnamese Chargrill', 'Annerley', 'red-lotus', -27.5125, 153.0325, 1],
+      ['SEN Legend', 'East Brisbane', 'sen-legend', -27.4840, 153.0420, 0],
+      ['Sum Sum', 'South Brisbane', 'sum-sum', -27.4805, 153.0145, 1],
+      ['The Vietnamese Restaurant', 'Fortitude Valley', 'the-vietnamese', -27.4570, 153.0352, 0],
+      ['Vietnam Corner QUT', 'Kelvin Grove', 'vietnam-corner', -27.4510, 153.0145, 0],
+      ['Vietnam House', 'Fortitude Valley', 'vietnam-house', -27.4602, 153.0318, 0]
+    ];
+    var svgm = cb.querySelector('[data-bmap-svg]'), pinsEl = cb.querySelector('[data-bmap-pins]');
+    function smooth(list) {
+      var P = list.map(function (p) { return [px(p[1]) * 4, py(p[0]) * 4]; });
+      var d = 'M' + P[0][0].toFixed(1) + ' ' + P[0][1].toFixed(1);
+      for (var i = 0; i < P.length - 1; i++) {
+        var p0 = P[i - 1] || P[i], p1 = P[i], p2 = P[i + 1], p3 = P[i + 2] || p2;
+        var c1 = [p1[0] + (p2[0] - p0[0]) / 6, p1[1] + (p2[1] - p0[1]) / 6], c2 = [p2[0] - (p3[0] - p1[0]) / 6, p2[1] - (p3[1] - p1[1]) / 6];
+        d += ' C' + c1.map(function (n) { return n.toFixed(1); }).join(' ') + ' ' + c2.map(function (n) { return n.toFixed(1); }).join(' ') + ' ' + p2[0].toFixed(1) + ' ' + p2[1].toFixed(1);
+      }
+      return d;
+    }
+    var river = [[-27.505,152.985],[-27.497,152.991],[-27.489,152.996],[-27.481,153.000],[-27.4745,153.007],[-27.4715,153.014],[-27.4725,153.0195],[-27.4765,153.0215],[-27.4800,153.0265],[-27.4775,153.0305],[-27.4710,153.0335],[-27.4640,153.0355],[-27.4610,153.0400],[-27.4655,153.0440],[-27.4735,153.0455],[-27.4775,153.0500],[-27.4735,153.0545],[-27.4655,153.0565],[-27.4565,153.0570],[-27.4500,153.0610],[-27.4440,153.0700],[-27.4400,153.0800]];
+    var labels = [['CBD',-27.4655,153.0245],['Fortitude Valley',-27.4525,153.0405],['Kelvin Grove',-27.4440,153.0125],['South Brisbane',-27.4865,153.0115],['Woolloongabba',-27.4895,153.0385],['Coorparoo',-27.5025,153.0640],['Annerley',-27.5180,153.0300],['East Brisbane',-27.4860,153.0530],['New Farm',-27.4660,153.0505],['Toowong',-27.4840,152.9915],['Bulimba',-27.4560,153.0690]];
+    if (svgm) {
+      var g = '<rect width="400" height="400" fill="#EEF1F5"/>';
+      g += '<ellipse class="park" cx="' + px(153.0300) * 4 + '" cy="' + py(-27.4755) * 4 + '" rx="10" ry="7"/>';
+      g += '<ellipse class="park" cx="' + px(153.0205) * 4 + '" cy="' + py(-27.4790) * 4 + '" rx="9" ry="14"/>';
+      g += '<ellipse class="park" cx="' + px(153.0525) * 4 + '" cy="' + py(-27.4690) * 4 + '" rx="8" ry="6"/>';
+      g += '<path class="road" d="' + smooth([[-27.4760,153.0285],[-27.4900,153.0350],[-27.5050,153.0400],[-27.5210,153.0460]]) + '"/>';
+      g += '<path class="road" d="' + smooth([[-27.4700,153.0215],[-27.4560,153.0130],[-27.4370,153.0090]]) + '"/>';
+      g += '<path class="road" d="' + smooth([[-27.4570,153.0350],[-27.4500,153.0450],[-27.4370,153.0560]]) + '"/>';
+      g += '<path class="road" d="' + smooth([[-27.4880,153.0330],[-27.4930,153.0500],[-27.4980,153.0800]]) + '"/>';
+      g += '<path class="river" d="' + smooth(river) + '"/><path class="river2" d="' + smooth(river) + '"/>';
+      labels.forEach(function (l) { g += '<text x="' + (px(l[2]) * 4).toFixed(1) + '" y="' + (py(l[1]) * 4).toFixed(1) + '" text-anchor="middle">' + l[0] + '</text>'; });
+      svgm.innerHTML = g;
+    }
+    var flags = [];
+    venues.forEach(function (v, i) {
+      var x = px(v[4]), y = py(v[3]);
+      var b = document.createElement('button'); b.type = 'button'; b.className = 'pin';
+      b.style.setProperty('--x', x + '%'); b.style.setProperty('--y', y + '%'); b.style.setProperty('--c', v[5] ? '#1F9D55' : '#E8A317');
+      b.style.animationDelay = (i * .12) + 's';
+      b.setAttribute('aria-label', v[0] + ', ' + v[1] + (v[5] ? ', client' : ', cold call'));
+      var f = document.createElement('div'); f.className = 'flag' + (y < 34 ? ' below' : '') + (x < 22 ? ' l' : x > 78 ? ' r' : '');
+      f.style.setProperty('--x', x + '%'); f.style.setProperty('--y', y + '%');
+      f.innerHTML = '<img src="/media/app/venues/' + v[2] + '.jpg" alt="" loading="lazy"><div><b>' + v[0] + '</b><small>' + v[1] + '</small><em style="' + (v[5] ? 'background:#E5F5EA;color:#1F6F3A">Client' : 'background:#FFF1D6;color:#8A5A00">Cold call') + '</em></div>';
+      function on() { flags.forEach(function (o) { o.classList.remove('show'); }); f.classList.add('show'); }
+      b.addEventListener('mouseenter', function () { hold = true; on(); });
+      b.addEventListener('focus', function () { hold = true; on(); });
+      b.addEventListener('mouseleave', function () { hold = false; f.classList.remove('show'); });
+      b.addEventListener('blur', function () { hold = false; f.classList.remove('show'); });
+      pinsEl.appendChild(b); pinsEl.appendChild(f); flags.push(f);
+    });
+    function cycleFlags() {
+      clearInterval(flagTimer); var k = 0;
+      if (still) return;
+      flagTimer = setInterval(function () { if (hold) return; flags.forEach(function (o, j) { o.classList.toggle('show', j === k % flags.length); }); k++; }, 1500);
+    }
+    function showView(i) {
+      cvi = i;
+      views.forEach(function (v, j) { v.classList.toggle('on', j === i); });
+      tabs.forEach(function (t, j) { t.classList.toggle('on', j === i); t.setAttribute('aria-selected', j === i); });
+      title.textContent = views[i].dataset.t;
+      if (i === 2) { pinsEl.querySelectorAll('.pin').forEach(function (p) { p.classList.remove('drop'); void p.offsetWidth; p.classList.add('drop'); }); cycleFlags(); }
+      else { clearInterval(flagTimer); flags.forEach(function (o) { o.classList.remove('show'); }); }
+    }
+    tabs.forEach(function (t, j) { t.addEventListener('click', function () { showView(j); }); });
+    cb.addEventListener('mouseenter', function () { hold = true; });
+    cb.addEventListener('mouseleave', function () { hold = false; });
+    var dwell = [4500, 4500, 9000, 6000], since = Date.now();
+    if (!still) setInterval(function () {
+      if (hold) { since = Date.now(); return; }
+      if (Date.now() - since >= dwell[cvi]) { showView((cvi + 1) % views.length); since = Date.now(); }
+    }, 500);
   }
 
   /* live feed (sample data) */
