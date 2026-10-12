@@ -1,0 +1,24 @@
+
+> drinks-network-site@1.0.0 build
+> node scripts/build.mjs
+
+Build FAILED — 19 problem(s):
+  - blog/ac-dc-is-making-big-waves-in-the-tequila-industry.html: has a placeholder link (href="#")
+  - blog/ac-dc-is-making-big-waves-in-the-tequila-industry.html: broken link /brands\
+  - blog/celebrating-christmas-with-tradition-and-luxury.html: has a placeholder link (href="#")
+  - blog/champagne-supernova-2-0-oasis-reunion-sparks-nostalgia-and-sobriety.html: has a placeholder link (href="#")
+  - blog/counterfeit-alcohol-brand-damage-2.html: has a placeholder link (href="#")
+  - blog/counterfeit-alcohol-brand-damage.html: has a placeholder link (href="#")
+  - blog/deadpool-to-gin-pool-how-reynolds-conquered-gin.html: has a placeholder link (href="#")
+  - blog/george-clooney-and-casamigos.html: has a placeholder link (href="#")
+  - blog/how-the-pandemic-transformed-liquor-wholesale.html: has a placeholder link (href="#")
+  - blog/how-to-sell-booze-in-a-recession.html: has a placeholder link (href="#")
+  - blog/lady-trieu-nhau-vodka-launch-australian-market-with-bar-takeover-program.html: has a placeholder link (href="#")
+  - blog/nok-nok-whos-there-best-cocktail-bar-in-queensland.html: has a placeholder link (href="#")
+  - blog/p-diddy-and-ciroc.html: has a placeholder link (href="#")
+  - blog/the-art-of-maximising-bar-profit-a-conversation-with-joel-mcdermott-gm-of-potts-point-hotel.html: has a placeholder link (href="#")
+  - blog/the-rock-wrestling-rings-to-tequila-lip-sip-sucks.html: has a placeholder link (href="#")
+  - blog/top-5-beverage-industry-trends-to-watch-in-2025.html: has a placeholder link (href="#")
+  - blog/what-is-pushing-liquor-to-engage-differently.html: has a placeholder link (href="#")
+  - blog/what-is-the-difference-between-bourbon-and-american-whiskey.html: has a placeholder link (href="#")
+  - blog/why-does-good-whisky-cost-so-much-these-days.html: has a placeholder link (href="#")
