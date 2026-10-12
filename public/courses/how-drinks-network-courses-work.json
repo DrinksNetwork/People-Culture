@@ -1,70 +1,70 @@
 {
-  "slug": "how-drinks-network-courses-work",
-  "title": "How Drinks Network Courses Work",
-  "description": "A two-lesson walkthrough of how our courses run: review, listen, answer, then move on.",
-  "image": null,
-  "topics": [],
-  "legacyUrl": null,
-  "lessons": [
+ "slug": "how-drinks-network-courses-work",
+ "title": "How Drinks Network Courses Work",
+ "description": "A two-lesson walkthrough of how our courses run: watch, review, answer, then move on. Free, with a certificate at the end.",
+ "image": null,
+ "topics": [],
+ "legacyUrl": null,
+ "lessons": [
+  {
+   "id": "l1",
+   "title": "Watch, review, answer",
+   "review": "<p>Every Drinks Network course is broken into short lessons, and every lesson has the same three steps.</p>\n<p><strong>1. Watch.</strong> Start with the lesson video, played right here on the page. Watch to the end to unlock the notes. (Where there's no video, the lesson is read aloud to you.)</p>\n<p><strong>2. Review.</strong> Read through the lesson notes. Take your time; you can come back to them at any point.</p>\n<p><strong>3. Answer.</strong> Finally, answer a few questions about what you've just learned. Get at least 80% right and the next lesson unlocks. If you miss the mark, have another look and try again.</p>\n<p>Finish every lesson and you'll get a Drinks Network certificate with your name on it, ready to download or print. Your progress is saved in this browser, so you can stop and pick up where you left off.</p>",
+   "listen": {
+    "type": "tts"
+   },
+   "questions": [
     {
-      "id": "l1",
-      "title": "Review, listen, answer",
-      "review": "<p>Every Drinks Network course is broken into short lessons, and every lesson has the same three steps.</p>\n<p><strong>1. Review.</strong> Read through the lesson first. Take your time; you can come back to it at any point.</p>\n<p><strong>2. Listen.</strong> Then listen to the lesson. Where there's a recording or video you'll play that; otherwise the lesson is read aloud to you. Listen to the end to unlock the questions.</p>\n<p><strong>3. Answer.</strong> Finally, answer a few questions about what you've just learned. Get at least 80% right and the next lesson unlocks. If you miss the mark, have another look and try again.</p>\n<p>Your progress is saved in this browser, so you can stop and pick up where you left off.</p>",
-      "listen": {
-        "type": "tts"
-      },
-      "questions": [
-        {
-          "q": "What are the three steps in every lesson?",
-          "options": [
-            "Watch, write, submit",
-            "Review, listen, answer",
-            "Read, skip, finish"
-          ],
-          "answer": 1,
-          "explain": "Every lesson runs review, then listen, then answer."
-        },
-        {
-          "q": "What do you need to unlock the next lesson?",
-          "options": [
-            "At least 80% of the questions right",
-            "A perfect score",
-            "Nothing, lessons are all open"
-          ],
-          "answer": 0,
-          "explain": "80% or better unlocks the next lesson. You can retry as often as you like."
-        }
-      ]
+     "q": "What are the three steps in every lesson?",
+     "options": [
+      "Watch, write, submit",
+      "Watch, review, answer",
+      "Read, skip, finish"
+     ],
+     "answer": 1,
+     "explain": "Every lesson runs watch, then review, then answer."
     },
     {
-      "id": "l2",
-      "title": "What you can learn with us",
-      "review": "<p>Our courses cover the biggest-selling categories in liquor, so you can step up your game behind the bar, in the bottle shop or on the road as a rep.</p>\n<p>Courses include <strong>Rice Spirits Explained</strong>, <strong>Rice Wine Explained</strong>, <strong>Whisky Explained</strong>, <strong>Bourbon Explained</strong> and <strong>Tequila Explained</strong>.</p>\n<p>They're written for bartenders, retailers and curious drinkers, and they're a great foundation if you're joining RepShare as a producer.</p>\n<p>Use the code <strong>LEARNDRINKS</strong> to take them for free.</p>",
-      "listen": {
-        "type": "tts"
-      },
-      "questions": [
-        {
-          "q": "Which of these is a Drinks Network course?",
-          "options": [
-            "Rice Spirits Explained",
-            "Coffee Roasting Basics",
-            "Craft Beer Brewing at Home"
-          ],
-          "answer": 0,
-          "explain": "Rice Spirits Explained is one of our five category courses."
-        },
-        {
-          "q": "Which code lets you take the courses for free?",
-          "options": [
-            "DRINKSFREE",
-            "LEARNDRINKS",
-            "REPSHARE"
-          ],
-          "answer": 1,
-          "explain": "LEARNDRINKS is the code."
-        }
-      ]
+     "q": "What do you need to unlock the next lesson?",
+     "options": [
+      "At least 80% of the questions right",
+      "A perfect score",
+      "Nothing, lessons are all open"
+     ],
+     "answer": 0,
+     "explain": "80% or better unlocks the next lesson. You can retry as often as you like."
     }
-  ]
+   ]
+  },
+  {
+   "id": "l2",
+   "title": "What you can learn with us",
+   "review": "<p>Our courses cover the biggest-selling categories in liquor, so you can step up your game behind the bar, in the bottle shop or on the road as a rep.</p>\n<p>Courses include <strong>Rice Spirits Explained</strong>, <strong>Rice Wine Explained</strong>, <strong>Whisky Explained</strong>, <strong>Bourbon Explained</strong> and <strong>Tequila Explained</strong>.</p>\n<p>They're written for bartenders, retailers and curious drinkers, and they're a great foundation if you're joining RepShare as a Rep.</p>\n<p>Every course is free, and each one ends with a Drinks Network certificate in your name.</p>",
+   "listen": {
+    "type": "tts"
+   },
+   "questions": [
+    {
+     "q": "Which of these is a Drinks Network course?",
+     "options": [
+      "Rice Spirits Explained",
+      "Coffee Roasting Basics",
+      "Craft Beer Brewing at Home"
+     ],
+     "answer": 0,
+     "explain": "Rice Spirits Explained is one of our five category courses."
+    },
+    {
+     "q": "What do you get when you finish a course?",
+     "options": [
+      "A discount code",
+      "A Drinks Network certificate in your name",
+      "Nothing"
+     ],
+     "answer": 1,
+     "explain": "Every course is free and ends with a named Drinks Network certificate you can download or print."
+    }
+   ]
+  }
+ ]
 }

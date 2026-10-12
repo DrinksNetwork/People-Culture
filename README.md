@@ -33,7 +33,7 @@ public/
   campaign/
     bar-takeover.html   Bar Takeover campaign                 -> campaign.drinksnetwork.com.au/bar-takeover
   assets/site.css, assets/site.js   shared styles; forms, plan picker, calculator and funnel
-  assets/course.js      course player (review -> listen -> answer, gated)
+  assets/course.js      course player (watch -> review -> answer, gated) + named certificate
   media/
     photos/           real trade photos: bar, back-bar, retail and tasting events
     products/         product cutouts (Lady Trieu, Nhau, Corowa, Headlands, Imbue, Diablo Co, San Junipero, Panda, BLVD)
@@ -62,7 +62,7 @@ After it runs, `npm run build` should report no images left on the old site. Unt
 
 ## Courses (run once, on Replit, with a WordPress login)
 
-The course player is built and working (try `/courses/how-drinks-network-courses-work`). Each lesson runs **Review** (read), **Listen** (recording, video, or the lesson read aloud), then **Answer** (questions; 80% unlocks the next lesson). Progress is kept in the learner's browser; starting a course and finishing it post to `/api/enquiries` (form `course-start` / `course-complete`, tag Trade, campaign `course:<slug>`).
+All courses are free (no code). The course player is built and working (try `/courses/how-drinks-network-courses-work`). Each course page header is a video "screen": a now-showing player with a playlist strip of every lesson video. Each lesson runs **Watch** (the YouTube lesson plays in-page; the end of the video, or the "watched" tick, unlocks the notes; lessons without video are read aloud), **Review** (notes), then **Answer** (questions; 80% unlocks the next lesson). Finishing a course draws a Drinks Network certificate in the learner's name (canvas, downloadable PNG or print/save as PDF) with a certificate number; the learner can correct the name before downloading. Progress is kept in the learner's browser; starting a course and finishing it post to `/api/enquiries` (form `course-start` / `course-complete`, tag Trade, campaign `course:<slug>`).
 
 The five courses (Whisky, Bourbon, Tequila, Rice Spirits, Rice Wine Explained) now run on the Drinks Network "Explained" YouTube series: 36 lessons, each with lesson notes, the video (thumbnails in public/media/courses/yt) and three questions. The Tutor LMS import below can still replace the notes with the original lesson text. The lessons are behind the paid course pages, so the import needs a login:
 
