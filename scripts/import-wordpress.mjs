@@ -56,6 +56,8 @@ function clean(html, postSlugs = []) {
     .replace(/\s(on\w+)="[^"]*"/gi, '')
     .replace(/\s(class|id|style|data-[\w-]+|sizes|srcset|decoding|fetchpriority)="[^"]*"/gi, '')
     .replace(/<(div|span|section)>\s*<\/\1>/gi, '')
+    .replace(/\shref="#"/gi, '')                       // empty WordPress anchors are not links
+    .replace(/href="([^"]*?)\\+"/g, 'href="$1"')         // stray backslashes from escaped JSON
     .replace(/<img /gi, '<img loading="lazy" ');
 }
 
