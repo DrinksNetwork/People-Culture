@@ -312,11 +312,7 @@
   function img(src) { return new Promise(function (res) { var i = new Image(); i.onload = function () { res(i); }; i.onerror = function () { res(null); }; i.src = src; }); }
 
   function drawCertificate(cv, d) {
-    if (!document.querySelector('link[data-sig-font]')) {
-      var lk = document.createElement('link'); lk.rel = 'stylesheet'; lk.setAttribute('data-sig-font', '');
-      lk.href = 'https://fonts.googleapis.com/css2?family=Mrs+Saint+Delafield&display=swap'; document.head.appendChild(lk);
-    }
-    var fonts = ['400 120px Anton', '700 40px "Archivo Narrow"', 'italic 400 60px "Source Serif 4"', '600 40px "Source Serif 4"', 'italic 600 60px "Source Serif 4"', '400 120px "Mrs Saint Delafield"'];
+    var fonts = ['400 120px Anton', '700 40px "Archivo Narrow"', 'italic 400 60px "Source Serif 4"', '600 40px "Source Serif 4"', 'italic 600 60px "Source Serif 4"'];
     var ready = document.fonts && document.fonts.load ? Promise.all(fonts.map(function (f) { return document.fonts.load(f).catch(function () {}); })) : Promise.resolve();
     return Promise.all([ready, img(asset('/media/logos/drinks-network-script-red.png')), img(asset('/media/courses/cert-band.png'))]).then(function (r) {
       var logo = r[1], band = r[2];
@@ -339,7 +335,7 @@
       if (logo) { var lw = 430, lh = lw * logo.height / logo.width; c.drawImage(logo, X - 10, 120, lw, lh); }
       c.fillStyle = LINE; c.fillRect(X + 450, 150, 3, 96);
       c.fillStyle = NAVY; c.font = '700 30px ' + NARROW; spaced(c, 'EDUCATION', X + 485, 192, 9, 'left');
-      c.fillStyle = MUTED; c.font = '700 22px ' + NARROW; spaced(c, 'FREE COURSES FOR THE DRINKS TRADE', X + 485, 232, 5, 'left');
+      c.fillStyle = MUTED; c.font = '700 22px ' + NARROW; spaced(c, 'COURSES FOR THE DRINKS TRADE', X + 485, 232, 5, 'left');
       c.textAlign = 'right';
       c.fillStyle = MUTED; c.font = '700 22px ' + NARROW; spaced(c, 'CERTIFICATE NO.', W - 170, 172, 5, 'right');
       c.fillStyle = NAVY; c.font = '700 34px ' + NARROW; spaced(c, d.id || '', W - 170, 216, 4, 'right');
@@ -379,12 +375,8 @@
       lineWrap(c, 'Drinks Network courses are written and developed by drinks industry leaders to build awareness and confidence in the fundamentals of each category and subject.', maxW - 120).forEach(function (ln, k) { c.fillText(ln, X, cy + 140 + k * 46); });
       // sign-off, sitting on the tan to the left of the crew
       var sy = H - 450;
-      // handwritten signature in navy ink
-      c.save(); c.translate(X + 10, sy + 6); c.rotate(-0.05);
-      c.fillStyle = NAVY; c.font = '400 132px "Mrs Saint Delafield", "Brush Script MT", cursive'; c.fillText('Hayden Wood', 0, 0);
-      c.strokeStyle = NAVY; c.lineWidth = 3; c.lineCap = 'round';
-      c.beginPath(); c.moveTo(-6, 22); c.bezierCurveTo(140, 4, 320, 40, 520, 8); c.stroke();
-      c.restore();
+      // pen-scribble signature in navy ink
+      scribble(c, X + 24, sy - 28, 1.18, NAVY);
       c.fillStyle = INK; c.fillRect(X, sy + 24, 560, 2);
       c.fillStyle = MUTED; c.font = '700 22px ' + NARROW; spaced(c, 'HAYDEN WOOD  ·  FOUNDER, DRINKS NETWORK', X, sy + 64, 4, 'left');
       stamp(c, X + 920, sy + 10, 158, { RED: '#C21F27', ANTON: ANTON, NARROW: NARROW, date: d.date.toLocaleDateString('en-AU', { day: '2-digit', month: '2-digit', year: 'numeric' }).replace(/\//g, '.') });
@@ -396,6 +388,45 @@
     });
   }
   window.DNCertificate = { draw: function (cv, d) { return drawCertificate(cv, d); } };
+  function scribble(c, x, y, k, col) {
+    // a quick looping signature: tall initial strokes, a run of uneven loops, an underline flourish
+    var pts = [], seed = 7;
+    function rnd() { seed = (seed * 9301 + 49297) % 233280; return seed / 233280; }
+    function add(sg, step) { for (var t = 0; t <= 1.0001; t += step || 0.03) pts.push(bez(sg, t)); }
+    add([[0, 26], [6, -40], [18, -112], [26, -104]]);
+    add([[26, -104], [34, -96], [12, 10], [10, 46]]);
+    add([[10, 46], [14, 4], [44, -30], [66, -34]]);
+    add([[66, -34], [74, -80], [92, -118], [98, -98]]);
+    add([[98, -98], [104, -78], [80, 0], [84, 30]]);
+    add([[84, 30], [92, 10], [104, -6], [118, -4]]);
+    // uneven cursive loops, getting smaller and quicker
+    var xs = 118, base = 0;
+    for (var i = 0; i < 7; i++) {
+      var w = 34 + rnd() * 14, h = (58 - i * 5) * (0.8 + rnd() * 0.45), d = 9 + rnd() * 6;
+      for (var t = 0; t <= Math.PI * 2; t += 0.12) pts.push([xs + w * t / (Math.PI * 2) - d * Math.sin(t), base - h * (1 - Math.cos(t)) / 2 + t * 0.4]);
+      xs += w; base += 1.5;
+    }
+    // flick up, then the long underline sweeping back under the name
+    add([[xs, base], [xs + 30, base - 20], [xs + 70, base - 60], [xs + 64, base - 40]]);
+    add([[xs + 64, base - 40], [xs + 40, base + 20], [xs - 60, base + 40], [xs - 180, base + 44]], 0.02);
+    add([[xs - 180, base + 44], [xs - 300, base + 48], [60, base + 36], [-20, base + 58]], 0.02);
+    c.save(); c.translate(x, y); c.rotate(-0.07); c.scale(k, k);
+    c.strokeStyle = col; c.lineCap = 'round'; c.lineJoin = 'round';
+    for (var j = 1; j < pts.length; j++) {
+      var p0 = pts[j - 1], p1 = pts[j], dx = p1[0] - p0[0], dy = p1[1] - p0[1], sp = Math.sqrt(dx * dx + dy * dy);
+      var taper = Math.min(1, j / 12, (pts.length - j) / 40);
+      // pressure: heavier on down-strokes, lighter on fast or rising strokes
+      var press = 5.2 + (dy > 0 ? 1.6 : -0.8) - Math.min(sp, 14) * 0.18;
+      c.lineWidth = Math.max(1.2, press * taper);
+      c.beginPath(); c.moveTo(p0[0], p0[1]); c.lineTo(p1[0], p1[1]); c.stroke();
+    }
+    c.restore();
+  }
+  function bez(p, t) {
+    var u = 1 - t;
+    return [u * u * u * p[0][0] + 3 * u * u * t * p[1][0] + 3 * u * t * t * p[2][0] + t * t * t * p[3][0],
+            u * u * u * p[0][1] + 3 * u * u * t * p[1][1] + 3 * u * t * t * p[2][1] + t * t * t * p[3][1]];
+  }
   function lineWrap(c, t, max) {
     var words = t.split(' '), line = '', out = [];
     words.forEach(function (w) { var test = line ? line + ' ' + w : w; if (c.measureText(test).width > max && line) { out.push(line); line = w; } else line = test; });
