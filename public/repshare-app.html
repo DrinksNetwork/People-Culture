@@ -38,6 +38,9 @@ a{color:#E42E2E}a:hover{color:#B81F24}
 .ph-img img{width:100%;height:auto;display:block}
 .ph-bar{flex:none;display:block;width:100%;height:auto;position:relative;z-index:2}
 .ph-stack{position:relative;flex:1;min-height:0}
+.ph-splash{position:absolute;inset:0;z-index:3;background:#E42E2E;opacity:0;transition:opacity .8s ease}
+.ph-splash.on{opacity:1}
+.ph-splash img{width:100%;height:100%;object-fit:cover;object-position:center bottom;display:block}
 
 /* hero */
 .ap-hero{background:#1E2552;color:#fff;position:relative;overflow:hidden}
@@ -54,6 +57,8 @@ a{color:#E42E2E}a:hover{color:#B81F24}
 .ap-pages figure.on{opacity:1;transform:none}
 .ap-pages figure.out{opacity:0;transform:translateX(-4%) scale(.99)}
 .ap-pages img{width:100%;height:100%;object-fit:contain;object-position:center top;display:block}
+.ap-pages figure.splash{background:#E42E2E}
+.ap-pages figure.splash img{object-fit:cover;object-position:center 85%}
 .ap-page-dots{position:absolute;right:12px;bottom:10px;display:flex;gap:5px}
 .ap-page-dots i{width:7px;height:7px;border-radius:4px;background:rgba(17,17,17,.25);display:block;transition:width .3s,background .3s}
 .ap-page-dots i.on{width:18px;background:#E42E2E}
@@ -240,18 +245,20 @@ a{color:#E42E2E}a:hover{color:#B81F24}
 </div>
 <div class="ap-stage" aria-label="The RepShare app on desktop and mobile">
 <div class="ap-browser">
-<div class="ap-bar" aria-hidden="true"><i></i><i></i><i></i><span>repshare.drinksnetwork.com.au · <b data-page-t>Vendor dashboard</b></span></div>
+<div class="ap-bar" aria-hidden="true"><i></i><i></i><i></i><span>repshare.drinksnetwork.com.au · <b data-page-t>Drinks Network · RepShare</b></span></div>
 <div class="ap-pages" data-pages>
-<figure class="on" data-t="Vendor dashboard"><img src="/media/app/vendor-dashboard.jpg" alt="RepShare vendor dashboard: recent ordering venues, order value, repeat venues and account performance" width="1845" height="933"></figure>
+<figure class="on splash" data-t="Drinks Network · RepShare"><img src="/media/app/splash-desktop.jpg" alt="Drinks Network: good times, swipe, buy, delivered" width="1988" height="1290"></figure>
+<figure data-t="Vendor dashboard"><img src="/media/app/vendor-dashboard.jpg" alt="RepShare vendor dashboard: recent ordering venues, order value, repeat venues and account performance" width="1845" height="933"></figure>
 <figure data-t="Your funded hours"><img src="/media/app/funded-hours.jpg" alt="Funded hours: hours available, approved, pending and remaining, with recent approved time by rep" width="1856" height="831" loading="lazy"></figure>
 <figure data-t="Rep dashboard &amp; earnings"><img src="/media/app/rep-earnings.jpg" alt="Rep dashboard: earnings, cash-outs, hours available, jobs and first orders" width="1230" height="612" loading="lazy"></figure>
 </div>
-<div class="ap-page-dots" data-page-dots aria-hidden="true"><i class="on"></i><i></i><i></i></div>
+<div class="ap-page-dots" data-page-dots aria-hidden="true"><i class="on"></i><i></i><i></i><i></i></div>
 </div>
 <div class="ph ap-cycle" data-cycle>
 <div class="ph-screen">
+<div class="ph-splash on" data-splash><img src="/media/app/splash-phone.jpg" alt="RepShare app opening screen with the Drinks Network logo" width="742" height="1342"></div>
 <div class="ph-stack">
-<div class="ph-shot on"><div class="ph-img"><img src="/media/app/step1.jpg" alt="RepShare Jobs screen with assigned jobs" width="600" height="1052"></div></div>
+<div class="ph-shot"><div class="ph-img"><img src="/media/app/step1.jpg" alt="RepShare Jobs screen with assigned jobs" width="600" height="1052"></div></div>
 <div class="ph-shot"><div class="ph-img"><img src="/media/app/step3.jpg" alt="Charges tab with booking and on-job timer" width="600" height="1142" loading="lazy"></div></div>
 <div class="ph-shot"><div class="ph-img"><img src="/media/app/step5.jpg" alt="Selecting the work type and charge template" width="600" height="865" loading="lazy"></div></div>
 <div class="ph-shot"><div class="ph-img"><img src="/media/app/step7.jpg" alt="Visit outcome quick chips and notes" width="600" height="771" loading="lazy"></div></div>
@@ -259,7 +266,7 @@ a{color:#E42E2E}a:hover{color:#B81F24}
 <img class="ph-bar" src="/media/app/tabbar.jpg" alt="" aria-hidden="true" width="600" height="153">
 </div>
 </div>
-<div class="ap-cycle-label" aria-live="polite"><b data-cycle-n>1</b><span data-cycle-t>Open Jobs</span><span class="ap-dots" data-cycle-dots aria-hidden="true"></span></div>
+<div class="ap-cycle-label" aria-live="polite"><b data-cycle-n>★</b><span data-cycle-t>RepShare</span><span class="ap-dots" data-cycle-dots aria-hidden="true"></span></div>
 </div>
 </div>
 <img src="/media/people/hero-ice-wave.png" alt="" aria-hidden="true" width="1920" height="271" style="position:relative;display:block;width:100%;height:auto;min-height:110px;object-fit:cover;object-position:center top;margin-top:40px">
@@ -500,21 +507,22 @@ a{color:#E42E2E}a:hover{color:#B81F24}
   'use strict';
   var still = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-  /* hero phone: cycle through Manuel's eight steps */
+  /* hero phone: brand splash, then Manuel's four steps, on loop */
   var cyc = document.querySelector('[data-cycle]');
   if (cyc) {
-    var shots = cyc.querySelectorAll('.ph-shot');
-    var names = ['Open Jobs', 'Tap Charges', 'Charge Template', 'Notes + Save'];
+    var shots = cyc.querySelectorAll('.ph-shot'), splash = cyc.querySelector('[data-splash]');
+    var names = ['RepShare', 'Open Jobs', 'Tap Charges', 'Charge Template', 'Notes + Save'];
     var n = document.querySelector('[data-cycle-n]'), t = document.querySelector('[data-cycle-t]'), dots = document.querySelector('[data-cycle-dots]');
-    shots.forEach(function () { dots.appendChild(document.createElement('i')); });
+    names.forEach(function () { dots.appendChild(document.createElement('i')); });
     var k = 0;
     function show(i) {
-      shots.forEach(function (s, j) { s.classList.toggle('on', j === i); });
+      splash.classList.toggle('on', i === 0);
+      shots.forEach(function (s, j) { s.classList.toggle('on', j === i - 1); });
       dots.querySelectorAll('i').forEach(function (d, j) { d.classList.toggle('on', j === i); });
-      n.textContent = i + 1; t.textContent = names[i];
+      n.textContent = i === 0 ? '\u2605' : i; t.textContent = names[i];
     }
     show(0);
-    if (!still) setInterval(function () { k = (k + 1) % shots.length; show(k); }, 2800);
+    if (!still) setInterval(function () { k = (k + 1) % names.length; show(k); }, 3000);
   }
 
   /* hero browser: phase between the real dashboard pages */
