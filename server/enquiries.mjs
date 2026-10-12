@@ -36,6 +36,7 @@ const FORM_LABELS = {
   'contact': 'Contact form',
   'securicode': 'SecuriCode enquiry',
   'bar-takeover': 'Bar Takeover registration',
+  'san-junipero-giveaway': 'San Junipero 5+1 draw entry',
 };
 
 const SKIP_FIELDS = new Set(['website', 'consent', 'pageUrl', 'utmSource', 'utmMedium', 'utmCampaign', 'sessionId', 'tags', 'form', 'campaign']);

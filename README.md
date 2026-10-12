@@ -5,7 +5,7 @@ Approved designs for the Drinks Network brand website, with RepShare as its main
 | Hostname | Serves |
 | --- | --- |
 | site.drinksnetwork.com.au | the pages in `public/` (Home, Start here, RepShare for Brands, Become a Rep) |
-| campaign.drinksnetwork.com.au | the pages in `public/campaign/` at `/{slug}`, e.g. `/bar-takeover` |
+| campaign.drinksnetwork.com.au | the pages in `public/campaign/` at `/{slug}`: `/bar-takeover`, `/san-junipero-melbourne` (5+1 retailer draw, form `san-junipero-giveaway`, tag Buyer) |
 | repshare.drinksnetwork.com.au | the RepShare app (not in this repository) |
 
 The public site has no Admin pages or links. Admin stays inside the logged-in RepShare app.
