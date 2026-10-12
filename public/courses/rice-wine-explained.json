@@ -1,8 +1,15 @@
 {
   "slug": "rice-wine-explained",
   "title": "Rice Wine Explained",
-  "description": "Learn the varieties and styles of rice wines.",
-  "image": null,
+  "description": "Rice wine has a long history in East Asia, yet it's often misunderstood and overlooked next to grape wine. Explore its traditions, craftsmanship and modern revival, from how rice is fermented to how to drink it and pair it with food.",
+  "image": "https://www.drinksnetwork.com.au/wp-content/uploads/rice-wine.png",
+  "topics": [
+    "The history of rice wine",
+    "How rice wine is made",
+    "Types and styles of rice wine",
+    "Hakka culture, food and wine traditions",
+    "How to drink and enjoy rice wine"
+  ],
   "legacyUrl": "https://www.drinksnetwork.com.au/courses/welcome-to-rice-wine-explained/",
   "lessons": []
 }

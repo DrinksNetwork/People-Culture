@@ -1,8 +1,16 @@
 {
   "slug": "tequila-explained",
   "title": "Tequila Explained",
-  "description": "The ultimate course on tequila and tequila cocktails.",
-  "image": null,
+  "description": "Tequila has deep cultural roots, complex production and a wide range of styles. Learn its story from ancient origins to modern cocktails, and how to drink, mix and appreciate it, with expert-led videos and quizzes.",
+  "image": "https://www.drinksnetwork.com.au/wp-content/uploads/2021/06/What-are-Tequila-Rules-and-Regulations.jpg",
+  "topics": [
+    "The history of tequila, from pulque to premium",
+    "How tequila is made, from agave to distillation",
+    "Styles: Blanco, Reposado, Añejo, Extra Añejo and Mixto",
+    "Rules and regulations",
+    "How to drink tequila: neat, with food and in cocktails",
+    "Classic and modern tequila cocktails"
+  ],
   "legacyUrl": "https://www.drinksnetwork.com.au/courses/tequila-explained-the-ultimate-course-on-tequila-tequila-cocktails/",
   "lessons": []
 }

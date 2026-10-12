@@ -1,8 +1,15 @@
 {
   "slug": "whisky-explained",
   "title": "Whisky Explained",
-  "description": "Master the art of whisky, from grain to glass.",
-  "image": null,
+  "description": "A self-paced introduction to whisky as a craft with a long history, from medieval monks to its place worldwide today. Each module has a short lesson, expert insights and a quiz. For bartenders, retailers and whisky enthusiasts.",
+  "image": "https://www.drinksnetwork.com.au/wp-content/uploads/2021/06/Whiskey-Explained-Intro.jpg",
+  "topics": [
+    "History: from medieval monks to global prominence",
+    "Production: from grain selection to barrel ageing",
+    "Styles: single malt, blended, Scotch, bourbon, Australian whisky and more",
+    "Rules and regulations around the world",
+    "How to drink it: nosing, tasting and serving"
+  ],
   "legacyUrl": "https://www.drinksnetwork.com.au/courses/whisky-explained-master-the-art-of-whisky-from-grain-to-glass/",
   "lessons": []
 }
