@@ -1,0 +1,37 @@
+# Downloads named files from the old WordPress uploads into public/media/legacy/.
+# Run it from GitHub: Actions -> Fetch media from WordPress -> Run workflow, and paste the file URLs.
+name: Fetch media from WordPress
+
+on:
+  workflow_dispatch:
+    inputs:
+      urls:
+        description: "Space-separated www.drinksnetwork.com.au/wp-content/uploads/ URLs"
+        required: true
+
+permissions:
+  contents: write
+
+jobs:
+  fetch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Download files
+        env:
+          URLS: ${{ inputs.urls }}
+        run: |
+          for u in $URLS; do
+            case "$u" in https://www.drinksnetwork.com.au/wp-content/uploads/*) ;; *) echo "skip $u"; continue;; esac
+            rel="${u#https://www.drinksnetwork.com.au/wp-content/uploads/}"
+            mkdir -p "public/media/legacy/$(dirname "$rel")"
+            curl -fsSL "$u" -o "public/media/legacy/$rel" && echo "got $rel" || echo "failed $u"
+          done
+      - name: Commit
+        run: |
+          git config user.name "drinks-network-import"
+          git config user.email "actions@users.noreply.github.com"
+          git add public/media/legacy
+          git diff --cached --quiet && exit 0
+          git commit -m "Fetch media from the old WordPress site"
+          git push
