@@ -376,7 +376,7 @@
       // sign-off, sitting on the tan to the left of the crew
       var sy = H - 450;
       // pen-scribble signature in navy ink
-      scribble(c, X + 40, sy - 14, 1.08, NAVY);
+      scribble(c, X + 36, sy - 6, 0.82, '#4A4744');
       c.fillStyle = INK; c.fillRect(X, sy + 24, 560, 2);
       c.fillStyle = MUTED; c.font = '700 22px ' + NARROW; spaced(c, 'HAYDEN WOOD  ·  FOUNDER, DRINKS NETWORK', X, sy + 64, 4, 'left');
       stamp(c, X + 920, sy + 10, 158, { RED: '#C21F27', ANTON: ANTON, NARROW: NARROW, date: d.date.toLocaleDateString('en-AU', { day: '2-digit', month: '2-digit', year: 'numeric' }).replace(/\//g, '.') });
@@ -427,13 +427,13 @@
     bz([[420, -30], [430, 0], [330, 34], [180, 40]], 0.02);
     bz([[180, 40], [80, 44], [20, 40], [-24, 58]], 0.02);
     c.save(); c.translate(x, y); c.rotate(-0.05); c.transform(1, 0, -0.2, 1, 0, 0); c.scale(k, k);
-    c.strokeStyle = col; c.lineCap = 'round'; c.lineJoin = 'round';
+    c.strokeStyle = col; c.globalAlpha = 0.85; c.lineCap = 'round'; c.lineJoin = 'round';
     strokes.forEach(function (pts) {
       for (var j = 1; j < pts.length; j++) {
         var p0 = pts[j - 1], p1 = pts[j], dx = p1[0] - p0[0], dy = p1[1] - p0[1], sp = Math.sqrt(dx * dx + dy * dy);
         var taper = Math.min(1, j / 8, (pts.length - j) / 30);
-        var press = 5 + (dy > 0 ? 1.5 : -0.9) - Math.min(sp, 14) * 0.16;
-        c.lineWidth = Math.max(1.2, press * taper);
+        var press = 3.1 + (dy > 0 ? 0.9 : -0.6) - Math.min(sp, 14) * 0.1;
+        c.lineWidth = Math.max(0.9, press * taper);
         c.beginPath(); c.moveTo(p0[0], p0[1]); c.lineTo(p1[0], p1[1]); c.stroke();
       }
     });
