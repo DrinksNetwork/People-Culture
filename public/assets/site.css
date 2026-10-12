@@ -146,3 +146,16 @@ a{color:var(--red)}a:hover{color:var(--red-dark)}
 .culture-head .culture-bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;display:block}
 .culture-head .culture-title{position:relative;background:#FBF7F0;padding:24px 28px;max-width:640px;box-shadow:8px 8px 0 #E42E2E}
 @media (max-width:600px){.culture-head{padding:120px 16px 20px;align-items:flex-end}.culture-head .culture-title{padding:18px}}
+
+/* People pitch: fuchsia duotone people behind every brand and rep pitch, on white or red */
+.pp{position:relative;overflow:hidden}
+.pp-white{background:#fff;color:#111}
+.pp-red{background:#E42E2E;color:#fff}
+.pp-in{max-width:1320px;margin:0 auto;padding:48px 24px 0;display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:24px;align-items:end}
+.pp-copy{padding-bottom:56px;position:relative;z-index:1}
+.pp-people{display:flex;justify-content:flex-end;align-items:flex-end;min-height:320px}
+.pp-people img{height:clamp(260px,30vw,420px);width:auto;max-width:62%;object-fit:contain;object-position:bottom;display:block}
+.pp-people img+img{margin-left:-6%}
+.pp-tile{background:#E42E2E;display:flex;align-items:flex-end;justify-content:center;overflow:hidden}
+.pp-tile img{height:92%;width:auto;max-width:100%;object-fit:contain;display:block}
+@media (max-width:820px){.pp-in{grid-template-columns:minmax(0,1fr)}.pp-copy{padding-bottom:8px}.pp-people{min-height:0}.pp-people img{height:220px}}
