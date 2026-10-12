@@ -1,0 +1,38 @@
+# Downloads YouTube video thumbnails into public/media/courses/yt/<id>.jpg for the course player.
+# Run it from GitHub: Actions -> YouTube thumbnails -> Run workflow, and paste the video ids.
+name: YouTube thumbnails
+
+on:
+  workflow_dispatch:
+    inputs:
+      ids:
+        description: "Space-separated YouTube video ids"
+        required: true
+
+permissions:
+  contents: write
+
+jobs:
+  thumbs:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Download
+        env:
+          IDS: ${{ inputs.ids }}
+        run: |
+          mkdir -p public/media/courses/yt
+          for id in $IDS; do
+            case "$id" in *[!A-Za-z0-9_-]*) echo "skip $id"; continue;; esac
+            curl -fsSL "https://i.ytimg.com/vi/$id/maxresdefault.jpg" -o "public/media/courses/yt/$id.jpg" \
+              || curl -fsSL "https://i.ytimg.com/vi/$id/hqdefault.jpg" -o "public/media/courses/yt/$id.jpg" \
+              || echo "failed $id"
+          done
+      - name: Commit
+        run: |
+          git config user.name "drinks-network-import"
+          git config user.email "actions@users.noreply.github.com"
+          git add public/media/courses
+          git diff --cached --quiet && exit 0
+          git commit -m "Course video thumbnails from YouTube"
+          git pull --rebase origin main && git push
