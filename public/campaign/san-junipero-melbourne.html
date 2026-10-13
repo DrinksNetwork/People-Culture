@@ -51,9 +51,9 @@ img,video{max-width:100%}
 
 /* hero */
 .hero{position:relative;background:var(--void);color:#fff;overflow:hidden}
-.hero .photo{position:absolute;inset:0 0 0 auto;width:64%;background:url('../media/san-junipero/bike-hero.jpg') 28% 30%/cover no-repeat}
-.hero .photo::before{content:"";position:absolute;inset:0;background:linear-gradient(90deg,var(--void) 0%,rgba(16,24,32,.35) 9%,rgba(16,24,32,0) 20%)}
-.hero .glowfx{position:absolute;left:-14%;top:-30%;width:52%;height:160%;background:radial-gradient(closest-side,rgba(252,89,64,.45),rgba(115,39,104,.25) 55%,rgba(16,24,32,0));pointer-events:none}
+.hero .photo{position:absolute;top:0;bottom:0;right:0;left:calc(max(24px,(100% - 1280px)/2 + 24px) + min(460px,31vw) + 40px);background:url('../media/san-junipero/bike-hero.jpg') 50% 18%/cover no-repeat}
+.hero .photo::before{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(16,24,32,.5) 0%,rgba(16,24,32,0) 5%)}
+.hero .glowfx{opacity:.5;position:absolute;left:-14%;top:-30%;width:52%;height:160%;background:radial-gradient(closest-side,rgba(252,89,64,.45),rgba(115,39,104,.25) 55%,rgba(16,24,32,0));pointer-events:none}
 .hero .wrap{position:relative;min-height:min(84vh,780px);display:flex;flex-direction:column;justify-content:center;padding-top:56px;padding-bottom:64px}
 .hero .copy{max-width:min(460px,31vw)}
 .hero h1{font-size:clamp(52px,6.2vw,100px);margin:16px 0 18px}
@@ -141,7 +141,7 @@ footer a{color:var(--glow)}
 @media (max-width:900px){.reels{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media (max-width:760px){
   .hero .photo{position:relative;width:100%;height:92vw;min-height:320px;inset:auto;background-position:30% 0}
-  .hero .photo::before{background:linear-gradient(0deg,var(--void) 0%,rgba(16,24,32,0) 45%)}
+  .hero .photo::before{background:linear-gradient(0deg,rgba(16,24,32,.5) 0%,rgba(16,24,32,0) 20%)}
   .hero .wrap{min-height:0;padding-top:28px;padding-bottom:56px}
   .hero .copy{max-width:none}
   .hero .glowfx{display:none}
