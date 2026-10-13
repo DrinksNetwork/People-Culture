@@ -44,7 +44,7 @@ LinkedIn suits vendors and partners best; Facebook suits reps best. Post rep con
 **Link post**
 - LinkedIn/Facebook: A sales team on tap for drinks brands: 5 to 15 hours a week, no salaries, no lock-ins. [link]
 
-## Reps (bartenders, ambassadors, ex-wholesaler sales)
+## Reps (bartenders, brand ambassadors and reps already selling)
 
 **Carousel: Sell what you love**
 - Facebook: Know the bars and bottle shops in your city? Get paid $47.50 to $70 an hour to sell drinks brands into them, 5 to 15 hours a week, with payouts in 3 to 7 days. You need an ABN, an RSA and a phone. Apply in three minutes 👉 [link]

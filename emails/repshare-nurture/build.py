@@ -23,6 +23,14 @@ def u(path, track, n):
     return f'{SITE}{path}{sep}utm_source=mailchimp&utm_medium=email&utm_campaign=nurture-{track}&utm_content=email-{n}'
 
 
+def nw(t):
+    """Keep the last two words together so a line never ends on one lonely word."""
+    parts = t.rsplit(' ', 2)
+    if len(parts) == 3 and '<' not in parts[1] + parts[2] and '>' not in parts[1] + parts[2]:
+        return f'{parts[0]} {parts[1]}&nbsp;{parts[2]}'
+    return t
+
+
 def button(label, url, bg=RED, fg='#FFFFFF'):
     return f'''<table role="presentation" cellpadding="0" cellspacing="0" border="0" style="margin:10px 0 6px"><tr><td align="center" bgcolor="{bg}" style="border-radius:6px">
 <a href="{url}" target="_blank" style="display:inline-block;padding:15px 28px;font:700 16px {NARROW};letter-spacing:1px;text-transform:uppercase;color:{fg};text-decoration:none;border-radius:6px">{label}</a></td></tr></table>'''
@@ -33,7 +41,7 @@ def img(src, alt, w=600):
 
 
 def p(t, size=17, col=BODY):
-    return f'<p style="margin:0 0 16px;font:400 {size}px/1.6 {SERIF};color:{col}">{t}</p>'
+    return f'<p style="margin:0 0 16px;font:400 {size}px/1.6 {SERIF};color:{col}">{nw(t)}</p>'
 
 
 def h(t, accent=''):
@@ -57,12 +65,12 @@ def qa(q, a):
     """The 'straight answer' box: one hard question asked before they ask it."""
     return card(f'<p style="margin:0 0 8px;font:700 13px {NARROW};letter-spacing:2px;text-transform:uppercase;color:{RED}">Straight answer</p>'
                 f'<p style="margin:0 0 8px;font:400 22px/1.15 {DISPLAY};text-transform:uppercase;color:{NAVY}">{q}</p>'
-                f'<p style="margin:0;font:400 16px/1.6 {SERIF};color:{BODY}">{a}</p>', PINK)
+                f'<p style="margin:0;font:400 16px/1.6 {SERIF};color:{BODY}">{nw(a)}</p>', PINK)
 
 
 def steps(rows):
     tds = ''.join(f'<tr><td valign="top" width="44" style="padding:0 12px 14px 0;font:400 30px/1 {DISPLAY};color:{RED}">{n:02d}</td>'
-                  f'<td valign="top" style="padding:0 0 14px;font:400 16px/1.5 {SERIF};color:{BODY}"><b style="font:700 16px {NARROW};letter-spacing:.5px;color:{NAVY};text-transform:uppercase">{t}</b><br>{d}</td></tr>'
+                  f'<td valign="top" style="padding:0 0 14px;font:400 16px/1.5 {SERIF};color:{BODY}"><b style="font:700 16px {NARROW};letter-spacing:.5px;color:{NAVY};text-transform:uppercase">{t}</b><br>{nw(d)}</td></tr>'
                   for n, (t, d) in enumerate(rows, 1))
     return f'<table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="margin:6px 0 10px">{tds}</table>'
 

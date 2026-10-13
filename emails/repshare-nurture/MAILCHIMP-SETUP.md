@@ -6,7 +6,7 @@ Each person only gets the track for the role they chose on the site. About 45 mi
 | Track | Starts when this tag is added | Emails | Sent from |
 |---|---|---|---|
 | Vendors (brands, producers) | `Vendor` | `vendor/00` to `vendor/06` | Drinks Network |
-| Reps (bartenders, ambassadors, ex-wholesaler sales) | `Rep` | `rep/00` to `rep/06` | Drinks Network |
+| Reps (bartenders, brand ambassadors and reps already selling) | `Rep` | `rep/00` to `rep/06` | Drinks Network |
 | Partners (agencies, distributors, resellers, venue groups) | `Partner` | `partner/00` to `partner/06` | Drinks Network |
 
 The subject line, preview text and send day for all 21 emails are in `schedule.csv`.

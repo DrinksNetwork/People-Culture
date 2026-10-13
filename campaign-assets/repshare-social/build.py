@@ -23,8 +23,12 @@ body{background:#666}
 .h .a{color:var(--red)} .red .h .a{color:var(--navy)} .navy .h .a{color:#FF6B63}
 .t{font:400 36px/1.38 'Source Serif 4',Georgia,serif;color:var(--body)}
 .navy .t,.red .t{color:#fff}
+.t,.fine,.list div,.stats span,.shelfcap,.ln .t{text-wrap:balance}.h{text-wrap:balance}
 .pad{position:absolute;left:72px;right:72px;top:96px}
-.shotw{position:absolute;left:0;right:0;bottom:140px;overflow:hidden}.shotw img{display:block;width:100%}
+.shotw{position:absolute;left:48px;right:48px;bottom:140px;display:flex;justify-content:center;align-items:flex-end}.shotw img{display:block;max-width:100%;max-height:100%;object-fit:contain}
+.shelf{position:absolute;left:72px;right:72px;bottom:150px;display:flex;align-items:flex-end;justify-content:space-around;gap:20px}
+.shelf img{display:block;height:100%;width:auto;filter:drop-shadow(0 18px 18px rgba(17,17,17,.28))}.shelf img.disp{height:86%}
+.shelfcap{position:absolute;left:72px;right:72px;bottom:118px;text-align:center;font:700 20px 'Archivo Narrow';letter-spacing:2px;text-transform:uppercase;color:#6b655c}
 .stats{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;margin-top:56px}
 .stats b{display:block;font:400 104px/1 Anton,Impact,sans-serif;color:var(--red)}
 .navy .stats b{color:#FF6B63}
@@ -45,7 +49,7 @@ body{background:#666}
 .fine{position:absolute;left:72px;right:72px;bottom:150px;font:400 22px/1.4 'Source Serif 4',Georgia,serif;color:#6b655c}
 .navy .fine{color:#C9CCE0}
 .ln .pad{left:60px;right:620px;top:70px}.ln .h{font-size:76px}.ln .t{font-size:28px;margin-top:20px}
-.ln .shot2{position:absolute;right:36px;top:110px;width:540px;border-radius:14px}
+.ln .shot2{position:absolute;right:30px;top:90px;width:560px}
 .ln .logo{left:60px;bottom:40px;height:46px}.ln .pad{top:96px}
 """
 
@@ -62,7 +66,15 @@ def slide(id_, cls, inner, n=None, of=7, fine='', size='sq'):
 
 
 def shot(img, top=560):
-    return f'<div class="shotw" style="top:{top}px"><img src="{M}nurture/{img}" alt=""></div>'
+    return f'<div class="shotw" style="top:{top}px"><img src="scenes/{img.replace(".jpg", ".png")}" alt=""></div>'
+
+
+SHELF = [('products/lady-trieu-gin.png', ''), ('products/nhau-vodka.png', ''), ('products/headlands-distilling.png', ''), ('tasting/headlands-muscat.png', ''), ('products/blvd-counter-display.png', 'disp')]
+
+
+def shelf(h, cap='Lady Trieu · Nhau · Headlands · BLVD'):
+    imgs = ''.join(f'<img class="{c}" src="{M}{f}" alt="">' for f, c in SHELF)
+    return f'<div class="shelf" style="height:{h}px">{imgs}</div><p class="shelfcap">{cap}</p>'
 
 
 def pad(k, h, t='', extra=''):
@@ -75,8 +87,8 @@ S = []
 v = 'vendor-carousel'
 S += [
  slide(f'{v}-1', 'navy', pad('RepShare for drinks brands', 'A sales team<br><span class="a">on tap.</span>', 'Seasoned reps in venues and bottle shops, selling your brand.') + shot('dual-vendor-dashboard.jpg', 560), 1),
- slide(f'{v}-2', '', pad('How it works', '5 to 15 hours<br><span class="a">a week.</span>', 'Bartenders, brand ambassadors and ex-wholesaler sales who already know the buyers. Sydney, Melbourne and Brisbane.',
-       '<div class="chips"><span>No salaries</span><span>No lock-ins</span></div>'), 2),
+ slide(f'{v}-2', '', pad('How it works', '5 to 15 hours<br><span class="a">a week.</span>', 'Seasoned reps who already know the buyers in Sydney, Melbourne and Brisbane.',
+       '<div class="chips"><span>No salaries</span><span>No lock-ins</span></div>') + shelf(215, 'Brands on RepShare include Lady Trieu · Nhau · Headlands · BLVD'), 2),
  slide(f'{v}-3', 'sand', pad('Circuits', 'Pick the venues.<br><span class="a">Attach an offer.</span>', 'Start from 31,000+ licensed venues and narrow by suburb, type and distance.') + shot('dual-circuit.jpg', 520), 3),
  slide(f'{v}-4', '', pad('Every hour accounted for', 'Logged.<br><span class="a">Approved.</span>',
        extra='<div class="list"><div><b>30</b>Minutes for a standard venue visit</div><div><b>2</b>Charges before a first order. A third is held for review.</div><div><b>15</b>Minute blocks for every hour charged</div></div>'), 4),
@@ -90,7 +102,7 @@ S += [
 # ---------------- REP carousel
 r = 'rep-carousel'
 S += [
- slide(f'{r}-1', 'navy', pad('RepShare reps', 'Sell what you love.<br><span class="a">On your hours.</span>', 'For bartenders, brand ambassadors and ex-wholesaler sales.') + shot('dual-rep-earnings.jpg', 560), 1),
+ slide(f'{r}-1', 'navy', pad('RepShare reps', 'Sell what you love.<br><span class="a">On your hours.</span>', 'For bartenders, brand ambassadors<br>and reps already selling.') + shot('dual-rep-earnings.jpg', 560), 1),
  slide(f'{r}-2', '', pad('Pay', '$47.50 to $70<br><span class="a">an hour.</span>', '', '<div class="stats"><div><b>5–15</b><span>Hours a week</span></div><div><b>3–7</b><span>Days to payout</span></div><div><b>5%</b><span>Super Sale bonus</span></div></div>'), 2,
        fine='Field rates. Super Sale bonus on each single order over $1,000. Indicative only.'),
  slide(f'{r}-3', 'sand', pad('The app', 'Four taps.<br><span class="a">Visit to charge.</span>', 'Open Jobs. Tap Charges. Pick the template. Add notes and save.') + shot('four-taps.jpg', 560), 3),
@@ -105,7 +117,7 @@ pt = 'partner-carousel'
 S += [
  slide(f'{pt}-1', 'navy', pad('RepShare partners', 'Take RepShare<br><span class="a">into your market.</span>', 'For agencies, distributors, tech resellers, venue groups and overseas markets.') + shot('dual-splash.jpg', 560), 1),
  slide(f'{pt}-2', '', pad('The network', 'Already<br><span class="a">in the field.</span>', '', '<div class="stats"><div><b>31K+</b><span>Licensed venues</span></div><div><b>3</b><span>States: QLD, NSW, VIC</span></div><div><b>20</b><span>Reps across BNE, SYD, MEL</span></div></div>'), 2),
- slide(f'{pt}-3', 'sand', pad('The track record', 'The work<br><span class="a">so far.</span>', '', '<div class="stats"><div><b>1,800+</b><span>Field activities</span></div><div><b>20+</b><span>Suppliers onboarded</span></div><div><b>30%+</b><span>Conversion on field sales calls</span></div></div>'), 3),
+ slide(f'{pt}-3', 'sand', pad('The track record', 'The work<br><span class="a">so far.</span>', '', '<div class="stats"><div><b>1,800+</b><span>Field activities</span></div><div><b>20+</b><span>Suppliers onboarded</span></div><div><b>30%+</b><span>Conversion on field sales calls</span></div></div>') + shelf(260, 'Suppliers include Lady Trieu · Nhau · Headlands · BLVD'), 3),
  slide(f'{pt}-4', '', pad('Targeting', 'Circuits,<br><span class="a">not spreadsheets.</span>', 'Pick venues from 31,000+, attach an offer, hand it to reps as jobs.') + shot('dual-circuit.jpg', 560), 4),
  slide(f'{pt}-5', 'sand', pad('Control', 'Every hour,<br><span class="a">approved.</span>', 'Timers, charge templates, approvals and funded hours by rep.') + shot('dual-funded-hours.jpg', 600), 5),
  slide(f'{pt}-6', '', pad('Orders', 'Four ways.<br><span class="a">One dashboard.</span>', '', '<div class="chips"><span>ALM</span><span>Paramount</span><span>ILG</span><span>Direct</span></div>') + shot('laptop-vendor-dashboard.jpg', 560), 6),
@@ -126,11 +138,15 @@ S += [
  slide('post-partner-3', 'red', pad('Next step', 'Map your<br><span class="a">territory.</span>', 'Agencies, distributors, tech resellers, venue groups and overseas markets.',
        '<div class="cta">Talk to us</div><p class="url">site.drinksnetwork.com.au/start?role=partner</p>')),
 ]
+S += [
+ slide('post-vendor-4', 'sand', pad('On RepShare', 'Brands that<br><span class="a">already sell.</span>', 'Gin, vodka, Australian whisky and fortifieds, and ready-to-pour cocktails, in venues and bottle shops now.') + shelf(400)),
+ slide('post-rep-4', '', pad('RepShare reps', 'Carry brands<br><span class="a">worth pouring.</span>', 'Take brands like Lady Trieu, Nhau, Headlands and BLVD into the venues you already know.') + shelf(400, 'Apply at site.drinksnetwork.com.au/reps')),
+]
 # ---------------- link images (1200x627)
 for key, h1, t, img in [('vendor', 'A sales team<br><span class="a">on tap.</span>', '5 to 15 hours a week. No salaries. No lock-ins.', 'dual-vendor-dashboard.jpg'),
                         ('rep', 'Sell what you love.<br><span class="a">On your hours.</span>', '$47.50 to $70 an hour, paid in days.', 'dual-rep-earnings.jpg'),
                         ('partner', 'Take RepShare<br><span class="a">into your market.</span>', '31,000+ licensed venues across 3 states.', 'dual-splash.jpg')]:
-    S.append(slide(f'link-{key}', 'navy', f'<div class="pad"><h1 class="h">{h1}</h1><p class="t">{t}</p></div><img class="shot2" src="{M}nurture/{img}" alt="">', size='ln'))
+    S.append(slide(f'link-{key}', 'navy', f'<div class="pad"><h1 class="h">{h1}</h1><p class="t">{t}</p></div><img class="shot2" src="scenes/{img.replace('.jpg', '.png')}" alt="">', size='ln'))
 
 with open(os.path.join(HERE, 'slides.html'), 'w') as f:
     f.write('<!doctype html><html><head><meta charset="utf-8"><style>' + CSS + '</style></head><body>' + '\n'.join(S) + '</body></html>')
