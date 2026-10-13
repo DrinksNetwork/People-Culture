@@ -27,7 +27,7 @@ body{background:#666}
 .pad{position:absolute;left:72px;right:72px;top:96px}
 .shotw{position:absolute;left:48px;right:48px;bottom:132px;display:flex;justify-content:center;align-items:flex-start}.shotw img{display:block;max-width:100%;max-height:100%;object-fit:contain}
 .shelf{position:absolute;left:72px;right:72px;bottom:150px;display:flex;align-items:flex-end;justify-content:space-around;gap:20px}
-.shelf img{display:block;height:100%;width:auto;filter:drop-shadow(0 18px 18px rgba(17,17,17,.28))}.shelf img.disp{height:86%}
+.shelf img{display:block;height:100%;width:auto;min-width:0;max-width:20%;object-fit:contain;object-position:bottom;filter:drop-shadow(0 18px 18px rgba(17,17,17,.28))}.shelf img.disp{height:86%}.shelf img.pack{height:74%}
 .quote2{margin-top:70px;border-top:2px solid rgba(255,255,255,.25);padding-top:40px}.quote2 p{font:400 54px/1.12 Anton,Impact,sans-serif;text-transform:uppercase;color:#fff;text-wrap:balance}.quote2 span{display:block;margin-top:18px;font:700 26px 'Archivo Narrow';letter-spacing:2px;text-transform:uppercase;color:#FF8A84}
 .shelfcap{position:absolute;left:72px;right:72px;bottom:104px;text-align:center;font:700 20px 'Archivo Narrow';letter-spacing:2px;text-transform:uppercase;color:#6b655c}
 .stats{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;margin-top:56px}
@@ -72,10 +72,10 @@ def shot(img, top=360):
     return f'<div class="shotw" style="top:{top}px"><img src="scenes/{img.replace(".jpg", ".png")}" alt=""></div>'
 
 
-SHELF = [('products/lady-trieu-gin.png', ''), ('products/nhau-vodka.png', ''), ('products/headlands-distilling.png', ''), ('tasting/headlands-muscat.png', ''), ('products/blvd-counter-display.png', 'disp')]
+SHELF = [('products/lady-trieu-gin.png', ''), ('products/nhau-vodka.png', ''), ('products/headlands-distilling.png', ''), ('san-junipero/four-pack-blood-orange.png', 'pack'), ('products/blvd-counter-display.png', 'disp')]
 
 
-def shelf(h, cap='Lady Trieu · Nhau · Headlands · BLVD'):
+def shelf(h, cap='Lady Trieu · Nhau · Headlands · San Junipero · BLVD'):
     imgs = ''.join(f'<img class="{c}" src="{M}{f}" alt="">' for f, c in SHELF)
     return f'<div class="shelf" style="height:{h}px">{imgs}</div><p class="shelfcap">{cap}</p>'
 
@@ -93,7 +93,7 @@ v = 'vendor-carousel'
 S += [
  slide(f'{v}-1', 'navy', pad('RepShare for drinks brands', 'A sales team<br><span class="a">on tap.</span>', 'Seasoned reps in venues and bottle shops, selling your brand.') + shot('dual-vendor-dashboard.jpg'), 1),
  slide(f'{v}-2', '', pad('How it works', '5 to 15 hours<br><span class="a">a week.</span>', 'Seasoned reps who already know the buyers in Sydney, Melbourne and Brisbane.',
-       '<div class="chips"><span>No salaries</span><span>No lock-ins</span></div>') + shelf(215, 'Brands on RepShare include Lady Trieu · Nhau · Headlands · BLVD'), 2),
+       '<div class="chips"><span>No salaries</span><span>No lock-ins</span></div>') + shelf(215, 'Brands on RepShare include Lady Trieu · Nhau · Headlands · San Junipero · BLVD'), 2),
  slide(f'{v}-3', 'sand', pad('Circuits', 'Pick the venues.<br><span class="a">Attach an offer.</span>') + '<div class="shotw" style="top:380px;bottom:196px"><img src="scenes/journey-map.png" alt=""></div><p class="shelfcap" style="bottom:128px;text-transform:none;letter-spacing:0;font:400 24px/1.3 Source Serif 4,Georgia,serif;color:#3A3631">Start from 31,000+ licensed venues and narrow by suburb, type and distance.</p>', 3),
  slide(f'{v}-4', 'navy', pad('What brands say', '“Objectives<br><span class="a">exceeded.”</span>', 'Joel Lindsay, Earth Bar',
        '<div class="quote2"><p>“An end-to-end experience with a highly energetic team.”</p><span>Vladimir Scanu, One &amp; Only Resorts</span></div>'), 4),
@@ -141,8 +141,8 @@ S += [
  slide('post-partner-3', 'red hero', pad('Next step', 'Map your<br><span class="a">territory.</span>') + '<div class="shotw" style="top:392px;bottom:250px"><img src="scenes/territory-map.png" alt=""></div><p class="url" style="position:absolute;left:72px;right:72px;bottom:196px;margin:0;text-align:center;white-space:nowrap">Book a short call · site.drinksnetwork.com.au/start?role=partner</p>' + HERO_SM),
 ]
 S += [
- slide('post-vendor-4', 'sand', pad('On RepShare', 'Brands that<br><span class="a">already sell.</span>', 'Gin, vodka, Australian whisky and fortifieds, and ready-to-pour cocktails, in venues and bottle shops now.') + shelf(400)),
- slide('post-rep-4', '', pad('RepShare reps', 'Carry brands<br><span class="a">worth pouring.</span>', 'Take brands like Lady Trieu, Nhau, Headlands and BLVD into the venues you already know.') + shelf(400, 'Apply at site.drinksnetwork.com.au/reps')),
+ slide('post-vendor-4', 'sand', pad('On RepShare', 'Brands that<br><span class="a">already sell.</span>', 'Gin, vodka, Australian whisky, ready-to-drink cans and ready-to-pour cocktails, in venues and bottle shops now.') + shelf(400)),
+ slide('post-rep-4', '', pad('RepShare reps', 'Carry brands<br><span class="a">worth pouring.</span>', 'Take brands like Lady Trieu, Nhau, Headlands, San&nbsp;Junipero and BLVD into the venues you already know.') + shelf(400, 'Apply at site.drinksnetwork.com.au/reps')),
 ]
 # ---------------- link images (1200x627)
 for key, h1, t, img in [('vendor', 'A sales team<br><span class="a">on tap.</span>', '5 to 15 hours a week. No salaries. No lock-ins.', 'dual-vendor-dashboard.jpg'),

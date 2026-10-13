@@ -342,7 +342,7 @@ PARTNER = [
   pre='Terms, territory, data and support.', hero='dual-vendor-dashboard.jpg',
   alt='Vendor dashboard on a laptop and the app on a phone',
   body=lambda: kick('Day 70 · Straight answers') + h('Partner questions.', 'Plain answers.') + p(HI) +
-   qa('What are the commercial terms?', 'We talk them through on the first call. There’s no published partner rate, because every partnership is different.') +
+   qa('What are the commercial terms?', 'You charge the standard RepShare rates on both sides: brands pay the published hourly rates and reps are paid the standard rep rates. Drinks Network takes 30% of the billable hours for the platform, plus usage-based billing.') +
    qa('Can we have a territory?', 'That’s the first thing we discuss. Tell us the territory you have in mind when you complete the partner form.') +
    qa('What about our clients’ data?', 'Contacts and records are handled under the RepShare Privacy Policy, and each brand sees only its own dashboard.') +
    qa('What support do we get?', 'We cover it on the call. On brand plans, weCare support tickets come with Roll Out and above.') +
