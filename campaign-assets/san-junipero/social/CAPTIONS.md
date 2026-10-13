@@ -12,7 +12,7 @@ Melbourne retailers: order five cases of San Junipero Spritz, get the sixth free
 
 ## Feed 2: Five cases in (sj-feed-2-five-cases-in, 1080x1080)
 Five cases in. Six cases out. ☀️
-$299.95 ex GST for five cases at $59.99 each, and the sixth is on us. Every 5+1 order is an entry to win an eBike. Link in bio.
+$299.95 ex GST for five cases at $59.99 each (24 cans per case), and the sixth is on us. At $20 RRP a four-pack that's a 54% margin. Every 5+1 order is an entry to win an eBike. Link in bio.
 #SanJunipero #TradeDeal #MelbourneRetail
 
 ## Feed 3: Two eBikes (sj-feed-3-two-ebikes, 1080x1080)

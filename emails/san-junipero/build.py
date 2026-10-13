@@ -30,6 +30,16 @@ def kick(t, col=VIOLET):
 def card(inner, bg='#FFFFFF'):
     return f'<table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="margin:6px 0 18px"><tr><td bgcolor="{bg}" style="border-radius:18px;padding:20px 22px;font:400 16px/1.5 {HEAD};color:{VOID}">{inner}</td></tr></table>'
 
+def packs():
+    cell = lambda f, a, name: f'<td width="50%" valign="bottom" align="center" style="padding:0 6px">{img(f, a, 200)}<p style="margin:8px 0 0;font:700 13px/1.3 {HEAD};color:{VOID}">{name} four-pack<br><span style="color:{SUNSET}">RRP $20</span></p></td>'
+    return (f'<table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="margin:14px 0 12px"><tr>'
+            + cell('four-pack-limoncello.png', 'San Junipero Limoncello Spritz four-pack', 'Limoncello')
+            + cell('four-pack-blood-orange.png', 'San Junipero Blood Orange Spritz four-pack', 'Blood Orange') + '</tr></table>'
+            + f'<table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="margin:0"><tr><td bgcolor="#FFFFFF" style="border-radius:14px;padding:14px 16px;font:400 14px/1.6 {HEAD};color:{VOID}">'
+            + '<b style="font-size:15px">Your margin on the 5+1</b><br>RRP $20 a four-pack · your cost $8.33 · profit $9.85 a four-pack<br>'
+            + f'<b style="font-size:18px;color:{SUNSET}">54% margin</b> · <b>$354.60 profit</b> on 36 four-packs'
+            + '<br><span style="font-size:12px;color:#5B5550">Cost, profit and margin ex GST; RRP inc GST. RRP is a recommendation only.</span></td></tr></table>')
+
 def stripe():
     cols = [GLOW, SUNSET, TORCH, PINK, VIOLET]
     tds = ''.join(f'<td height="6" bgcolor="{c}" style="font-size:0;line-height:0">&nbsp;</td>' for c in cols)
@@ -72,7 +82,7 @@ EMAILS = [
   hero='email-hero.jpg', alt='Rider on a San Junipero eBike at sunset', why="You're receiving this as a Drinks Network trade contact.",
   body=lambda: kick('New for Melbourne retailers') + h('Buy 5 + 1.', 'Ride away.') + p(HI) +
    p('San Junipero is the wine-based spritz that brings California sunset to the fridge, in <b>Limoncello</b> and <b>Blood Orange</b>. This summer, every 5+1 case deal puts your store in the draw to win one of <b>two San Junipero eBikes</b>.') +
-   card(f'<p style="margin:0 0 6px;font:700 12px {HEAD};letter-spacing:3px">5 + 1 CASE DEAL</p><p style="margin:0;font:800 46px/1 {HEAD};color:{SUNSET};letter-spacing:-1.5px">$299.95</p><p style="margin:8px 0 0">ex GST for five cases at $59.99 each. Receive six cases / 36 four-packs.</p><p style="margin:8px 0 0;font-size:13px;color:#5B5550">250 mL cans · 8% ABV · 24 cans per case. For licensed retailers. Trade pricing from the current sell card.</p>', '#FFEEC9') +
+   card(f'<p style="margin:0 0 6px;font:700 12px {HEAD};letter-spacing:3px">5 + 1 CASE DEAL</p><p style="margin:0;font:800 46px/1 {HEAD};color:{SUNSET};letter-spacing:-1.5px">$299.95</p><p style="margin:8px 0 0">ex GST for five cases at $59.99 each. <b>24 cans per case.</b> Receive six cases / 36 four-packs.</p>' + packs() + '<p style="margin:10px 0 0;font-size:13px;color:#5B5550">250 mL cans · 8% ABV. For licensed retailers. Trade pricing from the current sell card.</p>', '#FFEEC9') +
    f'''<table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="margin:0 0 18px"><tr>
 <td width="33%" valign="top" style="padding-right:8px;font:400 14px/1.45 {HEAD}"><p style="margin:0;font:800 28px {HEAD};color:{SUNSET}">01</p><b>Buy the 5+1</b><br>Order five cases, receive a sixth free.</td>
 <td width="33%" valign="top" style="padding:0 4px;font:400 14px/1.45 {HEAD}"><p style="margin:0;font:800 28px {HEAD};color:{SUNSET}">02</p><b>Scan and register</b><br>Enter your order and a picnic answer, 100 words or less.</td>
@@ -111,7 +121,7 @@ EMAILS = [
   subject='Double your chances to win an eBike 🚲🚲', pre='Every extra 5+1 order is another entry. Here\'s the deal.', hero='email-hero.jpg', alt='Rider on a San Junipero eBike',
   body=lambda: kick('More chances') + h('Double your chances.', 'One more 5+1.') + p(HI) +
    p('Every qualifying 5+1 order you register is another entry in the draw for one of two San Junipero eBikes. Running low? Now\'s the time to reorder before the Christmas rush.') +
-   card(f'<p style="margin:0 0 6px;font:700 12px {HEAD};letter-spacing:3px">5 + 1 CASE DEAL</p><p style="margin:0;font:800 46px/1 {HEAD};color:{SUNSET};letter-spacing:-1.5px">$299.95</p><p style="margin:8px 0 0">ex GST for five cases at $59.99 each. Receive six cases / 36 four-packs.</p><p style="margin:8px 0 0;font-size:13px;color:#5B5550">Trade pricing from the current sell card; confirm availability with your representative.</p>', '#FFEEC9') +
+   card(f'<p style="margin:0 0 6px;font:700 12px {HEAD};letter-spacing:3px">5 + 1 CASE DEAL</p><p style="margin:0;font:800 46px/1 {HEAD};color:{SUNSET};letter-spacing:-1.5px">$299.95</p><p style="margin:8px 0 0">ex GST for five cases at $59.99 each. <b>24 cans per case.</b> Receive six cases / 36 four-packs.</p>' + packs() + '<p style="margin:10px 0 0;font-size:13px;color:#5B5550">Trade pricing from the current sell card; confirm availability with your representative.</p>', '#FFEEC9') +
    button('Register your next 5+1', PAGE + '#enter')),
  dict(n='06', key='picnic', when='Follow-up 5', date='Tue 8 Dec 2026',
   subject='Where would you ride for a picnic? 🧺', pre='Picnic season is here, Christmas is close, and entries close Friday 18 December.', hero='email-pour.jpg', alt='Limoncello Spritz poured over ice with lemon',

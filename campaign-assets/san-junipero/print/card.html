@@ -13,16 +13,16 @@ body{font-family:'Hanken Grotesk',sans-serif;color:var(--void)}
 .kick{font:700 2.6mm/1.2 'Hanken Grotesk';letter-spacing:.2em;text-transform:uppercase}
 .stripe{position:absolute;left:0;right:0;height:3.2mm;background:linear-gradient(90deg,var(--glow) 0 20%,var(--sunset) 20% 40%,var(--torch) 40% 60%,var(--pink) 60% 80%,var(--violet) 80%)}
 /* front */
-.front{background:var(--void) url('../../../public/media/san-junipero/bike-hero.jpg') 34% 0/auto 100% no-repeat}
-.front::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(16,24,32,.55) 0%,rgba(16,24,32,0) 22%,rgba(16,24,32,0) 46%,rgba(16,24,32,.88) 72%,var(--void) 100%)}
+.front{background:var(--void) url('../../../public/media/san-junipero/bike-hero.jpg') 50% 0/100% auto no-repeat}
+.front::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(16,24,32,.45) 0%,rgba(16,24,32,0) 12%,rgba(16,24,32,0) 60%,var(--void) 69.5%,var(--void) 100%)}
 .front .safe{z-index:2;display:flex;flex-direction:column;justify-content:space-between;color:#fff}
 .front .top{display:flex;justify-content:space-between;align-items:flex-start}
 .front .top img{height:12mm;width:auto}
 .front .badge{background:var(--glow);color:var(--void);border-radius:999px;padding:2mm 3.6mm;font:800 3.2mm 'Bricolage Grotesque';letter-spacing:-.02em}
-.front h1{font-size:19mm;margin:0 0 3mm}
+.front h1{font-size:14.5mm;margin:0 0 2.5mm}
 .front h1 .it{display:block;color:var(--glow);font-size:1.06em;line-height:.9}
-.front p{font-size:4.1mm;line-height:1.35;color:#F3ECE4;max-width:110mm}
-.front .by{display:flex;align-items:center;gap:2.5mm;font:500 3mm 'Hanken Grotesk';color:var(--sol);margin-top:5mm}
+.front p{font-size:3.7mm;line-height:1.35;color:#F3ECE4;max-width:120mm}
+.front .by{display:flex;align-items:center;gap:2.5mm;font:500 3mm 'Hanken Grotesk';color:var(--sol);margin-top:3.5mm}
 .front .by img{height:6.5mm}
 /* back */
 .back{background:var(--paper)}
@@ -34,7 +34,12 @@ body{font-family:'Hanken Grotesk',sans-serif;color:var(--void)}
 .deal{display:grid;grid-template-columns:1fr 34mm;gap:4mm;align-items:center;background:#fff;border-radius:5mm;padding:4.5mm 5mm;box-shadow:2.5mm 2.5mm 0 var(--glow)}
 .deal .big{font:800 16mm/1 'Bricolage Grotesque';letter-spacing:-.06em;color:var(--sunset);margin:1mm 0 1.4mm}
 .deal p{font-size:3.2mm;line-height:1.35}
-.deal img{width:34mm;height:auto;display:block}
+.deal .packs{position:relative;height:30mm}
+.deal .packs img{position:absolute;width:22mm;height:auto}
+.deal .rrp{position:absolute;right:-3mm;top:-5mm;width:13mm;height:13mm;border-radius:50%;background:var(--glow);display:grid;place-items:center;text-align:center;transform:rotate(-10deg);font:800 5.4mm/.85 'Bricolage Grotesque';letter-spacing:-.04em}
+.deal .rrp small{display:block;font:700 1.7mm 'Hanken Grotesk';letter-spacing:.15em}
+.deal .mg{display:inline-block;margin-top:1.8mm;background:var(--glow1);border-radius:99mm;padding:1mm 2.6mm;font:800 3.2mm 'Bricolage Grotesque';letter-spacing:-.02em}
+.deal .mg span{color:var(--sunset)}
 .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:2.6mm}
 .steps div{background:#fff;border-radius:4mm;padding:3.2mm 3mm;font-size:2.9mm;line-height:1.35}
 .steps b{display:block;font:800 6mm/1 'Bricolage Grotesque';color:var(--sunset);margin-bottom:1.2mm}
@@ -67,8 +72,8 @@ body{font-family:'Hanken Grotesk',sans-serif;color:var(--void)}
     <div class="head"><img src="../../../public/media/san-junipero/san-junipero-logo-void.png" alt="San Junipero"><span class="kick" style="color:var(--violet)">Register by Fri 18 Dec 2026</span></div>
     <h2 class="h">Five cases in.<span class="it">Six cases out.</span></h2>
     <div class="deal">
-      <div><div class="kick">5 + 1 case deal</div><div class="big">$299.95</div><p><b>ex GST for five cases at $59.99 each.</b> Receive six cases / 36 four-packs. Limoncello and Blood Orange Spritz, 250 mL cans, 8% ABV, 24 cans per case.</p></div>
-      <img src="../../../public/media/san-junipero/email-cans.jpg" alt="">
+      <div><div class="kick">5 + 1 case deal</div><div class="big">$299.95</div><p><b>ex GST for five cases at $59.99 each. 24 cans per case.</b> Receive six cases / 36 four-packs of Limoncello and Blood Orange Spritz, 250 mL, 8% ABV.</p><div class="mg"><span>54% margin</span> at $20 RRP a four-pack</div></div>
+      <div class="packs"><img src="../../../public/media/san-junipero/four-pack-limoncello.png" style="left:-1mm;top:0" alt=""><img src="../../../public/media/san-junipero/four-pack-blood-orange.png" style="right:-1mm;top:8mm" alt=""><div class="rrp"><div><small>RRP</small>$20</div></div></div>
     </div>
     <div class="steps">
       <div><b>01</b><strong>Buy the 5+1</strong>Order five cases and receive a sixth case free.</div>
