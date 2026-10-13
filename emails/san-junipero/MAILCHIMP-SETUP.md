@@ -1,18 +1,21 @@
 # San Junipero Melbourne retailer giveaway: Mailchimp setup
 
 For Emma (emma@drinksnetwork.com.au). This takes about 30 minutes. Eight emails in all: a launch email to Melbourne retailers,
-an instant confirmation when a store enters, then one email every Tuesday for six weeks up to the 30 November close.
+an instant confirmation when a store enters, then six follow-ups on Tuesday mornings up to the **Friday 18 December** close.
+Winners are drawn **Monday 21 December**, before Christmas.
 
 | # | When | Subject line | Preview text | File |
 |---|------|--------------|--------------|------|
 | 00 | Thu 15 Oct 2026, launch | Buy 5 + 1. Ride away. 🚲 Win a San Junipero eBike | Melbourne retailers: buy five cases, get the sixth free and go into the draw for an eBike. | 00-intro-launch.html |
-| 01 | Instantly, on entry | You're in the running for a San Junipero eBike 🚲 | Your 5+1 entry is in. Two eBikes drawn 1 December 2026. | 01-confirmation.html |
-| 02 | Tue 20 Oct 2026 | Make the fridge glow ☀️ | Three quick ways to sell more San Junipero this week. | 02-week-1-fridge.html |
-| 03 | Tue 27 Oct 2026 | The perfect San Junipero serve 🍋 | Big glass, lots of ice, one slice. That's it. | 03-week-2-serve.html |
-| 04 | Tue 3 Nov 2026 | Win a spa retreat with San Junipero 🌴 | Follow @drinksanjunipero on Instagram for the spa retreat giveaway. | 04-week-3-spa.html |
-| 05 | Tue 10 Nov 2026 | Double your chances to win an eBike 🚲🚲 | Every extra 5+1 order is another entry. Here's the deal. | 05-week-4-double.html |
-| 06 | Tue 17 Nov 2026 | Where would you ride for a picnic? 🧺 | Picnic season is here. So is your chance to win. | 06-week-5-picnic.html |
-| 07 | Tue 24 Nov 2026 | Last call: register your 5+1 by 30 November ⏰ | One week left to enter. Two eBikes drawn 1 December. | 07-week-6-last-call.html |
+| 01 | Instantly, on entry | You're in the running for a San Junipero eBike 🚲 | Your 5+1 entry is in. Two eBikes drawn 21 December 2026. | 01-confirmation.html |
+| 02 | Tue 20 Oct 2026 | Make the fridge glow ☀️ | Three quick ways to sell more San Junipero this week. | 02-fridge.html |
+| 03 | Tue 27 Oct 2026 | The perfect San Junipero serve 🍋 | Big glass, lots of ice, one slice. That's it. | 03-serve.html |
+| 04 | Tue 10 Nov 2026 | Win a spa retreat with San Junipero 🌴 | Follow @drinksanjunipero on Instagram for the spa retreat giveaway. | 04-spa.html |
+| 05 | Tue 24 Nov 2026 | Double your chances to win an eBike 🚲🚲 | Every extra 5+1 order is another entry. Here's the deal. | 05-double.html |
+| 06 | Tue 8 Dec 2026 | Where would you ride for a picnic? 🧺 | Picnic season is here, Christmas is close, and entries close Friday 18 December. | 06-picnic.html |
+| 07 | Tue 15 Dec 2026 | Last call: register your 5+1 by Friday 18 December ⏰ | Entries close this Friday. Two eBikes drawn 21 December, just before Christmas. | 07-last-call.html |
+
+Melbourne Cup Day (Tue 3 Nov) is skipped on purpose, as it's a public holiday in Melbourne.
 
 The same list is in `schedule.csv`.
 
@@ -43,7 +46,7 @@ Images load from site.drinksnetwork.com.au, so they appear once the site is repu
 2. Starting point: **Tag is added → `form:san-junipero-giveaway`**. Allow contacts to start the journey **multiple times**, so every extra 5+1 entry gets a confirmation.
 3. Add **Send email** and design it with **SJ 01 Confirmation**:
    - Subject: *You're in the running for a San Junipero eBike 🚲*
-   - Preview text: *Your 5+1 entry is in. Two eBikes drawn 1 December 2026.*
+   - Preview text: *Your 5+1 entry is in. Two eBikes drawn 21 December 2026.*
    - From name: **San Junipero**; reply-to **emma@drinksnetwork.com.au**
 4. **Turn on** the journey.
 
@@ -58,7 +61,7 @@ For each email:
 3. **From:** San Junipero · reply-to emma@drinksnetwork.com.au.
 4. **Subject** and **preview text** from the table above.
 5. **Content:** the matching saved template.
-6. **Send test** to emma@drinksnetwork.com.au, check it, then **Schedule** for the Tuesday at **10:00 am (Melbourne time)**.
+6. **Send test** to emma@drinksnetwork.com.au, check it, then **Schedule** for its Tuesday (dates in the table) at **10:00 am (Melbourne time)**.
 
 ## 5. Before you schedule anything
 
@@ -67,6 +70,6 @@ For each email:
 - Emails 04 and the footer of every email mention the Instagram spa retreat giveaway. Confirm its dates and terms are live on @drinksanjunipero before email 04 goes out.
 - If the site's instant "We've got your enquiry" email is also switched on, entrants will get two confirmations. Ask for that automatic reply to be turned off for this form.
 
-## After the draw (1 December)
+## After the draw (Monday 21 December)
 
 Duplicate email 07, change it to announce the winners (with their permission), and send it to the same tag.

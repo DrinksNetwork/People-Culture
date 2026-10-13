@@ -7,7 +7,7 @@ Do not post until the promotion terms are live on the campaign page and the camp
 
 ## Feed 1: Ride away (sj-feed-1-ride-away, 1080x1080)
 Buy 5 + 1. Ride away. 🚲
-Melbourne retailers: order five cases of San Junipero Spritz, get the sixth free, and you're in the draw for one of two eBikes. Register by 30 November. Link in bio.
+Melbourne retailers: order five cases of San Junipero Spritz, get the sixth free, and you're in the draw for one of two eBikes. Register by Friday 18 December. Link in bio.
 #SanJunipero #SpritzSeason #MelbourneBottleshops #LiquorRetail
 
 ## Feed 2: Five cases in (sj-feed-2-five-cases-in, 1080x1080)
@@ -17,7 +17,7 @@ $299.95 ex GST for five cases at $59.99 each, and the sixth is on us. Every 5+1 
 
 ## Feed 3: Two eBikes (sj-feed-3-two-ebikes, 1080x1080)
 Two eBikes to win. 🚲🚲
-Every 5+1 deal is an entry, so more orders mean more chances. Register by 30 Nov; winners drawn 1 Dec 2026. Link in bio.
+Every 5+1 deal is an entry, so more orders mean more chances. Register by Fri 18 Dec; winners drawn 21 Dec 2026, just before Christmas. Link in bio.
 #SanJunipero #Giveaway #MelbourneBottleshops
 
 ## Story 1: Ride away (sj-story-1-ride-away, 1080x1920)
