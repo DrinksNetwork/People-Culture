@@ -1,0 +1,42 @@
+<!doctype html><html><head><meta charset="utf-8"><style>
+:root{--red:#E42E2E;--navy:#1E2552;--paper:#FBF7F0;--sand:#F1E9DC}
+*{box-sizing:border-box;margin:0}
+body{background:#777}
+.scene{width:1200px;height:700px;position:relative;overflow:hidden;background:var(--sand)}
+.scene.paper{background:var(--paper)} .scene.navy{background:var(--navy)} .scene.red{background:var(--red)}
+.glow{position:absolute;width:900px;height:900px;border-radius:50%;background:radial-gradient(closest-side,rgba(228,46,46,.16),rgba(228,46,46,0));right:-200px;top:-250px}
+.laptop{position:absolute}
+.laptop .lid{background:#16181d;border-radius:22px 22px 0 0;padding:16px 16px 26px;box-shadow:0 30px 60px rgba(17,17,17,.25)}
+.laptop .screen{background:#fff left top/100% auto no-repeat;border-radius:4px;overflow:hidden}
+.laptop .base{height:18px;background:linear-gradient(#d9d9de,#a9aab2);border-radius:0 0 18px 18px;margin:0 -60px;position:relative}
+.laptop .base:after{content:"";position:absolute;left:50%;top:0;width:140px;height:8px;margin-left:-70px;background:#8e8f97;border-radius:0 0 10px 10px}
+.phone{position:absolute;background:#0d0e12;border-radius:52px;padding:12px;box-shadow:0 30px 60px rgba(17,17,17,.3)}
+.phone .screen{width:100%;height:100%;border-radius:41px;overflow:hidden;background:#fff;position:relative}
+.phone .screen .img{position:absolute;left:0;right:0;top:0;bottom:0;background:#fff center top/100% auto no-repeat}
+.phone .screen .img.cover{background-size:cover}
+.phone .screen .tab{position:absolute;left:0;right:0;bottom:0;height:auto}
+.phone .screen .tab img{display:block;width:100%}
+.phone .island{position:absolute;left:50%;top:22px;width:96px;height:28px;margin-left:-48px;background:#0d0e12;border-radius:20px;z-index:2}
+.photo{position:absolute;background:center/contain no-repeat}
+</style></head><body>
+<script>
+const M='../../../public/media/';
+function laptop(img,x,y,w){const h=Math.round(w*0.625);const cov=/circuit|splash/.test(img)?';background-size:cover;background-position:center top':'';return `<div class="laptop" style="left:${x}px;top:${y}px;width:${w+32}px"><div class="lid"><div class="screen" style="width:${w}px;height:${h}px;background-image:url(${M}${img})${cov}"></div></div><div class="base"></div></div>`}
+function phone(img,x,y,w,opt={}){const h=Math.round(w*2.12);return `<div class="phone" style="left:${x}px;top:${y}px;width:${w}px;height:${h}px"><div class="island"></div><div class="screen"><div class="img ${opt.cover?'cover':''}" style="background-image:url(${M}${img})"></div>${opt.tab?`<div class="tab"><img src="${M}app/tabbar.jpg"></div>`:''}</div></div>`}
+const S={
+ 'dual-vendor-dashboard':['paper',laptop('app/vendor-dashboard.jpg',70,90,800)+phone('app/splash-phone.jpg',900,120,250,{cover:1})],
+ 'dual-funded-hours':['sand',laptop('app/funded-hours.jpg',70,90,800)+phone('app/step3.jpg',900,120,250,{tab:1})],
+ 'dual-circuit':['paper',laptop('app/circuit-select.jpg',70,90,800)+phone('app/step1.jpg',900,120,250,{tab:1})],
+ 'dual-orders':['sand',laptop('app/vendor-dashboard.jpg',70,90,800)+phone('app/step7.jpg',900,120,250,{tab:1})],
+ 'dual-rep-earnings':['paper',laptop('app/rep-earnings.jpg',70,90,800)+phone('app/step3.jpg',900,120,250,{tab:1})],
+ 'dual-rep-circuit':['sand',laptop('app/circuit-search.jpg',70,90,800)+phone('app/step1.jpg',900,120,250,{tab:1})],
+ 'dual-splash':['navy',laptop('app/splash-desktop.jpg',70,90,800)+phone('app/splash-phone.jpg',900,120,250,{cover:1})],
+ 'dual-proof':['paper',laptop('app/funded-hours.jpg',70,90,800)+phone('app/step7.jpg',900,120,250,{tab:1})],
+ 'four-taps':['paper',phone('app/step1.jpg',40,76,250,{tab:1})+phone('app/step3.jpg',330,76,250,{tab:1})+phone('app/step5.jpg',620,76,250,{tab:1})+phone('app/step7.jpg',910,76,250,{tab:1})],
+ 'two-phones-jobs':['sand',phone('app/step1.jpg',300,76,250,{tab:1})+phone('app/step3.jpg',650,76,250,{tab:1})],
+ 'two-phones-orders':['paper',phone('app/step5.jpg',300,76,250,{tab:1})+phone('app/step7.jpg',650,76,250,{tab:1})],
+ 'laptop-circuit-search':['sand',laptop('app/circuit-search.jpg',184,70,800)],
+ 'laptop-vendor-dashboard':['paper',laptop('app/vendor-dashboard.jpg',184,70,800)],
+};
+document.write(Object.entries(S).map(([k,[bg,h]])=>`<div class="scene ${bg}" id="${k}">${bg!=='navy'?'<div class="glow"></div>':''}${h}</div>`).join('<br>'));
+</script></body></html>

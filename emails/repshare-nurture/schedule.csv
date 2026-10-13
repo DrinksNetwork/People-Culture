@@ -1,0 +1,22 @@
+Track,Trigger tag,#,Day,When,Subject line,Preview text,HTML file
+vendor,Vendor,00,0,On sign-up,Your sales team on tap starts here,"What happens next, and what RepShare does for your brand.",vendor/00-welcome.html
+vendor,Vendor,01,14,14 days after sign-up,"What RepShare costs, and when you break even","The plans, the hourly rates and a simple break-even sum for your brand.",vendor/01-cost-and-break-even.html
+vendor,Vendor,02,28,28 days after sign-up,Build your first circuit,"Pick the venues, attach an offer, and every account on the circuit gets it.",vendor/02-build-a-circuit.html
+vendor,Vendor,03,42,42 days after sign-up,From lead to job: how your hours are spent,"Job stages, 30-minute bookings, and why a third charge is held for review.",vendor/03-leads-to-jobs.html
+vendor,Vendor,04,56,56 days after sign-up,"How orders are processed: ALM, Paramount, ILG or direct",Your reps close; the venue orders through the channel it already uses.,vendor/04-orders.html
+vendor,Vendor,05,70,70 days after sign-up,"The hard questions brands ask us, answered","Guarantees, cancelling, hiring a rep, and what we can’t promise.",vendor/05-hard-questions.html
+vendor,Vendor,06,84,84 days after sign-up,Your first 30 days with RepShare,"Wholesaling, targeting and strategy in a 24-hour launch campaign, plus $500 off.",vendor/06-first-30-days.html
+rep,Rep,00,0,On sign-up,Welcome to RepShare: here’s how the work works,"Pick your jobs, work the venues you know, get paid in days.",rep/00-welcome.html
+rep,Rep,01,14,14 days after sign-up,What you can earn as a RepShare rep,"Field rates, a worked month, and the 5% Super Sale bonus.",rep/01-what-you-earn.html
+rep,Rep,02,28,28 days after sign-up,Four taps from visit to charge,"Open the job, tap Charges, pick the template, add notes and save.",rep/02-four-taps.html
+rep,Rep,03,42,42 days after sign-up,How circuits turn into your jobs,"Brands build circuits of venues; you work them as jobs, at your pace.",rep/03-circuits-and-jobs.html
+rep,Rep,04,56,56 days after sign-up,"Processing orders, and the Super Sale bonus","ALM, Paramount, ILG or direct: log it in the app and it counts.",rep/04-processing-orders.html
+rep,Rep,05,70,70 days after sign-up,Straight answers about repping with us,"Contractor status, tax, costs and what we ask of you.",rep/05-straight-answers.html
+rep,Rep,06,84,84 days after sign-up,Ready for your first job?,"Onboarding, free courses and your first circuit.",rep/06-first-job.html
+partner,Partner,00,0,On sign-up,Partnering with Drinks Network: where to start,Take the RepShare tech and network into your market or business.,partner/00-welcome.html
+partner,Partner,01,14,14 days after sign-up,The RepShare network in numbers,"Venues, reps, field activities and suppliers across the east coast.",partner/01-the-network.html
+partner,Partner,02,28,28 days after sign-up,How your clients would target venues,"Circuits: pick venues from 31,000+, attach an offer, hand it to reps.",partner/02-circuits.html
+partner,Partner,03,42,42 days after sign-up,Visibility and control over every field hour,"Timers, templates, approvals and funded hours, in one place.",partner/03-control.html
+partner,Partner,04,56,56 days after sign-up,"Orders through any channel, reported in one place","ALM, Paramount, ILG or direct, with a vendor dashboard on top.",partner/04-orders-and-reporting.html
+partner,Partner,05,70,70 days after sign-up,"Partner questions, answered straight","Terms, territory, data and support.",partner/05-straight-answers.html
+partner,Partner,06,84,84 days after sign-up,Let’s map your territory,A short call to see what RepShare could do in your market.,partner/06-map-your-territory.html
