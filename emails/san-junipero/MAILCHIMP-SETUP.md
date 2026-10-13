@@ -1,10 +1,11 @@
 # San Junipero Melbourne retailer giveaway: Mailchimp setup
 
-For Emma (emma@drinksnetwork.com.au). This takes about 30 minutes. Seven emails cover six weeks:
-one instant confirmation when a store enters, then one email every Tuesday up to the 30 November close.
+For Emma (emma@drinksnetwork.com.au). This takes about 30 minutes. Eight emails in all: a launch email to Melbourne retailers,
+an instant confirmation when a store enters, then one email every Tuesday for six weeks up to the 30 November close.
 
 | # | When | Subject line | Preview text | File |
 |---|------|--------------|--------------|------|
+| 00 | Thu 15 Oct 2026, launch | Buy 5 + 1. Ride away. 🚲 Win a San Junipero eBike | Melbourne retailers: buy five cases, get the sixth free and go into the draw for an eBike. | 00-intro-launch.html |
 | 01 | Instantly, on entry | You're in the running for a San Junipero eBike 🚲 | Your 5+1 entry is in. Two eBikes drawn 1 December 2026. | 01-confirmation.html |
 | 02 | Tue 20 Oct 2026 | Make the fridge glow ☀️ | Three quick ways to sell more San Junipero this week. | 02-week-1-fridge.html |
 | 03 | Tue 27 Oct 2026 | The perfect San Junipero serve 🍋 | Big glass, lots of ice, one slice. That's it. | 03-week-2-serve.html |
@@ -24,15 +25,19 @@ Every entry from the campaign page lands in the Drinks Network audience with:
 
 The emails use `*|FNAME|*` and `*|COMPANY|*`, and fall back to "Hi there" and "your store" if either field is blank.
 
-## 1. Import the seven templates (about 5 minutes)
+## 1. Import the eight templates (about 5 minutes)
 
 1. Mailchimp → **Content → Email templates → Create template → Code your own → Import HTML**.
 2. Upload `01-confirmation.html` and name it **SJ 01 Confirmation**.
-3. Repeat for 02 to 07 (SJ 02 Fridge, SJ 03 Serve, SJ 04 Spa, SJ 05 Double, SJ 06 Picnic, SJ 07 Last call).
+3. Repeat for 00 and 02 to 07 (SJ 00 Launch, SJ 02 Fridge, SJ 03 Serve, SJ 04 Spa, SJ 05 Double, SJ 06 Picnic, SJ 07 Last call).
 
 Images load from site.drinksnetwork.com.au, so they appear once the site is republished on Replit.
 
-## 2. Email 01: send it automatically on entry (about 10 minutes)
+## 2. Email 00: the launch (Thu 15 Oct)
+
+**Campaigns → Create → Regular email** to your Melbourne retailer contacts (for example the tag `Buyer`, filtered to Melbourne/VIC), template **SJ 00 Launch**, subject and preview text from the table. Send a test to yourself, then schedule for 10:00 am.
+
+## 3. Email 01: send it automatically on entry (about 10 minutes)
 
 1. **Automations → Customer Journeys → Create journey**, named *San Junipero entry confirmation*.
 2. Starting point: **Tag is added → `form:san-junipero-giveaway`**. Allow contacts to start the journey **multiple times**, so every extra 5+1 entry gets a confirmation.
@@ -42,7 +47,7 @@ Images load from site.drinksnetwork.com.au, so they appear once the site is repu
    - From name: **San Junipero**; reply-to **emma@drinksnetwork.com.au**
 4. **Turn on** the journey.
 
-## 3. Emails 02 to 07: schedule them for Tuesday mornings (about 15 minutes)
+## 4. Emails 02 to 07: schedule them for Tuesday mornings (about 15 minutes)
 
 Use regular campaigns rather than journey delays. Fixed dates keep the countdown accurate, and stores that enter late still get the remaining emails.
 
@@ -55,7 +60,7 @@ For each email:
 5. **Content:** the matching saved template.
 6. **Send test** to emma@drinksnetwork.com.au, check it, then **Schedule** for the Tuesday at **10:00 am (Melbourne time)**.
 
-## 4. Before you schedule anything
+## 5. Before you schedule anything
 
 - Send yourself a test of every email and click every button.
 - Check the promotion terms and final bike details are published on the campaign page; emails 01 and 07 refer to them.

@@ -38,7 +38,7 @@ def stripe():
 HI = '*|IF:FNAME|*Hi *|FNAME|*,*|ELSE:|*Hi there,*|END:IF|*'
 STORE = '*|IF:COMPANY|**|COMPANY|**|ELSE:|*your store*|END:IF|*'
 
-def page(subject, preheader, body, hero=None, hero_alt=''):
+def page(subject, preheader, body, hero=None, hero_alt='', why="You're receiving this because you entered the San Junipero Melbourne retailer giveaway."):
     hero_html = f'<tr><td style="padding:0">{img(hero, hero_alt)}</td></tr>' if hero else ''
     return f'''<!doctype html>
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml"><head>
@@ -61,12 +61,24 @@ def page(subject, preheader, body, hero=None, hero_alt=''):
 <a href="{PAGE}#enter" style="color:{VIOLET};font-weight:700">Register a 5+1 order</a> &nbsp;·&nbsp; <a href="{IG}" style="color:{VIOLET};font-weight:700">@drinksanjunipero</a></td></tr>
 <tr><td bgcolor="{VOID}" style="padding:24px 40px;font:400 12px/1.6 {HEAD};color:#BDB5AD" class="px">
 San Junipero, presented by Drinks Network. Prizes supplied by CoLab Wines. Promotion terms and final prize details as published on the campaign page. For licensed retailers. Please enjoy San Junipero responsibly.<br><br>
-You're receiving this because you entered the San Junipero Melbourne retailer giveaway. <a href="*|UPDATE_PROFILE|*" style="color:{GLOW}">Update preferences</a> · <a href="*|UNSUB|*" style="color:{GLOW}">Unsubscribe</a><br>
+{why} <a href="*|UPDATE_PROFILE|*" style="color:{GLOW}">Update preferences</a> · <a href="*|UNSUB|*" style="color:{GLOW}">Unsubscribe</a><br>
 *|LIST:ADDRESSLINE|*</td></tr>
 </table></td></tr></table>
 </body></html>'''
 
 EMAILS = [
+ dict(n='00', key='intro-launch', when='Launch, to Melbourne retailers', date='Thu 15 Oct 2026',
+  subject='Buy 5 + 1. Ride away. 🚲 Win a San Junipero eBike', pre='Melbourne retailers: buy five cases, get the sixth free and go into the draw for an eBike.',
+  hero='email-hero.jpg', alt='Rider on a San Junipero eBike at sunset', why="You're receiving this as a Drinks Network trade contact.",
+  body=lambda: kick('New for Melbourne retailers') + h('Buy 5 + 1.', 'Ride away.') + p(HI) +
+   p('San Junipero is the wine-based spritz that brings California sunset to the fridge, in <b>Limoncello</b> and <b>Blood Orange</b>. This summer, every 5+1 case deal puts your store in the draw to win one of <b>two San Junipero eBikes</b>.') +
+   card(f'<p style="margin:0 0 6px;font:700 12px {HEAD};letter-spacing:3px">5 + 1 CASE DEAL</p><p style="margin:0;font:800 46px/1 {HEAD};color:{SUNSET};letter-spacing:-1.5px">$299.95</p><p style="margin:8px 0 0">ex GST for five cases at $59.99 each. Receive six cases / 36 four-packs.</p><p style="margin:8px 0 0;font-size:13px;color:#5B5550">250 mL cans · 8% ABV · 24 cans per case. For licensed retailers. Trade pricing from the current sell card.</p>', '#FFEEC9') +
+   f'''<table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="margin:0 0 18px"><tr>
+<td width="33%" valign="top" style="padding-right:8px;font:400 14px/1.45 {HEAD}"><p style="margin:0;font:800 28px {HEAD};color:{SUNSET}">01</p><b>Buy the 5+1</b><br>Order five cases, receive a sixth free.</td>
+<td width="33%" valign="top" style="padding:0 4px;font:400 14px/1.45 {HEAD}"><p style="margin:0;font:800 28px {HEAD};color:{SUNSET}">02</p><b>Scan and register</b><br>Enter your order and a picnic answer, 100 words or less.</td>
+<td width="33%" valign="top" style="padding-left:8px;font:400 14px/1.45 {HEAD}"><p style="margin:0;font:800 28px {HEAD};color:{SUNSET}">03</p><b>You're in the draw</b><br>One entry per 5+1. Drawn 1 December 2026.</td></tr></table>''' +
+   button('See the offer and enter', PAGE) +
+   p('Register purchases by <b>30 November 2026</b>. Talk to your Drinks Network rep to place your order.', 15)),
  dict(n='01', key='confirmation', when='Immediately, when an entry arrives', date='On entry',
   subject="You're in the running for a San Junipero eBike 🚲", pre="Your 5+1 entry is in. Two eBikes drawn 1 December 2026.",
   hero='email-hero.jpg', alt='Rider on a San Junipero eBike at sunset',
@@ -120,7 +132,7 @@ def main():
     for e in EMAILS:
         fn = f"{e['n']}-{e['key']}.html"
         with open(os.path.join(HERE, fn), 'w') as f:
-            f.write(page(e['subject'], e['pre'], e['body'](), e.get('hero'), e.get('alt', '')))
+            f.write(page(e['subject'], e['pre'], e['body'](), e.get('hero'), e.get('alt', ''), **({'why': e['why']} if 'why' in e else {})))
         rows.append([e['n'], e['when'], e['date'], e['subject'], e['pre'], fn])
     with open(os.path.join(HERE, 'schedule.csv'), 'w', newline='') as f:
         w = csv.writer(f); w.writerow(['#', 'When', 'Send date', 'Subject line', 'Preview text', 'HTML file']); w.writerows(rows)

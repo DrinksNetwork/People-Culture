@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><title>San Junipero 5+1 retailer card (A5, 3 mm bleed)</title>
+<style>
+@page{size:154mm 216mm;margin:0}
+:root{--violet:#732768;--pink:#FF69B5;--torch:#F51C40;--sunset:#FC5940;--glow:#FFBD26;--sol:#EEDBC6;--void:#101820;--paper:#FBF6F1;--glow1:#FFEEC9}
+*{box-sizing:border-box;margin:0}
+html,body{background:#888}
+body{font-family:'Hanken Grotesk',sans-serif;color:var(--void)}
+.page{width:154mm;height:216mm;position:relative;overflow:hidden;page-break-after:always;break-after:page}
+.safe{position:absolute;inset:8mm}  /* 3 mm bleed + 5 mm margin */
+.h{font-family:'Bricolage Grotesque',sans-serif;font-weight:800;letter-spacing:-.045em;line-height:.9}
+.it{font-family:'Instrument Serif',serif;font-style:italic;font-weight:400;letter-spacing:-.01em}
+.kick{font:700 2.6mm/1.2 'Hanken Grotesk';letter-spacing:.2em;text-transform:uppercase}
+.stripe{position:absolute;left:0;right:0;height:3.2mm;background:linear-gradient(90deg,var(--glow) 0 20%,var(--sunset) 20% 40%,var(--torch) 40% 60%,var(--pink) 60% 80%,var(--violet) 80%)}
+/* front */
+.front{background:var(--void) url('../../../public/media/san-junipero/bike-hero.jpg') 34% 0/auto 100% no-repeat}
+.front::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(16,24,32,.55) 0%,rgba(16,24,32,0) 22%,rgba(16,24,32,0) 46%,rgba(16,24,32,.88) 72%,var(--void) 100%)}
+.front .safe{z-index:2;display:flex;flex-direction:column;justify-content:space-between;color:#fff}
+.front .top{display:flex;justify-content:space-between;align-items:flex-start}
+.front .top img{height:12mm;width:auto}
+.front .badge{background:var(--glow);color:var(--void);border-radius:999px;padding:2mm 3.6mm;font:800 3.2mm 'Bricolage Grotesque';letter-spacing:-.02em}
+.front h1{font-size:19mm;margin:0 0 3mm}
+.front h1 .it{display:block;color:var(--glow);font-size:1.06em;line-height:.9}
+.front p{font-size:4.1mm;line-height:1.35;color:#F3ECE4;max-width:110mm}
+.front .by{display:flex;align-items:center;gap:2.5mm;font:500 3mm 'Hanken Grotesk';color:var(--sol);margin-top:5mm}
+.front .by img{height:6.5mm}
+/* back */
+.back{background:var(--paper)}
+.back .safe{display:flex;flex-direction:column;gap:4.2mm}
+.back .head{display:flex;justify-content:space-between;align-items:center}
+.back .head img{height:9.5mm}
+.back h2{font-size:12.5mm}
+.back h2 .it{display:block;color:var(--violet)}
+.deal{display:grid;grid-template-columns:1fr 34mm;gap:4mm;align-items:center;background:#fff;border-radius:5mm;padding:4.5mm 5mm;box-shadow:2.5mm 2.5mm 0 var(--glow)}
+.deal .big{font:800 16mm/1 'Bricolage Grotesque';letter-spacing:-.06em;color:var(--sunset);margin:1mm 0 1.4mm}
+.deal p{font-size:3.2mm;line-height:1.35}
+.deal img{width:34mm;height:auto;display:block}
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:2.6mm}
+.steps div{background:#fff;border-radius:4mm;padding:3.2mm 3mm;font-size:2.9mm;line-height:1.35}
+.steps b{display:block;font:800 6mm/1 'Bricolage Grotesque';color:var(--sunset);margin-bottom:1.2mm}
+.steps strong{display:block;font:800 3.5mm/1.1 'Bricolage Grotesque';letter-spacing:-.02em;margin-bottom:.8mm}
+.scan{display:grid;grid-template-columns:38mm 1fr;gap:5mm;align-items:center;background:var(--void);color:#fff;border-radius:5mm;padding:5mm}
+.scan .qr{background:#fff;border-radius:2.5mm;padding:2.5mm}
+.scan .qr img{width:100%;display:block}
+.scan h3{font-size:8mm;margin-bottom:2mm}
+.scan h3 .it{color:var(--glow)}
+.scan p{font-size:3.1mm;line-height:1.4;color:#E9E2DA}
+.scan .url{font:700 2.9mm 'Hanken Grotesk';color:var(--glow);margin-top:2mm;word-break:break-all}
+.fine{font-size:2.3mm;line-height:1.4;color:#5B5550;margin-top:auto}
+</style></head>
+<body>
+<section class="page front">
+  <div class="stripe" style="bottom:0"></div>
+  <div class="safe">
+    <div class="top"><img src="../../../public/media/san-junipero/san-junipero-logo.png" alt="San Junipero"><span class="badge">Melbourne retailers</span></div>
+    <div>
+      <div class="kick" style="color:var(--sol);margin-bottom:2.5mm">Win one of two San Junipero eBikes</div>
+      <h1 class="h">Buy 5 + 1.<span class="it">Ride away.</span></h1>
+      <p>Buy five cases of San Junipero Spritz, get the sixth free, and every 5+1 deal puts your store in the draw.</p>
+      <div class="by">Presented by <img src="../../../public/media/logos/drinks-network-script-white.png" alt="Drinks Network"></div>
+    </div>
+  </div>
+</section>
+<section class="page back">
+  <div class="stripe" style="top:0"></div>
+  <div class="safe" style="top:10mm">
+    <div class="head"><img src="../../../public/media/san-junipero/san-junipero-logo-void.png" alt="San Junipero"><span class="kick" style="color:var(--violet)">Register by 30 Nov 2026</span></div>
+    <h2 class="h">Five cases in.<span class="it">Six cases out.</span></h2>
+    <div class="deal">
+      <div><div class="kick">5 + 1 case deal</div><div class="big">$299.95</div><p><b>ex GST for five cases at $59.99 each.</b> Receive six cases / 36 four-packs. Limoncello and Blood Orange Spritz, 250 mL cans, 8% ABV, 24 cans per case.</p></div>
+      <img src="../../../public/media/san-junipero/email-cans.jpg" alt="">
+    </div>
+    <div class="steps">
+      <div><b>01</b><strong>Buy the 5+1</strong>Order five cases and receive a sixth case free.</div>
+      <div><b>02</b><strong>Scan and register</strong>Enter your order and your picnic answer, 100 words or less.</div>
+      <div><b>03</b><strong>You're in the draw</strong>One entry per 5+1 deal. Two winners drawn 1 Dec 2026.</div>
+    </div>
+    <div class="scan">
+      <div class="qr"><img src="qr-campaign.svg" alt="QR code to the campaign page"></div>
+      <div><h3 class="h">Scan.<span class="it"> Enter.</span></h3><p>Where would you like to go on a bike ride picnic with San Junipero? Tell us in 100 words or less.</p><div class="url">campaign.drinksnetwork.com.au/san-junipero-melbourne</div></div>
+    </div>
+    <p class="fine">For licensed retailers in Melbourne. One entry per qualifying 5+1 order registered by 30 November 2026; draw 1 December 2026. Prizes supplied by CoLab Wines; final prize model to be confirmed. Full terms on the campaign page. Trade pricing from the current sell card. Please enjoy San Junipero responsibly. Presented by Drinks Network.</p>
+  </div>
+</section>
+</body></html>
