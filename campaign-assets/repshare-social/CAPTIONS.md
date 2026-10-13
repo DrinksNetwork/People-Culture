@@ -26,7 +26,7 @@ LinkedIn suits vendors and partners best; Facebook suits reps best. Post rep con
 ## Vendor (brands, producers)
 
 **Carousel: A sales team on tap**
-- LinkedIn: Distribution has changed for the first time in 100 years. RepShare gives emerging drinks brands seasoned reps (bartenders, brand ambassadors, ex-wholesaler sales) for 5 to 15 hours a week in Sydney, Melbourne and Brisbane. Build a circuit from 31,000+ licensed venues, see every hour logged and approved, and let venues order through ALM, Paramount, ILG or direct. Plans from $2,695 a month inc GST, $500 off your first month and a 30-day pro-rata money-back guarantee. Swipe through, then start here: [link]
+- LinkedIn: Distribution has changed for the first time in 100 years. RepShare gives emerging drinks brands seasoned reps (bartenders, brand ambassadors, ex-wholesaler sales) for 5 to 15 hours a week in Sydney, Melbourne and Brisbane. Build a circuit from 31,000+ licensed venues, see every hour logged and approved, and let venues order through ALM, Paramount, ILG or direct. Plans from $622 a week inc GST (billed monthly), $500 off your first month and a 30-day pro-rata money-back guarantee. Swipe through, then start here: [link]
 - Facebook: A sales team on tap for drinks brands. 5 to 15 hours a week, no salaries, no lock-ins. Swipe to see how it works 👉 [link]
 
 **Post 1: Excise**
@@ -38,8 +38,8 @@ LinkedIn suits vendors and partners best; Facebook suits reps best. Post rep con
 - Facebook: Your first 10 venue visits, lined up before day one. [link]
 
 **Post 3: $500 off**
-- LinkedIn: Start RepShare this month and take $500 off your first month. Plans from $2,695 a month inc GST, with a 30-day pro-rata money-back guarantee. We call you within one business day. [link]
-- Facebook: $500 off your first month of RepShare. Plans from $2,695 a month. [link]
+- LinkedIn: Start RepShare this month and take $500 off your first month. Plans from $622 a week inc GST, billed monthly, with a 30-day pro-rata money-back guarantee. We call you within one business day. [link]
+- Facebook: $500 off your first month of RepShare. Plans from $622 a week. [link]
 
 **Link post**
 - LinkedIn/Facebook: A sales team on tap for drinks brands: 5 to 15 hours a week, no salaries, no lock-ins. [link]

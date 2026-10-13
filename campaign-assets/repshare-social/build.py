@@ -98,9 +98,9 @@ S += [
  slide(f'{v}-4', 'navy', pad('What brands say', '“Objectives<br><span class="a">exceeded.”</span>', 'Joel Lindsay, Earth Bar',
        '<div class="quote2"><p>“An end-to-end experience with a highly energetic team.”</p><span>Vladimir Scanu, One &amp; Only Resorts</span></div>'), 4),
  slide(f'{v}-5', 'sand', pad('Orders', 'Four ways<br><span class="a">to order.</span>', '', '<div class="chips"><span>ALM</span><span>Paramount</span><span>ILG</span><span>Direct</span></div>') + shot('dual-orders.jpg'), 5),
- slide(f'{v}-6', '', pad('Plans', 'From $2,695<br><span class="a">a month.</span>', '',
-       '<div class="plans"><div><b>Kickstart</b>5 hrs/wk<i>$2,695</i></div><div><b>Roll Out</b>10 hrs/wk<i>$4,180</i></div><div><b>Take Over</b>15 hrs/wk<i>$5,610</i></div></div>'), 6,
-       fine='Per month, inc GST. Cars, phones, tolls and parking included. Campaigner plans for 25+ hours are priced with you.'),
+ slide(f'{v}-6', '', pad('Plans', 'From $622<br><span class="a">a week.</span>', '',
+       '<div class="plans"><div><b>Kickstart</b>5 hrs/wk<i>$622</i></div><div><b>Roll Out</b>10 hrs/wk<i>$965</i></div><div><b>Take Over</b>15 hrs/wk<i>$1,295</i></div></div>'), 6,
+       fine='Per week inc GST, billed monthly ($2,695, $4,180 and $5,610 a month). Cars, phones, tolls and parking included.'),
  slide(f'{v}-7', 'red hero', pad('Start here', '$500 off<br><span class="a">your first month.</span>', 'Plus a 30-day pro-rata money-back guarantee. We call you within one business day.',
        '<div class="cta">Start with RepShare</div><p class="url">site.drinksnetwork.com.au/start</p>') + HERO, 7),
 ]
@@ -131,7 +131,7 @@ S += [
 S += [
  slide('post-vendor-1', 'navy', pad('RepShare for drinks brands', 'Excise goes up<br><span class="a">every six months.</span>', 'Margins feel it first. Add a sales team from 5 hours a week, with no salaries and no lock-ins.') + shot('dual-vendor-dashboard.jpg')),
  slide('post-vendor-2', '', pad('Launch campaign', 'First 10 visits.<br><span class="a">Before day one.</span>') + '<div class="shotw" style="top:380px;bottom:196px"><img src="scenes/journey-map.png" alt=""></div><p class="shelfcap" style="bottom:128px;text-transform:none;letter-spacing:0;font:400 24px/1.3 Source Serif 4,Georgia,serif;color:#3A3631">Every plan starts with wholesaling, targeting and strategy in your first 30 days, with a typical 20–30% conversion.</p>'),
- slide('post-vendor-3', 'red', pad('Offer', '$500 off<br><span class="a">your first month.</span>', 'Plans from $2,695 a month inc GST, with a 30-day pro-rata money-back guarantee.',
+ slide('post-vendor-3', 'red', pad('Offer', '$500 off<br><span class="a">your first month.</span>', 'Plans from $622 a week inc GST, billed monthly, with a 30-day pro-rata money-back guarantee.',
        '<div class="cta">Start here</div><p class="url">site.drinksnetwork.com.au/brands</p>')),
  slide('post-rep-1', 'navy', pad('RepShare reps', '$47.50 to $70<br><span class="a">an hour.</span>', '5 to 15 hours a week, in venues and bottle shops you already know.') + shot('payout-red.png')),
  slide('post-rep-2', '', pad('Payouts', 'Cash out.<br><span class="a">Paid in days.</span>', 'Payouts in 3 to 7 days, and you’re paid for approved work even if the brand hasn’t paid us yet.') + shot('payout.png')),
