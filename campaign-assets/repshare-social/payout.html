@@ -1,0 +1,35 @@
+<!doctype html><html><head><meta charset="utf-8"><style>
+*{box-sizing:border-box;margin:0}
+body{background:transparent}
+#g{position:relative;width:1000px;height:560px;font-family:'Archivo Narrow',Arial,sans-serif;background:var(--bg,transparent)}
+.flow{position:absolute;left:30px;top:40px;width:470px;display:grid;gap:22px}
+.row{display:grid;grid-template-columns:58px 1fr auto;align-items:center;gap:18px;background:#fff;border-radius:18px;padding:20px 22px;box-shadow:0 14px 30px rgba(17,17,17,.16)}
+.ic{width:58px;height:58px;border-radius:50%;display:grid;place-items:center;color:#fff;font:400 28px Anton,Impact,sans-serif}
+.row b{display:block;font:700 24px/1.15 'Archivo Narrow';color:#1E2552}
+.row small{display:block;font:400 18px 'Source Serif 4',Georgia,serif;color:#5A554D;margin-top:3px}
+.row em{font-style:normal;font:700 15px 'Archivo Narrow';letter-spacing:1.5px;text-transform:uppercase;border-radius:999px;padding:6px 12px}
+.line{position:absolute;left:58px;top:70px;width:4px;height:300px;background:repeating-linear-gradient(#E42E2E 0 10px,transparent 10px 18px)}
+.card{position:absolute;right:30px;top:40px;width:430px;height:470px;border-radius:26px;background:#1E2552;color:#fff;padding:34px 34px 30px;box-shadow:0 20px 44px rgba(17,17,17,.3);display:flex;flex-direction:column}
+.card .k{font:700 17px 'Archivo Narrow';letter-spacing:3px;text-transform:uppercase;color:#FF8A84}
+.card .amt{font:400 104px/1 Anton,Impact,sans-serif;margin-top:14px}
+.card .sub{font:400 19px/1.4 'Source Serif 4',Georgia,serif;color:#DADCEB;margin-top:8px}
+.card .bonus{margin-top:18px;display:flex;justify-content:space-between;align-items:center;background:rgba(255,255,255,.08);border-radius:12px;padding:12px 16px;font:700 19px 'Archivo Narrow'}
+.card .bonus span{color:#7EE2A0}
+.card .btn{margin-top:auto;background:#E42E2E;border-radius:14px;text-align:center;padding:20px;font:700 24px 'Archivo Narrow';letter-spacing:2px;text-transform:uppercase}
+.card .when{text-align:center;margin-top:12px;font:700 18px 'Archivo Narrow';letter-spacing:1px;color:#DADCEB}
+</style></head><body><div id="g">
+<div class="line"></div>
+<div class="flow">
+ <div class="row"><div class="ic" style="background:#1a5ad7">1</div><div><b>Charges submitted</b><small>10 hours logged this week</small></div><em style="background:#E6EEFF;color:#1a5ad7">Sent</em></div>
+ <div class="row"><div class="ic" style="background:#1F9D55">2</div><div><b>Hours approved</b><small>Approved before you're paid</small></div><em style="background:#E5F5EA;color:#1F6F3A">Approved</em></div>
+ <div class="row"><div class="ic" style="background:#E42E2E">3</div><div><b>Cash out</b><small>Tap once when you're ready</small></div><em style="background:#FFE3E0;color:#B81F24">Paid</em></div>
+</div>
+<div class="card">
+ <div class="k">Ready to cash out</div>
+ <div class="amt">$2,057</div>
+ <div class="sub">10 hrs a week × $47.50 × 4.33 weeks</div>
+ <div class="bonus">Super Sale bonus, 5%<span>+ $250</span></div>
+ <div class="btn">Cash out</div>
+ <div class="when">Paid in 3–7 days · example only</div>
+</div>
+</div><script>if(location.hash==='#red'){var c=document.querySelector('.card');c.style.background='#E42E2E';c.querySelector('.btn').style.background='#1E2552';c.querySelector('.k').style.color='#FFE3E0';c.querySelector('.bonus span').style.color='#fff';c.querySelector('.sub').style.color='#FFE3E0';c.querySelector('.when').style.color='#FFE3E0';}</script></body></html>

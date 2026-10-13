@@ -24,14 +24,14 @@ const M='../../../public/media/';
 function laptop(img,x,y,w){const h=Math.round(w*0.625);const cov=/splash/.test(img)?';background:url('+M+img+') center/contain no-repeat,linear-gradient(#E42E2E 0 50%,#B83470 50%)':/circuit/.test(img)?';background:url('+M+img+') center/contain no-repeat,#484848':'';return `<div class="laptop" style="left:${x}px;top:${y}px;width:${w+32}px"><div class="lid"><div class="screen" style="width:${w}px;height:${h}px;background-image:url(${M}${img})${cov}"></div></div><div class="base"></div></div>`}
 function phone(img,x,y,w,opt={}){const h=Math.round(w*2.12);return `<div class="phone" style="left:${x}px;top:${y}px;width:${w}px;height:${h}px"><div class="island"></div><div class="screen"><div class="img" style="${opt.cover?`background:url(${M}${img}) center/contain no-repeat,linear-gradient(#E42E2E 0 50%,#B83470 50%)`:`background-image:url(${M}${img})`}"></div>${opt.tab?`<div class="tab"><img src="${M}app/tabbar.jpg"></div>`:''}</div></div>`}
 const S={
- 'dual-vendor-dashboard':['paper',laptop('app/vendor-dashboard.jpg',30,100,760)+phone('app/splash-phone.jpg',930,120,250,{cover:1})],
- 'dual-funded-hours':['sand',laptop('app/funded-hours.jpg',30,100,760)+phone('app/step3.jpg',930,120,250,{tab:1})],
- 'dual-circuit':['paper',laptop('app/venues-select.jpg',30,100,760)+phone('app/step1.jpg',930,120,250,{tab:1})],
- 'dual-orders':['sand',laptop('app/vendor-dashboard.jpg',30,100,760)+phone('app/step7.jpg',930,120,250,{tab:1})],
- 'dual-rep-earnings':['paper',laptop('app/rep-earnings.jpg',30,100,760)+phone('app/step3.jpg',930,120,250,{tab:1})],
- 'dual-rep-circuit':['sand',laptop('app/venues-found.jpg',30,100,760)+phone('app/step1.jpg',930,120,250,{tab:1})],
- 'dual-splash':['navy',laptop('app/splash-desktop.jpg',30,100,760)+phone('app/splash-phone.jpg',930,120,250,{cover:1})],
- 'dual-proof':['paper',laptop('app/funded-hours.jpg',30,100,760)+phone('app/step7.jpg',930,120,250,{tab:1})],
+ 'dual-vendor-dashboard':['paper',laptop('app/vendor-dashboard.jpg',40,210,640)+phone('app/splash-phone.jpg',840,36,300,{cover:1})],
+ 'dual-funded-hours':['sand',laptop('app/funded-hours.jpg',40,210,640)+phone('app/step3.jpg',840,36,300,{tab:1})],
+ 'dual-circuit':['paper',laptop('app/venues-select.jpg',40,210,640)+phone('app/step1.jpg',840,36,300,{tab:1})],
+ 'dual-orders':['sand',laptop('app/vendor-dashboard.jpg',40,210,640)+phone('app/step7.jpg',840,36,300,{tab:1})],
+ 'dual-rep-earnings':['paper',laptop('app/rep-earnings.jpg',40,210,640)+phone('app/step3.jpg',840,36,300,{tab:1})],
+ 'dual-rep-circuit':['sand',laptop('app/venues-found.jpg',40,210,640)+phone('app/step1.jpg',840,36,300,{tab:1})],
+ 'dual-splash':['navy',laptop('app/splash-desktop.jpg',40,210,640)+phone('app/splash-phone.jpg',840,36,300,{cover:1})],
+ 'dual-proof':['paper',laptop('app/funded-hours.jpg',40,210,640)+phone('app/step7.jpg',840,36,300,{tab:1})],
  'four-taps':['paper',phone('app/step1.jpg',40,76,250,{tab:1})+phone('app/step3.jpg',330,76,250,{tab:1})+phone('app/step5.jpg',620,76,250,{tab:1})+phone('app/step7.jpg',910,76,250,{tab:1})],
  'two-phones-jobs':['sand',phone('app/step1.jpg',300,76,250,{tab:1})+phone('app/step3.jpg',650,76,250,{tab:1})],
  'two-phones-orders':['paper',phone('app/step5.jpg',300,76,250,{tab:1})+phone('app/step7.jpg',650,76,250,{tab:1})],

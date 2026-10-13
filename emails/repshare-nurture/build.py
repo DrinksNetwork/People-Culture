@@ -215,8 +215,8 @@ VENDOR = [
 R = 'rep'
 REP = [
  dict(n='00', key='welcome', day=0, subject='Welcome to RepShare: here’s how the work works',
-  pre='Pick your jobs, work the venues you know, get paid in days.', hero='dual-rep-earnings.jpg',
-  alt='Rep earnings dashboard on a laptop and a job booking on a phone',
+  pre='Pick your jobs, work the venues you know, get paid in days.', hero='payout-flow.jpg',
+  alt='RepShare payouts: charges submitted, hours approved, cash out paid in 3 to 7 days',
   body=lambda: kick('Day 0 · Welcome') + h('Sell what you love.', 'On your hours.') + p(HI) +
    p('Thanks for signing up to rep with RepShare. Brands book experienced trade people like you for 5 to 15 hours a week to open doors, run tastings and win orders in Sydney, Melbourne and Brisbane.') +
    steps([('Apply', 'Pick your city and tell us who you know. Takes three minutes.'),
@@ -227,8 +227,8 @@ REP = [
    p('Every fortnight for the next 90 days we’ll send one email showing a part of the job and the app.') +
    button('Finish your profile', u('/start?role=rep', R, '00'))),
  dict(n='01', key='what-you-earn', day=14, subject='What you can earn as a RepShare rep',
-  pre='Field rates, a worked month, and the 5% Super Sale bonus.', hero='dual-rep-earnings.jpg',
-  alt='Rep dashboard showing earnings, cash-outs, hours and first orders',
+  pre='Field rates, a worked month, and the 5% Super Sale bonus.', hero='payout-flow.jpg',
+  alt='RepShare payouts: charges submitted, hours approved, cash out paid in 3 to 7 days',
   body=lambda: kick('Day 14 · Earnings') + h('$47.50 to $70.', 'An hour, in the field.') + p(HI) +
    p('You earn a share of the rate the brand pays for each job. Field rates run between $47.50 and $70 an hour, for 5 to 15 hours a week.') +
    card(f'<p style="margin:0 0 8px;font:700 13px {NARROW};letter-spacing:2px;text-transform:uppercase;color:{RED}">A worked month</p>'
