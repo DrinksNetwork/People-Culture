@@ -115,6 +115,23 @@ label.f textarea{min-height:150px;resize:vertical}
 .hp{position:absolute;left:-9999px}
 #sj-status{margin:0;font:700 17px var(--body)}
 
+/* thank-you pop-up */
+dialog#sj-thanks{border:0;padding:0;border-radius:32px;max-width:620px;width:calc(100% - 32px);max-height:calc(100dvh - 32px);overflow:auto;background:var(--paper);color:var(--void);box-shadow:0 40px 100px rgba(16,24,32,.45)}
+dialog#sj-thanks::backdrop{background:rgba(16,24,32,.7);backdrop-filter:blur(3px)}
+.tk{position:relative;padding:40px 40px 36px;overflow:hidden}
+.tk::before{content:"";position:absolute;inset:0 0 auto 0;height:10px;background:linear-gradient(90deg,var(--glow),var(--sunset),var(--torch),var(--pink),var(--violet))}
+.tk-x{position:absolute;right:16px;top:20px;width:44px;height:44px;border-radius:50%;border:0;background:#fff;font:400 28px/1 var(--body);cursor:pointer;color:var(--void)}
+.tk-art{margin:6px 0 14px;animation:sjRise .8s cubic-bezier(.2,.8,.2,1) both}
+.tk h2{font-size:clamp(40px,6vw,58px);margin:10px 0 14px}
+.tk h2 .it{display:block;color:var(--sunset)}
+.tk-lede{font-size:18px;margin:0 0 16px}
+.tk-list{margin:0 0 24px;padding:0;list-style:none;display:grid;gap:10px;font-size:16px}
+.tk-list li{background:#fff;border-radius:16px;padding:12px 16px}
+.tk-btns{display:flex;flex-wrap:wrap;gap:10px}
+.pill.dark{background:var(--void);color:#fff}
+.confetti{position:fixed;inset:0;pointer-events:none;z-index:2147483647}
+@keyframes sjRise{from{transform:translateY(30px) scale(.8);opacity:0}to{transform:none;opacity:1}}
+
 /* footer */
 footer{background:var(--void);color:#fff}
 footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:20px;padding-top:36px;padding-bottom:36px;font-size:15px}
@@ -133,6 +150,8 @@ footer a{color:var(--glow)}
   .can{grid-template-columns:1fr}
   .card{padding:28px 22px}
   .price{box-shadow:12px 12px 0 var(--glow);padding:30px 26px}
+  .tk{padding:30px 22px 26px}
+  .tk-art svg{width:68px;height:68px}
 }
 @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
 </style>
@@ -266,6 +285,28 @@ footer a{color:var(--glow)}
   </div>
 </footer>
 
+<dialog id="sj-thanks" aria-labelledby="sj-thanks-title">
+  <div class="tk">
+    <button type="button" class="tk-x" data-close aria-label="Close">×</button>
+    <div class="tk-art" aria-hidden="true">
+      <svg viewBox="0 0 120 120" width="96" height="96"><defs><clipPath id="sun"><circle cx="60" cy="60" r="56"/></clipPath></defs>
+        <g clip-path="url(#sun)"><rect width="120" height="120" fill="#FFBD26"/><rect y="52" width="120" height="10" fill="#FC5940"/><rect y="68" width="120" height="8" fill="#F51C40"/><rect y="82" width="120" height="7" fill="#FF69B5"/><rect y="95" width="120" height="6" fill="#732768"/><rect y="106" width="120" height="5" fill="#101820"/></g></svg>
+    </div>
+    <div class="kick" style="color:var(--violet)">Entry received</div>
+    <h2 id="sj-thanks-title" class="h">Congratulations!<span class="it">You're in the running.</span></h2>
+    <p class="tk-lede"><b data-store>Your store</b> is in the draw to win a <b>San Junipero eBike</b>. Two winners are drawn on <b>1 December 2026</b>, and we'll email the result.</p>
+    <ul class="tk-list">
+      <li><b>Check your inbox.</b> A confirmation is on its way to <span data-email>your email</span>.</li>
+      <li><b>More deals, more chances.</b> Every extra 5+1 order you register by 30 November is another entry.</li>
+      <li><b>Win a spa retreat.</b> Follow <a href="https://www.instagram.com/drinksanjunipero/" target="_blank" rel="noopener">@drinksanjunipero</a> on Instagram for the spa retreat giveaway.</li>
+    </ul>
+    <div class="tk-btns">
+      <a class="pill glow" href="https://www.instagram.com/drinksanjunipero/" target="_blank" rel="noopener">Follow on Instagram</a>
+      <button type="button" class="pill dark" data-another>Register another 5+1</button>
+    </div>
+  </div>
+</dialog>
+
 <script>
 // Posts to the Drinks Network enquiry endpoint. Tag Buyer (licensed retailer) + campaign:san-junipero-melbourne.
 (function () {
@@ -288,9 +329,34 @@ footer a{color:var(--glow)}
     });
     status.textContent = 'Sending…';
     fetch(window.DN_ENQUIRY_ENDPOINT || '/api/enquiries', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(body) })
-      .then(function (r) { if (!r.ok) throw new Error(); form.reset(); counter.textContent = '0 / 100 words'; status.textContent = "You're in the draw. We'll email a confirmation, and winners are drawn on 1 December 2026."; })
+      .then(function (r) { if (!r.ok) throw new Error(); form.reset(); counter.textContent = '0 / 100 words'; status.textContent = "You're in the draw. Winners are drawn on 1 December 2026."; thanks(body); })
       .catch(function () { status.textContent = 'Something went wrong. Please try again in a moment.'; });
   });
+  // thank-you pop-up with a little confetti in San Junipero colours
+  var dlg = document.getElementById('sj-thanks');
+  function thanks(b) {
+    dlg.querySelector('[data-store]').textContent = b.company || 'Your store';
+    dlg.querySelector('[data-email]').textContent = b.email || 'your email';
+    if (dlg.showModal) dlg.showModal(); else dlg.setAttribute('open', '');
+    confetti();
+  }
+  dlg.querySelector('[data-close]').addEventListener('click', function () { dlg.close(); });
+  dlg.querySelector('[data-another]').addEventListener('click', function () { dlg.close(); status.textContent = ''; form.querySelector('[name=orderRef]').focus(); });
+  dlg.addEventListener('click', function (e) { if (e.target === dlg) dlg.close(); });
+  function confetti() {
+    if (window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    var cv = document.createElement('canvas'); cv.className = 'confetti'; document.body.appendChild(cv);
+    var c = cv.getContext('2d'), W = cv.width = innerWidth, H = cv.height = innerHeight;
+    var cols = ['#FFBD26', '#FC5940', '#F51C40', '#FF69B5', '#732768', '#EEDBC6'], bits = [];
+    for (var i = 0; i < 140; i++) bits.push({ x: W / 2 + (Math.random() - .5) * 200, y: H * .35, vx: (Math.random() - .5) * 14, vy: -Math.random() * 14 - 4, r: 4 + Math.random() * 6, c: cols[i % cols.length], a: Math.random() * 6 });
+    var t = 0;
+    (function frame() {
+      c.clearRect(0, 0, W, H); t++;
+      bits.forEach(function (b) { b.vy += .35; b.x += b.vx; b.y += b.vy; b.a += .2; c.save(); c.translate(b.x, b.y); c.rotate(b.a); c.fillStyle = b.c; c.fillRect(-b.r / 2, -b.r / 4, b.r, b.r / 2); c.restore(); });
+      if (t < 160) requestAnimationFrame(frame); else cv.remove();
+    })();
+  }
+
   // pause reels that are off screen
   if ('IntersectionObserver' in window) {
     var io = new IntersectionObserver(function (es) { es.forEach(function (en) { var v = en.target; if (en.isIntersecting) { var pr = v.play(); if (pr && pr.catch) pr.catch(function () {}); } else v.pause(); }); }, { threshold: .2 });
