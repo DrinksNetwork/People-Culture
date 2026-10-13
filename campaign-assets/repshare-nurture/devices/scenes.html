@@ -26,16 +26,16 @@ function phone(img,x,y,w,opt={}){const h=Math.round(w*2.12);return `<div class="
 const S={
  'dual-vendor-dashboard':['paper',laptop('app/vendor-dashboard.jpg',30,100,760)+phone('app/splash-phone.jpg',930,120,250,{cover:1})],
  'dual-funded-hours':['sand',laptop('app/funded-hours.jpg',30,100,760)+phone('app/step3.jpg',930,120,250,{tab:1})],
- 'dual-circuit':['paper',laptop('app/circuit-select.jpg',30,100,760)+phone('app/step1.jpg',930,120,250,{tab:1})],
+ 'dual-circuit':['paper',laptop('app/venues-select.jpg',30,100,760)+phone('app/step1.jpg',930,120,250,{tab:1})],
  'dual-orders':['sand',laptop('app/vendor-dashboard.jpg',30,100,760)+phone('app/step7.jpg',930,120,250,{tab:1})],
  'dual-rep-earnings':['paper',laptop('app/rep-earnings.jpg',30,100,760)+phone('app/step3.jpg',930,120,250,{tab:1})],
- 'dual-rep-circuit':['sand',laptop('app/circuit-search.jpg',30,100,760)+phone('app/step1.jpg',930,120,250,{tab:1})],
+ 'dual-rep-circuit':['sand',laptop('app/venues-found.jpg',30,100,760)+phone('app/step1.jpg',930,120,250,{tab:1})],
  'dual-splash':['navy',laptop('app/splash-desktop.jpg',30,100,760)+phone('app/splash-phone.jpg',930,120,250,{cover:1})],
  'dual-proof':['paper',laptop('app/funded-hours.jpg',30,100,760)+phone('app/step7.jpg',930,120,250,{tab:1})],
  'four-taps':['paper',phone('app/step1.jpg',40,76,250,{tab:1})+phone('app/step3.jpg',330,76,250,{tab:1})+phone('app/step5.jpg',620,76,250,{tab:1})+phone('app/step7.jpg',910,76,250,{tab:1})],
  'two-phones-jobs':['sand',phone('app/step1.jpg',300,76,250,{tab:1})+phone('app/step3.jpg',650,76,250,{tab:1})],
  'two-phones-orders':['paper',phone('app/step5.jpg',300,76,250,{tab:1})+phone('app/step7.jpg',650,76,250,{tab:1})],
- 'laptop-circuit-search':['sand',laptop('app/circuit-search.jpg',184,70,800)],
+ 'laptop-circuit-search':['sand',laptop('app/venues-found.jpg',184,70,800)],
  'laptop-vendor-dashboard':['paper',laptop('app/vendor-dashboard.jpg',184,70,800)],
 };
 document.write(Object.entries(S).map(([k,[bg,h]])=>`<div class="scene ${bg}" id="${k}">${bg!=='navy'?'<div class="glow"></div>':''}${h}</div>`).join('<br>'));

@@ -28,7 +28,7 @@ body{background:#666}
 .shotw{position:absolute;left:48px;right:48px;bottom:140px;display:flex;justify-content:center;align-items:flex-end}.shotw img{display:block;max-width:100%;max-height:100%;object-fit:contain}
 .shelf{position:absolute;left:72px;right:72px;bottom:150px;display:flex;align-items:flex-end;justify-content:space-around;gap:20px}
 .shelf img{display:block;height:100%;width:auto;filter:drop-shadow(0 18px 18px rgba(17,17,17,.28))}.shelf img.disp{height:86%}
-.shelfcap{position:absolute;left:72px;right:72px;bottom:118px;text-align:center;font:700 20px 'Archivo Narrow';letter-spacing:2px;text-transform:uppercase;color:#6b655c}
+.shelfcap{position:absolute;left:72px;right:72px;bottom:104px;text-align:center;font:700 20px 'Archivo Narrow';letter-spacing:2px;text-transform:uppercase;color:#6b655c}
 .stats{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;margin-top:56px}
 .stats b{display:block;font:400 104px/1 Anton,Impact,sans-serif;color:var(--red)}
 .navy .stats b{color:#FF6B63}
@@ -50,6 +50,7 @@ body{background:#666}
 .navy .fine{color:#C9CCE0}
 .ln .pad{left:60px;right:620px;top:70px}.ln .h{font-size:76px}.ln .t{font-size:28px;margin-top:20px}
 .ln .shot2{position:absolute;right:30px;top:90px;width:560px}
+.herologo{position:absolute;left:50%;bottom:66px;width:420px;transform:translateX(-50%)}
 .ln .logo{left:60px;bottom:40px;height:46px}.ln .pad{top:96px}
 """
 
@@ -60,9 +61,10 @@ LOGO_LIGHT = M + 'logos/drinks-network-repshare-white.png'
 def slide(id_, cls, inner, n=None, of=7, fine='', size='sq'):
     dark = any(c in cls for c in ('navy', 'red'))
     logo = LOGO_LIGHT if dark else LOGO_DARK
+    small = '' if 'hero' in cls else f'<img class="logo" src="{logo}" alt="">'
     pg = f'<div class="pg">{n:02d} / {of:02d}</div>' if n else ''
     f = f'<div class="fine">{fine}</div>' if fine else ''
-    return f'<div class="s {size} {cls}" id="{id_}"><div class="bar"></div>{inner}{f}<img class="logo" src="{logo}" alt="">{pg}</div>'
+    return f'<div class="s {size} {cls}" id="{id_}"><div class="bar"></div>{inner}{f}{small}{pg}</div>'
 
 
 def shot(img, top=560):
@@ -82,6 +84,8 @@ def pad(k, h, t='', extra=''):
     return f'<div class="pad"><p class="k">{k}</p><h1 class="h" style="margin-top:22px">{h}</h1>{tt}{extra}</div>'
 
 
+HERO = f'<img class="herologo" src="{LOGO_LIGHT}" alt="Drinks Network RepShare">'
+HERO_SM = f'<img class="herologo" style="width:340px;bottom:48px" src="{LOGO_LIGHT}" alt="Drinks Network RepShare">'
 S = []
 # ---------------- VENDOR carousel
 v = 'vendor-carousel'
@@ -89,15 +93,15 @@ S += [
  slide(f'{v}-1', 'navy', pad('RepShare for drinks brands', 'A sales team<br><span class="a">on tap.</span>', 'Seasoned reps in venues and bottle shops, selling your brand.') + shot('dual-vendor-dashboard.jpg', 560), 1),
  slide(f'{v}-2', '', pad('How it works', '5 to 15 hours<br><span class="a">a week.</span>', 'Seasoned reps who already know the buyers in Sydney, Melbourne and Brisbane.',
        '<div class="chips"><span>No salaries</span><span>No lock-ins</span></div>') + shelf(215, 'Brands on RepShare include Lady Trieu · Nhau · Headlands · BLVD'), 2),
- slide(f'{v}-3', 'sand', pad('Circuits', 'Pick the venues.<br><span class="a">Attach an offer.</span>', 'Start from 31,000+ licensed venues and narrow by suburb, type and distance.') + shot('dual-circuit.jpg', 520), 3),
+ slide(f'{v}-3', 'sand', pad('Circuits', 'Pick the venues.<br><span class="a">Attach an offer.</span>') + '<div class="shotw" style="top:380px;bottom:196px"><img src="scenes/journey-map.png" alt=""></div><p class="shelfcap" style="bottom:128px;text-transform:none;letter-spacing:0;font:400 24px/1.3 Source Serif 4,Georgia,serif;color:#3A3631">Start from 31,000+ licensed venues and narrow by suburb, type and distance.</p>', 3),
  slide(f'{v}-4', '', pad('Every hour accounted for', 'Logged.<br><span class="a">Approved.</span>',
        extra='<div class="list"><div><b>30</b>Minutes for a standard venue visit</div><div><b>2</b>Charges before a first order. A third is held for review.</div><div><b>15</b>Minute blocks for every hour charged</div></div>'), 4),
  slide(f'{v}-5', 'sand', pad('Orders', 'Four ways<br><span class="a">to order.</span>', '', '<div class="chips"><span>ALM</span><span>Paramount</span><span>ILG</span><span>Direct</span></div>') + shot('dual-orders.jpg', 560), 5),
  slide(f'{v}-6', '', pad('Plans', 'From $2,695<br><span class="a">a month.</span>', '',
        '<div class="plans"><div><b>Kickstart</b>5 hrs/wk<i>$2,695</i></div><div><b>Roll Out</b>10 hrs/wk<i>$4,180</i></div><div><b>Take Over</b>15 hrs/wk<i>$5,610</i></div></div>'), 6,
        fine='Per month, inc GST. Cars, phones, tolls and parking included. Campaigner plans for 25+ hours are priced with you.'),
- slide(f'{v}-7', 'red', pad('Start here', '$500 off<br><span class="a">your first month.</span>', 'Plus a 30-day pro-rata money-back guarantee. We call you within one business day.',
-       '<div class="cta">Start with RepShare</div><p class="url">site.drinksnetwork.com.au/start</p>'), 7),
+ slide(f'{v}-7', 'red hero', pad('Start here', '$500 off<br><span class="a">your first month.</span>', 'Plus a 30-day pro-rata money-back guarantee. We call you within one business day.',
+       '<div class="cta">Start with RepShare</div><p class="url">site.drinksnetwork.com.au/start</p>') + HERO, 7),
 ]
 # ---------------- REP carousel
 r = 'rep-carousel'
@@ -106,11 +110,11 @@ S += [
  slide(f'{r}-2', '', pad('Pay', '$47.50 to $70<br><span class="a">an hour.</span>', '', '<div class="stats"><div><b>5–15</b><span>Hours a week</span></div><div><b>3–7</b><span>Days to payout</span></div><div><b>5%</b><span>Super Sale bonus</span></div></div>'), 2,
        fine='Field rates. Super Sale bonus on each single order over $1,000. Indicative only.'),
  slide(f'{r}-3', 'sand', pad('The app', 'Four taps.<br><span class="a">Visit to charge.</span>', 'Open Jobs. Tap Charges. Pick the template. Add notes and save.') + shot('four-taps.jpg', 560), 3),
- slide(f'{r}-4', '', pad('The work', 'Work the circuit.<br><span class="a">Win the order.</span>', 'Brands pick venues from 31,000+. Each one becomes a job in your app. Accept the ones you want.') + shot('dual-rep-circuit.jpg', 600), 4),
+ slide(f'{r}-4', '', pad('The work', 'Work the circuit.<br><span class="a">Win the order.</span>') + '<div class="shotw" style="top:380px;bottom:196px"><img src="scenes/journey-map.png" alt=""></div><p class="shelfcap" style="bottom:128px;text-transform:none;letter-spacing:0;font:400 24px/1.3 Source Serif 4,Georgia,serif;color:#3A3631">Brands pick venues from 31,000+. Each one becomes a job in your app. Accept the ones you want.</p>', 4),
  slide(f'{r}-5', 'sand', pad('What you do', 'Four kinds<br><span class="a">of job.</span>', '', '<div class="list"><div><b>01</b>Tastings</div><div><b>02</b>Account sales, processed through the wholesaler</div><div><b>03</b>Activations</div><div><b>04</b>Social content</div></div>'), 5),
  slide(f'{r}-6', '', pad('What you need', 'An ABN.<br><span class="a">An RSA. A phone.</span>', 'RepShare is a web app, so there is nothing to download. You work as an independent contractor.'), 6),
- slide(f'{r}-7', 'red', pad('Apply', 'Three minutes<br><span class="a">to apply.</span>', 'Pick your city and tell us who you know. 24 hours of onboarding, then jobs land in your app.',
-       '<div class="cta">Become a rep</div><p class="url">site.drinksnetwork.com.au/reps</p>'), 7),
+ slide(f'{r}-7', 'red hero', pad('Apply', 'Three minutes<br><span class="a">to apply.</span>', 'Pick your city and tell us who you know. 24 hours of onboarding, then jobs land in your app.',
+       '<div class="cta">Become a rep</div><p class="url">site.drinksnetwork.com.au/reps</p>') + HERO, 7),
 ]
 # ---------------- PARTNER carousel
 pt = 'partner-carousel'
@@ -118,16 +122,15 @@ S += [
  slide(f'{pt}-1', 'navy', pad('RepShare partners', 'Take RepShare<br><span class="a">into your market.</span>', 'For agencies, distributors, tech resellers, venue groups and overseas markets.') + shot('dual-splash.jpg', 560), 1),
  slide(f'{pt}-2', '', pad('The network', 'Already<br><span class="a">in the field.</span>', '', '<div class="stats"><div><b>31K+</b><span>Licensed venues</span></div><div><b>3</b><span>States: QLD, NSW, VIC</span></div><div><b>20</b><span>Reps across BNE, SYD, MEL</span></div></div>'), 2),
  slide(f'{pt}-3', 'sand', pad('The track record', 'The work<br><span class="a">so far.</span>', '', '<div class="stats"><div><b>1,800+</b><span>Field activities</span></div><div><b>20+</b><span>Suppliers onboarded</span></div><div><b>30%+</b><span>Conversion on field sales calls</span></div></div>') + shelf(260, 'Suppliers include Lady Trieu · Nhau · Headlands · BLVD'), 3),
- slide(f'{pt}-4', '', pad('Targeting', 'Circuits,<br><span class="a">not spreadsheets.</span>', 'Pick venues from 31,000+, attach an offer, hand it to reps as jobs.') + shot('dual-circuit.jpg', 560), 4),
+ slide(f'{pt}-4', '', pad('Targeting', 'Circuits,<br><span class="a">not spreadsheets.</span>') + '<div class="shotw" style="top:380px;bottom:196px"><img src="scenes/journey-map.png" alt=""></div><p class="shelfcap" style="bottom:128px;text-transform:none;letter-spacing:0;font:400 24px/1.3 Source Serif 4,Georgia,serif;color:#3A3631">Pick venues from 31,000+, attach an offer, hand it to reps as jobs.</p>', 4),
  slide(f'{pt}-5', 'sand', pad('Control', 'Every hour,<br><span class="a">approved.</span>', 'Timers, charge templates, approvals and funded hours by rep.') + shot('dual-funded-hours.jpg', 600), 5),
  slide(f'{pt}-6', '', pad('Orders', 'Four ways.<br><span class="a">One dashboard.</span>', '', '<div class="chips"><span>ALM</span><span>Paramount</span><span>ILG</span><span>Direct</span></div>') + shot('laptop-vendor-dashboard.jpg', 560), 6),
- slide(f'{pt}-7', 'red', pad('Next step', 'Map your<br><span class="a">territory.</span>', 'A short call about your market and what a first program could look like.',
-       '<div class="cta">Talk to us</div><p class="url">site.drinksnetwork.com.au/start?role=partner</p>'), 7),
+ slide(f'{pt}-7', 'red hero', pad('Next step', 'Map your<br><span class="a">territory.</span>') + '<div class="shotw" style="top:392px;bottom:250px"><img src="scenes/territory-map.png" alt=""></div><p class="url" style="position:absolute;left:72px;right:72px;bottom:196px;margin:0;text-align:center;white-space:nowrap">Book a short call · site.drinksnetwork.com.au/start?role=partner</p>' + HERO_SM, 7),
 ]
 # ---------------- single posts (square)
 S += [
  slide('post-vendor-1', 'navy', pad('RepShare for drinks brands', 'Excise goes up<br><span class="a">every six months.</span>', 'Margins feel it first. Add a sales team from 5 hours a week, with no salaries and no lock-ins.') + shot('dual-vendor-dashboard.jpg', 600)),
- slide('post-vendor-2', '', pad('Launch campaign', 'First 10 visits.<br><span class="a">Before day one.</span>', 'Every plan starts with wholesaling, targeting and strategy in your first 30 days, with a typical 20–30% conversion.') + shot('dual-circuit.jpg', 640)),
+ slide('post-vendor-2', '', pad('Launch campaign', 'First 10 visits.<br><span class="a">Before day one.</span>') + '<div class="shotw" style="top:380px;bottom:196px"><img src="scenes/journey-map.png" alt=""></div><p class="shelfcap" style="bottom:128px;text-transform:none;letter-spacing:0;font:400 24px/1.3 Source Serif 4,Georgia,serif;color:#3A3631">Every plan starts with wholesaling, targeting and strategy in your first 30 days, with a typical 20–30% conversion.</p>'),
  slide('post-vendor-3', 'red', pad('Offer', '$500 off<br><span class="a">your first month.</span>', 'Plans from $2,695 a month inc GST, with a 30-day pro-rata money-back guarantee.',
        '<div class="cta">Start here</div><p class="url">site.drinksnetwork.com.au/brands</p>')),
  slide('post-rep-1', 'navy', pad('RepShare reps', '$47.50 to $70<br><span class="a">an hour.</span>', '5 to 15 hours a week, in venues and bottle shops you already know.') + shot('dual-rep-earnings.jpg', 600)),
@@ -135,8 +138,7 @@ S += [
  slide('post-rep-3', 'sand', pad('The app', 'Four taps.<br><span class="a">Visit to charge.</span>') + shot('four-taps.jpg', 420)),
  slide('post-partner-1', 'navy', pad('RepShare partners', '31,000+ venues.<br><span class="a">3 states.</span>', 'Take the RepShare tech and network into your market or business.') + shot('laptop-circuit-search.jpg', 600)),
  slide('post-partner-2', '', pad('Orders', 'Four ways.<br><span class="a">One dashboard.</span>', 'ALM, Paramount, ILG or direct, reported to the brand 24/7.') + shot('dual-orders.jpg', 600)),
- slide('post-partner-3', 'red', pad('Next step', 'Map your<br><span class="a">territory.</span>', 'Agencies, distributors, tech resellers, venue groups and overseas markets.',
-       '<div class="cta">Talk to us</div><p class="url">site.drinksnetwork.com.au/start?role=partner</p>')),
+ slide('post-partner-3', 'red hero', pad('Next step', 'Map your<br><span class="a">territory.</span>') + '<div class="shotw" style="top:392px;bottom:250px"><img src="scenes/territory-map.png" alt=""></div><p class="url" style="position:absolute;left:72px;right:72px;bottom:196px;margin:0;text-align:center;white-space:nowrap">Book a short call · site.drinksnetwork.com.au/start?role=partner</p>' + HERO_SM),
 ]
 S += [
  slide('post-vendor-4', 'sand', pad('On RepShare', 'Brands that<br><span class="a">already sell.</span>', 'Gin, vodka, Australian whisky and fortifieds, and ready-to-pour cocktails, in venues and bottle shops now.') + shelf(400)),
