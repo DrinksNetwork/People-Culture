@@ -28,6 +28,7 @@ body{background:#666}
 .shotw{position:absolute;left:48px;right:48px;bottom:132px;display:flex;justify-content:center;align-items:flex-start}.shotw img{display:block;max-width:100%;max-height:100%;object-fit:contain}
 .shelf{position:absolute;left:72px;right:72px;bottom:150px;display:flex;align-items:flex-end;justify-content:space-around;gap:20px}
 .shelf img{display:block;height:100%;width:auto;filter:drop-shadow(0 18px 18px rgba(17,17,17,.28))}.shelf img.disp{height:86%}
+.quote2{margin-top:70px;border-top:2px solid rgba(255,255,255,.25);padding-top:40px}.quote2 p{font:400 54px/1.12 Anton,Impact,sans-serif;text-transform:uppercase;color:#fff;text-wrap:balance}.quote2 span{display:block;margin-top:18px;font:700 26px 'Archivo Narrow';letter-spacing:2px;text-transform:uppercase;color:#FF8A84}
 .shelfcap{position:absolute;left:72px;right:72px;bottom:104px;text-align:center;font:700 20px 'Archivo Narrow';letter-spacing:2px;text-transform:uppercase;color:#6b655c}
 .stats{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;margin-top:56px}
 .stats b{display:block;font:400 104px/1 Anton,Impact,sans-serif;color:var(--red)}
@@ -94,8 +95,8 @@ S += [
  slide(f'{v}-2', '', pad('How it works', '5 to 15 hours<br><span class="a">a week.</span>', 'Seasoned reps who already know the buyers in Sydney, Melbourne and Brisbane.',
        '<div class="chips"><span>No salaries</span><span>No lock-ins</span></div>') + shelf(215, 'Brands on RepShare include Lady Trieu · Nhau · Headlands · BLVD'), 2),
  slide(f'{v}-3', 'sand', pad('Circuits', 'Pick the venues.<br><span class="a">Attach an offer.</span>') + '<div class="shotw" style="top:380px;bottom:196px"><img src="scenes/journey-map.png" alt=""></div><p class="shelfcap" style="bottom:128px;text-transform:none;letter-spacing:0;font:400 24px/1.3 Source Serif 4,Georgia,serif;color:#3A3631">Start from 31,000+ licensed venues and narrow by suburb, type and distance.</p>', 3),
- slide(f'{v}-4', '', pad('Every hour accounted for', 'Logged.<br><span class="a">Approved.</span>',
-       extra='<div class="list"><div><b>30</b>Minutes for a standard venue visit</div><div><b>2</b>Charges before a first order. A third is held for review.</div><div><b>15</b>Minute blocks for every hour charged</div></div>'), 4),
+ slide(f'{v}-4', 'navy', pad('What brands say', '“Objectives<br><span class="a">exceeded.”</span>', 'Joel Lindsay, Earth Bar',
+       '<div class="quote2"><p>“An end-to-end experience with a highly energetic team.”</p><span>Vladimir Scanu, One &amp; Only Resorts</span></div>'), 4),
  slide(f'{v}-5', 'sand', pad('Orders', 'Four ways<br><span class="a">to order.</span>', '', '<div class="chips"><span>ALM</span><span>Paramount</span><span>ILG</span><span>Direct</span></div>') + shot('dual-orders.jpg'), 5),
  slide(f'{v}-6', '', pad('Plans', 'From $2,695<br><span class="a">a month.</span>', '',
        '<div class="plans"><div><b>Kickstart</b>5 hrs/wk<i>$2,695</i></div><div><b>Roll Out</b>10 hrs/wk<i>$4,180</i></div><div><b>Take Over</b>15 hrs/wk<i>$5,610</i></div></div>'), 6,
