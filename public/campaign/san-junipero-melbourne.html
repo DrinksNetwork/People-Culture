@@ -51,15 +51,15 @@ img,video{max-width:100%}
 
 /* hero */
 .hero{position:relative;background:var(--void);color:#fff;overflow:hidden}
-.hero .photo{position:absolute;inset:0 0 0 auto;width:62%;background:url('../media/san-junipero/bike-hero.jpg') center 35%/cover no-repeat}
-.hero .photo::before{content:"";position:absolute;inset:0;background:linear-gradient(90deg,var(--void) 0%,rgba(16,24,32,.75) 22%,rgba(16,24,32,0) 55%)}
-.hero .glowfx{position:absolute;left:-10%;top:-30%;width:70%;height:160%;background:radial-gradient(closest-side,rgba(252,89,64,.45),rgba(115,39,104,.25) 55%,rgba(16,24,32,0));pointer-events:none}
-.hero .wrap{position:relative;min-height:min(86vh,820px);display:flex;flex-direction:column;justify-content:center;padding-top:72px;padding-bottom:84px}
-.hero .copy{max-width:760px}
-.hero h1{font-size:clamp(64px,10vw,152px);margin:18px 0 22px}
+.hero .photo{position:absolute;inset:0 0 0 auto;width:64%;background:url('../media/san-junipero/bike-hero.jpg') 28% 30%/cover no-repeat}
+.hero .photo::before{content:"";position:absolute;inset:0;background:linear-gradient(90deg,var(--void) 0%,rgba(16,24,32,.35) 9%,rgba(16,24,32,0) 20%)}
+.hero .glowfx{position:absolute;left:-14%;top:-30%;width:52%;height:160%;background:radial-gradient(closest-side,rgba(252,89,64,.45),rgba(115,39,104,.25) 55%,rgba(16,24,32,0));pointer-events:none}
+.hero .wrap{position:relative;min-height:min(84vh,780px);display:flex;flex-direction:column;justify-content:center;padding-top:56px;padding-bottom:64px}
+.hero .copy{max-width:min(460px,31vw)}
+.hero h1{font-size:clamp(52px,6.2vw,100px);margin:16px 0 18px}
 .hero h1 .it{display:block;white-space:nowrap;color:var(--glow);font-size:1.02em;line-height:.85;letter-spacing:-.02em}
-.hero p.lede{font-size:clamp(19px,2vw,23px);line-height:1.45;color:#F3ECE4;margin:0 0 28px;max-width:560px}
-.hero .credit{font:700 15px/1.5 var(--body);color:#fff;margin:28px 0 0}
+.hero p.lede{font-size:clamp(17px,1.5vw,20px);line-height:1.45;color:#F3ECE4;margin:0 0 24px}
+.facts .credit{grid-column:1 / -1;margin:0;font:700 14px/1.4 var(--body);border-top:1.5px solid rgba(16,24,32,.25);padding-top:14px}
 .hero .cap{position:absolute;right:16px;bottom:14px;font:500 12px var(--body);background:rgba(16,24,32,.72);color:#fff;padding:6px 10px;border-radius:8px}
 
 /* key facts */
@@ -123,10 +123,12 @@ footer a{color:var(--glow)}
 
 @media (max-width:900px){.reels{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media (max-width:760px){
-  .hero .photo{position:relative;width:100%;height:58vw;min-height:280px;inset:auto}
+  .hero .photo{position:relative;width:100%;height:92vw;min-height:320px;inset:auto;background-position:30% 0}
   .hero .photo::before{background:linear-gradient(0deg,var(--void) 0%,rgba(16,24,32,0) 45%)}
   .hero .wrap{min-height:0;padding-top:28px;padding-bottom:56px}
-  .hero .cap{top:14px;bottom:auto}
+  .hero .copy{max-width:none}
+  .hero .glowfx{display:none}
+  .hero .cap{right:10px;bottom:10px;font-size:11px}
   form{grid-template-columns:1fr}
   .can{grid-template-columns:1fr}
   .card{padding:28px 22px}
@@ -156,12 +158,11 @@ footer a{color:var(--glow)}
     <div class="copy">
       <div class="kick" style="color:var(--solitaire)">Drinks Network presents San Junipero</div>
       <h1 class="h">Buy 5 + 1.<span class="it">Ride away.</span></h1>
-      <p class="lede">Stock up on San Junipero Spritz and go into the draw to win one of two San Junipero electric bikes this summer.</p>
+      <p class="lede">Stock up on San Junipero Spritz and win one of two San Junipero electric bikes this summer.</p>
       <div style="display:flex;flex-wrap:wrap;gap:12px">
         <a class="pill glow" href="#how">See how to enter</a>
         <a class="pill line" href="#enter">Enter the draw</a>
       </div>
-      <p class="credit">Campaign delivered by Drinks Network for San Junipero.<br>Electric bike prizes supplied by CoLab Wines.</p>
     </div>
   </div>
 </section>
@@ -172,6 +173,7 @@ footer a{color:var(--glow)}
     <div><b>5 + 1</b><span>Buy five cases, get the sixth free</span></div>
     <div><b>30 Nov</b><span>Register purchases by</span></div>
     <div><b>1 Dec</b><span>Winners drawn, 2026</span></div>
+    <p class="credit">Campaign delivered by Drinks Network for San Junipero. Electric bike prizes supplied by CoLab Wines.</p>
   </div>
 </section>
 
