@@ -17,6 +17,7 @@ public/
   index.html            Home                                  -> site.drinksnetwork.com.au/
   start.html            Start here funnel (working, 4 steps)  -> /start   (?role=rep | vendor | partner pre-selects)
   retail.html           Retail Activation: national retail account service program (tastings, store servicing, plans, Q&A sign-up) -> /retail
+  bar-takeover/index.html  Bar Takeover: guest bartender series, gated partnership pack (form bar-takeover-pack) -> /bar-takeover
   whisky-adventure/     Australian Whisky Adventure offer pages: venues.html, brands.html (Q&A sign-ups) -> /whisky-adventure/venues, /whisky-adventure/brands
   brands.html           RepShare for Brands: 4 subscription plans (Kickstart, Roll Out, Take Over, Campaigner) -> /brands
   reps.html             Become a Rep (earnings calculator)    -> /reps
