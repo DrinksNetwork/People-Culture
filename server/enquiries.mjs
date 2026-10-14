@@ -44,12 +44,16 @@ const FORM_LABELS = {
   'san-junipero-giveaway': 'San Junipero 5+1 draw entry',
   'tasting-brief': 'Tasting Series partnership brief request',
   'tasting-agreement': 'Tasting Series partner agreement',
+  'bar-takeover-pack': 'Bar Takeover partnership pack request',
 };
 
 const SKIP_FIELDS = new Set(['website', 'consent', 'pageUrl', 'utmSource', 'utmMedium', 'utmCampaign', 'sessionId', 'tags', 'form', 'campaign', 'sendCopy']);
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 const BRIEFS = {
-  'tasting-brief': { title: 'Tasting Series partnership brief', page: '/whisky-adventure/tasting-series?brief=open', pdf: '/media/brief/tasting-partnership-brief.pdf' },
+  'tasting-brief': { title: 'Tasting Series partnership brief', page: '/whisky-adventure/tasting-series?brief=open', pdf: '/media/brief/tasting-partnership-brief.pdf',
+    blurb: 'how a Drinks Network ticketed tasting works: the venue and brand roles, the 50/50 ticket split, fees and what one night can make.' },
+  'bar-takeover-pack': { title: 'Bar Takeover partnership pack', page: '/bar-takeover?pack=open', pdf: '/media/takeover/bar-takeover-pack.pdf',
+    blurb: 'how a Drinks Network bar takeover works: what the host venue, the brand and the guest bartender each bring and get, the tickets, and the trade follow-up.' },
 };
 
 export function shareList(p) {
@@ -61,7 +65,7 @@ export function shareList(p) {
 export function briefLinks(p, env = {}) {
   const b = BRIEFS[p.form]; if (!b) return null;
   const site = (env.SITE_URL || 'https://site.drinksnetwork.com.au').replace(/\/$/, '');
-  return { title: b.title, page: site + b.page, pdf: site + b.pdf };
+  return { title: b.title, page: site + b.page, pdf: site + b.pdf, blurb: b.blurb };
 }
 
 export function shareEmail(p, links) {
@@ -69,8 +73,8 @@ export function shareEmail(p, links) {
   return {
     subject: `${who} shared the Drinks Network ${links.title} with you`,
     html: `<div style="font-family:Arial,sans-serif;font-size:15px;color:#111;max-width:560px"><div style="background:#E42E2E;color:#fff;padding:18px;font-size:22px;font-weight:bold">${esc(links.title)}</div>
-<p>${esc(who)}${p.company ? ' from ' + esc(p.company) : ''} thought you should see how a Drinks Network ticketed tasting works: the venue and brand roles, the 50/50 ticket split, fees and what one night can make.</p>
-<p><a href="${esc(links.page)}" style="display:inline-block;background:#E42E2E;color:#fff;padding:12px 18px;text-decoration:none;font-weight:bold">Read the brief</a> &nbsp; <a href="${esc(links.pdf)}">Download the A4 PDF</a></p>
+<p>${esc(who)}${p.company ? ' from ' + esc(p.company) : ''} thought you should see ${esc(links.blurb || 'how a Drinks Network partnership works.')}</p>
+<p><a href="${esc(links.page)}" style="display:inline-block;background:#E42E2E;color:#fff;padding:12px 18px;text-decoration:none;font-weight:bold">Read it online</a> &nbsp; <a href="${esc(links.pdf)}">Download the A4 PDF</a></p>
 <p style="color:#5A554D;font-size:13px">You're getting this one email because ${esc(who)} entered your address. We won't add you to any list.</p>
 <p>Drinks Network<br>Sydney · Melbourne · Brisbane</p></div>`,
   };

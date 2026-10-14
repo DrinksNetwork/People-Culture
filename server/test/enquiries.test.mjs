@@ -52,3 +52,15 @@ test('tasting brief: reply carries the brief links and up to 3 shares go out', a
   assert.doesNotMatch(mails[2].body.message.html, /evil\.example/);
   assert.match(mails[2].body.message.subject, /Ana Lee shared the Drinks Network Tasting Series partnership brief/);
 });
+
+test('bar takeover pack: reply and shares link to the takeover pack', async () => {
+  const f = mockFetch();
+  const pack = { form: 'bar-takeover-pack', campaign: 'bar-takeover', tags: ['Vendor'], firstName: 'Sam', lastName: 'Ng', email: 'sam@brand.com', mobile: '0400', company: 'Brand', city: 'Ballarat', sendCopy: true, shareWith: ['ops@brand.com'] };
+  const r = await handleEnquiry(pack, { env, fetchImpl: f });
+  assert.deepEqual(r.shared, ['ops@brand.com']);
+  const mails = f.calls.filter((c) => c.url.includes('mandrillapp'));
+  assert.match(mails[1].body.message.html, /\/bar-takeover\?pack=open/);
+  assert.match(mails[1].body.message.html, /bar-takeover-pack\.pdf/);
+  assert.match(mails[2].body.message.subject, /Sam Ng shared the Drinks Network Bar Takeover partnership pack/);
+  assert.match(mails[2].body.message.html, /guest bartender/);
+});
