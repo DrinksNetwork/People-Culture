@@ -5,3 +5,4 @@ dist/
 *.sql
 *.dump
 .DS_Store
+__pycache__/
