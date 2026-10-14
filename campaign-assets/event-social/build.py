@@ -62,8 +62,9 @@ body{background:#666}
 .duo{position:absolute;left:72px;right:72px;bottom:150px;display:grid;grid-template-columns:1fr 1fr;gap:24px;height:380px;z-index:2}
 .duo{grid-template-rows:380px}.duo img{width:100%;height:380px;min-height:0;object-fit:cover;border-radius:14px}
 .shelf{position:absolute;left:72px;right:72px;bottom:150px;height:420px;display:flex;align-items:flex-end;justify-content:space-around;z-index:2}
-.shelf img{height:100%;width:auto;max-width:30%;object-fit:contain;filter:drop-shadow(0 18px 18px rgba(0,0,0,.4))}
+.shelf img{height:100%;width:auto;max-width:24%;object-fit:contain;filter:drop-shadow(0 18px 18px rgba(0,0,0,.4))}
 .shelf img.disp{height:72%}
+.brandtile{align-self:flex-end;width:250px;height:300px;border-radius:18px;background:linear-gradient(160deg,#C9500A,#3D1829);display:flex;flex-direction:column;justify-content:flex-end;padding:26px;box-shadow:0 18px 30px rgba(0,0,0,.4)}.brandtile b{font:400 64px/1 Anton,Impact,sans-serif;text-transform:uppercase;color:#fff}.brandtile span{margin-top:10px;font:700 20px/1.3 'Archivo Narrow';letter-spacing:1.5px;text-transform:uppercase;color:#FFE3CF}
 .shelfcap{position:absolute;left:72px;right:72px;bottom:110px;text-align:center;font:700 22px 'Archivo Narrow';letter-spacing:2px;text-transform:uppercase;color:#C9CCE0;z-index:2}
 .tight .blocks{margin-top:26px;gap:12px}.tight .blk b{font-size:46px;padding:12px 22px}.tight .blk span{margin-top:6px;font-size:21px}.tight .total{padding-top:12px}.tight .total i{font-size:60px}
 .stats.c3 b{font-size:78px;white-space:nowrap}
@@ -148,7 +149,7 @@ S += [
      ('Send your list', 'Menu and mise en place, two weeks out.'), ('Run it through', 'Meet the team the day before.'),
      ('Take over', '6 pm to 10 pm, a new city\'s bar.'), ('Meet the trade', 'Buyers on the brand\'s tab.')])), 3, tag=tag),
  slide(f'{a}-4', 'navy', pad('Brands that back bartenders', 'Spirits made<br><span class="a">to be mixed.</span>') +
-       f'<div class="shelf"><img src="{M}products/lady-trieu-gin.png"><img src="{M}products/nhau-vodka.png"><img class="disp" src="{M}products/blvd-counter-display.png"></div><p class="shelfcap">Lady Triệu · Nhau · BLVD</p>', 4, tag=tag),
+       f'<div class="shelf"><img src="{M}products/lady-trieu-gin.png"><img src="{M}products/nhau-vodka.png"><img src="{M}products/barlei-orange-liqueur.png"><img src="{M}products/barlei-coffee-liqueur.png"></div><p class="shelfcap">Lady Triệu · Nhau · Barlei</p>', 4, tag=tag),
  slide(f'{a}-5', 'red', pad('Get on the list', 'Pitch a menu.<br><span class="a">Get picked.</span>', 'We keep you on the list until a brand wants you behind a new bar.', '<p class="cta">Join the list</p><p class="url">site.drinksnetwork.com.au/bar-takeover</p>'), 5, tag=tag),
 ]
 # ---------------- TASTING SERIES · VENUE

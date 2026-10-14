@@ -72,10 +72,10 @@ def shot(img, top=360):
     return f'<div class="shotw" style="top:{top}px"><img src="scenes/{img.replace(".jpg", ".png")}" alt=""></div>'
 
 
-SHELF = [('products/lady-trieu-gin.png', ''), ('products/nhau-vodka.png', ''), ('products/headlands-distilling.png', ''), ('san-junipero/four-pack-blood-orange.png', 'pack'), ('products/blvd-counter-display.png', 'disp')]
+SHELF = [('products/lady-trieu-gin.png', ''), ('products/nhau-vodka.png', ''), ('products/headlands-distilling.png', ''), ('san-junipero/four-pack-blood-orange.png', 'pack'), ('products/barlei-orange-liqueur.png', '')]
 
 
-def shelf(h, cap='Lady Trieu · Nhau · Headlands · San Junipero · BLVD'):
+def shelf(h, cap='Lady Trieu · Nhau · Headlands · San Junipero · Barlei'):
     imgs = ''.join(f'<img class="{c}" src="{M}{f}" alt="">' for f, c in SHELF)
     return f'<div class="shelf" style="height:{h}px">{imgs}</div><p class="shelfcap">{cap}</p>'
 
@@ -93,7 +93,7 @@ v = 'vendor-carousel'
 S += [
  slide(f'{v}-1', 'navy', pad('RepShare for drinks brands', 'A sales team<br><span class="a">on tap.</span>', 'Seasoned reps in venues and bottle shops, selling your brand.') + shot('dual-vendor-dashboard.jpg'), 1),
  slide(f'{v}-2', '', pad('How it works', '5 to 15 hours<br><span class="a">a week.</span>', 'Seasoned reps who already know the buyers in Sydney, Melbourne and Brisbane.',
-       '<div class="chips"><span>No salaries</span><span>No lock-ins</span></div>') + shelf(215, 'Brands on RepShare include Lady Trieu · Nhau · Headlands · San Junipero · BLVD'), 2),
+       '<div class="chips"><span>No salaries</span><span>No lock-ins</span></div>') + shelf(215, 'Brands on RepShare include Lady Trieu · Nhau · Headlands · San Junipero · Barlei'), 2),
  slide(f'{v}-3', 'sand', pad('Circuits', 'Pick the venues.<br><span class="a">Attach an offer.</span>') + '<div class="shotw" style="top:380px;bottom:196px"><img src="scenes/journey-map.png" alt=""></div><p class="shelfcap" style="bottom:128px;text-transform:none;letter-spacing:0;font:400 24px/1.3 Source Serif 4,Georgia,serif;color:#3A3631">Start from 31,000+ licensed venues and narrow by suburb, type and distance.</p>', 3),
  slide(f'{v}-4', 'navy', pad('What brands say', '“Objectives<br><span class="a">exceeded.”</span>', 'Joel Lindsay, Earth Bar',
        '<div class="quote2"><p>“An end-to-end experience with a highly energetic team.”</p><span>Vladimir Scanu, One &amp; Only Resorts</span></div>'), 4),
@@ -121,7 +121,7 @@ pt = 'partner-carousel'
 S += [
  slide(f'{pt}-1', 'navy', pad('RepShare partners', 'Take RepShare<br><span class="a">into your market.</span>', 'For agencies, distributors, tech resellers, venue groups and overseas markets.') + shot('dual-splash.jpg'), 1),
  slide(f'{pt}-2', '', pad('The network', 'Already<br><span class="a">in the field.</span>', '', '<div class="stats"><div><b>31K+</b><span>Licensed venues</span></div><div><b>3</b><span>States: QLD, NSW, VIC</span></div><div><b>20</b><span>Reps across BNE, SYD, MEL</span></div></div>'), 2),
- slide(f'{pt}-3', 'sand', pad('The track record', 'The work<br><span class="a">so far.</span>', '', '<div class="stats"><div><b>1,800+</b><span>Field activities</span></div><div><b>20+</b><span>Suppliers onboarded</span></div><div><b>30%+</b><span>Conversion on field sales calls</span></div></div>') + shelf(260, 'Suppliers include Lady Trieu · Nhau · Headlands · BLVD'), 3),
+ slide(f'{pt}-3', 'sand', pad('The track record', 'The work<br><span class="a">so far.</span>', '', '<div class="stats"><div><b>1,800+</b><span>Field activities</span></div><div><b>20+</b><span>Suppliers onboarded</span></div><div><b>30%+</b><span>Conversion on field sales calls</span></div></div>') + shelf(260, 'Suppliers include Lady Trieu · Nhau · Headlands · Barlei'), 3),
  slide(f'{pt}-4', '', pad('Targeting', 'Circuits,<br><span class="a">not spreadsheets.</span>') + '<div class="shotw" style="top:380px;bottom:196px"><img src="scenes/journey-map.png" alt=""></div><p class="shelfcap" style="bottom:128px;text-transform:none;letter-spacing:0;font:400 24px/1.3 Source Serif 4,Georgia,serif;color:#3A3631">Pick venues from 31,000+, attach an offer, hand it to reps as jobs.</p>', 4),
  slide(f'{pt}-5', 'sand', pad('Control', 'Every hour,<br><span class="a">approved.</span>', 'Timers, charge templates, approvals and funded hours by rep.') + shot('dual-funded-hours.jpg'), 5),
  slide(f'{pt}-6', '', pad('Orders', 'Four ways.<br><span class="a">One dashboard.</span>', '', '<div class="chips"><span>ALM</span><span>Paramount</span><span>ILG</span><span>Direct</span></div>') + shot('laptop-vendor-dashboard.jpg'), 6),
@@ -141,8 +141,8 @@ S += [
  slide('post-partner-3', 'red hero', pad('Next step', 'Map your<br><span class="a">territory.</span>') + '<div class="shotw" style="top:392px;bottom:250px"><img src="scenes/territory-map.png" alt=""></div><p class="url" style="position:absolute;left:72px;right:72px;bottom:196px;margin:0;text-align:center;white-space:nowrap">Book a short call · site.drinksnetwork.com.au/start?role=partner</p>' + HERO_SM),
 ]
 S += [
- slide('post-vendor-4', 'sand', pad('On RepShare', 'Brands that<br><span class="a">already sell.</span>', 'Gin, vodka, Australian whisky, ready-to-drink cans and ready-to-pour cocktails, in venues and bottle shops now.') + shelf(400)),
- slide('post-rep-4', '', pad('RepShare reps', 'Carry brands<br><span class="a">worth pouring.</span>', 'Take brands like Lady Trieu, Nhau, Headlands, San&nbsp;Junipero and BLVD into the venues you already know.') + shelf(400, 'Apply at site.drinksnetwork.com.au/reps')),
+ slide('post-vendor-4', 'sand', pad('On RepShare', 'Brands that<br><span class="a">already sell.</span>', 'Gin, vodka, Australian whisky, liqueurs and ready‑to‑drink cans, in venues and bottle shops now.') + shelf(400)),
+ slide('post-rep-4', '', pad('RepShare reps', 'Carry brands<br><span class="a">worth pouring.</span>', 'Take brands like Lady Trieu, Nhau, Headlands, San&nbsp;Junipero and Barlei into the venues you already know.') + shelf(400, 'Apply at site.drinksnetwork.com.au/reps')),
 ]
 # ---------------- link images (1200x627)
 for key, h1, t, img in [('vendor', 'A sales team<br><span class="a">on tap.</span>', '5 to 15 hours a week. No salaries. No lock-ins.', 'dual-vendor-dashboard.jpg'),

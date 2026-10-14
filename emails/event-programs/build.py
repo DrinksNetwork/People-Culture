@@ -439,7 +439,7 @@ TAKEOVER_BRAND = [
   body=lambda: kick('Week 6 · Your takeover') + h('Your city.', 'Your guest.') + p(HI) +
    p('Takeovers work anywhere with a good bar and people who want a night out, from Sydney, Melbourne and Brisbane to Ballarat and Wollongong. We keep a list of bartenders ready to go, and a list of venues that want a guest.') +
    two_img('ck-lady-trieu.jpg', 'Lady Triệu Gin bottle', 'ck-frozen-coupe.jpg', 'A frozen coupe cocktail') +
-   p('Cocktail-led products suit the program best: gins, vodkas and ready-to-pour cocktails that one great drink on a menu turns into a case a week.') +
+   p('Cocktail-led products suit the program best: gins, vodkas and liqueurs that one great drink on a menu turns into a case a week.') +
    window(6, 'takeover') + p('<b>This is the last week to lock in your takeover.</b>') +
    button('Lock in a takeover', f'mailto:{MANNY}?subject=Lock%20in%20a%20Bar%20Takeover%20for%20my%20brand') + tk_brand_agree()),
  dict(n='06', key='last-call', day=42, subject='Last call: take your brand on a Bar Takeover',
@@ -457,7 +457,7 @@ TAKEOVER_BARTENDER = [
  dict(n='00', key='on-the-list', day=0, subject='You\'re on the Bar Takeover list',
   pre='What happens now, and how a brand picks you.', hero='tk-bartender-leaning-in.jpg', alt='A guest bartender leaning in to talk to a guest',
   body=lambda: kick('Day 0 · You\'re on the list') + h('Your menu.', 'Their bar.') + p(HI) +
-   p('Thanks for registering for Bar Takeover. You\'re now on our list of guest bartenders. When a brand wants to take a bartender to a new bar (Lady Triệu, Nhau, BLVD or another of our brands), we match them with someone from this list.') +
+   p('Thanks for registering for Bar Takeover. You\'re now on our list of guest bartenders. When a brand wants to take a bartender to a new bar (Lady Triệu, Nhau, Barlei or another of our brands), we match them with someone from this list.') +
    h2('How you get picked') +
    steps([('We get to know you', 'Your bar, your style and the spirits you love to work with. Reply with your Instagram and a drink you\'re proud of.'),
           ('A brand picks you', 'We put you forward when a brand and a venue line up. You stay on the list until then.'),

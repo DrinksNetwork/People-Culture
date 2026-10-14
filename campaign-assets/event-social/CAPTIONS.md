@@ -62,7 +62,7 @@ Replace SOURCE with `linkedin`, `facebook` or `instagram`.
 
 **Carousel**
 - Instagram/Facebook: Your menu, their bar. Get flown to a new city and take over a bar for a night: flights, accommodation and a $500 stipend from the brand, with a fee of up to $1,000 on some takeovers. Send your mise en place list two weeks out, run it through the day before, then own the well from 6 to 10. Get on the list 👉 [link]
-- LinkedIn: We're building a list of guest bartenders for Bar Takeover. Brands like Lady Triệu, Nhau and BLVD back a bartender into a new venue for one night. It's paid work, not a competition. [link]
+- LinkedIn: We're building a list of guest bartenders for Bar Takeover. Brands like Lady Triệu, Nhau and Barlei back a bartender into a new venue for one night. It's paid work, not a competition. [link]
 
 **Post**
 - Instagram/Facebook: Fly in. Take over. Flights, accommodation and a $500 stipend, paid by the brand. Your name on the poster. [link]
