@@ -64,3 +64,17 @@ test('bar takeover pack: reply and shares link to the takeover pack', async () =
   assert.match(mails[2].body.message.subject, /Sam Ng shared the Drinks Network Bar Takeover partnership pack/);
   assert.match(mails[2].body.message.html, /guest bartender/);
 });
+
+test('event-program journeys: each form and side starts the right 6-week journey', async () => {
+  const { tagsFor } = await import('../enquiries.mjs');
+  const t = (form, tags) => tagsFor({ form, tags });
+  assert.ok(t('bar-takeover-pack', ['Buyer']).includes('journey:takeover-venue'));
+  assert.ok(t('bar-takeover-pack', ['Vendor']).includes('journey:takeover-brand'));
+  assert.ok(t('bar-takeover-pack', ['Trade']).includes('journey:takeover-bartender'));
+  assert.ok(t('tasting-brief', ['Buyer']).includes('journey:tasting-venue'));
+  assert.ok(t('tasting-brief', ['Vendor']).includes('journey:tasting-brand'));
+  assert.ok(t('whisky-adventure-venue', ['Buyer', 'Trade']).includes('journey:tasting-venue'));
+  assert.ok(t('whisky-adventure-brand', ['Vendor']).includes('journey:tasting-brand'));
+  assert.ok(t('tasting-agreement', ['Buyer']).includes('event-committed'));
+  assert.ok(!t('contact', ['Buyer']).some((x) => x.startsWith('journey:')));
+});

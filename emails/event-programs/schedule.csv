@@ -1,0 +1,34 @@
+track,journey start tag,email,send on day,subject,preview text,file
+takeover-venue,journey:takeover-venue,00,0,"Your Bar Takeover pack, and what happens next","One night, one guest bartender, your bar. Here is how it works.",takeover-venue/00-welcome.html
+takeover-venue,journey:takeover-venue,01,7,"What one takeover night can make: $2,826","30 tickets, 60 cocktails pre-sold, and the friends they bring.",takeover-venue/01-the-money.html
+takeover-venue,journey:takeover-venue,02,14,What hosting a guest bartender actually involves,"The menu, the ingredients, the run-through and the night itself.",takeover-venue/02-what-hosting-involves.html
+takeover-venue,journey:takeover-venue,03,21,How much is at risk? Less than a quiet Tuesday,Tickets are sold before the night and the stock stays on your shelf.,takeover-venue/03-the-risk.html
+takeover-venue,journey:takeover-venue,04,28,Five things that fill the room (and the till),What the best host venues do in the three weeks before the night.,takeover-venue/04-make-it-pay.html
+takeover-venue,journey:takeover-venue,05,35,"Your takeover run sheet, from yes to the night","What happens when, once you lock in a date.",takeover-venue/05-run-sheet.html
+takeover-venue,journey:takeover-venue,06,42,Last call: lock in your Bar Takeover,Your 6-week window closes today.,takeover-venue/06-last-call.html
+takeover-brand,journey:takeover-brand,00,0,Your brand on tour: the Bar Takeover pack,"A guest bartender, a new venue and a full room for your brand.",takeover-brand/00-welcome.html
+takeover-brand,journey:takeover-brand,01,7,Product alone converts at 5–10%. A takeover converts at 30%+,Why there needs to be something more than the product for sale.,takeover-brand/01-why-activity.html
+takeover-brand,journey:takeover-brand,02,14,"What you're investing in: about $2,000 a takeover","Flights, accommodation, a stipend, and the hours from your subscription.",takeover-brand/02-the-investment.html
+takeover-brand,journey:takeover-brand,03,21,What happens when the brand goes on tour,Corowa took its distiller on the road. Here is what it did for conversion.,takeover-brand/03-brand-on-tour.html
+takeover-brand,journey:takeover-brand,04,28,Every ticket-holder is your contact. Every buyer gets a follow-up,"The contacts are yours alone, and the reps follow up for six days.",takeover-brand/04-contacts-and-trade.html
+takeover-brand,journey:takeover-brand,05,35,"Pick your bartender, your venue and your city","Any city with a great bar: Sydney, Melbourne, Brisbane, Ballarat, Wollongong.",takeover-brand/05-pick-your-takeover.html
+takeover-brand,journey:takeover-brand,06,42,Last call: take your brand on a Bar Takeover,Your 6-week window closes today.,takeover-brand/06-last-call.html
+takeover-bartender,journey:takeover-bartender,00,0,You're on the Bar Takeover list,"What happens now, and how a brand picks you.",takeover-bartender/00-on-the-list.html
+takeover-bartender,journey:takeover-bartender,01,7,What a guest shift involves,"Two weeks out, the day before and the night itself.",takeover-bartender/01-what-it-involves.html
+takeover-bartender,journey:takeover-bartender,02,14,Build a menu a brand will back,"Two or three drinks, quick to make, with a story each.",takeover-bartender/02-build-the-menu.html
+takeover-bartender,journey:takeover-bartender,03,28,What's in it for you,"Flights, accommodation, a stipend, a fee on some takeovers, and a new city.",takeover-bartender/03-whats-in-it.html
+takeover-bartender,journey:takeover-bartender,04,42,Still keen? Keep your spot on the list,Tell us what's changed and we'll keep you ready for the next brand.,takeover-bartender/04-keep-your-spot.html
+tasting-venue,journey:tasting-venue,00,0,"Meet the people behind the brand, in your room",A ticketed distiller's tasting at your venue. Here is how it works.,tasting-venue/00-welcome.html
+tasting-venue,journey:tasting-venue,01,7,"What one tasting night pays your venue: $1,396 in cash","40 guests at $75, split 50/50, plus everything they buy.",tasting-venue/01-the-money.html
+tasting-venue,journey:tasting-venue,02,14,What hosting a tasting involves,"Your room, your glassware, an opening order. We do the rest.",tasting-venue/02-what-hosting-involves.html
+tasting-venue,journey:tasting-venue,03,21,How much is at risk? Very little,Tickets are sold before the night. The stock stays on your shelf.,tasting-venue/03-the-risk.html
+tasting-venue,journey:tasting-venue,04,28,Fill the room: bring your own people,"Staff join free, trade come on a $0 code, regulars buy a ticket.",tasting-venue/04-fill-the-room.html
+tasting-venue,journey:tasting-venue,05,35,"Your tasting night, start to finish",From the agreement to the sales statement.,tasting-venue/05-the-night.html
+tasting-venue,journey:tasting-venue,06,42,Last call: lock in your tasting night,Your 6-week window closes today.,tasting-venue/06-last-call.html
+tasting-brand,journey:tasting-brand,00,0,Take your brand on tour: meet the people behind the brand,"Ticketed tastings led by your maker, in venues that stock you after.",tasting-brand/00-welcome.html
+tasting-brand,journey:tasting-brand,01,7,Product alone converts at 5–10%. People convert at 30%+,Why a face behind the bottle changes the conversation.,tasting-brand/01-why-activity.html
+tasting-brand,journey:tasting-brand,02,14,"What you're investing in: $1,500–$2,000 from your subscription","About 10 hours of set-up and 4–5 hours on the night, drawn from your plan.",tasting-brand/02-the-investment.html
+tasting-brand,journey:tasting-brand,03,21,"What one tasting night can make: $6,449–$7,100","Ticket credit, bottles and trade orders from a single 40-guest night.",tasting-brand/03-what-one-night-makes.html
+tasting-brand,journey:tasting-brand,04,28,Brand on tour: what Corowa did with its distiller,40.7% first-order conversion with the maker in the room.,tasting-brand/04-brand-on-tour.html
+tasting-brand,journey:tasting-brand,05,35,"Your contacts, your follow-up","Ticket-holders and trade guests go to you, then six days of follow-up.",tasting-brand/05-contacts-and-follow-up.html
+tasting-brand,journey:tasting-brand,06,42,Last call: book your brand's tour,Your 6-week window closes today.,tasting-brand/06-last-call.html

@@ -98,7 +98,25 @@ export function tagsFor(p) {
   if (p.campaign) tags.push(`campaign:${p.campaign}`);
   tags.push(`form:${p.form}`);
   if (p.form !== 'newsletter') tags.push('enquiry');                   // starts the "Thanks for your enquiry" journey
+  const j = journeyFor(p.form, tags);                                   // starts the 6-week event-program journey
+  if (j) tags.push(`journey:${j}`);
+  if (p.form === 'tasting-agreement') tags.push('event-committed');     // stops the event-program journeys
   return [...new Set(tags)];
+}
+
+// Event-program email journeys (emails/event-programs): which 6-week sequence a form starts.
+const JOURNEYS = {
+  'bar-takeover-pack': { Buyer: 'takeover-venue', Vendor: 'takeover-brand', Trade: 'takeover-bartender' },
+  'tasting-brief': { Buyer: 'tasting-venue', Vendor: 'tasting-brand' },
+  'whisky-adventure-venue': { '*': 'tasting-venue' },
+  'whisky-adventure-brand': { '*': 'tasting-brand' },
+};
+
+export function journeyFor(form, tags) {
+  const m = JOURNEYS[form]; if (!m) return null;
+  if (m['*']) return m['*'];
+  const hit = ['Buyer', 'Vendor', 'Trade'].find((t) => tags.includes(t) && m[t]);
+  return hit ? m[hit] : null;
 }
 
 export function answersTable(p) {
